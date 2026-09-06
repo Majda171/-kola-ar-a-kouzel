@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+:root{--gold:#b49350;--gold2:#ddc884;--paper:#e0d3b2;--ink:#17140f;--night:#090c0b;--line:rgba(218,196,139,.23);--panel:rgba(9,11,10,.86);--muted:#bfb49c;--accent:#8b6c36}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:#090b0a;color:#eee6d4;font-family:'EB Garamond',Georgia,serif;overflow-x:hidden}a{color:inherit}button,input{font:inherit}[hidden]{display:none!important}
+.portal-page{min-height:100vh;background:linear-gradient(rgba(4,6,5,.55),rgba(3,5,4,.88)),url('img/wall.webp') center/cover fixed;position:relative;isolation:isolate}.portal-page::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 50% 5%,rgba(205,170,91,.12),transparent 30%),linear-gradient(90deg,rgba(0,0,0,.45),transparent 25%,transparent 75%,rgba(0,0,0,.45))}
+.portal-shell{width:min(1240px,92vw);margin:auto;padding:20px 0 70px}.portal-top{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:10px 0 18px;border-bottom:1px solid var(--line)}.portal-brand,.portal-nav a{font-family:'Cinzel',serif;text-decoration:none;text-transform:uppercase;letter-spacing:.15em;font-size:.7rem;color:#d8c89f}.portal-nav{display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end}.portal-nav a:hover{color:white}
+.portal-hero{text-align:center;padding:70px 0 46px;max-width:860px;margin:auto}.kicker{font-family:'Cinzel',serif;text-transform:uppercase;letter-spacing:.3em;color:var(--gold2);font-size:.68rem}.portal-hero h1,.scene-copy h1,.profile-title{font-family:'Cinzel',serif;text-transform:uppercase;letter-spacing:.07em;font-weight:600;margin:10px 0 16px;font-size:clamp(2.7rem,7vw,6rem);line-height:.96}.portal-hero p{font-size:1.2rem;line-height:1.55;color:#d2c7ae;max-width:720px;margin:0 auto}
+.location-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}.location-card{position:relative;min-height:290px;padding:28px;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;border:1px solid var(--line);background:linear-gradient(180deg,rgba(12,14,12,.38),rgba(5,7,6,.94)),var(--bg,linear-gradient(135deg,#1e241d,#0b0d0b));overflow:hidden;transition:.3s}.location-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 12%,var(--glow,rgba(194,155,74,.2)),transparent 40%);transition:.3s}.location-card:hover{transform:translateY(-5px);border-color:rgba(223,201,145,.52)}.location-card:hover::before{transform:scale(1.12)}.location-card>*{position:relative}.location-card .sigil{font-size:2.4rem;margin-bottom:auto;filter:drop-shadow(0 8px 12px #000)}.location-card h2{font-family:'Cinzel',serif;text-transform:uppercase;letter-spacing:.08em;margin:0 0 8px;font-size:1.3rem}.location-card p{margin:0;color:#bfb49f;line-height:1.45}.card-tag{font-family:'Cinzel',serif;color:var(--gold2);text-transform:uppercase;letter-spacing:.12em;font-size:.6rem;margin-top:14px}
+.scene-page{min-height:100vh;position:relative;background:#070a09;overflow:hidden}.scene-top{position:absolute;z-index:20;top:20px;left:4vw;right:4vw;display:flex;justify-content:space-between;align-items:center}.scene-top a{font-family:'Cinzel',serif;text-transform:uppercase;letter-spacing:.14em;font-size:.68rem;text-decoration:none;color:#ddcfaa;text-shadow:0 2px 8px #000}.scene{min-height:100vh;position:relative;isolation:isolate;display:grid;align-items:end;padding:100px 6vw 58px;overflow:hidden}.scene::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.32) 55%,rgba(0,0,0,.78))}.scene-copy{position:relative;z-index:6;width:min(680px,86vw);pointer-events:none}.scene-copy h1{font-size:clamp(2.5rem,6vw,5.4rem);text-shadow:0 10px 30px #000}.scene-copy p{font-size:1.16rem;color:#d1c6ad;line-height:1.52;margin:0}.scene-hint{font-family:'Cinzel',serif;text-transform:uppercase;letter-spacing:.12em;font-size:.62rem!important;color:#ae9b70!important;margin-top:16px!important}
+/* potions */.potions-scene{background:radial-gradient(circle at 50% 60%,rgba(72,116,77,.15),transparent 32%),linear-gradient(180deg,#121713,#060807)}.stone-arch{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 72px,rgba(255,255,255,.025) 73px 75px),repeating-linear-gradient(90deg,transparent 0 130px,rgba(255,255,255,.02) 131px 133px);opacity:.7}.shelf{position:absolute;left:8%;right:8%;top:18%;height:33%;border-top:8px solid #36291d;border-bottom:12px solid #2a1f17;box-shadow:0 22px 38px #000;background:linear-gradient(rgba(24,17,12,.55),rgba(8,8,7,.25))}.bottle{position:absolute;bottom:10px;width:38px;height:70px;border:2px solid rgba(220,218,185,.35);border-radius:8px 8px 13px 13px;background:linear-gradient(90deg,rgba(255,255,255,.08),var(--potion,#315e48),rgba(0,0,0,.4));box-shadow:inset 0 -30px 30px rgba(0,0,0,.2),0 6px 14px #000;transition:.2s;cursor:pointer}.bottle::before{content:"";position:absolute;width:15px;height:20px;left:9px;top:-19px;border:2px solid rgba(220,218,185,.35);border-bottom:0;background:rgba(26,29,25,.7)}.bottle:hover{transform:translateY(-8px) rotate(4deg);filter:brightness(1.25)}.bottle.falling{animation:bottleFall .8s ease-in forwards}@keyframes bottleFall{45%{transform:translateY(80px) rotate(45deg)}100%{transform:translate(80px,290px) rotate(160deg);opacity:0}}
+.cauldron{position:absolute;left:50%;bottom:17%;transform:translateX(-50%);width:300px;height:150px;border-radius:12px 12px 48% 48%;background:linear-gradient(90deg,#111,#3a3c37 30%,#171816 70%,#050505);border-top:12px solid #55564e;box-shadow:0 28px 32px #000,inset 0 -25px 30px #000;cursor:pointer}.cauldron::before,.cauldron::after{content:"";position:absolute;top:116px;width:26px;height:80px;background:#1c1d1a}.cauldron::before{left:45px;transform:rotate(13deg)}.cauldron::after{right:45px;transform:rotate(-13deg)}.brew{position:absolute;left:8%;right:8%;top:-9px;height:24px;border-radius:50%;background:radial-gradient(circle,#a9d77c 0 5%,#55723e 30%,#1f3423 65%,#0d160e);box-shadow:0 -7px 32px rgba(130,200,90,.45);animation:brewPulse 2s infinite}@keyframes brewPulse{50%{filter:brightness(1.25);transform:scaleY(1.12)}}.bubble{position:absolute;border-radius:50%;background:rgba(167,224,126,.5);animation:bubble 2s infinite ease-out}@keyframes bubble{from{transform:translateY(0) scale(.5);opacity:.8}to{transform:translateY(-100px) scale(1.2);opacity:0}}.cauldron:hover{filter:brightness(1.15)}.potion-smoke{position:absolute;left:50%;bottom:35%;transform:translateX(-50%);font-size:5rem;opacity:0;pointer-events:none}.potion-smoke.pop{animation:smokePop 1.1s ease-out}@keyframes smokePop{0%{opacity:0;transform:translate(-50%,30px) scale(.4)}35%{opacity:.8}100%{opacity:0;transform:translate(-50%,-150px) scale(2)}}
+/* transfiguration */.transfiguration-scene{background:radial-gradient(circle at 70% 28%,rgba(166,137,79,.18),transparent 28%),linear-gradient(#25251e,#0b0c0a 74%)}.tall-window{position:absolute;top:11%;right:12%;width:28%;height:47%;border:10px solid #322e25;border-radius:45% 45% 0 0;background:linear-gradient(rgba(86,104,115,.3),rgba(17,22,25,.75)),repeating-linear-gradient(90deg,transparent 0 48%,rgba(201,191,160,.25) 49% 51%,transparent 52%);box-shadow:0 0 70px rgba(126,155,171,.15)}.desk{position:absolute;left:10%;right:10%;bottom:20%;height:12%;background:linear-gradient(#4b3624,#21170f);border-top:8px solid #6a4a2c;box-shadow:0 20px 30px #000}.trans-object{position:absolute;bottom:31%;width:100px;height:115px;display:grid;place-items:center;font-size:4.7rem;cursor:pointer;filter:drop-shadow(0 14px 10px #000);transition:.3s}.trans-object:hover{transform:translateY(-12px) rotate(-5deg)}.trans-object.changed{animation:transGlow .8s ease}@keyframes transGlow{50%{filter:drop-shadow(0 0 25px #e5ce86) brightness(1.5);transform:scale(.65) rotate(180deg)}}
+.floating-book{position:absolute;top:20%;left:18%;font-size:5rem;transform:rotate(-10deg);animation:bookFloat 4s ease-in-out infinite;cursor:pointer}@keyframes bookFloat{50%{transform:translateY(-18px) rotate(5deg)}}.floating-book:hover{animation-duration:.7s}
+/* defense */.defense-scene{background:radial-gradient(circle at 30% 38%,rgba(98,71,111,.15),transparent 28%),linear-gradient(#171519,#080809 78%)}.defense-cabinet{position:absolute;right:10%;top:14%;width:260px;height:430px;border:10px solid #2b211a;background:linear-gradient(90deg,#211813,#36271c,#16110e);box-shadow:0 30px 50px #000}.defense-cabinet::before{content:"?";position:absolute;inset:35px;border:2px solid #6b5436;display:grid;place-items:center;font-family:'Cinzel';font-size:5rem;color:#665038}.defense-cabinet:hover{animation:cabinetShake .45s ease}@keyframes cabinetShake{25%{transform:translateX(-5px)}50%{transform:translateX(5px)}75%{transform:translateX(-3px)}}.practice-dummy{position:absolute;left:19%;bottom:25%;width:85px;height:230px;background:linear-gradient(90deg,#493722,#6d5130,#2d2116);border-radius:46% 46% 18px 18px;box-shadow:0 20px 25px #000;transform-origin:bottom;transition:.25s;cursor:pointer}.practice-dummy::before{content:"";position:absolute;width:72px;height:72px;border-radius:50%;background:#6b4e2f;top:-64px;left:7px}.practice-dummy:hover{transform:rotate(7deg)}.practice-dummy.hit{animation:dummyHit .75s ease}@keyframes dummyHit{40%{transform:rotate(35deg)}70%{transform:rotate(-10deg)}}.dark-orb{position:absolute;left:43%;top:28%;width:84px;height:84px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#80578a,#251d2b 45%,#050506 78%);box-shadow:0 0 45px rgba(131,79,144,.38);animation:orbFloat 3s ease-in-out infinite;cursor:pointer}@keyframes orbFloat{50%{transform:translateY(-15px);box-shadow:0 0 65px rgba(131,79,144,.55)}}.dark-orb:hover{filter:brightness(1.5)}
+/* hall */.hall-scene{background:linear-gradient(rgba(5,8,10,.1),rgba(7,8,8,.75)),radial-gradient(ellipse at 50% 5%,#1b2b45,#0b101a 38%,#090b0a 64%)}.star-ceiling{position:absolute;inset:0 0 45%;background-image:radial-gradient(circle,#fff 0 1px,transparent 1.6px);background-size:61px 61px;opacity:.55;animation:stars 18s linear infinite}@keyframes stars{to{background-position:100px 50px}}.hall-table{position:absolute;bottom:16%;width:17%;height:240px;background:linear-gradient(90deg,#2b1d13,#543820 45%,#241810);border:6px solid #6b4b2c;transform:perspective(500px) rotateX(55deg);box-shadow:0 35px 30px #000}.floating-candle{position:absolute;width:8px;height:54px;background:#e2d0a1;box-shadow:0 0 15px rgba(255,210,107,.35);animation:candleFloat var(--dur,5s) ease-in-out infinite;cursor:pointer}.floating-candle::before{content:"";position:absolute;left:-5px;top:-20px;width:18px;height:24px;border-radius:50% 50% 45% 45%;background:radial-gradient(circle at 50% 70%,#fff7b4,#ffbc4a 45%,#ff7d1e 70%,transparent 72%);filter:drop-shadow(0 0 8px #ffae42)}.floating-candle:hover{transform:translateY(-16px) rotate(5deg);filter:brightness(1.2)}@keyframes candleFloat{50%{translate:0 -13px}}
+/* quidditch */.quidditch-scene{background:linear-gradient(rgba(28,38,39,.08),rgba(7,12,10,.55)),radial-gradient(ellipse at 50% 90%,#314c2b 0 28%,#172417 55%,#0a100c 78%)}.pitch{position:absolute;left:8%;right:8%;top:20%;bottom:17%;border:4px solid rgba(211,196,133,.35);border-radius:50%;box-shadow:inset 0 0 70px rgba(0,0,0,.45)}.hoop{position:absolute;width:8px;height:220px;background:#9a7a43;bottom:25%}.hoop::before{content:"";position:absolute;width:95px;height:95px;border:8px solid #a9884b;border-radius:50%;left:50%;transform:translateX(-50%);top:-75px}.quaffle{position:absolute;left:48%;top:45%;width:62px;height:62px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#c85b45,#722c22 55%,#321410);box-shadow:0 15px 20px #000;cursor:pointer;transition:.2s}.quaffle:hover{transform:scale(1.14);filter:brightness(1.2)}.quaffle.shoot{animation:quaffleShoot 1s cubic-bezier(.2,.7,.2,1)}@keyframes quaffleShoot{50%{transform:translate(30vw,-22vh) scale(.6)}100%{transform:translate(0,0)}}.broom{position:absolute;right:15%;bottom:24%;font-size:5rem;transform:rotate(-15deg);transition:.3s;cursor:pointer}.broom:hover{transform:translateY(-18px) rotate(-6deg)}
+/* profile */.profile-wrap{display:grid;grid-template-columns:330px 1fr;gap:28px;padding:56px 0}.profile-card,.profile-panel{border:1px solid var(--line);background:linear-gradient(145deg,rgba(16,18,16,.94),rgba(7,8,7,.93));box-shadow:0 24px 70px rgba(0,0,0,.42)}.profile-card{padding:30px;text-align:center;position:sticky;top:24px;align-self:start}.profile-crest{width:210px;height:210px;object-fit:contain;filter:drop-shadow(0 18px 25px #000)}.profile-seal{width:94px;height:94px;border-radius:50%;display:grid;place-items:center;margin:-18px auto 16px;background:#171610;border:1px solid #9c7c43;font-family:'Cinzel';font-size:2rem;color:#eedca9;position:relative}.profile-name{font-family:'Cinzel';text-transform:uppercase;letter-spacing:.08em;font-size:1.25rem}.profile-house{color:#c1aa72;font-style:italic}.profile-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}.mini-stat{padding:14px 8px;border:1px solid rgba(210,190,140,.15)}.mini-stat strong{display:block;font-family:'Cinzel';font-size:1.45rem;color:#f2da98}.mini-stat span{font-family:'Cinzel';text-transform:uppercase;letter-spacing:.1em;font-size:.55rem;color:#9f957e}.profile-main{display:grid;gap:22px}.profile-panel{padding:28px}.profile-panel h2{font-family:'Cinzel';text-transform:uppercase;letter-spacing:.08em;font-size:1.25rem;margin:0 0 18px}.subject-list,.achievement-list,.history-list{display:grid;gap:10px}.subject-row,.achievement,.history-row{display:flex;justify-content:space-between;gap:15px;padding:13px 0;border-top:1px solid rgba(220,196,139,.11)}.subject-row:first-child,.achievement:first-child,.history-row:first-child{border-top:0}.progress-mini{width:130px;height:6px;background:#23231e;align-self:center}.progress-mini span{display:block;height:100%;background:linear-gradient(90deg,#87672f,#d0b367);width:var(--w)}.achievement{justify-content:flex-start;align-items:center}.achievement-mark{width:42px;height:42px;border:1px solid #8d7040;display:grid;place-items:center;font-size:1.2rem}.history-row span:last-child{color:#d8be79}
+/* login */.login-layout{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}.login-art{position:relative;display:grid;place-items:center;padding:60px;background:linear-gradient(rgba(5,8,6,.45),rgba(5,8,6,.82)),url('img/wall.webp') center/cover}.login-art img{width:min(420px,75%);filter:drop-shadow(0 30px 38px #000)}.login-panel{display:grid;place-items:center;padding:50px 7vw;background:linear-gradient(145deg,#181b17,#090b09)}.login-box{width:min(480px,100%)}.login-box h1{font-family:'Cinzel';text-transform:uppercase;letter-spacing:.07em;font-size:clamp(2rem,5vw,3.6rem);margin:8px 0 12px}.login-box>p{color:#bfb49e;font-size:1.08rem;line-height:1.45}.login-field{display:grid;gap:7px;margin-top:20px}.login-field label{font-family:'Cinzel';text-transform:uppercase;letter-spacing:.1em;font-size:.62rem;color:#d1bd86}.login-field input{width:100%;padding:13px 14px;background:#10130f;border:1px solid rgba(210,190,140,.28);color:white;outline:none}.login-field input:focus{border-color:#a98b4d}.login-submit{width:100%;margin-top:24px;padding:14px;background:#a98746;color:#16120b;border:1px solid #d1bb7f;font-family:'Cinzel';text-transform:uppercase;letter-spacing:.12em;font-size:.7rem;cursor:pointer}.login-message{min-height:24px;color:#d99d86;margin-top:12px}.login-links{display:flex;justify-content:space-between;gap:14px;margin-top:22px;font-size:.9rem;color:#b9aa89}.login-links a{color:#d9c58f}
+@media(max-width:900px){.location-grid{grid-template-columns:repeat(2,1fr)}.profile-wrap{grid-template-columns:1fr}.profile-card{position:static}.login-layout{grid-template-columns:1fr}.login-art{min-height:38vh}.login-art img{max-height:280px}.scene{padding-left:5vw;padding-right:5vw}}
+@media(max-width:600px){.location-grid{grid-template-columns:1fr}.portal-nav{display:none}.portal-hero{padding-top:48px}.scene-copy{width:92vw}.profile-stat-grid{grid-template-columns:1fr 1fr}.login-panel{padding:40px 7vw}.shelf{left:3%;right:3%}.cauldron{width:220px}.hall-table{height:180px}.profile-wrap{padding-top:30px}}
+
+/* v15 — Great Hall uses the user's illustrated scene */
+.hall-scene{background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.12) 62%,rgba(0,0,0,.58)),url('img/velka-sin-bg.webp') center center/cover no-repeat;background-color:#080706}
+.hall-scene::after{background:linear-gradient(180deg,rgba(0,0,0,.02),transparent 48%,rgba(0,0,0,.48))}
+.hall-caption{width:auto;max-width:520px;padding:18px 24px 16px;background:linear-gradient(90deg,rgba(4,5,4,.72),rgba(4,5,4,.18),transparent);border-left:1px solid rgba(214,189,125,.38)}
+.hall-caption h1{font-size:clamp(2.1rem,5vw,4.7rem);margin-bottom:0}
+.hall-candle{border:0;padding:0;appearance:none;transform:scale(var(--scale,1));transform-origin:center;z-index:7;transition:filter .25s,transform .25s;}
+.hall-candle:hover,.hall-candle:focus-visible{filter:brightness(1.28) drop-shadow(0 0 12px rgba(255,193,73,.75));outline:none;transform:translateY(-11px) rotate(4deg) scale(calc(var(--scale,1) * 1.06))}
+.hall-candle:active{transform:translateY(-18px) rotate(-7deg) scale(calc(var(--scale,1) * .96))}
+@media(max-width:700px){.hall-scene{background-position:center}.hall-caption{padding:14px 18px}.hall-candle{opacity:.82}}
+
+/* v16 — quiet location captions, real candles, portraits, badge cabinet */
+.scene-copy{width:min(470px,82vw);opacity:.9}
+.scene-copy .kicker{font-size:.53rem;letter-spacing:.24em}.scene-copy h1{font-size:clamp(1.65rem,3.25vw,3.15rem);margin:6px 0 9px}.scene-copy p{font-size:.95rem;line-height:1.42;color:#bfb49f}.scene-hint{font-size:.55rem!important;margin-top:9px!important;color:#82775f!important}
+.hall-caption{max-width:390px;padding:10px 16px 9px;background:linear-gradient(90deg,rgba(4,5,4,.55),rgba(4,5,4,.06),transparent);border-left:1px solid rgba(214,189,125,.22)}.hall-caption h1{font-size:clamp(1.6rem,3vw,2.8rem)}
+.floating-candle{width:auto;height:auto;background:transparent;box-shadow:none;border:0}.floating-candle::before{display:none}.hall-candle img{display:block;width:42px;height:auto;pointer-events:none;filter:drop-shadow(0 0 7px rgba(255,186,61,.42))}.hall-candle{animation:candleFloat var(--dur,5s) ease-in-out infinite;cursor:pointer}
+.scene-wall-painting{position:absolute;padding:0;border:0;background:transparent;cursor:pointer;z-index:4;filter:drop-shadow(0 18px 22px #000);transition:.28s}.scene-wall-painting img{display:block;width:100%;height:100%;object-fit:contain}.scene-wall-painting:hover{transform:translateY(-6px) rotate(1deg);filter:brightness(1.08) drop-shadow(0 22px 26px #000)}.class-painting-right{right:6%;top:14%;width:150px;height:220px}.class-painting-left{left:6%;top:15%;width:145px;height:215px}
+
+.panel-note{margin:-8px 0 18px;color:#8f856f;font-size:.88rem;font-style:italic}.badge-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}.badge-card{position:relative;min-height:180px;border:1px solid rgba(208,182,117,.16);background:linear-gradient(145deg,rgba(16,18,16,.9),rgba(6,7,6,.9));padding:12px;text-align:center;overflow:hidden}.badge-card img{width:100%;aspect-ratio:1/1;object-fit:contain;filter:drop-shadow(0 8px 12px #000);transition:.25s}.badge-card strong{display:block;font-family:'Cinzel';font-size:.63rem;letter-spacing:.08em;text-transform:uppercase;color:#ddc98f;margin-top:7px}.badge-card small{display:block;color:#8d846f;font-size:.72rem;line-height:1.2;margin-top:3px}.badge-card.locked img{filter:grayscale(1) brightness(.25) opacity(.5)}.badge-card.locked::after{content:'?';position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);font-family:'Cinzel';font-size:2rem;color:rgba(220,199,145,.55)}.badge-card.locked.no-image{display:grid;place-items:center;min-height:180px}.badge-card.locked.no-image::before{content:'✦';font-size:3.4rem;color:rgba(190,164,102,.16)}.badge-card.locked.no-image strong,.badge-card.locked.no-image small{position:relative;z-index:2}.badge-card:not(.locked):hover img{transform:scale(1.05) rotate(.5deg);filter:brightness(1.08) drop-shadow(0 11px 14px #000)}.bonus-title{font-family:'Cinzel';font-size:.83rem;text-transform:uppercase;letter-spacing:.12em;color:#b99c5c;margin:28px 0 14px}.bonus-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.access-card,.quest-card{border:1px solid rgba(208,182,117,.16);background:rgba(9,11,9,.52);padding:16px 18px}.access-card strong,.quest-card strong{font-family:'Cinzel';text-transform:uppercase;letter-spacing:.08em;font-size:.72rem;color:#dbc58d}.access-card p,.quest-card p{margin:6px 0 0;color:#b8ad95;line-height:1.4}.quest-list{display:grid;gap:10px}.quest-card{display:flex;justify-content:space-between;align-items:center;gap:18px}.quest-reward{font-family:'Cinzel';font-size:.7rem;white-space:nowrap;color:#d8ba72}.quest-card.done{opacity:.55}.quest-card.done .quest-reward{color:#8f866f}
+.result-access{margin:16px auto 0;max-width:520px;padding:10px 15px;border-top:1px solid rgba(219,194,125,.22);border-bottom:1px solid rgba(219,194,125,.12);font-family:'Cinzel';text-transform:uppercase;letter-spacing:.08em;font-size:.63rem;color:#c7ae70}
+@media(max-width:920px){.badge-grid,.bonus-grid{grid-template-columns:repeat(3,1fr)}.class-painting-right,.class-painting-left{width:105px;height:160px}}
+@media(max-width:620px){.badge-grid,.bonus-grid{grid-template-columns:repeat(2,1fr)}.badge-card{min-height:150px}.scene-copy h1{font-size:1.8rem}.scene-copy p{font-size:.84rem}.class-painting-right,.class-painting-left{display:none}.hall-candle img{width:30px}}
+
+/* v17 — user's quidditch stadium image */
+.quidditch-photo{background:linear-gradient(180deg,rgba(4,5,4,.01),rgba(4,5,4,.06) 58%,rgba(3,4,3,.52)),url('img/famfrpal-bg.webp') center/cover no-repeat;background-color:#161712}
+.quidditch-photo::after{background:linear-gradient(180deg,transparent 52%,rgba(0,0,0,.55))}
+.quidditch-photo .pitch,.quidditch-photo .hoop,.quidditch-photo .broom{display:none}
+.quidditch-caption{max-width:360px;padding:9px 14px 8px;background:linear-gradient(90deg,rgba(4,5,4,.58),rgba(4,5,4,.06),transparent);border-left:1px solid rgba(216,189,124,.2)}
+.quidditch-caption h1{font-size:clamp(1.45rem,2.6vw,2.5rem)}.quidditch-caption p{font-size:.84rem}
+.photo-quaffle{position:absolute;left:49%;top:54%;width:46px;height:46px;border-radius:50%;border:2px solid rgba(83,35,23,.9);background:radial-gradient(circle at 35% 30%,#a45e43 0 12%,#6c2f22 48%,#2e1512 100%);box-shadow:inset -8px -8px 12px rgba(0,0,0,.45),0 10px 18px rgba(0,0,0,.4);cursor:pointer;z-index:9;transition:.25s}.photo-quaffle:hover{transform:scale(1.16);filter:brightness(1.15)}.photo-quaffle.shoot{animation:quafflePhotoShoot 1.05s cubic-bezier(.2,.7,.2,1)}@keyframes quafflePhotoShoot{45%{transform:translate(26vw,-17vh) scale(.72)}100%{transform:translate(0,0)}}
+.snitch{position:absolute;z-index:9;left:68%;top:31%;width:28px;height:18px;border:0;background:transparent;cursor:pointer;filter:drop-shadow(0 0 7px rgba(255,217,87,.7));animation:snitchDrift 5s ease-in-out infinite}.snitch::before{content:'';position:absolute;left:8px;top:1px;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff6ba,#d4a83a 52%,#6f4c15)}.snitch::after,.snitch span::before{content:'';position:absolute;top:4px;width:15px;height:6px;background:linear-gradient(90deg,rgba(255,245,203,.15),#e9ddbb);border-radius:90% 10% 90% 10%}.snitch::after{left:-6px;transform:rotate(18deg)}.snitch span::before{right:-6px;transform:scaleX(-1) rotate(18deg)}.snitch.caught{animation:snitchCatch .7s ease forwards}@keyframes snitchDrift{50%{transform:translate(34px,-18px) rotate(6deg)}}@keyframes snitchCatch{40%{transform:scale(1.5) rotate(30deg)}100%{transform:translate(12vw,-18vh) scale(.2);opacity:0}}
+@media(max-width:700px){.quidditch-photo{background-position:center}.photo-quaffle{width:34px;height:34px}.snitch{left:72%;top:28%}.quidditch-caption{max-width:290px}}
+
+/* v19 — Famfrpál a učebna lektvarů z dodaných ilustrací */
+.quidditch-v19{background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.12) 58%,rgba(0,0,0,.55)),url('img/famfrpal-v19.webp') center/cover no-repeat;background-color:#191710}
+.quidditch-v19::after{background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.5))}
+.flying-ball{position:absolute;left:0;top:0;z-index:11;border:0;background:transparent;padding:0;cursor:pointer;filter:drop-shadow(0 12px 16px rgba(0,0,0,.58));will-change:transform}
+.flying-ball img{display:block;width:100%;height:auto;pointer-events:none}
+.flying-quaffle{width:clamp(64px,7vw,118px);animation:quaffleFlight 13s ease-in-out infinite}
+.flying-snitch{width:clamp(90px,10vw,165px);animation:snitchFlight 8.7s ease-in-out infinite;filter:drop-shadow(0 0 13px rgba(255,211,88,.62))}
+.flying-ball:hover{animation-play-state:paused;filter:brightness(1.18) drop-shadow(0 0 18px rgba(255,223,120,.45))}
+.flying-ball.caught{animation-play-state:paused;transform:scale(.7)!important;opacity:.35;transition:.3s}
+@keyframes quaffleFlight{0%{transform:translate(4vw,18vh) scale(.86) rotate(0)}17%{transform:translate(70vw,10vh) scale(.55) rotate(130deg)}38%{transform:translate(82vw,63vh) scale(.78) rotate(260deg)}59%{transform:translate(18vw,73vh) scale(.64) rotate(390deg)}79%{transform:translate(48vw,27vh) scale(1.05) rotate(520deg)}100%{transform:translate(4vw,18vh) scale(.86) rotate(720deg)}}
+@keyframes snitchFlight{0%{transform:translate(82vw,14vh) rotate(2deg)}20%{transform:translate(16vw,32vh) rotate(-8deg)}43%{transform:translate(72vw,73vh) rotate(7deg)}63%{transform:translate(35vw,9vh) rotate(-4deg)}82%{transform:translate(8vw,68vh) rotate(8deg)}100%{transform:translate(82vw,14vh) rotate(2deg)}}
+.potions-v19{background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.17) 60%,rgba(0,0,0,.62)),url('img/lektvary-v19.webp') center/cover no-repeat;background-color:#080706}
+.potions-v19::after{background:linear-gradient(180deg,rgba(0,0,0,.03),transparent 55%,rgba(0,0,0,.55))}
+.real-cauldron{position:absolute;z-index:8;border:0;background:transparent;padding:0;cursor:pointer;filter:drop-shadow(0 18px 20px rgba(0,0,0,.8));transition:filter .25s}
+.real-cauldron img{display:block;width:100%;height:auto;pointer-events:none}
+.real-cauldron:hover{filter:brightness(1.14) drop-shadow(0 0 18px rgba(190,144,74,.25))}
+.cauldron-large{width:clamp(150px,18vw,320px);left:43%;bottom:5%;animation:cauldronIdle 4.8s ease-in-out infinite}
+.cauldron-small{width:clamp(100px,12vw,220px);right:5%;bottom:12%;animation:cauldronIdle 5.5s ease-in-out infinite reverse}
+.real-cauldron.bubble-pop{animation:cauldronPop .75s ease}
+@keyframes cauldronIdle{50%{transform:translateY(-5px)}}
+@keyframes cauldronPop{25%{transform:translateY(-15px) rotate(-2deg)}55%{transform:translateY(4px) rotate(2deg)}100%{transform:none}}
+@media(max-width:700px){.flying-quaffle{width:62px}.flying-snitch{width:90px}.cauldron-large{left:38%;bottom:8%}.cauldron-small{right:1%;bottom:17%}}
+
+/* v20 — viditelný fallback pro odznaky, které ještě nemají vlastní ilustraci */
+.badge-card.no-image{display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.badge-fallback{width:min(132px,82%);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;margin:5px auto 10px;position:relative;background:radial-gradient(circle at 35% 28%,#4e4227 0 8%,#201a10 42%,#080a08 72%);border:3px double #a7833f;box-shadow:inset 0 0 0 6px rgba(214,181,91,.08),inset 0 0 24px #000,0 9px 18px rgba(0,0,0,.65)}
+.badge-fallback::before,.badge-fallback::after{content:'✦';position:absolute;color:#8f7138;font-size:1rem;top:8%;left:50%;transform:translateX(-50%)}
+.badge-fallback::after{top:auto;bottom:8%;transform:translateX(-50%) rotate(180deg)}
+.badge-fallback span{font-family:'Cinzel',Georgia,serif;font-weight:700;font-size:clamp(1.4rem,3vw,2.6rem);color:#e2c36f;text-shadow:0 2px 2px #000,0 0 16px rgba(218,181,90,.35)}
+.badge-card.locked .badge-fallback{filter:grayscale(1) brightness(.32);opacity:.62}
+.badge-card.locked.no-image::after,.badge-card.locked.no-image::before{content:none}
+.badge-card:not(.locked).no-image .badge-fallback{box-shadow:inset 0 0 0 6px rgba(214,181,91,.11),inset 0 0 24px #000,0 0 20px rgba(202,160,61,.16),0 9px 18px rgba(0,0,0,.65)}
+
+
+/* v20 — obnovený původní vzhled famfrpálového hřiště */
+.quidditch-restored{
+  min-height:100svh;
+  background-image:linear-gradient(180deg,rgba(0,0,0,.01),rgba(0,0,0,.08) 64%,rgba(0,0,0,.48)),url('img/famfrpal-bg.webp');
+  background-position:center center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  overflow:hidden;
+}
+.quidditch-restored::after{background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.42));pointer-events:none}
+.quidditch-restored .flying-ball{position:fixed;z-index:22}
+@media(max-width:700px){.quidditch-restored{background-position:center center}}
+/* v21 — přátelé a chat: UI připravené pro databázi */
+.social-tabs{display:flex;gap:8px;margin:-4px 0 14px}.social-tab{border:1px solid rgba(208,182,117,.18);background:#0d0f0c;color:#9f9276;padding:9px 13px;font-family:'Cinzel';font-size:.61rem;text-transform:uppercase;letter-spacing:.08em;cursor:pointer}.social-tab.active{border-color:#9c7a3a;color:#e1c98d;background:rgba(132,101,43,.12)}.social-empty{border:1px solid rgba(208,182,117,.14);padding:18px;background:rgba(8,10,8,.45)}.social-empty strong{font-family:'Cinzel';text-transform:uppercase;letter-spacing:.06em;font-size:.72rem;color:#d8c28b}.social-empty p{margin:7px 0 14px;color:#9d927d;line-height:1.45}.social-empty button{border:1px solid rgba(208,182,117,.16);background:#11120f;color:#5f594b;padding:9px 12px;font-family:'Cinzel';font-size:.58rem;text-transform:uppercase;letter-spacing:.08em;cursor:not-allowed}
+/* v23 — samostatné postavy učitelů vložené do existujících učeben */
+.classroom-teacher{position:absolute;z-index:14;height:min(72vh,760px);width:auto;object-fit:contain;filter:drop-shadow(0 24px 28px rgba(0,0,0,.82));pointer-events:auto;transition:transform .28s ease,filter .28s ease;transform-origin:bottom center}.classroom-teacher:hover{transform:translateY(-4px);filter:brightness(1.04) drop-shadow(0 28px 32px rgba(0,0,0,.9))}.teacher-transfiguration{right:4.5%;bottom:0;height:min(78vh,790px)}
+@media(max-width:900px){.teacher-transfiguration{right:-4%;height:60vh;opacity:.9}}@media(max-width:650px){.teacher-transfiguration{right:-10%;height:46vh;opacity:.72}}
+.cup-link{position:fixed;z-index:60;right:22px;bottom:20px;border:1px solid rgba(211,181,105,.35);background:rgba(8,10,8,.84);color:#ddc98f;text-decoration:none;padding:10px 13px;font-family:'Cinzel';font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 10px 25px rgba(0,0,0,.35)}.cup-link:hover{border-color:#c6a85e}
+
+
+/* v24 — Učebna přeměňování jako hotová ilustrace, bez CSS kulis */
+.transfiguration-scene{background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.28) 68%,rgba(0,0,0,.70)),url('img/classroom-transfiguration-v24.webp') center/cover no-repeat!important}
+.transfiguration-scene .tall-window,.transfiguration-scene .desk,.transfiguration-scene .floating-book,.transfiguration-scene .scene-wall-painting{display:none!important}
+/* profesor z pozadí se záměrně ztlumí a překryje schválenou samostatnou profesorkou */
+.transfiguration-scene::before{content:"";position:absolute;z-index:10;left:52%;top:27%;width:18%;height:38%;background:radial-gradient(ellipse,rgba(15,12,9,.90),rgba(15,12,9,.54) 48%,transparent 76%);filter:blur(5px);pointer-events:none}
+.transfiguration-scene .teacher-transfiguration{left:53%;right:auto;bottom:15%;height:min(49vh,500px);z-index:14}
+.transfiguration-scene .trans-hotspot{position:absolute;z-index:18;border:0;background:transparent;border-radius:50%;font-size:0;padding:0;cursor:crosshair;box-shadow:none;filter:none;transition:.25s}
+.transfiguration-scene .trans-hotspot::after{content:"";position:absolute;inset:18%;border-radius:50%;border:1px solid transparent;box-shadow:0 0 0 rgba(229,206,134,0);transition:.25s}
+.transfiguration-scene .trans-hotspot:hover::after{border-color:rgba(229,206,134,.18);box-shadow:0 0 24px rgba(229,206,134,.15)}
+.transfiguration-scene .trans-hotspot.changed::after{animation:classMagic .62s ease}
+.transfiguration-scene .hot-feather{left:31%;top:27%;width:8%;height:15%}
+.transfiguration-scene .hot-mouse{left:34%;top:59%;width:7%;height:8%}
+.transfiguration-scene .hot-cup{left:43%;top:76%;width:7%;height:9%}
+@keyframes classMagic{40%{transform:scale(1.45);border-color:rgba(255,231,153,.65);box-shadow:0 0 36px rgba(255,218,106,.48)}100%{transform:scale(.9);opacity:0}}
+@media(max-width:800px){.transfiguration-scene .teacher-transfiguration{left:55%;bottom:17%;height:40vh}.transfiguration-scene::before{left:52%;width:23%}.transfiguration-scene .scene-copy{max-width:68vw}.transfiguration-scene .hot-feather{left:29%;top:28%;width:11%;height:16%}}
+
+
+/* ==========================================================
+   v25 — učebny a famfrpál
+   ========================================================== */
+.transfiguration-scene{
+ background:linear-gradient(180deg,rgba(0,0,0,.01),rgba(0,0,0,.03) 62%,rgba(0,0,0,.42)),url('img/classroom-transfiguration-v25.webp') center/cover no-repeat!important;
+}
+.transfiguration-scene::before{display:none!important}
+.transfiguration-scene .teacher-transfiguration{display:none!important}
+.transfiguration-scene .scene-copy,.v25-defense .scene-copy{max-width:610px;padding:12px 16px 13px;background:linear-gradient(90deg,rgba(8,8,6,.62),rgba(8,8,6,.16) 75%,transparent);border-left:1px solid rgba(222,193,124,.22)}
+.transfiguration-scene .hot-feather{left:32%;top:29%;width:9%;height:14%}.transfiguration-scene .hot-mouse{left:35%;top:60%;width:8%;height:10%}.transfiguration-scene .hot-cup{left:46%;top:75%;width:8%;height:10%}
+
+.defense-scene{background:linear-gradient(180deg,rgba(0,0,0,.01),rgba(0,0,0,.03) 62%,rgba(0,0,0,.42)),url('img/defense-v25.webp') center/cover no-repeat!important}
+.defense-scene .defense-cabinet,.defense-scene .practice-dummy,.defense-scene .dark-orb,.defense-scene .scene-wall-painting{display:none!important}
+.defense-hotspot{position:absolute;z-index:18;border:0;background:transparent;padding:0;cursor:pointer;border-radius:18px}
+.defense-hotspot::after{content:"";position:absolute;inset:0;border-radius:inherit;border:1px solid transparent;transition:.25s}
+.defense-hotspot:hover::after,.defense-hotspot.activated::after{border-color:rgba(187,216,255,.3);box-shadow:0 0 34px rgba(140,193,255,.22)}
+.defense-wand{left:47%;top:29%;width:12%;height:19%;transform:rotate(-22deg)}
+.defense-sigil{right:23%;top:30%;width:14%;height:25%;border-radius:50%}
+.defense-books{right:1%;top:30%;width:14%;height:47%}
+
+/* dva hráči létají nad původním schváleným hřištěm */
+.quidditch-player{position:fixed;z-index:18;width:min(24vw,360px);height:auto;pointer-events:auto;filter:drop-shadow(0 14px 18px rgba(0,0,0,.55));will-change:transform;cursor:pointer}
+.player-one{left:-25vw;top:18vh;animation:playerFlyOne 14s linear infinite}
+.player-two{right:-24vw;top:44vh;animation:playerFlyTwo 16s linear infinite}
+.quidditch-player.swoop{animation:swoop .75s ease!important}
+@keyframes playerFlyOne{0%{transform:translateX(0) translateY(4vh) scale(.70)}48%{transform:translateX(74vw) translateY(-8vh) scale(.82)}100%{transform:translateX(150vw) translateY(8vh) scale(.66)}}
+@keyframes playerFlyTwo{0%{transform:translateX(0) translateY(0) scale(.68)}52%{transform:translateX(-78vw) translateY(-14vh) scale(.80)}100%{transform:translateX(-150vw) translateY(7vh) scale(.64)}}
+@keyframes swoop{50%{transform:translateY(8vh) scale(1.08) rotate(-7deg)}}
+.quidditch-restored::after{background:linear-gradient(180deg,transparent 68%,rgba(0,0,0,.34))}
+
+/* jiskra i na portalových lokacích */
+.portal-click-spark{position:fixed;z-index:999;width:8px;height:8px;border-radius:50%;background:#f2d88f;box-shadow:0 0 12px #e8c46e,0 0 22px rgba(255,232,164,.55);pointer-events:none;animation:portalSpark .65s ease-out forwards}
+@keyframes portalSpark{to{transform:translateY(-30px) scale(.2);opacity:0}}
+
+@media(max-width:720px){.quidditch-player{width:36vw}.player-one{top:22vh}.player-two{top:47vh}.defense-books{display:none}}
+
+/* v27 — Velká síň: trojí poklepání přivolá hostinu */
+.hall-scene{isolation:isolate;overflow:hidden}
+.hall-feast-layer{position:absolute;inset:0;z-index:2;background:url('img/velka-sin-hostina-v27.webp') center/cover no-repeat;opacity:0;transform:scale(1.018);transition:opacity .9s ease,transform 1.15s ease;pointer-events:none}
+.hall-feast-glow{position:absolute;left:7%;right:7%;bottom:9%;height:45%;z-index:5;pointer-events:none;opacity:0;background:radial-gradient(ellipse at 50% 72%,rgba(255,208,98,.48),rgba(255,183,61,.15) 35%,transparent 72%);filter:blur(15px);transform:scale(.85)}
+.hall-scene.feast-summoning .hall-feast-glow{animation:hallFeastGlow .95s ease forwards}
+.hall-scene.feast-visible .hall-feast-layer{opacity:1;transform:scale(1)}
+.hall-scene.feast-visible .hall-feast-glow{opacity:0}
+@keyframes hallFeastGlow{0%{opacity:0;transform:scale(.74)}45%{opacity:.95;transform:scale(1.04)}100%{opacity:0;transform:scale(1.12)}}
+
+.hall-table-tap{position:absolute;z-index:18;left:11%;right:11%;bottom:4%;height:35%;border:0;background:transparent;cursor:url('img/cursor-feather.png') 5 27,pointer;border-radius:32% 32% 10% 10%/35% 35% 12% 12%;padding:0}
+.hall-table-tap::after{content:"";position:absolute;inset:0;border-radius:inherit;border:1px solid transparent;transition:.2s;pointer-events:none}
+.hall-table-tap:hover::after,.hall-table-tap:focus-visible::after{border-color:rgba(235,207,137,.16);box-shadow:inset 0 0 32px rgba(230,190,87,.08)}
+.hall-table-tap.knock{animation:hallTableKnock .22s ease}
+@keyframes hallTableKnock{50%{transform:translateY(3px)}}
+.hall-table-tap[disabled]{cursor:default;pointer-events:none}
+.hall-tap-count{position:absolute;z-index:24;left:50%;bottom:33%;transform:translateX(-50%) translateY(8px);min-width:90px;text-align:center;color:#e9d49d;font-family:'Cinzel',serif;letter-spacing:.16em;font-size:.65rem;text-transform:uppercase;opacity:0;transition:.25s;text-shadow:0 2px 8px #000;pointer-events:none}
+.hall-tap-count.show{opacity:.85;transform:translateX(-50%) translateY(0)}
+
+.hall-scene.second-knock .hall-candle{animation-duration:.36s!important;filter:brightness(1.2) drop-shadow(0 0 14px rgba(255,196,78,.65))}
+
+.hall-food-hotspot{position:absolute;z-index:20;border:0;background:transparent;padding:0;cursor:pointer;border-radius:50%}
+.hall-food-hotspot[hidden]{display:none}
+.hall-food-hotspot::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 0 rgba(255,211,111,0);transition:.22s}
+.hall-food-hotspot:hover::after{box-shadow:0 0 28px rgba(255,211,111,.18)}
+.food-roast{left:25%;bottom:12%;width:14%;height:16%}
+.food-cake{right:18%;bottom:7%;width:11%;height:14%}
+.food-goblet{left:47%;bottom:15%;width:9%;height:14%}
+.hall-food-hotspot.wobble{animation:hallFoodWobble .55s ease}
+.hall-food-hotspot.vanish{animation:hallFoodVanish .55s ease forwards;pointer-events:none}
+.hall-food-hotspot.chime{animation:hallGobletChime .5s ease}
+@keyframes hallFoodWobble{25%{transform:rotate(-4deg) scale(1.03)}55%{transform:rotate(3deg)}80%{transform:rotate(-1deg)}}
+@keyframes hallFoodVanish{to{transform:scale(.55);opacity:0}}
+@keyframes hallGobletChime{50%{transform:translateY(-5px) rotate(4deg);filter:drop-shadow(0 0 12px rgba(255,221,135,.8))}}
+
+.hall-scene.feast-visible .hall-caption{opacity:.62}
+.hall-hint{font-size:.78rem!important;opacity:.7;margin-top:6px}
+
+@media(max-width:700px){
+  .hall-table-tap{left:4%;right:4%;bottom:3%;height:39%}
+  .hall-tap-count{bottom:36%}
+  .food-roast{left:16%;bottom:13%;width:19%;height:15%}
+  .food-cake{right:10%;bottom:8%;width:16%;height:14%}
+  .food-goblet{left:45%;bottom:16%;width:13%;height:13%}
+}
+
+/* ==========================================================
+   v32 — přirozené předměty, žádné svítící hotspotové tvary
+   ========================================================== */
+.defense-hotspot::after,.transfiguration-scene .trans-hotspot::after,.hall-table-tap::after{display:none!important;content:none!important}
+.defense-hotspot:focus-visible,.transfiguration-scene .trans-hotspot:focus-visible,.hall-table-tap:focus-visible{outline:none!important}
+.portal-click-spark{display:none!important}
+.hall-feast-glow{display:none!important}
+
+.scene-prop{position:absolute;z-index:19;border:0;background:transparent;padding:0;margin:0;cursor:pointer;filter:drop-shadow(0 12px 14px rgba(0,0,0,.68));transform-origin:50% 100%;transition:transform .18s ease,filter .18s ease}
+.scene-prop img{display:block;width:100%;height:auto;pointer-events:none}.scene-prop:hover{transform:translateY(-2px);filter:drop-shadow(0 14px 16px rgba(0,0,0,.76))}.scene-prop:focus-visible{outline:none}
+.scene-prop.react-nudge{animation:v32PNudge .55s ease}.scene-prop.react-rattle{animation:v32PRattle .48s ease}.scene-prop.react-hop{animation:v32PHop .65s ease}.scene-prop.react-swirl{animation:v32PSwirl .7s ease}
+@keyframes v32PNudge{35%{transform:translateX(8px) rotate(2deg)}70%{transform:translateX(-3px) rotate(-1deg)}}
+@keyframes v32PRattle{25%{transform:translateX(-4px) rotate(-1deg)}50%{transform:translateX(4px) rotate(1deg)}75%{transform:translateX(-2px)}}
+@keyframes v32PHop{45%{transform:translateY(-12px) rotate(-2deg)}75%{transform:translateY(2px)}}
+@keyframes v32PSwirl{45%{transform:rotate(5deg) scale(1.03)}75%{transform:rotate(-3deg)}}
+
+/* Předměty jsou usazené na konkrétním nábytku/podlaze v hotových ilustracích. */
+.prop-potions-red{right:9%;top:41%;width:clamp(62px,6vw,105px)}
+.prop-defense-sword{left:7%;bottom:16%;width:clamp(120px,14vw,230px);transform:rotate(82deg);transform-origin:50% 85%}
+.prop-trans-bag{left:9%;bottom:12%;width:clamp(120px,14vw,220px)}
+.prop-quidditch-broom{left:7%;bottom:3%;width:clamp(130px,16vw,250px);transform:rotate(-14deg)}
+
+.scene-toast{position:fixed;z-index:120;left:50%;bottom:7vh;max-width:min(560px,88vw);padding:10px 15px;transform:translate(-50%,12px);opacity:0;pointer-events:none;background:rgba(8,9,8,.9);border:1px solid rgba(190,163,104,.28);color:#e8ddc5;font-family:'EB Garamond',Georgia,serif;font-size:1rem;text-align:center;box-shadow:0 14px 34px rgba(0,0,0,.55);transition:.24s ease}.scene-toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* Přeměňování: žádné levitující indikátory. Myš a šálek zůstávají jen jako neviditelné klikací oblasti nad skutečnými objekty v ilustraci. */
+.transfiguration-scene .trans-hotspot{cursor:pointer!important}
+.transfiguration-scene .hot-feather{display:none!important}
+
+@media(max-width:760px){.prop-potions-red{right:5%;width:60px}.prop-defense-sword{left:2%;width:110px}.prop-trans-bag{left:4%;width:105px}.prop-quidditch-broom{left:3%;width:120px}}
+/* v32 placement corrections after visual review */
+.prop-defense-sword{left:auto;right:13%;bottom:4%;width:clamp(115px,12vw,180px);transform:rotate(88deg)}
+.prop-trans-bag{left:auto;right:7%;bottom:4%;width:clamp(100px,11vw,170px)}
+@media(max-width:760px){.prop-defense-sword{right:7%;bottom:5%;width:105px}.prop-trans-bag{right:3%;bottom:5%;width:90px}}
+
+/* v33 — studijní výsledky */
+.subject-link{text-decoration:none;color:inherit;align-items:center}.subject-link:hover{color:#f0dfb5}.annual-study-card{margin-top:18px;padding-top:18px;border-top:1px solid rgba(220,196,139,.12);display:flex;justify-content:space-between;align-items:center;gap:18px}.annual-study-card #annualExamStatus{display:grid;gap:3px}.annual-study-card strong{font-family:'Cinzel';color:#d7bd75}.annual-study-card span{color:#948a75;font-size:.85rem}.annual-study-card a{color:#e1c77f;text-decoration:none;font-family:'Cinzel';text-transform:uppercase;letter-spacing:.08em;font-size:.6rem;border:1px solid rgba(211,184,111,.28);padding:9px 11px}@media(max-width:640px){.annual-study-card{align-items:flex-start;flex-direction:column}}
+
+/* v34 — studentské profily */
+.profile-crest{width:126px;height:126px;margin-bottom:2px}.profile-avatar-wrap{width:142px;height:172px;margin:-18px auto 14px;border-radius:18px 18px 8px 8px;overflow:hidden;display:grid;place-items:center;background:#090b09;border:1px solid rgba(199,164,80,.5);box-shadow:0 12px 30px rgba(0,0,0,.46),inset 0 0 0 3px rgba(190,153,70,.08)}.profile-avatar{width:100%;height:100%;object-fit:cover;object-position:center 24%;border-radius:0}.profile-edit-button{margin-top:12px;padding:8px 12px;border:1px solid rgba(205,178,111,.3);background:transparent;color:#d6c18c;font-family:'Cinzel';text-transform:uppercase;letter-spacing:.09em;font-size:.54rem;cursor:pointer}.profile-edit-button:hover{border-color:#c9a856;color:#fff}.profile-bio-text{margin:0;color:#c7bda7;line-height:1.6;white-space:pre-wrap}.profile-edit-form{margin-top:20px;padding-top:20px;border-top:1px solid rgba(205,180,120,.13);display:grid;gap:16px}.profile-edit-form>label{display:grid;gap:6px;font-family:'Cinzel';text-transform:uppercase;letter-spacing:.08em;color:#cdb77f;font-size:.57rem}.profile-edit-form>label span{font-family:'EB Garamond';text-transform:none;letter-spacing:0;color:#877e6b}.profile-edit-form textarea{width:100%;resize:vertical;min-height:120px;border:1px solid rgba(205,180,120,.22);background:#0c0f0d;color:#eee3cd;padding:12px;outline:0;line-height:1.5}.profile-edit-form textarea:focus{border-color:#b9974d}.profile-edit-form fieldset{border:0;padding:0;margin:0}.profile-edit-form legend{margin-bottom:10px;font-family:'Cinzel';text-transform:uppercase;letter-spacing:.08em;color:#cdb77f;font-size:.57rem}.avatar-choices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.avatar-choice{appearance:none;border:1px solid rgba(205,180,120,.14);background:rgba(9,11,9,.55);padding:8px;color:#9e947f;cursor:pointer;display:grid;place-items:center;gap:5px}.avatar-choice img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 24%;border-radius:6px}.avatar-choice span{font-size:.72rem}.avatar-choice:hover,.avatar-choice.selected{border-color:#c3a35a;background:rgba(191,151,64,.08);color:#e4d4aa}.avatar-choice.selected{box-shadow:inset 0 0 0 1px rgba(195,163,90,.3)}.profile-edit-actions{display:flex;justify-content:flex-end;gap:8px}.profile-edit-actions button{border:1px solid rgba(205,180,120,.24);background:transparent;color:#cbb98b;padding:9px 13px;font-family:'Cinzel';text-transform:uppercase;letter-spacing:.08em;font-size:.54rem;cursor:pointer}.profile-edit-actions button[type="submit"]{background:#ae8b48;color:#15110a;border-color:#c4a35b;font-weight:700}.profile-edit-actions button:disabled{opacity:.5}.profile-edit-message{min-height:18px;margin:0;color:#c9ae69}.badge-card{min-height:210px}.badge-card img{background:#0c0d0b}.badge-card.locked::after{top:42%}@media(max-width:700px){.avatar-choices{grid-template-columns:repeat(2,1fr)}.profile-crest{width:105px;height:105px}.profile-avatar-wrap{width:124px;height:150px}.profile-avatar{width:100%;height:100%}}
+.v40-chat-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.v40-chat-links .v40-inline-link{flex:1;min-width:190px;text-align:center}

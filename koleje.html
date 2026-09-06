@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Čtyři bradavické koleje — jejich charakter, hodnoty a interaktivní vstupy.">
+  <link rel="stylesheet" href="style.css">
+  <title>Koleje — Bradavice</title>
+<link rel="stylesheet" href="ghosts.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js?v=42"></script>
+<link rel="stylesheet" href="access-guard.css?v=42"><script src="access-guard.js?v=42"></script>
+<link rel="stylesheet" href="magic-cursor.css">
+<link rel="stylesheet" href="v40.css"><link rel="stylesheet" href="music-v42.css?v=42"><link rel="stylesheet" href="castle-nav-v42.css?v=42"></head>
+<body class="houses-page">
+  <div class="site-shell houses-shell">
+    <header class="topbar">
+      <a class="brand" href="hrad.html">Bradavice</a>
+      <nav class="nav" aria-label="Hlavní navigace">
+        <a href="index.html">Úvod</a>
+        <a href="registrace.html">Začít cestu</a>
+      </nav>
+    </header>
+
+    <main class="houses-main">
+      <header class="houses-intro">
+        <p class="eyebrow">Čtyři koleje</p>
+        <h1 class="houses-title">Najděte své místo</h1>
+        <p>Každá kolej má vlastní charakter, tradici i způsob, jakým se do její společenské místnosti vstupuje.</p>
+      </header>
+
+      <section class="house-story gryff-story">
+        <div class="house-crest-stage">
+          <img src="img/nebelvir-erb.webp" alt="Erb Nebelvíru">
+        </div>
+        <div class="house-copy-block">
+          <p class="house-number">I</p>
+          <h2>Nebelvír</h2>
+          <p class="house-traits">Odvaha · statečnost · rytířskost</p>
+          <p>Nebelvír oceňuje ty, kteří se dokážou postavit strachu a jednat podle svého přesvědčení. Jeho studenti bývají odhodlaní, přímočaří a ochotní zastat se druhých.</p>
+          <p class="house-entry-note">Vstup do společenské místnosti střeží portrét Baculaté dámy a bez správného hesla nikoho nepustí dál.</p>
+          <a class="story-link" href="prihlaseniNeb.html">Objevit vstup</a>
+        </div>
+      </section>
+
+      <section class="house-story reverse slyth-story">
+        <div class="house-crest-stage">
+          <img src="img/zmijozel-erb.webp" alt="Erb Zmijozelu">
+        </div>
+        <div class="house-copy-block">
+          <p class="house-number">II</p>
+          <h2>Zmijozel</h2>
+          <p class="house-traits">Ambice · důvtip · odhodlání</p>
+          <p>Zmijozel si cení cílevědomosti, vynalézavosti a schopnosti najít cestu tam, kde ji ostatní nevidí. Jeho studenti často dobře vědí, čeho chtějí dosáhnout.</p>
+          <p class="house-entry-note">Vstup je ukrytý ve sklepení v části kamenné stěny a odhalí se až tomu, kdo zná heslo.</p>
+          <a class="story-link" href="prihlaseniZmijozel.html">Objevit vstup</a>
+        </div>
+      </section>
+
+      <section class="house-story raven-story">
+        <div class="house-crest-stage">
+          <img src="img/havraspar-erb.webp" alt="Erb Havraspáru">
+        </div>
+        <div class="house-copy-block">
+          <p class="house-number">III</p>
+          <h2>Havraspár</h2>
+          <p class="house-traits">Moudrost · tvořivost · zvídavost</p>
+          <p>Havraspár přitahuje studenty, kteří rádi přemýšlejí, hledají nové souvislosti a nebojí se vlastního pohledu na svět. Důležitější než naučená odpověď je schopnost uvažovat.</p>
+          <p class="house-entry-note">Na dveřích není běžná klika ani klíčová dírka. Bronzové orlí klepadlo místo hesla položí otázku.</p>
+          <a class="story-link" href="prihlaseniHavraspar.html">Objevit vstup</a>
+        </div>
+      </section>
+
+      <section class="house-story reverse huff-story">
+        <div class="house-crest-stage">
+          <img src="img/mrzimor-erb.webp" alt="Erb Mrzimoru">
+        </div>
+        <div class="house-copy-block">
+          <p class="house-number">IV</p>
+          <h2>Mrzimor</h2>
+          <p class="house-traits">Loajalita · píle · spravedlnost</p>
+          <p>Mrzimor staví na spolehlivosti, trpělivosti a férovosti. Jeho síla není v okázalosti, ale v lidech, na které je možné se spolehnout a kteří jsou ochotní pracovat pro společný výsledek.</p>
+          <p class="house-entry-note">Vchod se skrývá mezi starými sudy poblíž kuchyně. Otevře ho správně vyťukaný rytmus.</p>
+          <a class="story-link" href="prihlaseniMrzimor.html">Objevit vstup</a>
+        </div>
+      </section>
+    </main>
+  </div>
+<script src="achievements.js"></script><script src="ghosts.js"></script>
+<a class="cup-link" href="kolejni-pohar.html">Kolejní pohár</a><script src="music-v42.js?v=42"></script><script src="castle-nav-v42.js?v=42"></script></body>
+</html>

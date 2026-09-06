@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="cs"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="places.css"><title>Astronomická věž — Bradavice</title><link rel="stylesheet" href="ghosts.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js?v=42"></script>
+<link rel="stylesheet" href="access-guard.css?v=42"><script src="access-guard.js?v=42"></script>
+<link rel="stylesheet" href="magic-cursor.css"><link rel="stylesheet" href="quiz.css">
+<link rel="stylesheet" href="hagrid-quest.css">
+<link rel="stylesheet" href="game-hub.css"><link rel="stylesheet" href="v40.css"><link rel="stylesheet" href="astronomy-v42.css?v=42"><link rel="stylesheet" href="music-v42.css?v=42"><link rel="stylesheet" href="castle-nav-v42.css?v=42"></head><body><header class="place-top"><a href="hrad.html">← Mapa hradu</a><a href="profil.html">Můj profil</a></header><main class="place-scene astronomy astronomy-quest" id="astronomyQuest"><button class="astronomy-teacher-button" id="astronomyTeacher" type="button" aria-label="Promluvit s profesorem astronomie"><img src="img/profesor-astronomie.webp" alt="Profesor astronomie"></button>
+  <div class="astronomy-sky-hit" id="astronomySky" aria-hidden="true"></div>
+  
+
+  <button class="constellation-zone constellation-a" data-constellation="a" aria-label="Skupina hvězd">
+    <svg viewBox="0 0 120 90" aria-hidden="true"><polyline points="10,55 28,28 52,46 76,20 104,42"/><g><circle cx="10" cy="55" r="2.5"/><circle cx="28" cy="28" r="2.5"/><circle cx="52" cy="46" r="2.5"/><circle cx="76" cy="20" r="2.5"/><circle cx="104" cy="42" r="2.5"/></g></svg>
+  </button>
+  <button class="constellation-zone constellation-b" data-constellation="b" aria-label="Skupina hvězd">
+    <svg viewBox="0 0 120 100" aria-hidden="true"><polyline points="60,10 60,88"/><polyline points="18,48 102,48"/><g><circle cx="60" cy="10" r="2.5"/><circle cx="60" cy="48" r="2.5"/><circle cx="60" cy="88" r="2.5"/><circle cx="18" cy="48" r="2.5"/><circle cx="102" cy="48" r="2.5"/></g></svg>
+  </button>
+  <button class="constellation-zone constellation-c" data-constellation="c" aria-label="Skupina hvězd">
+    <svg viewBox="0 0 120 110" aria-hidden="true"><polyline points="26,18 54,34 82,22 90,58 62,72 35,63 26,18"/><polyline points="48,44 60,47 72,45"/><g><circle cx="26" cy="18" r="2.5"/><circle cx="54" cy="34" r="2.5"/><circle cx="82" cy="22" r="2.5"/><circle cx="90" cy="58" r="2.5"/><circle cx="62" cy="72" r="2.5"/><circle cx="35" cy="63" r="2.5"/><circle cx="48" cy="44" r="2.5"/><circle cx="60" cy="47" r="2.5"/><circle cx="72" cy="45" r="2.5"/></g></svg>
+  </button>
+
+  <div class="astronomy-progress" aria-live="polite"><span>✦</span><strong id="constellationCount">0 / 3</strong><small>nalezená souhvězdí</small></div>
+  
+  <section class="place-copy compact-copy astronomy-copy"><span class="kicker">Astronomická věž</span><h1>Noční obloha</h1><p>Mezi hvězdami se skrývají tři obrazce.</p><p class="tiny">Najdi je všechny. Odměna: +50 bodů pro kolej.</p><div class="game-callout"><div><strong>Výzva + test</strong><br><span>Najdi souhvězdí a můžeš spustit i krátký test</span></div></div><button class="quiz-launch" type="button" data-quiz="astronomy">Spustit krátký test</button><button class="astronomy-replay" id="astronomyReplay" type="button" hidden>Pozorovat oblohu znovu</button></section>
+</main>
+<div class="astronomy-task-modal" id="astronomyTaskModal" hidden role="dialog" aria-modal="true" aria-labelledby="astronomyTaskTitle"><section class="astronomy-task-card"><button class="astronomy-task-close" id="astronomyTaskClose" type="button" aria-label="Zavřít">×</button><img src="img/profesor-astronomie.webp" alt="Profesor astronomie"><div><span class="kicker">Úkol z astronomie</span><h2 id="astronomyTaskTitle">Tři obrazce</h2><p id="astronomyTaskText"></p><button class="astronomy-task-accept" id="astronomyTaskAccept" type="button">Přijmout úkol</button></div></section></div>
+<script src="achievements.js"></script><script src="places.js"></script><script src="ghosts.js"></script>
+<script src="quiz-data.js"></script><script src="quiz.js"></script><script src="hagrid-quest.js"></script>
+<script src="astronomy-v42.js?v=42"></script><script src="music-v42.js?v=42"></script><script src="castle-nav-v42.js?v=42"></script></body></html>

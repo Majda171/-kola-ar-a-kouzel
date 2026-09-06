@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Učebna lektvarů — Bradavice</title>
+  <link rel="stylesheet" href="portal.css"><link rel="stylesheet" href="ghosts.css"><link rel="stylesheet" href="access-guard.css?v=42"><link rel="stylesheet" href="magic-cursor.css"><link rel="stylesheet" href="quiz.css"><link rel="stylesheet" href="game-hub.css"><link rel="stylesheet" href="v40.css"><link rel="stylesheet" href="potions-game.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js?v=42"></script><script src="access-guard.js?v=42"></script>
+<link rel="stylesheet" href="music-v42.css?v=42"><link rel="stylesheet" href="castle-nav-v42.css?v=42"></head>
+<body class="scene-page">
+<header class="scene-top"><a href="hrad.html">← Mapa hradu</a><a href="profil.html">Můj profil</a></header>
+<main class="scene potions-scene potions-v19 v42-potions">
+  <button class="v42-snape-character" id="snapeCharacterButton" type="button" aria-label="Promluvit s profesorem lektvarů"><img src="img/profesor-snape-v42.webp" alt="Profesor lektvarů"></button>
+  <button class="v42-cauldron-hotspot" id="scenePotionCauldron" type="button" aria-label="Spustit praktickou hodinu u velkého kotlíku"><span>Praktická hodina</span></button>
+  <section class="scene-copy"><p class="kicker">Sklepení</p><h1>Učebna lektvarů</h1><p>Profesor lektvarů dohlíží na kotlíky. Jeden z předních kotlíků je připravený pro praktickou hodinu.</p><div class="game-callout"><div><strong>Krátký test</strong><br><span>10 otázek z lektvarů</span></div></div><button class="quiz-launch" type="button" data-quiz="potions">Spustit krátký test</button><button class="potion-brew-launch" id="openPotionBrew" type="button">Praktická hodina · vařit zpaměti</button></section>
+</main>
+
+<div class="brew-modal" id="potionBrewModal" hidden role="dialog" aria-modal="true" aria-labelledby="brewTitle">
+  <section class="brew-panel">
+    <button class="brew-close" id="potionBrewClose" type="button" aria-label="Zavřít">×</button>
+    <header class="brew-head"><div><p class="kicker">Praktická hodina</p><h2 id="brewTitle">Vaření lektvarů zpaměti</h2><p>Recept uvidíš 30 sekund. Potom zmizí a každé kliknutí se počítá.</p></div><div class="brew-timer"><strong id="brewTimer">30</strong><span>sekund</span></div></header>
+
+    <div class="snape-strip"><img src="img/profesor-snape-v42.webp" alt="Profesor lektvarů"><div><small>Profesor lektvarů</small><p id="snapeComment">„Čtěte recept pozorně. Podruhé ho neuvidíte.“</p></div></div>
+
+    <section class="recipe-memory" id="recipeMemory">
+      <div><span class="recipe-label">Dnešní recept</span><h3 id="brewRecipeName">—</h3></div>
+      <ol id="brewRecipeSteps" class="recipe-steps"></ol>
+      <button id="hideRecipeNow" type="button">Zapamatoval/a jsem si ho · začít vařit</button>
+    </section>
+
+    <section class="brew-game" id="brewGame" hidden>
+      <div class="ingredient-shelf" id="ingredientShelf" aria-label="Přísady"></div>
+      <div class="brew-center">
+        <div class="brew-cauldron" id="brewCauldron"><img src="img/kotlik-velky.webp" alt="Černý kotlík"><span class="brew-steam" aria-hidden="true">✦ ✧ ✦</span></div>
+        <div class="brew-controls" aria-label="Postup vaření">
+          <button type="button" data-brew-action="stir-right">↻ Zamíchat doprava</button>
+          <button type="button" data-brew-action="stir-left">↺ Zamíchat doleva</button>
+          <button type="button" data-brew-action="heat">🔥 Zahřát kotlík</button>
+          <button type="button" data-brew-action="finish" class="finish">Dokončit lektvar</button>
+        </div>
+        <div class="brew-progress"><span>Provedené kroky</span><strong id="brewStepCount">0 / 0</strong><div id="brewSequence" class="brew-sequence"></div></div>
+      </div>
+    </section>
+
+    <section class="brew-outcome" id="brewOutcome" hidden><div id="brewResult"></div><p class="brew-status" id="brewStatus"></p><button id="brewReset" type="button">Zkusit nový recept</button></section>
+  </section>
+</div>
+<script src="achievements.js"></script><script src="portal.js"></script><script src="ghosts.js"></script><script src="quiz-data.js"></script><script src="quiz.js"></script><script src="potions-game.js?v=42"></script>
+<script src="music-v42.js?v=42"></script><script src="castle-nav-v42.js?v=42"></script></body></html>

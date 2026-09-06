@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="prihlaseni.css">
+  <title>Mrzimor — vstup</title>
+<link rel="stylesheet" href="ghosts.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js?v=42"></script>
+<link rel="stylesheet" href="access-guard.css?v=42"><script src="access-guard.js?v=42"></script>
+<link rel="stylesheet" href="magic-cursor.css">
+<link rel="stylesheet" href="v40.css"><link rel="stylesheet" href="music-v42.css?v=42"></head>
+<body>
+<main class="entry-page huff">
+  <a class="back-link" href="hrad.html">← Mapa hradu</a>
+  <section class="scene huffle-scene" id="huffleScene">
+    <img class="wall-torch torch-small torch-left" src="img/torch-hufflepuff.webp" alt="" aria-hidden="true">
+    <img class="wall-torch torch-small torch-right" src="img/torch-hufflepuff.webp" alt="" aria-hidden="true">
+
+    <div class="barrel-niche" aria-label="Pět starých sudů">
+      <div class="huffle-passage" aria-hidden="true"></div>
+      <div class="barrel-stack five-barrels" id="barrelStack">
+        <button class="sud sud-1" data-barrel="1" aria-label="Sud"><img src="img/mrzimor-sud.webp" alt=""></button>
+        <button class="sud sud-2" data-barrel="2" aria-label="Sud"><img src="img/mrzimor-sud.webp" alt=""></button>
+        <button class="sud sud-3" data-barrel="3" aria-label="Sud"><img src="img/mrzimor-sud.webp" alt=""></button>
+        <button class="sud sud-4" data-barrel="4" aria-label="Sud"><img src="img/mrzimor-sud.webp" alt=""></button>
+        <button class="sud sud-5" data-barrel="5" aria-label="Sud"><img src="img/mrzimor-sud.webp" alt=""></button>
+      </div>
+      <div class="vinegar-splash" id="vinegarSplash" aria-hidden="true"></div>
+      <p class="barrel-message" id="errorMessage" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+<script src="achievements.js"></script><script src="entry.js"></script>
+<script>
+(() => {
+  const correctPattern = [2,4,3];
+  let userPattern = [];
+  const scene = document.getElementById('huffleScene');
+  const barrels = [...document.querySelectorAll('.sud')];
+  const splash = document.getElementById('vinegarSplash');
+  const message = document.getElementById('errorMessage');
+
+  function resetVisuals(){
+    barrels.forEach(b=>b.classList.remove('opening'));
+  }
+
+  function wrong(){
+    userPattern=[];
+    resetVisuals();
+    scene.classList.remove('wrong');
+    splash.classList.remove('show');
+    void splash.offsetWidth;
+    scene.classList.add('wrong');
+    splash.classList.add('show');
+    message.textContent='Špatné poklepání! Jsi polit octem!';
+    message.classList.add('show');
+    try{
+      const AC=window.AudioContext||window.webkitAudioContext; const ctx=new AC();
+      const buffer=ctx.createBuffer(1,ctx.sampleRate*.22,ctx.sampleRate); const data=buffer.getChannelData(0);
+      for(let i=0;i<data.length;i++) data[i]=(Math.random()*2-1)*(1-i/data.length);
+      const src=ctx.createBufferSource(); const gain=ctx.createGain();
+      gain.gain.value=.08; src.buffer=buffer; src.connect(gain).connect(ctx.destination); src.start();
+      src.onended=()=>ctx.close();
+    }catch(e){}
+    setTimeout(()=>scene.classList.remove('wrong'),500);
+    setTimeout(()=>message.classList.remove('show'),1650);
+  }
+
+  barrels.forEach(barrel=>{
+    barrel.addEventListener('click',()=>{
+      magicKnock('wood');
+      barrel.classList.remove('tapped'); void barrel.offsetWidth; barrel.classList.add('tapped');
+      const value=Number(barrel.dataset.barrel);
+      userPattern.push(value);
+      const step=userPattern.length-1;
+      if(value!==correctPattern[step]){ wrong(); return; }
+      if(userPattern.length===correctPattern.length){
+        barrels.forEach(b=>b.disabled=true);
+        message.textContent='';
+        window.BradaviceAchievements?.award('rytmus-sudu');
+        scene.classList.add('open');
+        document.querySelector('.sud-4').classList.add('opening');
+        setTimeout(()=>{ window.location.href='Mrzimor.html'; },1200);
+      }
+    });
+  });
+})();
+</script>
+<script src="ghosts.js"></script>
+<script src="music-v42.js?v=42"></script></body>
+</html>

@@ -1,0 +1,5 @@
+/* Chráněné stránky se nezobrazí, dokud Supabase nepotvrdí přihlášení. */
+html.access-pending,
+html.access-pending body {
+  visibility: hidden !important;
+}

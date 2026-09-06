@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+:root{--cream:#eee5d0;--gold:#c4a65e;--muted:#c6baa2;--panel:rgba(7,8,7,.72)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#080907;color:var(--cream);font-family:'EB Garamond',Georgia,serif}
+body.house-space{min-height:100vh;overflow:hidden}
+.house-scene{
+  position:relative;min-height:100vh;isolation:isolate;overflow:hidden;
+  background-image:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.03) 46%,rgba(0,0,0,.66) 100%),var(--scene);
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+}
+.house-scene::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 50% 40%,transparent 20%,rgba(0,0,0,.24) 78%,rgba(0,0,0,.5))}
+.house-top{
+ position:fixed;left:3.5vw;right:3.5vw;top:18px;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:18px;pointer-events:none
+}
+.house-top a{pointer-events:auto;color:#ead8a7;text-decoration:none;font-family:'Cinzel',serif;text-transform:uppercase;letter-spacing:.12em;font-size:.61rem;text-shadow:0 2px 9px #000}
+.house-top nav{display:flex;gap:18px;align-items:center;pointer-events:auto}
+.house-top a:hover{color:white}
+.house-caption{position:absolute;z-index:12;left:4vw;bottom:4.4vh;width:min(520px,88vw);padding:18px 21px 16px;border-left:1px solid rgba(222,193,120,.35);background:linear-gradient(90deg,rgba(5,6,5,.76),rgba(5,6,5,.22),transparent);text-shadow:0 3px 15px #000}
+.house-caption .kicker{font-family:'Cinzel',serif;text-transform:uppercase;letter-spacing:.25em;color:var(--gold);font-size:.58rem}
+.house-caption h1{font-family:'Cinzel',serif;text-transform:uppercase;letter-spacing:.07em;font-weight:600;font-size:clamp(1.65rem,3.3vw,3.5rem);line-height:1;margin:7px 0 8px}
+.house-caption p{margin:0;color:#d2c7b1;font-size:1rem;line-height:1.4}
+.house-hint{position:absolute;z-index:13;right:3.7vw;bottom:3.8vh;color:#d1c3a0;font-size:.82rem;font-style:italic;text-shadow:0 3px 10px #000;opacity:.82}
+.interactive-prop{
+ position:absolute;z-index:15;border:0;background:transparent;padding:0;filter:drop-shadow(0 18px 18px rgba(0,0,0,.72));transition:transform .22s ease,filter .22s ease
+}
+.interactive-prop img{display:block;width:100%;height:auto;pointer-events:none}
+.interactive-prop:hover,.interactive-prop:focus-visible{outline:none;transform:translateY(-5px) scale(1.035);filter:brightness(1.09) drop-shadow(0 21px 20px rgba(0,0,0,.8))}
+.interactive-prop.glow{animation:propGlow .8s ease}
+.interactive-prop.shake{animation:propShake .6s ease}
+@keyframes propGlow{45%{filter:brightness(1.4) drop-shadow(0 0 30px rgba(232,198,102,.85)) drop-shadow(0 20px 18px #000);transform:scale(1.07)}}
+@keyframes propShake{20%{transform:rotate(-6deg)}45%{transform:rotate(7deg)}70%{transform:rotate(-4deg)}}
+.prop-chest{right:5.5%;bottom:6%;width:clamp(145px,15vw,270px)}
+.prop-crystal{right:8%;bottom:7%;width:clamp(95px,10vw,175px)}
+.prop-plant{right:6%;bottom:4%;width:clamp(105px,11vw,190px)}
+.prop-statue{right:5%;bottom:2%;width:clamp(100px,10vw,180px)}
+.prop-potion{right:7%;bottom:6%;width:clamp(70px,7vw,120px)}
+.prop-mandrake{right:6%;bottom:4%;width:clamp(92px,9vw,150px)}
+.prop-flower{right:6%;bottom:4%;width:clamp(95px,10vw,165px)}
+.magic-toast{
+ position:fixed;z-index:80;left:50%;bottom:8vh;transform:translate(-50%,18px);opacity:0;pointer-events:none;
+ max-width:min(560px,88vw);padding:12px 18px;border:1px solid rgba(216,189,118,.4);
+ background:rgba(8,9,8,.9);box-shadow:0 15px 45px rgba(0,0,0,.55);color:#eadfc7;text-align:center;
+ font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.07em;text-transform:uppercase;transition:.28s
+}
+.magic-toast.show{opacity:1;transform:translate(-50%,0)}
+.access-lock{
+ position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:24px;background:rgba(4,5,4,.94);backdrop-filter:blur(7px)
+}
+.house-locked .access-lock{display:grid}
+.access-lock-card{width:min(520px,92vw);padding:34px;text-align:center;border:1px solid rgba(218,191,122,.32);background:#10110e;box-shadow:0 28px 90px #000}
+.access-lock-card h1{font-family:'Cinzel';text-transform:uppercase;letter-spacing:.08em;margin:0 0 12px}
+.access-lock-card p{color:#c7bca5;line-height:1.5}
+.access-lock-card a{display:inline-block;margin-top:12px;color:#e6ce8c;font-family:'Cinzel';text-transform:uppercase;letter-spacing:.1em;font-size:.68rem;text-decoration:none;border-bottom:1px solid rgba(230,206,140,.35);padding-bottom:4px}
+.house-space.loading .house-scene{opacity:0}
+.house-space.access-ready .house-scene{opacity:1;transition:opacity .35s ease}
+body[data-house="N"]{--gold:#d1a453}
+body[data-house="H"]{--gold:#b99659}
+body[data-house="M"]{--gold:#d2b05c}
+body[data-house="Z"]{--gold:#afb7aa}
+@media(max-width:760px){
+ .house-top{left:4vw;right:4vw}.house-top nav{gap:10px}.house-top nav a:nth-child(2){display:none}
+ .house-caption{bottom:3vh;padding:14px 16px}.house-caption p{font-size:.88rem}.house-hint{display:none}
+ .prop-chest{width:135px}.prop-crystal,.prop-plant,.prop-statue,.prop-mandrake,.prop-flower{width:100px}.prop-potion{width:72px}
+}

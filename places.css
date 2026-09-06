@@ -1,0 +1,411 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+:root{--gold:#b49350;--gold2:#dfc77f;--cream:#eee5cf;--muted:#bcb19a;--line:rgba(220,197,139,.25)}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#080a09;color:var(--cream);font-family:'EB Garamond',Georgia,serif;overflow-x:hidden}a{color:inherit}.place-top{position:fixed;z-index:50;left:4vw;right:4vw;top:18px;display:flex;justify-content:space-between;align-items:center;pointer-events:none}.place-top a{pointer-events:auto;text-decoration:none;font-family:'Cinzel';text-transform:uppercase;letter-spacing:.14em;font-size:.65rem;color:#dacba5;text-shadow:0 2px 8px #000}.place-top a:hover{color:white}.place-scene{position:relative;min-height:100vh;overflow:hidden;isolation:isolate;display:flex;align-items:flex-end;padding:110px 6vw 54px}.place-scene::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.18) 48%,rgba(0,0,0,.82))}.place-copy{position:relative;z-index:20;width:min(720px,90vw);pointer-events:none}.place-copy .kicker{font-family:'Cinzel';text-transform:uppercase;letter-spacing:.28em;color:#c6a963;font-size:.62rem}.place-copy h1{font-family:'Cinzel';text-transform:uppercase;letter-spacing:.07em;font-size:clamp(2.4rem,6vw,5.5rem);line-height:.96;margin:8px 0 14px;font-weight:600;text-shadow:0 10px 30px #000}.place-copy p{margin:0;color:#cfc4ab;font-size:1.15rem;line-height:1.5;max-width:620px}.place-copy .tiny{margin-top:13px;font-size:.9rem;color:#9e9279;font-style:italic}
+/* common stone */
+.stone-bg{background:linear-gradient(rgba(7,9,8,.3),rgba(6,8,7,.72)),url('img/wall.webp') center/cover fixed}.torch-dot{position:absolute;width:12px;height:70px;background:linear-gradient(#5d4326,#1f170f);border:2px solid #8c6735;box-shadow:0 12px 20px #000}.torch-dot::before{content:"";position:absolute;left:-16px;top:-43px;width:40px;height:50px;border-radius:50% 50% 45% 45%;background:radial-gradient(circle at 50% 70%,#fff5a1 0 8%,#ffbd45 20%,#f36b1c 50%,transparent 70%);filter:drop-shadow(0 0 15px #e67d24);animation:flame 1.2s ease-in-out infinite alternate}.torch-dot:hover::before{transform:scale(1.18)}@keyframes flame{to{transform:translateX(2px) scaleY(1.08)}}
+/* greenhouse */.greenhouse{background:linear-gradient(rgba(12,34,20,.16),rgba(5,12,8,.63)),linear-gradient(180deg,#6d8b75 0,#314d3b 34%,#0d1711 100%)}.glass-grid{position:absolute;inset:0 0 35%;background:linear-gradient(90deg,transparent 0 12%,rgba(225,232,210,.18) 12.3% 12.7%,transparent 13% 25%,rgba(225,232,210,.15) 25.3% 25.7%,transparent 26%),linear-gradient(0deg,transparent 0 19%,rgba(225,232,210,.12) 19.4% 20%,transparent 20%);opacity:.7}.plant-bed{position:absolute;left:8%;right:8%;bottom:18%;height:220px;border-top:12px solid #513b26;background:linear-gradient(#3b2b1d,#17110c);box-shadow:0 25px 35px #000}.plant{position:absolute;bottom:214px;width:70px;height:140px;transform-origin:bottom center;transition:.25s;cursor:pointer}.plant::before,.plant::after{content:"";position:absolute;left:31px;bottom:0;width:10px;height:120px;background:#315728;border-radius:50%}.plant::after{width:55px;height:35px;left:0;bottom:65px;border-radius:70% 20% 70% 20%;background:#4c7f3d;box-shadow:38px -31px 0 #365f31,14px -62px 0 #628f4d}.plant:hover{transform:rotate(-7deg) scale(1.06)}.plant.startled{animation:plantJump .55s ease}@keyframes plantJump{45%{transform:translateY(-24px) rotate(8deg)}}
+/* astronomy */.astronomy{background:radial-gradient(circle at 70% 18%,rgba(121,149,191,.22),transparent 22%),linear-gradient(#07101d,#0b1016 58%,#080908)}.stars{position:absolute;inset:0 0 38%;background-image:radial-gradient(circle,#fff 0 1px,transparent 1.7px);background-size:53px 53px;opacity:.67;animation:starsMove 26s linear infinite}@keyframes starsMove{to{background-position:120px 60px}}.tower-floor{position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(#242322,#0a0b0a)}.telescope{position:absolute;right:17%;bottom:25%;width:260px;height:28px;background:linear-gradient(90deg,#3a2f25,#a1844c,#24201b);border-radius:18px;transform:rotate(-26deg);transform-origin:78% 50%;transition:.45s;cursor:pointer;box-shadow:0 16px 25px #000}.telescope::before{content:"";position:absolute;width:105px;height:105px;border:12px solid #7d673c;border-radius:50%;left:-58px;top:-39px}.telescope::after{content:"";position:absolute;width:12px;height:190px;background:#6d5835;right:38px;top:10px;transform:rotate(18deg)}.telescope:hover{transform:rotate(-11deg)}
+/* grounds */.grounds{background:linear-gradient(rgba(32,49,39,.1),rgba(5,11,8,.52)),linear-gradient(#718a87 0 35%,#405c43 36% 56%,#15271a 57% 100%)}.hill{position:absolute;border-radius:50%;background:#273f2b;box-shadow:inset 0 20px 80px rgba(255,255,255,.04)}.cloud{position:absolute;width:150px;height:40px;border-radius:50px;background:rgba(220,224,211,.28);filter:blur(1px);animation:cloudDrift 18s linear infinite}.cloud::before,.cloud::after{content:"";position:absolute;background:inherit;border-radius:50%}.cloud::before{width:70px;height:70px;left:28px;top:-32px}.cloud::after{width:80px;height:55px;right:20px;top:-22px}@keyframes cloudDrift{to{transform:translateX(34vw)}}
+/* hut */.hut-scene{background:linear-gradient(rgba(17,31,20,.05),rgba(5,8,6,.63)),linear-gradient(#6b7e76 0 34%,#354f37 35% 58%,#111d13 59%)}.hut{position:absolute;right:12%;bottom:20%;width:360px;height:260px;background:linear-gradient(90deg,#493626,#61472f,#2d2219);border:5px solid #2a2019;box-shadow:0 28px 40px #000}.hut::before{content:"";position:absolute;left:-55px;right:-55px;top:-115px;border-left:235px solid transparent;border-right:235px solid transparent;border-bottom:125px solid #30261c}.hut::after{content:"";position:absolute;width:75px;height:145px;left:55px;bottom:0;background:#241b14;border:3px solid #765536}.chimney{position:absolute;right:23%;bottom:460px;width:44px;height:120px;background:#40362c}.smoke{position:absolute;right:20%;bottom:570px;width:90px;height:90px;border-radius:50%;background:rgba(191,193,180,.22);filter:blur(7px);animation:smoke 4s ease-in-out infinite}@keyframes smoke{50%{transform:translate(26px,-45px) scale(1.35);opacity:.35}}
+/* willow */.willow{background:linear-gradient(rgba(28,44,31,.08),rgba(6,10,7,.65)),linear-gradient(#687c76 0 35%,#324a34 36% 57%,#122115 58%)}.willow-tree{position:absolute;left:50%;bottom:14%;width:95px;height:360px;background:linear-gradient(90deg,#39281d,#62442b,#2b2119);transform:translateX(-50%);border-radius:40% 32% 22% 25%;cursor:pointer;transform-origin:bottom center}.willow-tree::before,.willow-tree::after{content:"";position:absolute;width:460px;height:48px;background:#49331f;border-radius:50%;top:40px}.willow-tree::before{right:25px;transform:rotate(-17deg)}.willow-tree::after{left:25px;transform:rotate(17deg)}.willow-tree:hover::before{animation:branchLeft .7s ease infinite alternate}.willow-tree:hover::after{animation:branchRight .65s ease infinite alternate}.willow-tree.thrash{animation:treeThrash .7s ease}@keyframes branchLeft{to{transform:rotate(-31deg)}}@keyframes branchRight{to{transform:rotate(32deg)}}@keyframes treeThrash{25%{transform:translateX(-50%) rotate(-6deg)}70%{transform:translateX(-50%) rotate(7deg)}}
+/* lake */.lake-scene{background:linear-gradient(rgba(18,31,36,.1),rgba(3,8,11,.66)),linear-gradient(#6f8588 0 34%,#223e49 35% 57%,#07171d 58%)}.lake-water{position:absolute;left:0;right:0;bottom:0;height:45%;background:linear-gradient(#193b47,#071a22);overflow:hidden}.ripple{position:absolute;width:100px;height:32px;border:2px solid rgba(191,211,204,.35);border-radius:50%;transform:scale(.2);opacity:0;pointer-events:none}.ripple.go{animation:ripple 1.2s ease-out}@keyframes ripple{from{transform:scale(.2);opacity:.75}to{transform:scale(4);opacity:0}}
+/* courtyard */.courtyard{background:linear-gradient(rgba(15,18,15,.04),rgba(6,8,7,.65)),url('img/wall.webp') center/cover}.courtyard-floor{position:absolute;inset:58% 0 0;background:repeating-linear-gradient(12deg,#3c3931 0 65px,#474239 66px 68px)}.fountain{position:absolute;left:54%;bottom:17%;width:260px;height:90px;border-radius:50%;background:#45443d;border:12px solid #5d5b50;box-shadow:0 22px 35px #000;cursor:pointer}.fountain::before{content:"";position:absolute;width:52px;height:170px;left:92px;bottom:48px;background:#4b4a43;border-radius:20px}.fountain::after{content:"";position:absolute;width:130px;height:30px;left:53px;bottom:170px;border-radius:50%;background:#5c5a50}.fountain:hover{filter:brightness(1.16)}
+/* corridors */.corridor{background:linear-gradient(90deg,rgba(3,4,3,.72),rgba(20,18,13,.18),rgba(3,4,3,.72)),url('img/wall.webp') center/cover}.portrait{position:absolute;width:150px;height:220px;border:11px ridge #775b31;background:linear-gradient(#2d2721,#15110f);box-shadow:0 18px 26px #000;transition:.25s;cursor:pointer}.portrait::before{content:"";position:absolute;inset:22px;background:radial-gradient(ellipse at 50% 30%,#8d7558 0 12%,#453629 13% 33%,#181411 34%)}.portrait:hover{transform:rotate(2deg) translateY(-5px)}.armor-figure{position:absolute;right:15%;bottom:20%;width:90px;height:300px;background:linear-gradient(90deg,#252522,#77766e 45%,#22221f);clip-path:polygon(30% 0,70% 0,77% 14%,92% 25%,80% 47%,70% 49%,77% 100%,57% 100%,50% 61%,43% 100%,23% 100%,30% 49%,20% 47%,8% 25%,23% 14%);transition:.25s;cursor:pointer;filter:drop-shadow(0 18px 20px #000)}.armor-figure:hover{transform:translateY(-6px) rotate(-2deg)}
+/* kitchen entry */.kitchen-scene{background:linear-gradient(rgba(4,6,5,.14),rgba(5,7,6,.72)),url('img/wall.webp') center/cover}.fruit-frame{position:absolute;left:50%;top:16%;transform:translateX(-50%);width:390px;height:300px;border:18px ridge #806038;background:linear-gradient(150deg,#5d4a33,#272018);box-shadow:0 30px 45px #000;cursor:default}.fruit-bowl{position:absolute;left:50%;bottom:56px;transform:translateX(-50%);width:230px;height:75px;border-radius:0 0 50% 50%;background:#765c33}.pear{position:absolute;width:72px;height:96px;border-radius:56% 56% 48% 48%;background:radial-gradient(circle at 32% 28%,#dfc565,#9b9f44 56%,#5a5c2b);left:158px;top:78px;cursor:pointer;transition:.2s}.pear::before{content:"";position:absolute;width:8px;height:33px;background:#4b3621;left:32px;top:-21px;transform:rotate(15deg)}.pear:hover{transform:rotate(-8deg) scale(1.05)}.pear.tickled{animation:pearLaugh .65s ease 2}@keyframes pearLaugh{25%{transform:rotate(-12deg)}70%{transform:rotate(12deg)}}.kitchen-door{position:absolute;left:50%;top:12%;transform:translateX(-50%) scaleX(.05);width:460px;height:510px;border-radius:46% 46% 0 0;background:linear-gradient(90deg,#171411,#4a3423,#171411);border:8px solid #75603d;opacity:0;transition:1s;z-index:8}.kitchen-scene.open .kitchen-door{transform:translateX(-50%) scaleX(1);opacity:1}.kitchen-scene.open .fruit-frame{opacity:0;transition:.6s}.copper-pot{position:absolute;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d49a58,#7d4728 55%,#3d2115);box-shadow:0 12px 18px #000;opacity:0;transition:.8s .55s}.kitchen-scene.open .copper-pot{opacity:1}
+/* room of requirement */.requirement{background:linear-gradient(rgba(4,5,4,.13),rgba(5,6,5,.74)),url('img/wall.webp') center/cover}.require-wall{position:absolute;left:28%;right:28%;top:9%;bottom:10%;cursor:crosshair}.hidden-door{position:absolute;left:50%;top:14%;transform:translateX(-50%) scaleX(.05);width:330px;height:610px;border-radius:47% 47% 0 0;border:8px solid rgba(197,169,99,.55);background:linear-gradient(90deg,#1a1712,#4c3d28,#17140f);opacity:0;transition:1s}.requirement.ready .hidden-door{transform:translateX(-50%) scaleX(1);opacity:1}.walk-count{position:absolute;top:12%;right:7%;font-family:'Cinzel';font-size:.55rem;letter-spacing:.18em;color:rgba(218,198,144,.35);opacity:0;transition:.2s}.requirement:hover .walk-count{opacity:.65}
+@media(max-width:700px){.place-scene{padding-left:5vw;padding-right:5vw}.place-copy h1{font-size:2.4rem}.fruit-frame{width:300px;height:240px}.pear{left:120px;top:58px}.kitchen-door{width:330px}.willow-tree{transform:translateX(-50%) scale(.75);transform-origin:bottom}.telescope{right:4%;transform:scale(.72) rotate(-26deg)}}
+
+/* v16 — quieter labels + illustrated castle props */
+.place-copy{width:min(470px,82vw);opacity:.88}
+.place-copy .kicker{font-size:.52rem;letter-spacing:.24em;color:#bda66c}
+.place-copy h1{font-size:clamp(1.55rem,3.1vw,3.05rem);letter-spacing:.055em;margin:5px 0 8px;text-shadow:0 8px 22px #000}
+.place-copy p{font-size:.94rem;line-height:1.42;color:#bdb39d;max-width:470px}
+.place-copy .tiny{font-size:.75rem;margin-top:8px;color:#8f846e}.compact-copy{max-width:420px}
+
+.courtyard-photo{background:linear-gradient(180deg,rgba(3,5,4,.02),rgba(4,6,5,.08) 52%,rgba(3,5,4,.58)),url('img/nadvori-bg.webp') center/cover no-repeat;background-color:#11130f}
+.courtyard-photo::after{background:linear-gradient(180deg,transparent 55%,rgba(2,4,3,.55))}
+.courtyard-tree-hotspot{position:absolute;left:38%;top:4%;width:38%;height:78%;border:0;background:transparent;cursor:pointer;z-index:5}
+.fall-leaf{position:absolute;z-index:9;width:11px;height:7px;border-radius:70% 15% 70% 15%;background:#9b7437;pointer-events:none;animation:leafFall 1.8s ease-in forwards;filter:drop-shadow(0 2px 2px rgba(0,0,0,.45))}
+@keyframes leafFall{0%{transform:translate(0,-10px) rotate(0deg);opacity:0}15%{opacity:.9}100%{transform:translate(var(--dx),220px) rotate(var(--rot));opacity:0}}
+
+.corridor-real{background:linear-gradient(90deg,rgba(3,4,3,.62),rgba(14,13,10,.10),rgba(3,4,3,.63)),url('img/wall.webp') center/cover}
+.corridor-torch{position:absolute;width:105px;height:auto;z-index:7;filter:drop-shadow(0 12px 20px #000)}
+.corridor-torch-left{left:5.5%;top:24%}.corridor-torch-right{right:5.5%;top:22%;transform:scaleX(-1)}
+.corridor-armor{position:absolute;right:11%;bottom:8%;height:min(58vh,520px);width:auto;z-index:8;filter:drop-shadow(0 24px 26px #000);transition:.28s;cursor:pointer}.corridor-armor:hover{transform:translateY(-5px) rotate(-1deg);filter:brightness(1.08) drop-shadow(0 26px 28px #000)}
+.castle-painting,.scene-wall-painting{position:absolute;padding:0;border:0;background:transparent;cursor:pointer;z-index:6;filter:drop-shadow(0 18px 20px rgba(0,0,0,.85));transition:transform .28s,filter .28s}.castle-painting img,.scene-wall-painting img{display:block;width:100%;height:100%;object-fit:contain}.castle-painting:hover,.scene-wall-painting:hover{transform:translateY(-6px) rotate(1deg);filter:brightness(1.08) drop-shadow(0 22px 24px #000)}
+.godrik-painting{left:14%;top:15%;width:215px;height:310px}.painting-merlin{left:31%;top:23%;width:155px;height:235px}.painting-jezibaba{left:48%;top:17%;width:170px;height:265px}.quest-painting{outline:none}.quest-painting.quest-complete{filter:drop-shadow(0 0 14px rgba(223,190,100,.55)) drop-shadow(0 18px 20px #000)}
+.tower-painting{left:9%;top:19%;width:145px;height:200px}.kitchen-painting{right:8%;top:18%;width:140px;height:205px}
+
+@media(max-width:900px){.godrik-painting{left:9%;width:165px;height:245px}.painting-merlin{left:34%;width:120px;height:180px}.painting-jezibaba{display:none}.corridor-armor{right:4%;height:45vh}.corridor-torch{width:78px}.place-copy{width:min(390px,88vw)}}
+@media(max-width:650px){.place-copy h1{font-size:1.7rem}.place-copy p{font-size:.84rem}.godrik-painting{left:7%;top:18%;width:125px;height:185px}.painting-merlin{left:41%;top:25%;width:90px;height:140px}.corridor-armor{height:34vh;right:1%;bottom:15%}.corridor-torch{width:58px}.tower-painting,.kitchen-painting{width:95px;height:145px}.courtyard-tree-hotspot{left:28%;width:55%}}
+.corridor-armor.rattle{animation:armorRattle .55s ease}@keyframes armorRattle{20%{transform:translateX(-5px) rotate(-2deg)}45%{transform:translateX(5px) rotate(2deg)}70%{transform:translateX(-3px) rotate(-1deg)}}
+.hut{cursor:pointer;transition:filter .25s}.hut.knock{animation:hutKnock .55s ease}@keyframes hutKnock{25%{transform:translateX(-3px)}55%{transform:translateX(3px)}80%{transform:translateX(-1px)}}
+.cloud{cursor:pointer}.cloud.scud{animation-duration:3.2s!important;filter:brightness(1.18)}
+
+/* v17 — corridor network */
+.corridor-stage{background-color:#120f0b;background-position:center;background-size:cover;background-repeat:no-repeat;align-items:flex-end}
+.corridor-stage::after{background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.04) 42%,rgba(0,0,0,.58) 78%,rgba(0,0,0,.88))}
+.corridor-arcade{background-image:linear-gradient(90deg,rgba(13,9,5,.12),rgba(13,9,5,.03),rgba(9,7,5,.18)),url('img/corridor-v32-clean.webp')}
+.corridor-stairs{background-image:linear-gradient(90deg,rgba(10,8,6,.16),rgba(10,8,6,.04),rgba(8,6,5,.18)),url('img/corridor-v32-clean.webp')}
+.corridor-gallery{background-image:linear-gradient(90deg,rgba(10,7,5,.26),rgba(10,7,5,.08),rgba(10,7,5,.22)),url('img/corridor-v32-clean.webp')}
+.corridor-old-gallery{background-image:linear-gradient(90deg,rgba(9,7,5,.20),rgba(9,7,5,.03),rgba(9,7,5,.18)),url('img/corridor-v32-clean.webp')}
+.corridor-upper{background-image:linear-gradient(90deg,rgba(7,6,5,.54),rgba(12,10,7,.12),rgba(7,6,5,.55)),url('img/wall.webp')}
+.corridor-caption{padding:10px 14px 9px;background:linear-gradient(90deg,rgba(5,5,4,.55),rgba(5,5,4,.08),transparent);border-left:1px solid rgba(218,190,118,.18);max-width:380px}
+.corridor-caption h1{font-size:clamp(1.45rem,2.5vw,2.45rem)}
+.corridor-caption p{font-size:.84rem}
+.corridor-way{position:absolute;z-index:17;top:16%;bottom:17%;width:16%;text-decoration:none;color:#e3d4aa;display:flex;align-items:flex-end;padding:0 22px 20px;font-family:'Cinzel';font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;opacity:.08;transition:.28s;background:linear-gradient(90deg,rgba(0,0,0,.16),transparent);text-shadow:0 3px 10px #000}
+.corridor-way:hover,.corridor-way:focus-visible{opacity:.86;outline:none}.corridor-way-prev{left:0;justify-content:flex-start}.corridor-way-next{right:0;justify-content:flex-end;background:linear-gradient(270deg,rgba(0,0,0,.16),transparent);text-align:right}.corridor-way-next::after{content:'  ›';font-size:1.4rem;margin-left:8px}.corridor-way-prev::before{content:'‹  ';font-size:1.4rem;margin-right:8px}
+.corridor-torch.torch-xl{width:clamp(145px,10vw,205px);z-index:9;filter:drop-shadow(0 15px 24px rgba(0,0,0,.92)) drop-shadow(0 0 18px rgba(255,126,37,.18));cursor:pointer;transition:.25s}.corridor-torch.torch-xl:hover{filter:brightness(1.15) drop-shadow(0 0 24px rgba(255,127,31,.38)) drop-shadow(0 18px 28px #000);transform:translateY(-4px)}
+.torch-left{left:2.5%;top:20%}.torch-right{right:2.5%;top:18%;transform:scaleX(-1)}.torch-left-mid{left:3.2%;top:24%}.torch-old-left{left:3%;top:17%}.torch-old-right{right:3%;top:17%;transform:scaleX(-1)}.torch-upper-left{left:2.5%;top:20%}.torch-upper-right{right:2.5%;top:20%;transform:scaleX(-1)}.torch-gallery{position:absolute;right:4%;top:22%;width:clamp(130px,9vw,185px);z-index:9;filter:drop-shadow(0 18px 26px #000);cursor:pointer}
+.corridor-armor.armor-xl{height:min(73vh,700px);max-height:78vh;z-index:10;filter:drop-shadow(0 30px 30px rgba(0,0,0,.86));transform-origin:bottom center}.armor-left{left:5%;right:auto;bottom:4%}.armor-right{right:6%;bottom:4%}.armor-old{right:5%;bottom:4%}
+.castle-painting{z-index:8}.portrait-large{width:clamp(190px,15vw,305px);height:clamp(285px,24vw,450px)}.portrait-medium{width:clamp(145px,11vw,225px);height:clamp(215px,18vw,335px)}.portrait-tall{width:clamp(170px,13vw,255px);height:clamp(265px,21vw,390px)}
+.p-a1{right:15%;top:15%}.p-a2{right:34%;top:24%}
+.p-s1{left:12%;top:16%}.p-s2{left:31%;top:24%}
+.p-g1{left:4%;top:12%}.p-g2{left:21%;top:28%}.p-g3{left:39%;top:10%}.p-g4{right:27%;top:27%}.p-g5{right:9%;top:9%}
+.p-o1{left:10%;top:17%}.p-o2{left:31%;top:9%}.p-o3{right:28%;top:24%}
+.p-u1{left:7%;top:10%}.p-u2{left:23%;top:30%}.p-u3{left:42%;top:12%}.p-u4{right:25%;top:31%}.p-u5{right:9%;top:10%}.p-u6{right:7%;top:47%}
+.castle-painting.portrait-jolt{animation:portraitJolt .55s ease}@keyframes portraitJolt{20%{transform:rotate(-2deg) translateY(-3px)}50%{transform:rotate(2deg) translateY(-8px)}80%{transform:rotate(-1deg) translateY(-3px)}}
+.corridor-torch.flare{animation:torchFlare .65s ease}@keyframes torchFlare{40%{filter:brightness(1.55) drop-shadow(0 0 40px rgba(255,128,25,.72)) drop-shadow(0 18px 28px #000);transform:scale(1.04)}80%{filter:brightness(1.1) drop-shadow(0 0 18px rgba(255,128,25,.25))}}
+@media(max-width:900px){.corridor-way{width:22%}.corridor-armor.armor-xl{height:56vh}.portrait-large{width:170px;height:255px}.portrait-medium{width:125px;height:190px}.portrait-tall{width:145px;height:220px}.p-g5,.p-u6{display:none}.p-g4{right:19%}.p-u5{right:6%}}
+@media(max-width:650px){.corridor-way{top:12%;bottom:20%;width:27%;opacity:.15;padding:0 10px 14px}.corridor-torch.torch-xl,.torch-gallery{width:90px}.corridor-armor.armor-xl{height:38vh}.portrait-large{width:125px;height:185px}.portrait-medium,.portrait-tall{width:92px;height:140px}.p-a2,.p-s2,.p-g3,.p-g4,.p-u1,.p-u4{display:none}.p-u2{left:23%;top:27%}.p-u3{left:49%;top:13%}.p-u5{right:4%;top:34%}.corridor-caption{max-width:300px}}
+
+/* v18 — Astronomická věž: skutečná noční obloha + úkol se souhvězdími */
+.astronomy-quest{background:linear-gradient(180deg,rgba(0,8,30,.06),rgba(1,4,16,.16) 60%,rgba(0,0,0,.62)),url('img/astronomy-sky.webp') center/cover no-repeat;background-color:#071229;align-items:flex-end}
+.astronomy-quest::after{background:linear-gradient(180deg,rgba(2,5,20,.02),rgba(0,0,0,.03) 57%,rgba(0,0,0,.58) 86%,rgba(0,0,0,.83))}
+.astronomy-sky-hit{position:absolute;inset:0;z-index:1;cursor:crosshair}
+.constellation-zone{position:absolute;z-index:9;border:0;padding:0;background:transparent;cursor:crosshair;color:transparent;outline:none}
+.constellation-zone svg{width:100%;height:100%;overflow:visible;opacity:0;transition:opacity .8s,filter .8s;filter:drop-shadow(0 0 4px rgba(255,239,180,.7))}
+.constellation-zone svg polyline{fill:none;stroke:rgba(226,229,255,.76);stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:3 3}
+.constellation-zone svg circle{fill:#fff7c8;stroke:rgba(255,255,255,.9);stroke-width:.5}
+.constellation-zone.found svg{opacity:.86;filter:drop-shadow(0 0 7px rgba(178,204,255,.95)) drop-shadow(0 0 13px rgba(255,222,142,.55))}
+.constellation-zone.found{cursor:default}
+.constellation-a{left:71%;top:12%;width:13%;height:15%}
+.constellation-b{left:64%;top:43%;width:13%;height:16%}
+.constellation-c{left:27%;top:65%;width:14%;height:17%}
+.astronomy-progress{position:absolute;z-index:20;right:4vw;top:54px;display:grid;grid-template-columns:auto auto;column-gap:9px;align-items:center;padding:9px 12px;border:1px solid rgba(221,201,145,.24);background:rgba(4,8,18,.42);backdrop-filter:blur(3px);font-family:'Cinzel';text-transform:uppercase;letter-spacing:.12em;color:#e8ddb8;font-size:.58rem}
+.astronomy-progress>span{grid-row:1/3;color:#d8bd72;font-size:1rem}.astronomy-progress strong{font-size:.72rem}.astronomy-progress small{font-family:'EB Garamond';text-transform:none;letter-spacing:.03em;color:#aeb5ca;font-size:.72rem}
+.astronomy-copy{z-index:22;max-width:430px}.astronomy-telescope{z-index:8;opacity:.43;right:8%;bottom:9%;transform:scale(.62) rotate(-24deg);filter:drop-shadow(0 12px 22px #000)}
+.astronomy-telescope:hover{opacity:.78;transform:scale(.66) rotate(-16deg)}
+.astronomy-telescope.telescope-nudge{animation:telescopeNudge .6s ease}@keyframes telescopeNudge{40%{transform:scale(.66) rotate(-6deg)}75%{transform:scale(.64) rotate(-20deg)}}
+.astronomy-quest.quest-complete .astronomy-progress{border-color:rgba(224,193,101,.52);box-shadow:0 0 30px rgba(213,176,74,.12)}
+.sky-spark{position:fixed;z-index:9999;width:5px;height:5px;border-radius:50%;background:#fff;box-shadow:0 0 8px #dce8ff,0 0 18px #b6c9ff;pointer-events:none;animation:skySpark .65s ease-out forwards}@keyframes skySpark{from{transform:scale(.4);opacity:1}to{transform:scale(3);opacity:0}}
+
+/* v18 — Zapovězený les */
+.forbidden-forest{background:radial-gradient(circle at 50% 18%,rgba(67,102,78,.16),transparent 27%),linear-gradient(180deg,#17231c 0,#0b120e 42%,#040706 100%);isolation:isolate}
+.forbidden-forest::before{content:"";position:absolute;inset:0;z-index:-2;background:repeating-linear-gradient(88deg,transparent 0 4.8%,rgba(3,6,4,.74) 5.1% 6.4%,transparent 6.7% 10%),repeating-linear-gradient(94deg,transparent 0 8%,rgba(7,13,9,.62) 8.4% 10.2%,transparent 10.5% 14%);filter:blur(.2px)}
+.forbidden-forest::after{background:linear-gradient(180deg,rgba(2,7,4,.10),rgba(3,8,5,.32) 54%,rgba(0,0,0,.86))}
+.forest-fog{position:absolute;left:-15%;width:130%;height:22%;border-radius:50%;background:rgba(157,178,163,.09);filter:blur(28px);z-index:2;animation:forestFog 16s ease-in-out infinite alternate}.fog-a{bottom:21%}.fog-b{bottom:38%;animation-delay:-7s;opacity:.55}@keyframes forestFog{to{transform:translateX(7%) scaleX(1.08)}}
+.forest-eyes{position:absolute;z-index:9;width:72px;height:34px;border:0;background:transparent;cursor:pointer;transition:.5s}.eyes-a{left:68%;top:31%}.eyes-b{left:23%;top:44%}.forest-eyes i{position:absolute;top:10px;width:8px;height:5px;border-radius:50%;background:#d6c36d;box-shadow:0 0 8px #c6a94c,0 0 14px rgba(194,162,64,.55)}.forest-eyes i:first-child{left:20px}.forest-eyes i:last-child{right:20px}.forest-eyes.vanish{opacity:0;transform:scale(.55)}
+
+/* v18 — tajný průchod ke Komnatě nejvyšší potřeby ze Staré galerie */
+.secret-wall-trigger{position:absolute;z-index:12;left:57%;top:25%;width:12%;height:38%;border:0;background:transparent;cursor:default}
+.secret-wall-trigger.touched{box-shadow:inset 0 0 30px rgba(204,181,118,.08)}
+.secret-room-door{position:absolute;z-index:13;left:59%;top:24%;width:9%;height:42%;border-radius:48% 48% 0 0;border:2px solid rgba(206,181,111,.0);background:linear-gradient(90deg,rgba(20,16,12,.0),rgba(77,60,38,.0),rgba(20,16,12,.0));opacity:0;pointer-events:none;transform:scaleX(.08);transition:.9s}
+.secret-room-door.visible{opacity:.72;pointer-events:auto;transform:scaleX(1);border-color:rgba(206,181,111,.38);background:linear-gradient(90deg,rgba(20,16,12,.68),rgba(77,60,38,.82),rgba(20,16,12,.68));box-shadow:0 0 28px rgba(199,169,93,.14),inset 0 0 20px rgba(214,190,121,.12)}
+@media(max-width:700px){.constellation-a{left:69%;width:18%}.constellation-b{left:61%;width:18%}.constellation-c{left:22%;width:20%}.astronomy-progress{right:3vw;top:48px}.astronomy-telescope{display:none}.secret-wall-trigger{left:54%;width:18%}.secret-room-door{left:57%;width:13%}}
+
+/* v19 — kuchyně, astronomická obloha a Síň slávy */
+.astronomy-quest{background:linear-gradient(180deg,rgba(0,8,30,.03),rgba(1,4,16,.1) 60%,rgba(0,0,0,.56)),url('img/astronomy-sky-v19.webp') center/cover no-repeat!important}
+.kitchen-v19{background:linear-gradient(rgba(3,4,3,.15),rgba(3,4,3,.78)),url('img/wall.webp') center/cover;overflow:hidden}
+.kitchen-entry{position:absolute;left:50%;top:50%;z-index:6;width:min(760px,60vw);transform:translate(-50%,-50%);transition:opacity .85s,transform .85s;filter:drop-shadow(0 28px 34px rgba(0,0,0,.85))}
+.kitchen-entry>img{display:block;width:100%;height:auto;border:0}
+.pear-hotspot{position:absolute;left:48%;top:35%;width:25%;height:34%;border:0;background:transparent;border-radius:50%;cursor:pointer;z-index:8}
+.pear-hotspot:hover{box-shadow:0 0 0 2px rgba(214,179,98,.18),0 0 24px rgba(225,183,87,.12)}
+.kitchen-reveal{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.24)),url('img/kuchyne-v19.webp') center/cover no-repeat;opacity:0;transform:scale(1.025);transition:opacity 1.2s,transform 1.5s}
+.kitchen-v19.open .kitchen-entry{opacity:0;transform:translate(-50%,-50%) scale(.92);pointer-events:none}
+.kitchen-v19.open .kitchen-reveal{opacity:1;transform:scale(1)}
+.kitchen-caption{z-index:12;transition:opacity .55s}.kitchen-v19.open .kitchen-caption{opacity:.18}
+.hall-of-fame{background:linear-gradient(180deg,rgba(0,0,0,.14),rgba(0,0,0,.58)),url('img/corridor-v32-clean.webp') center/cover no-repeat}
+.trophy-case{position:absolute;z-index:5;display:flex;gap:12px;align-items:flex-end;padding:22px 26px;border:8px ridge #775b31;background:rgba(18,12,8,.72);box-shadow:0 22px 34px #000;cursor:pointer;transition:.25s}.trophy-case span{font-size:clamp(2.4rem,5vw,5rem);filter:sepia(.7) drop-shadow(0 8px 12px #000)}.trophy-case:hover{transform:translateY(-7px);filter:brightness(1.12)}.case-a{left:17%;top:20%}.case-b{right:15%;top:29%}
+@media(max-width:700px){.kitchen-entry{width:82vw}.case-a{left:8%;top:22%}.case-b{right:7%;top:46%}.trophy-case{padding:12px}}
+/* v21 — všechny hradní chodby sjednocené na kamennou stěnu */
+.corridor-arcade,.corridor-stairs,.corridor-gallery,.corridor-old-gallery,.corridor-upper{background-image:linear-gradient(90deg,rgba(5,5,4,.56),rgba(11,9,7,.08) 42%,rgba(5,5,4,.54)),linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.2)),url('img/wall.webp')!important;background-position:center!important;background-size:cover!important;background-repeat:no-repeat!important}
+/* v23 — učitelé jako samostatné postavy, ne jako nové pozadí */
+.classroom-teacher{position:absolute;z-index:14;height:min(72vh,760px);width:auto;object-fit:contain;filter:drop-shadow(0 24px 28px rgba(0,0,0,.82));transition:transform .28s ease,filter .28s ease;transform-origin:bottom center}.classroom-teacher:hover{transform:translateY(-4px);filter:brightness(1.04) drop-shadow(0 28px 32px rgba(0,0,0,.9))}.teacher-astronomy{left:4%;bottom:-2%;height:min(78vh,820px);z-index:12}.teacher-creatures{right:3%;bottom:-2%;height:min(83vh,850px);z-index:12}
+/* v23 — chodby plnější, mix velkých/středních/malých obrazů */
+.portrait-small{width:clamp(95px,7vw,145px);height:clamp(135px,11vw,215px)}
+.p-a3{left:26%;top:15%}.p-a4{right:3%;top:34%}
+.p-s3{right:24%;top:13%}
+.p-g6{left:55%;top:8%}.p-g7{left:72%;top:43%}.p-g8{right:2%;top:28%}
+.p-o4{left:52%;top:13%}.p-o5{right:12%;top:12%}
+.p-u7{left:34%;top:50%}.p-u8{right:38%;top:9%}.p-u9{right:2%;top:42%}
+@media(max-width:900px){.teacher-astronomy{left:-7%;height:58vh;opacity:.88}.teacher-creatures{right:-8%;height:62vh}.portrait-small{width:85px;height:128px}.p-a4,.p-g7,.p-g8,.p-u7,.p-u9{display:none}}
+@media(max-width:650px){.teacher-astronomy{left:-12%;height:42vh;opacity:.68}.teacher-creatures{right:-18%;height:44vh;opacity:.72}.p-a3,.p-s3,.p-g6,.p-o4,.p-o5,.p-u8{display:none}}
+
+
+/* v24 — navazující hotové kamenné chodby + Síň slávy */
+.corridor-arcade{background-image:linear-gradient(90deg,rgba(3,3,2,.28),rgba(3,3,2,.02) 48%,rgba(3,3,2,.22)),url('img/corridor-v24-1.webp')!important;background-position:center!important;background-size:cover!important}
+.corridor-gallery{background-image:linear-gradient(90deg,rgba(3,3,2,.22),rgba(3,3,2,.02) 48%,rgba(3,3,2,.18)),url('img/corridor-v24-2.webp')!important;background-position:center!important;background-size:cover!important}
+.corridor-stairs{background-image:linear-gradient(90deg,rgba(3,3,2,.18),rgba(3,3,2,.02) 48%,rgba(3,3,2,.18)),url('img/corridor-v24-stairs.webp')!important;background-position:center!important;background-size:cover!important}
+.corridor-old-gallery{background-image:linear-gradient(90deg,rgba(3,3,2,.24),rgba(3,3,2,.03) 48%,rgba(3,3,2,.20)),url('img/corridor-v24-1.webp')!important;background-position:58% center!important;background-size:cover!important}
+.corridor-upper{background-image:linear-gradient(90deg,rgba(3,3,2,.24),rgba(3,3,2,.02) 48%,rgba(3,3,2,.20)),url('img/corridor-v24-2.webp')!important;background-position:42% center!important;background-size:cover!important}
+.hall-of-fame{background:linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.50)),url('img/hall-v24-gallery.webp') center/cover no-repeat!important}
+
+/* interaktivní obrazy jsou záměrně jen na několika místech — zbytek je součástí pozadí */
+.corridor-stage .castle-painting{filter:drop-shadow(0 15px 16px rgba(0,0,0,.82));z-index:12}
+.corridor-stage .portrait-large{width:clamp(120px,9vw,190px);height:clamp(180px,15vw,285px)}
+.corridor-stage .portrait-medium{width:clamp(95px,7vw,150px);height:clamp(140px,11vw,220px)}
+.corridor-stage .portrait-small{width:clamp(74px,5vw,112px);height:clamp(105px,8vw,165px)}
+/* necháváme volná interaktivní místa a vyhneme se přeplácání hotového obrazu */
+.p-a2,.p-a4,.p-s2,.p-g1,.p-g3,.p-g4,.p-g5,.p-g6,.p-o2,.p-o3,.p-o4,.p-u1,.p-u2,.p-u4,.p-u5,.p-u6,.p-u7{display:none!important}
+.p-a1{right:10%;top:23%}.p-a3{right:28%;left:auto;top:19%}
+.p-s1{left:8%;top:18%}.p-s3{right:18%;top:17%}
+.p-g2{left:8%;top:27%}.p-g7{left:auto;right:20%;top:47%}.p-g8{right:5%;top:24%}
+.p-o1{left:12%;top:23%}.p-o5{right:8%;top:20%}
+.p-u3{left:14%;top:19%}.p-u8{right:25%;top:18%}.p-u9{right:7%;top:48%}
+
+/* jemnější velikost samostatného brnění a pochodní nad hotovým pozadím */
+.corridor-stage .corridor-armor.armor-xl{height:min(48vh,470px);opacity:.92}
+.corridor-stage .corridor-torch.torch-xl,.corridor-stage .torch-gallery{width:clamp(88px,6vw,128px);opacity:.88}
+
+/* Síň slávy — klikací vitríny bez emoji a CSS maket */
+.hall-of-fame .trophy-case{position:absolute;z-index:12;border:0;background:transparent;box-shadow:none;padding:0;cursor:pointer;opacity:1;transition:.25s}
+.hall-of-fame .trophy-case::after{content:"";position:absolute;inset:0;border:1px solid transparent;box-shadow:0 0 0 rgba(218,190,118,0);transition:.25s}
+.hall-of-fame .trophy-case:hover::after,.hall-of-fame .trophy-case:focus-visible::after{border-color:rgba(224,195,119,.18);box-shadow:0 0 30px rgba(223,190,109,.10)}
+.hall-of-fame .case-a{left:5%;top:52%;width:18%;height:29%}.hall-of-fame .case-b{right:5%;top:51%;width:18%;height:30%}
+
+/* zlatonka se jen občas mihne hradem */
+.wandering-snitch{position:absolute;z-index:30;left:-14vw;top:18%;width:92px;height:60px;border:0;background:transparent;padding:0;cursor:pointer;filter:drop-shadow(0 8px 8px rgba(0,0,0,.6));animation:snitchAcross 8.8s cubic-bezier(.36,.05,.61,.98) infinite;pointer-events:auto}
+.wandering-snitch img{width:100%;height:100%;object-fit:contain}.wandering-snitch.dart{animation:snitchDart .78s ease-in forwards}
+@keyframes snitchAcross{0%{transform:translate(-10vw,8vh) rotate(-7deg) scale(.72)}24%{transform:translate(31vw,1vh) rotate(7deg) scale(.92)}53%{transform:translate(66vw,22vh) rotate(-8deg) scale(.78)}77%{transform:translate(89vw,-3vh) rotate(4deg) scale(.95)}100%{transform:translate(122vw,13vh) rotate(-4deg) scale(.7)}}
+@keyframes snitchDart{to{transform:translate(115vw,-35vh) scale(.35) rotate(24deg);opacity:0}}
+
+/* Lechtivá hruška — kurzor jako peříčko */
+.pear-hotspot{cursor:url('img/cursor-feather.png') 5 27,pointer!important}
+
+@media(max-width:700px){.corridor-stage .corridor-armor.armor-xl{height:34vh}.corridor-stage .corridor-torch.torch-xl,.corridor-stage .torch-gallery{width:74px}.wandering-snitch{width:70px;height:46px}.p-g8,.p-u8{display:none!important}}
+
+
+/* ==========================================================
+   v25 — světlejší hotové scény, interaktivita přímo v obrazu
+   ========================================================== */
+.v25-clean-scene,.v25-location{background-color:#17130e;background-position:center;background-size:cover;background-repeat:no-repeat}
+.v25-clean-scene::after,.v25-location::after{background:linear-gradient(180deg,rgba(0,0,0,.01),rgba(0,0,0,.02) 58%,rgba(0,0,0,.40) 82%,rgba(0,0,0,.60))}
+.v25-clean-scene .place-copy,.v25-location .place-copy{max-width:610px;padding:12px 16px 13px;background:linear-gradient(90deg,rgba(8,8,6,.62),rgba(8,8,6,.18) 72%,transparent);border-left:1px solid rgba(222,193,124,.22);text-shadow:0 2px 8px #000}
+.v25-clean-scene .place-copy h1,.v25-location .place-copy h1{font-size:clamp(2rem,4vw,4.15rem);margin-bottom:8px}
+.v25-clean-scene .place-copy p,.v25-location .place-copy p{font-size:1rem}
+
+/* Chodby: vše důležité je součástí pozadí; žádné létající PNG obrazy/brnění */
+.corridor-arcade{background-image:url('img/corridor-v32-clean.webp')!important}
+.corridor-stairs{background-image:url('img/corridor-v32-clean.webp')!important}
+.corridor-gallery{background-image:url('img/corridor-v32-clean.webp')!important}
+.corridor-old-gallery{background-image:url('img/corridor-v32-clean.webp')!important}
+.corridor-upper{background-image:url('img/corridor-v32-clean.webp')!important}
+.corridor-stage>.castle-painting,.corridor-stage>.corridor-armor,.corridor-stage>.corridor-torch{display:none!important}
+.hall-of-fame{background-image:url('img/hall-v25-gallery.webp')!important}
+.hall-of-fame::after{background:linear-gradient(180deg,rgba(0,0,0,.01),rgba(0,0,0,.03) 60%,rgba(0,0,0,.48))}
+
+.embedded-hotspot,.forest-rune-hotspot,.forest-lantern-hotspot,.lake-shell-hotspot,.hagrid-door-hotspot,.hagrid-lantern-hotspot,.hagrid-egg-hotspot,.hagrid-cauldron-hotspot,.willow-hotspot,.plant-hotspot,.watering-hotspot,.kitchen-pot-hotspot,.kitchen-bread-hotspot,.secret-seal-hotspot,.chamber-floor-hotspot,.chamber-brazier-hotspot,.serpent-banner-hotspot{
+ position:absolute;z-index:18;border:0;background:transparent;padding:0;cursor:pointer;border-radius:18px;
+}
+.embedded-hotspot::after,.forest-rune-hotspot::after,.forest-lantern-hotspot::after,.lake-shell-hotspot::after,.hagrid-door-hotspot::after,.hagrid-lantern-hotspot::after,.hagrid-egg-hotspot::after,.hagrid-cauldron-hotspot::after,.willow-hotspot::after,.plant-hotspot::after,.watering-hotspot::after,.kitchen-pot-hotspot::after,.kitchen-bread-hotspot::after,.secret-seal-hotspot::after,.chamber-floor-hotspot::after,.chamber-brazier-hotspot::after,.serpent-banner-hotspot::after{
+ content:"";position:absolute;inset:0;border-radius:inherit;border:1px solid transparent;box-shadow:0 0 0 rgba(234,204,126,0);transition:.25s
+}
+.embedded-hotspot:hover::after,.embedded-hotspot:focus-visible::after,.forest-rune-hotspot:hover::after,.forest-lantern-hotspot:hover::after,.lake-shell-hotspot:hover::after,.hagrid-door-hotspot:hover::after,.hagrid-lantern-hotspot:hover::after,.hagrid-egg-hotspot:hover::after,.hagrid-cauldron-hotspot:hover::after,.willow-hotspot:hover::after,.plant-hotspot:hover::after,.watering-hotspot:hover::after,.kitchen-pot-hotspot:hover::after,.kitchen-bread-hotspot:hover::after,.secret-seal-hotspot:hover::after,.chamber-floor-hotspot:hover::after,.chamber-brazier-hotspot:hover::after,.serpent-banner-hotspot:hover::after{
+ border-color:rgba(239,211,143,.25);box-shadow:0 0 28px rgba(229,190,91,.18)
+}
+.embedded-hotspot.activated::after,.plant-hotspot.activated::after{animation:v25Pulse .72s ease}
+@keyframes v25Pulse{45%{box-shadow:0 0 42px rgba(244,210,119,.62);background:rgba(238,207,125,.10);transform:scale(1.05)}}
+
+/* Pozice hotspotů v hotových chodbách */
+.hotspot-globe{left:1%;bottom:7%;width:12%;height:25%}
+.hotspot-painting{left:42%;top:23%;width:15%;height:35%}
+.hotspot-armor{right:6%;bottom:18%;width:10%;height:38%}
+.hotspot-stair-painting{right:29%;top:9%;width:10%;height:34%}
+.hotspot-gallery-large{left:42%;top:22%;width:14%;height:38%}
+.hotspot-gallery-small{right:7%;top:48%;width:8%;height:19%}
+.serpent-banner-hotspot{right:1.5%;top:0;width:11%;height:54%;border-radius:0}
+.godrik-integrated-hotspot{left:22.5%;top:22%;width:11.5%;height:27%}
+.hotspot-upper-orb{right:28%;bottom:8%;width:11%;height:20%}
+.hall-center-seal{left:44%;top:8%;width:12%;height:22%}
+
+/* nové lokace */
+.forbidden-forest{background-image:url('img/forbidden-forest-v25.webp')!important}
+.forest-rune-hotspot{left:69%;top:48%;width:8%;height:18%}
+.forest-lantern-hotspot{left:2%;bottom:19%;width:7%;height:25%}
+.forbidden-forest.rune-awake{filter:brightness(1.04)}
+.forbidden-forest.rune-awake::before{content:"";position:absolute;left:67%;top:45%;width:12%;height:24%;background:radial-gradient(circle,rgba(93,179,255,.22),transparent 70%);z-index:3;pointer-events:none;animation:v25Glow 1.2s ease}
+
+.lake-scene{background-image:url('img/black-lake-v25.webp')!important}
+.lake-scene .lake-water{left:0;right:0;bottom:0;height:58%;background:transparent;cursor:crosshair;z-index:9}
+.lake-shell-hotspot{right:13%;bottom:17%;width:11%;height:17%;border-radius:50%}
+.lake-shell-hotspot.awake::after{box-shadow:0 0 55px rgba(235,207,143,.55),0 0 90px rgba(155,199,255,.25);background:rgba(255,232,174,.06)}
+
+.hut-scene{background-image:url('img/hagrid-outside-v25.webp')!important}
+.hagrid-door-hotspot{left:45%;top:39%;width:10%;height:24%}
+.hagrid-lantern-hotspot{left:8%;top:47%;width:6%;height:18%}
+.hagrid-door-hotspot.knock::after{animation:doorKnock .45s ease}
+@keyframes doorKnock{25%{transform:translateX(-4px)}50%{transform:translateX(4px)}75%{transform:translateX(-2px)}}
+.hagrid-inside-scene{background-image:url('img/hagrid-inside-v25.webp')!important}
+.hagrid-egg-hotspot{left:53%;top:58%;width:13%;height:17%;border-radius:50%}
+.hagrid-cauldron-hotspot{left:26%;top:43%;width:13%;height:22%}
+.hagrid-egg-hotspot.awake::after{animation:eggGlow 1.1s ease;box-shadow:0 0 50px rgba(255,170,69,.62)}
+@keyframes eggGlow{45%{transform:scale(1.16);background:rgba(255,174,67,.12)}}
+
+.willow{background-image:url('img/willow-v25.webp')!important}
+.willow-hotspot{left:39%;top:9%;width:35%;height:68%;border-radius:45%}
+.willow.willow-shake{animation:willowSceneShake .68s ease}
+@keyframes willowSceneShake{20%{background-position:49.5% center}40%{background-position:50.5% center}60%{background-position:49.7% center}80%{background-position:50.3% center}}
+.fall-leaf-v25{position:fixed;z-index:80;width:10px;height:17px;border-radius:70% 20% 70% 20%;background:#9b7a37;pointer-events:none;animation:leafFallV25 1.7s ease-in forwards}
+@keyframes leafFallV25{to{transform:translate(var(--dx),150px) rotate(var(--rot));opacity:0}}
+
+.greenhouse{background-image:url('img/greenhouse-v25.webp')!important}
+.greenhouse .glass-grid,.greenhouse .plant-bed,.greenhouse>.plant{display:none!important}
+.plant-hotspot{border-radius:45%}.plant-a{left:4%;top:42%;width:16%;height:30%}.plant-b{left:33%;top:38%;width:26%;height:28%}.plant-c{right:2%;top:45%;width:18%;height:33%}
+.watering-hotspot{left:58%;top:61%;width:10%;height:16%}
+.greenhouse.plant-magic::before{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(circle at var(--px,50%) var(--py,50%),rgba(190,255,153,.17),transparent 13%);animation:v25Glow .7s ease}
+
+.kitchen-v25{background:linear-gradient(rgba(3,4,3,.06),rgba(3,4,3,.28)),url('img/wall.webp') center/cover!important;overflow:hidden}
+.kitchen-v25 .kitchen-reveal{position:absolute;inset:0;background:url('img/kitchen-v25.webp') center/cover no-repeat;opacity:0;transform:scale(1.025);transition:opacity .75s ease,transform 1.1s ease;z-index:2}
+.kitchen-v25.open .kitchen-reveal{opacity:1;transform:scale(1)}
+.kitchen-v25.open::after{background:linear-gradient(180deg,rgba(0,0,0,.01),rgba(0,0,0,.02) 65%,rgba(0,0,0,.42))}
+.kitchen-pot-hotspot{left:4%;top:51%;width:18%;height:28%}.kitchen-bread-hotspot{right:22%;top:58%;width:17%;height:18%}
+.kitchen-v25.open .kitchen-caption{opacity:.85}
+
+/* tajemná cesta a komnata */
+.secret-route-scene{background-image:url('img/secret-route-v25.webp')!important}
+.secret-seal-hotspot{right:4%;top:37%;width:11%;height:23%;border-radius:50%}
+.secret-chamber-link{position:absolute;z-index:25;right:5%;bottom:9%;text-decoration:none;padding:12px 17px;border:1px solid rgba(214,182,105,.46);background:rgba(9,10,8,.86);color:#e6d29c;font-family:'Cinzel';text-transform:uppercase;letter-spacing:.10em;font-size:.62rem;opacity:0;transform:translateY(12px);pointer-events:none;transition:.4s}
+.secret-route-scene.unsealed .secret-chamber-link{opacity:1;transform:none;pointer-events:auto}
+.secret-route-scene.unsealed .secret-seal-hotspot::after{box-shadow:0 0 65px rgba(91,181,255,.42);background:rgba(82,174,255,.08)}
+.secret-chamber-scene{background-image:url('img/secret-chamber-v25.webp')!important}
+.chamber-floor-hotspot{left:41%;bottom:7%;width:24%;height:25%;border-radius:50%}
+.chamber-brazier-hotspot{left:7%;top:38%;width:11%;height:21%}
+.secret-chamber-scene.awake::before{content:"";position:absolute;left:39%;bottom:4%;width:28%;height:28%;border-radius:50%;background:radial-gradient(ellipse,rgba(91,174,255,.18),transparent 70%);z-index:3;pointer-events:none;animation:v25Glow 1.1s ease}
+@keyframes v25Glow{50%{filter:brightness(1.6);opacity:.85}}
+
+/* jednorázové jiskry na každé lokaci */
+.magic-click-spark{position:fixed;z-index:999;width:8px;height:8px;border-radius:50%;background:#f2d88f;box-shadow:0 0 12px #e8c46e,0 0 22px rgba(255,232,164,.55);pointer-events:none;animation:magicSpark .65s ease-out forwards}
+@keyframes magicSpark{to{transform:translateY(-30px) scale(.2);opacity:0}}
+
+@media(max-width:760px){
+ .v25-clean-scene .place-copy,.v25-location .place-copy{max-width:88vw}
+ .hagrid-door-hotspot{left:42%;top:37%;width:18%;height:28%}
+ .godrik-integrated-hotspot{left:19%;top:20%;width:15%;height:29%}
+}
+
+/* v26 — opravy interakcí */
+.hall-godrik-hotspot{left:19%;top:10%;width:11%;height:34%}
+.kitchen-v25 .kitchen-entry{z-index:7;opacity:1;transition:opacity .65s ease,transform .8s ease;transform:translate(-50%,-50%) scale(1)}
+.kitchen-v25.open .kitchen-entry{opacity:0;transform:translate(-50%,-50%) scale(.94);pointer-events:none}
+.kitchen-v25.open .kitchen-reveal{opacity:1;transform:scale(1)}
+.hagrid-door-hotspot{left:58%;top:41%;width:9%;height:31%}
+.hagrid-lantern-hotspot{left:65%;top:44%;width:6%;height:18%}
+@media(max-width:760px){
+  .hall-godrik-hotspot{left:17%;top:10%;width:15%;height:32%}
+  .hagrid-door-hotspot{left:54%;top:39%;width:16%;height:31%}
+  .hagrid-lantern-hotspot{left:62%;top:43%;width:10%;height:18%}
+}
+
+/* v28 — Godrik je přímo zasazený do centrálního výklenku Síně slávy */
+.hall-of-fame{background-image:url('img/hall-v28-gallery.webp')!important}
+.hall-godrik-hotspot{left:44.7%;top:31%;width:11.3%;height:32.5%;border-radius:48% 48% 5% 5%/22% 22% 4% 4%}
+@media(max-width:760px){.hall-godrik-hotspot{left:42.5%;top:30%;width:15%;height:34%}}
+
+
+/* v30 — nové nádvoří: kašna i prastarý strom jsou interaktivní */
+.courtyard-tree-hotspot{left:57%;top:0;width:28%;height:82%}
+.courtyard-fountain-hotspot{position:absolute;left:38%;top:47%;width:18%;height:31%;border:0;background:transparent;z-index:6}
+.courtyard-fountain-hotspot::after{content:"";position:absolute;left:28%;right:28%;top:12%;bottom:20%;border-radius:50%;opacity:0;box-shadow:0 0 18px rgba(211,224,215,.7),0 0 38px rgba(187,208,204,.34);transition:.25s}
+.courtyard-fountain-hotspot.sparkle::after{opacity:1;animation:fountainSpark .9s ease}
+@keyframes fountainSpark{45%{transform:scale(1.16);box-shadow:0 0 28px rgba(235,244,237,.92),0 0 55px rgba(186,212,207,.54)}}
+@media(max-width:650px){.courtyard-tree-hotspot{left:52%;width:40%}.courtyard-fountain-hotspot{left:34%;top:48%;width:26%;height:28%}}
+
+
+/* ==========================================================
+   v32 — čisté interakce bez svítících hotspotů
+   ========================================================== */
+/* Chodby bez obrazů. Jedno čisté prostředí se používá s odlišným výřezem. */
+.corridor-arcade,.corridor-stairs,.corridor-gallery,.corridor-old-gallery,.corridor-upper{
+  background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.05) 62%,rgba(0,0,0,.50)),url('img/corridor-v32-clean.webp')!important;
+  background-size:cover!important;background-repeat:no-repeat!important;
+}
+.corridor-arcade{background-position:50% center!important}
+.corridor-stairs{background-position:58% center!important}
+.corridor-gallery{background-position:42% center!important}
+.corridor-old-gallery{background-position:64% center!important}
+.corridor-upper{background-position:36% center!important}
+.hotspot-painting,.hotspot-stair-painting,.hotspot-gallery-large,.hotspot-gallery-small{display:none!important}
+
+/* Hotspoty jsou průhledné a nikdy nekreslí rámeček/kruh. */
+.embedded-hotspot::after,.forest-rune-hotspot::after,.forest-lantern-hotspot::after,.lake-shell-hotspot::after,
+.hagrid-door-hotspot::after,.hagrid-lantern-hotspot::after,.hagrid-egg-hotspot::after,.hagrid-cauldron-hotspot::after,
+.willow-hotspot::after,.plant-hotspot::after,.watering-hotspot::after,.kitchen-pot-hotspot::after,.kitchen-bread-hotspot::after,
+.secret-seal-hotspot::after,.chamber-floor-hotspot::after,.chamber-brazier-hotspot::after,.serpent-banner-hotspot::after,
+.hall-of-fame .trophy-case::after,.courtyard-fountain-hotspot::after{display:none!important;content:none!important}
+.embedded-hotspot:focus-visible,.forest-rune-hotspot:focus-visible,.forest-lantern-hotspot:focus-visible,.lake-shell-hotspot:focus-visible,
+.hagrid-door-hotspot:focus-visible,.hagrid-lantern-hotspot:focus-visible,.hagrid-cauldron-hotspot:focus-visible,.willow-hotspot:focus-visible,
+.plant-hotspot:focus-visible,.watering-hotspot:focus-visible,.kitchen-pot-hotspot:focus-visible,.kitchen-bread-hotspot:focus-visible,
+.secret-seal-hotspot:focus-visible,.chamber-floor-hotspot:focus-visible,.chamber-brazier-hotspot:focus-visible,.serpent-banner-hotspot:focus-visible{outline:none!important}
+.magic-click-spark{display:none!important}
+.forbidden-forest.rune-awake::before,.secret-chamber-scene.awake::before,.greenhouse.plant-magic::before{display:none!important;content:none!important}
+.secret-route-scene.unsealed .secret-seal-hotspot::after{display:none!important}
+
+/* Fyzické předměty — vždy stojí/leží na konkrétní ploše. */
+.scene-prop{position:absolute;z-index:17;border:0;background:transparent;padding:0;margin:0;cursor:pointer;filter:drop-shadow(0 12px 14px rgba(0,0,0,.68));transform-origin:50% 100%;transition:transform .18s ease,filter .18s ease}
+.scene-prop img{display:block;width:100%;height:auto;pointer-events:none}
+.scene-prop:hover{filter:drop-shadow(0 14px 16px rgba(0,0,0,.76));transform:translateY(-2px)}
+.scene-prop:focus-visible{outline:none}
+.scene-prop.react-nudge{animation:v32Nudge .55s ease}.scene-prop.react-turn{animation:v32Turn .7s ease}.scene-prop.react-tilt{animation:v32Tilt .65s ease}
+.scene-prop.react-wobble{animation:v32Wobble .6s ease}.scene-prop.react-twitch{animation:v32Twitch .55s ease}.scene-prop.react-pulse{animation:v32Pulse .75s ease}
+.scene-prop.react-hop{animation:v32Hop .65s ease}.scene-prop.react-rattle{animation:v32Rattle .45s ease}.scene-prop.react-sway{animation:v32Sway .7s ease}.scene-prop.react-swirl{animation:v32Swirl .75s ease}.scene-prop.react-breathe{animation:v32Breathe .8s ease}.scene-prop.react-peek{animation:v32Peek .7s ease}
+@keyframes v32Nudge{35%{transform:translateX(8px) rotate(2deg)}70%{transform:translateX(-3px) rotate(-1deg)}}
+@keyframes v32Turn{45%{transform:rotate(8deg)}80%{transform:rotate(-2deg)}}
+@keyframes v32Tilt{45%{transform:rotate(-7deg)}80%{transform:rotate(2deg)}}
+@keyframes v32Wobble{25%{transform:rotate(-5deg)}55%{transform:rotate(5deg)}80%{transform:rotate(-2deg)}}
+@keyframes v32Twitch{35%{transform:rotate(4deg) translateY(-4px)}65%{transform:rotate(-3deg)}}
+@keyframes v32Pulse{45%{transform:scale(1.045);filter:brightness(1.13) drop-shadow(0 14px 16px rgba(0,0,0,.76))}}
+@keyframes v32Hop{45%{transform:translateY(-12px) rotate(-2deg)}75%{transform:translateY(2px)}}
+@keyframes v32Rattle{25%{transform:translateX(-4px) rotate(-1deg)}50%{transform:translateX(4px) rotate(1deg)}75%{transform:translateX(-2px)}}
+@keyframes v32Sway{30%{transform:rotate(-4deg)}65%{transform:rotate(5deg)}85%{transform:rotate(-2deg)}}
+@keyframes v32Swirl{45%{transform:rotate(5deg) scale(1.03)}75%{transform:rotate(-3deg)}}
+@keyframes v32Breathe{45%{transform:scale(1.055)}75%{transform:scale(.99)}}
+@keyframes v32Peek{40%{transform:rotate(-5deg) translateY(-3px)}75%{transform:rotate(3deg)}}
+
+/* Chodby: předměty stojí na podlaze nebo na podstavci. */
+.prop-corridor-bag{right:7%;bottom:3.8%;width:clamp(115px,12vw,190px)}
+.prop-upper-bust{right:8%;bottom:4%;width:clamp(92px,9vw,150px)}
+
+/* Astronomie: oba přístroje stojí na podlaze u okraje věže. */
+.prop-astronomy-armillary{left:7%;bottom:5%;width:clamp(105px,11vw,180px)}
+.prop-astronomy-telescope{right:7%;bottom:4%;width:clamp(165px,18vw,300px)}
+.astronomy-telescope{display:none!important}
+
+/* Hagrid: předměty jsou opřené / položené na stole a podlaze. */
+.prop-hagrid-pumpkin{right:17%;bottom:5.5%;width:clamp(75px,8vw,135px)}
+.prop-hagrid-teapot{right:28%;top:47%;width:clamp(58px,6vw,100px)}
+.prop-hagrid-umbrella{left:52%;bottom:25%;width:clamp(48px,5vw,82px);transform:rotate(7deg);transform-origin:50% 100%}
+.prop-hagrid-egg{right:24%;bottom:18%;width:clamp(76px,8vw,135px)}
+
+/* Další lokace. */
+.prop-greenhouse-plant{right:7%;bottom:17%;width:clamp(100px,11vw,180px)}
+.prop-requirement-pouch{right:9%;bottom:6%;width:clamp(100px,11vw,180px)}
+.prop-forest-creature{right:8%;bottom:5%;width:clamp(92px,10vw,165px)}
+
+.scene-toast{position:fixed;z-index:120;left:50%;bottom:7vh;max-width:min(560px,88vw);padding:10px 15px;transform:translate(-50%,12px);opacity:0;pointer-events:none;background:rgba(8,9,8,.9);border:1px solid rgba(190,163,104,.28);color:#e8ddc5;font-family:'EB Garamond',Georgia,serif;font-size:1rem;text-align:center;box-shadow:0 14px 34px rgba(0,0,0,.55);transition:.24s ease}
+.scene-toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* Tajné dveře se objeví jako fyzická část stěny, ne jako zářící obdélník. */
+.secret-room-door.visible{box-shadow:none!important;border-color:rgba(111,87,55,.65)!important;background:linear-gradient(90deg,rgba(21,17,13,.90),rgba(69,54,36,.92),rgba(21,17,13,.90))!important}
+
+@media(max-width:760px){
+ .prop-corridor-bag{right:4%;width:105px}.prop-upper-bust{right:4%;width:82px}
+ .prop-astronomy-armillary{left:4%;width:90px}.prop-astronomy-telescope{right:2%;width:150px}
+ .prop-hagrid-pumpkin{right:10%;width:72px}.prop-hagrid-teapot{right:20%;width:58px}.prop-hagrid-umbrella{left:47%;width:46px}.prop-hagrid-egg{right:17%;width:72px}
+ .prop-greenhouse-plant,.prop-requirement-pouch,.prop-forest-creature{width:90px}
+}
+
+/* v38 — nový vstup do Komnaty nejvyšší potřeby */
+
+
+
+/* v39 — Komnata nejvyšší potřeby: samostatná prázdná chodba + dveře jako overlay. */
+.requirement-v39{background:linear-gradient(180deg,rgba(3,4,3,.02),rgba(2,3,2,.28)),url('img/sedme-patro-v39.webp') center/cover no-repeat!important;overflow:hidden}
+.require-door-link-v39{position:absolute;z-index:12;left:50%;top:4.2%;height:78%;width:auto;transform:translateX(-50%) scale(.06,.96);transform-origin:50% 55%;opacity:0;pointer-events:none;transition:opacity 1.15s ease,transform 1.35s cubic-bezier(.18,.76,.18,1);filter:drop-shadow(0 18px 28px rgba(0,0,0,.68))}
+.require-door-link-v39 img{display:block;width:auto;height:100%;max-width:46vw;object-fit:contain}
+.requirement-v39.ready .require-door-link-v39{opacity:1;pointer-events:auto;transform:translateX(-50%) scale(1)}
+.requirement-v39.ready .require-door-link-v39:hover{filter:drop-shadow(0 20px 34px rgba(0,0,0,.75)) brightness(1.035)}
+.require-whisper{position:absolute;z-index:9;left:50%;top:10%;transform:translateX(-50%);font-family:'EB Garamond',Georgia,serif;font-style:italic;color:rgba(231,220,194,.7);font-size:.95rem;text-shadow:0 2px 8px #000;opacity:.72;transition:.5s}
+.requirement-v39.ready .require-whisper{color:#ddc88e;opacity:.95}
+.requirement-inside-v39{background:linear-gradient(180deg,rgba(4,5,4,.02),rgba(4,5,4,.35)),url('img/komnata-uvnitr-v39.webp') center/cover no-repeat!important}
+@media(max-width:700px){.require-door-link-v39{height:70%;top:9%}.require-door-link-v39 img{max-width:70vw}.require-whisper{top:14%;font-size:.82rem}}

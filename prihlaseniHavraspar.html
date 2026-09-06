@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="prihlaseni.css">
+  <title>Havraspár — vstup</title>
+<link rel="stylesheet" href="ghosts.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js?v=42"></script>
+<link rel="stylesheet" href="access-guard.css?v=42"><script src="access-guard.js?v=42"></script>
+<link rel="stylesheet" href="magic-cursor.css">
+<link rel="stylesheet" href="v40.css"><link rel="stylesheet" href="music-v42.css?v=42"></head>
+<body>
+<main class="entry-page raven">
+  <a class="back-link" href="hrad.html">← Mapa hradu</a>
+  <section class="scene raven-scene">
+    <img class="wall-torch torch-small torch-left" src="img/torch-ravenclaw.webp" alt="" aria-hidden="true">
+    <img class="wall-torch torch-small torch-right" src="img/torch-ravenclaw.webp" alt="" aria-hidden="true">
+
+    <button class="scene-image-button raven-door-art" id="eagleTrigger" data-audio="ravenAudio" aria-label="Zaklepat na bronzové orlí klepadlo">
+      <img src="img/havraspar-dvere.webp" alt="Dveře s bronzovým orlím klepadlem">
+      <span class="knocker-glow" aria-hidden="true"></span>
+    </button>
+    <audio id="ravenAudio" src="audio/havraspar.mp3" preload="metadata"></audio>
+
+    <div class="reveal-panel raven-riddle" id="loginPanel" hidden>
+      <form id="loginForm">
+        <label for="password">Co je vždy před tebou, ale nikdy to nemůžeš vidět?</label>
+        <div class="inline-answer">
+          <input id="password" autocomplete="off" required>
+          <button type="submit">Odpovědět</button>
+        </div>
+      </form>
+      <p id="errorMessage" class="error-message" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+<script src="achievements.js"></script><script src="entry.js"></script>
+<script>
+  const door = document.getElementById('eagleTrigger');
+  const weekly = window.BradaviceAchievements?.getWeeklyEntry('H');
+  const riddleLabel=document.querySelector('#loginForm label');if(riddleLabel&&weekly?.prompt)riddleLabel.textContent=weekly.prompt;
+  revealForm('#eagleTrigger','#loginPanel',{onReveal:()=>door.classList.add('questioning')});
+  setupPasswordForm({
+    formId:'loginForm',inputId:'password',errorId:'errorMessage',
+    answers:weekly?.answers||['Budoucnost'],successUrl:'Havraspar.html',
+    wrongText:'Klepadlo mlčí. Odpověď nestačí.',
+    onSuccess:()=>window.BradaviceAchievements?.award('orli-hadanka')
+  });
+</script>
+<script src="ghosts.js"></script>
+<script src="music-v42.js?v=42"></script></body>
+</html>

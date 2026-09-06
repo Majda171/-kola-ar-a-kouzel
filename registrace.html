@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Registrace nového studenta do fan konceptu studentského portálu Bradavic.">
+  <link rel="stylesheet" href="registrace.css">
+  <title>Registrace studenta — Bradavice</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js?v=42"></script>
+<link rel="stylesheet" href="magic-cursor.css">
+<link rel="stylesheet" href="v40.css"></head>
+<body>
+  <main class="registration-shell">
+    <a class="back-link" href="index.html" aria-label="Zpět na hlavní stránku">← Zpět do Bradavic</a>
+
+    <section class="registration-card" aria-labelledby="registration-title">
+      <aside class="registration-intro">
+        <div class="intro-content">
+          <p class="eyebrow">Evidence nových studentů</p>
+          <img class="crest" src="img/bradavice-erb.webp" alt="Erb Bradavic">
+          <h1 id="registration-title">Zápis do Bradavic</h1>
+          <p class="intro-copy">Vyplňte údaje budoucího studenta. Po potvrzení registrace bude připraven přijímací dopis a následně rozřazovací ceremonie.</p>
+          <p class="motto" lang="la">Draco dormiens nunquam titillandus</p>
+        </div>
+      </aside>
+
+      <div class="registration-form-panel">
+        <div class="form-heading">
+          <p class="step">První krok</p>
+          <h2>Registrace studenta</h2>
+          <p>Údaje později použijeme pro personalizovaný přijímací dopis a studentský profil.</p>
+        </div>
+
+        <form id="registrationForm" novalidate>
+          <fieldset class="salutation-fieldset">
+            <legend>Oslovení</legend>
+            <div class="choice-row">
+              <label class="choice-card">
+                <input type="radio" name="salutation" value="slečna" required>
+                <span>Slečna</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="salutation" value="pan" required>
+                <span>Pan</span>
+              </label>
+            </div>
+            <p class="field-error" id="salutationError"></p>
+          </fieldset>
+
+          <div class="field-grid two-columns">
+            <div class="field">
+              <label for="firstName">Jméno</label>
+              <input id="firstName" name="firstName" type="text" autocomplete="given-name" maxlength="40" required>
+              <p class="field-error" id="firstNameError"></p>
+            </div>
+            <div class="field">
+              <label for="lastName">Příjmení</label>
+              <input id="lastName" name="lastName" type="text" autocomplete="family-name" maxlength="50" required>
+              <p class="field-error" id="lastNameError"></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="120" required>
+            <p class="field-help">Později bude sloužit jako přihlašovací jméno.</p>
+            <p class="field-error" id="emailError"></p>
+          </div>
+
+          <div class="field-grid two-columns">
+            <div class="field">
+              <label for="password">Heslo</label>
+              <div class="password-wrap">
+                <input id="password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="72" required>
+                <button class="toggle-password" type="button" data-target="password" aria-label="Zobrazit heslo">Zobrazit</button>
+              </div>
+              <p class="field-help">Min. 12 znaků, velké i malé písmeno, číslo a speciální znak.</p>
+              <p class="field-error" id="passwordError"></p>
+            </div>
+            <div class="field">
+              <label for="passwordConfirm">Heslo znovu</label>
+              <div class="password-wrap">
+                <input id="passwordConfirm" name="passwordConfirm" type="password" autocomplete="new-password" minlength="12" maxlength="72" required>
+                <button class="toggle-password" type="button" data-target="passwordConfirm" aria-label="Zobrazit heslo">Zobrazit</button>
+              </div>
+              <p class="field-help">Pro kontrolu jej zopakujte.</p>
+              <p class="field-error" id="passwordConfirmError"></p>
+            </div>
+          </div>
+
+          <label class="consent-row">
+            <input id="consent" name="consent" type="checkbox" required>
+            <span>Souhlasím s uložením údajů v rámci tohoto demonstračního fan projektu.</span>
+          </label>
+          <p class="field-error" id="consentError"></p>
+
+          <button class="submit-button" type="submit">
+            <span>Potvrdit registraci</span>
+            <span aria-hidden="true">→</span>
+          </button>
+
+          <p class="privacy-note">Účet je uložený v databázi Supabase. Heslo se v prohlížeči neukládá.</p>
+        </form>
+
+        <section id="successPanel" class="success-panel" hidden aria-live="polite">
+          <div class="success-seal" aria-hidden="true">B</div>
+          <p class="step">Registrace potvrzena</p>
+          <h2 id="successTitle">Vítejte v Bradavicích</h2>
+          <p id="successText"></p>
+          <div class="student-preview">
+            <span>Stav studenta</span>
+            <strong>Čeká na přijímací dopis</strong>
+          </div>
+          <p class="next-note">Teď přiletí sova s tvým osobním přijímacím dopisem. Potom bude následovat rozřazovací ceremonie.</p>
+          <div class="success-actions">
+            <a class="secondary-button" href="prijeti.html">Převzít dopis od sovy</a>
+            <a class="success-home-link" href="index.html">Zpět na hlavní stránku</a>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="achievements.js"></script><script src="registrace.js"></script>
+</body>
+</html>

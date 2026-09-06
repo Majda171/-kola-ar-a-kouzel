@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Obrana proti černé magii — Bradavice</title>
+  <link rel="stylesheet" href="portal.css"><link rel="stylesheet" href="ghosts.css"><link rel="stylesheet" href="access-guard.css?v=42"><link rel="stylesheet" href="magic-cursor.css"><link rel="stylesheet" href="quiz.css"><link rel="stylesheet" href="game-hub.css"><link rel="stylesheet" href="v40.css"><link rel="stylesheet" href="defense-v41.css?v=42">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js?v=42"></script><script src="access-guard.js?v=42"></script>
+<link rel="stylesheet" href="music-v42.css?v=42"><link rel="stylesheet" href="castle-nav-v42.css?v=42"></head>
+<body class="scene-page">
+<header class="scene-top"><a href="hrad.html">← Mapa hradu</a><a href="profil.html">Můj profil</a></header>
+<main class="scene defense-scene v42-defense">
+  <button class="v42-lupin-character" id="lupinCharacterButton" type="button" aria-label="Promluvit s profesorem Lupinem"><img src="img/profesor-lupin-v42.webp" alt="Profesor Lupin"></button>
+  <button class="v42-boggart-wardrobe-hotspot" id="openBoggartGame" type="button" aria-label="Spustit Lupinovu praktickou zkoušku"><span>Praktická zkouška</span></button>
+  <section class="scene-copy v42-defense-copy"><p class="kicker">Praktická učebna</p><h1>Obrana proti černé magii</h1><p>Profesor Lupin čeká u skříně. Dnešní hodina nebude jen teorie.</p><p class="scene-hint">Promluv s profesorem nebo prozkoumej skříň.</p><div class="game-callout"><div><strong>Krátký test</strong><br><span>10 otázek z obrany proti černé magii</span></div></div><button class="quiz-launch" type="button" data-quiz="defense">Spustit krátký test</button><button class="quiz-launch" data-open-boggart type="button">Praktická zkouška s bubákem</button></section>
+</main>
+
+<div class="boggart-modal" id="boggartModal" hidden role="dialog" aria-modal="true" aria-labelledby="boggartTitle">
+  <section class="boggart-panel">
+    <button class="boggart-close" id="boggartClose" type="button" aria-label="Zavřít">×</button>
+    <div class="boggart-head"><img src="img/profesor-lupin-v42.webp" alt="Profesor Lupin"><div><span class="kicker">Praktická hodina</span><h2 id="boggartTitle">Postav se bubákovi</h2><p id="lupinBoggartComment">„Bubák se živí strachem. Udělej z něj něco směšného a ztratí nad tebou moc.“</p></div></div>
+    <div class="boggart-stage" id="boggartStage">
+      <img class="boggart-wardrobe-img closed" id="boggartWardrobeClosed" src="img/boggart-wardrobe-closed-v42.webp" alt="Zavřená stará skříň">
+      <img class="boggart-wardrobe-img open" id="boggartWardrobeOpen" src="img/boggart-wardrobe-open-v42.webp" alt="Otevřená stará skříň">
+      <img class="boggart-figure" id="boggartFigure" alt="Bubák">
+      <div class="boggart-round-badge" id="boggartRoundBadge">1 / 3</div>
+    </div>
+    <div class="boggart-controls">
+      <button class="boggart-start" id="boggartStart" type="button">Otevřít skříň</button>
+      <div class="gesture-box" id="boggartGestureBox" hidden><div class="gesture-canvas-wrap"><canvas class="gesture-canvas" id="gestureCanvas" aria-label="Nakresli pohyb hůlkou"></canvas></div><p class="gesture-help">Nakresli myší nebo prstem široký oblouk hůlkou. Pak vyber proměnu, která bubáka zesměšní.</p></div>
+      <div class="boggart-choices" id="boggartChoices" hidden></div>
+      <p class="boggart-status" id="boggartStatus">Skříň je zavřená.</p>
+    </div>
+  </section>
+</div>
+<script src="achievements.js"></script><script src="portal.js"></script><script src="ghosts.js"></script><script src="quiz-data.js"></script><script src="quiz.js"></script><script src="defense-v41.js?v=42"></script><script>document.querySelector('[data-open-boggart]')?.addEventListener('click',()=>document.getElementById('openBoggartGame')?.click());</script>
+<script src="music-v42.js?v=42"></script><script src="castle-nav-v42.js?v=42"></script></body></html>

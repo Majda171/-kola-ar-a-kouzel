@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root{
+  --ink:#17150f;
+  --paper:#e9dfc6;
+  --paper-deep:#cdbf9e;
+  --gold:#a98646;
+  --gold-light:#d2bc7b;
+  --night:#121513;
+  --night-2:#20251f;
+  --line:rgba(230,215,178,.34);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;
+  color:var(--paper);
+  font-family:"EB Garamond", Georgia, serif;
+  background:
+    linear-gradient(rgba(8,11,9,.78),rgba(8,11,9,.92)),
+    url("img/wall.webp") center/cover fixed;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:10;
+  background:radial-gradient(circle at 50% 18%,rgba(218,190,128,.08),transparent 34%),
+             linear-gradient(90deg,rgba(0,0,0,.42),transparent 22%,transparent 78%,rgba(0,0,0,.42));
+  mix-blend-mode:screen;
+}
+
+a{color:inherit}
+
+.site-shell{width:min(1180px,92vw);margin:0 auto;position:relative;z-index:1}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-bottom:1px solid rgba(224,209,167,.18)}
+.brand{font-family:"Cinzel",serif;letter-spacing:.22em;text-transform:uppercase;font-size:.82rem;color:#d8caa9;text-decoration:none}
+.nav{display:flex;gap:24px;align-items:center}
+.nav a{text-decoration:none;font-size:1.02rem;color:#cfc4a7;transition:.25s ease}
+.nav a:hover{color:white}
+
+.hero{min-height:82vh;display:grid;place-items:center;text-align:center;padding:76px 0 82px;position:relative}
+.hero-inner{max-width:820px}
+.eyebrow{font-family:"Cinzel",serif;text-transform:uppercase;letter-spacing:.34em;font-size:.72rem;color:var(--gold-light);margin-bottom:18px}
+h1{font-family:"Cinzel",serif;font-weight:600;font-size:clamp(3rem,8vw,7.2rem);letter-spacing:.08em;line-height:.92;text-shadow:0 10px 35px rgba(0,0,0,.65)}
+.hero h1 span{display:block;font-size:.24em;letter-spacing:.34em;margin-top:14px;color:#d4c7a5;font-weight:500}
+
+.hogwarts-crest-wrap{
+  width:min(340px,66vw);
+  margin:28px auto 12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.hogwarts-crest{
+  display:block;
+  width:100%;
+  max-height:340px;
+  object-fit:contain;
+  filter:drop-shadow(0 22px 30px rgba(0,0,0,.55));
+}
+.hogwarts-motto{
+  margin-top:10px;
+  font-family:"Cinzel",serif;
+  font-size:clamp(.7rem,1.5vw,.9rem);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gold-light);
+  line-height:1.5;
+}
+
+.hero-copy{max-width:660px;margin:26px auto 0;font-size:1.28rem;line-height:1.58;color:#d7ceb7}
+.hero-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 23px;border:1px solid rgba(211,188,129,.58);font-family:"Cinzel",serif;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:.25s ease;background:rgba(16,19,16,.7);color:#eee4cb}
+.btn:hover{transform:translateY(-2px);background:rgba(169,134,70,.17);border-color:var(--gold-light)}
+.btn.primary{background:#b09050;color:#18140c;border-color:#d3bc7c;font-weight:700}
+.btn.primary:hover{background:#c2a35e}
+
+.section{padding:72px 0}
+.section-head{text-align:center;max-width:700px;margin:0 auto 36px}
+.section-kicker{font-family:"Cinzel",serif;color:var(--gold-light);letter-spacing:.25em;text-transform:uppercase;font-size:.7rem}
+.section h2{font-family:"Cinzel",serif;font-weight:500;font-size:clamp(2rem,4vw,3.4rem);letter-spacing:.06em;margin-top:8px}
+.section-head p{margin-top:13px;font-size:1.14rem;color:#cfc5ad;line-height:1.5}
+
+.house-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.house-card{position:relative;min-height:390px;padding:28px 22px 24px;border:1px solid rgba(235,219,180,.19);background:linear-gradient(180deg,rgba(25,28,24,.9),rgba(10,12,10,.96));overflow:hidden;text-align:center;display:flex;flex-direction:column;align-items:center;transition:.28s ease}
+.house-card::before{content:"";position:absolute;inset:0;opacity:.17;background:radial-gradient(circle at 50% 20%,var(--house),transparent 58%);transition:.28s ease}
+.house-card:hover{transform:translateY(-5px);border-color:rgba(226,208,159,.48)}
+.house-card:hover::before{opacity:.32}
+.house-card img{width:min(235px,86%);height:215px;object-fit:contain;position:relative;z-index:1;filter:drop-shadow(0 16px 22px rgba(0,0,0,.5));transition:.28s ease}
+.house-card:hover img{transform:translateY(-3px) scale(1.025)}
+.house-card h3{font-family:"Cinzel",serif;letter-spacing:.12em;font-size:1.18rem;margin-top:20px;position:relative;z-index:1}
+.house-card p{font-size:1rem;line-height:1.45;color:#c8bea5;margin:10px 0 20px;position:relative;z-index:1;min-height:44px}
+.house-card .card-link{margin-top:auto;position:relative;z-index:1;font-family:"Cinzel",serif;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:4px}
+.house-card.gryff{--house:#7f241d}.house-card.slyth{--house:#1f5c42}.house-card.raven{--house:#294c71}.house-card.huff{--house:#b0902f}
+
+.portfolio-note{margin:18px auto 80px;padding:22px 24px;border-top:1px solid rgba(224,205,155,.17);border-bottom:1px solid rgba(224,205,155,.17);text-align:center;color:#bfb69f;font-style:italic;max-width:830px;font-size:1.05rem}
+footer{padding:28px 0 42px;text-align:center;color:#8f8978;font-size:.92rem}
+
+@media(max-width:900px){.house-grid{grid-template-columns:repeat(2,1fr)}.nav{display:none}.hero{min-height:60vh}}
+@media(max-width:560px){.house-grid{grid-template-columns:1fr}.hero{padding-top:72px}.hero-copy{font-size:1.1rem}.house-card{min-height:350px}.topbar{padding:18px 0}}
+
+/* --- v5: samostatná úvodní stránka + stránka kolejí --- */
+.home-page{
+  min-height:100svh;
+  overflow:auto;
+}
+.home-main{min-height:100svh}
+.hero-only{
+  min-height:100svh;
+  padding:30px 24px 44px;
+}
+.hero-only .hero-inner{width:min(850px,94vw)}
+.hero-only .hogwarts-crest-wrap{width:min(290px,54vw);margin-top:26px}
+.hero-only .hogwarts-crest{max-height:290px}
+.hero-only .hero-copy{margin-top:22px}
+
+.houses-shell{width:min(1180px,92vw)}
+.houses-main{padding:58px 0 90px}
+.houses-intro{text-align:center;max-width:760px;margin:34px auto 70px}
+.houses-title{
+  font-family:"Cinzel",serif;
+  font-weight:500;
+  font-size:clamp(2.5rem,6vw,5.4rem);
+  letter-spacing:.08em;
+  line-height:1.02;
+}
+.houses-intro > p:last-child{max-width:650px;margin:22px auto 0;color:#cfc5ad;font-size:1.2rem;line-height:1.6}
+.house-story{
+  --accent:#9c7844;
+  min-height:470px;
+  display:grid;
+  grid-template-columns:minmax(320px,.9fr) minmax(360px,1.1fr);
+  gap:clamp(36px,7vw,90px);
+  align-items:center;
+  padding:72px clamp(10px,3vw,30px);
+  border-top:1px solid rgba(226,209,163,.16);
+  position:relative;
+}
+.house-story.reverse .house-crest-stage{order:2}
+.house-story.reverse .house-copy-block{order:1}
+.house-crest-stage{display:grid;place-items:center;min-height:360px;position:relative}
+.house-crest-stage::before{
+  content:"";
+  position:absolute;
+  width:min(360px,80%);
+  aspect-ratio:1;
+  border-radius:50%;
+  background:radial-gradient(circle, color-mix(in srgb,var(--accent) 26%,transparent), transparent 68%);
+  filter:blur(8px);
+  opacity:.7;
+}
+.house-crest-stage img{
+  width:min(360px,92%);
+  max-height:390px;
+  object-fit:contain;
+  position:relative;
+  z-index:1;
+  filter:drop-shadow(0 24px 28px rgba(0,0,0,.58));
+  transition:transform .35s ease,filter .35s ease;
+}
+.house-story:hover .house-crest-stage img{transform:translateY(-6px) scale(1.015);filter:drop-shadow(0 30px 32px rgba(0,0,0,.68))}
+.house-copy-block{max-width:560px}
+.house-number{font-family:"Cinzel",serif;color:var(--gold-light);font-size:.72rem;letter-spacing:.32em;margin-bottom:12px}
+.house-copy-block h2{font-family:"Cinzel",serif;font-weight:500;font-size:clamp(2.5rem,5vw,4.7rem);letter-spacing:.08em;line-height:1}
+.house-traits{font-family:"Cinzel",serif;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-size:.72rem;margin:18px 0 28px}
+.house-copy-block > p:not(.house-number):not(.house-traits){font-size:1.16rem;line-height:1.62;color:#d4cab2}
+.house-entry-note{margin-top:20px;color:#aea58e!important;font-style:italic}
+.story-link{
+  display:inline-block;
+  margin-top:30px;
+  text-decoration:none;
+  font-family:"Cinzel",serif;
+  font-size:.74rem;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  color:#eee1c2;
+  padding-bottom:5px;
+  border-bottom:1px solid var(--accent);
+  transition:.25s ease;
+}
+.story-link:hover{color:white;letter-spacing:.2em}
+.gryff-story{--accent:#a84b3b}.slyth-story{--accent:#4b8467}.raven-story{--accent:#587da6}.huff-story{--accent:#c3a143}
+
+@media(max-width:760px){
+  .hero-only{padding:34px 18px 42px}
+  .hero-only .hogwarts-crest-wrap{width:min(250px,62vw)}
+  .house-story,.house-story.reverse{grid-template-columns:1fr;gap:22px;padding:56px 4px}
+  .house-story.reverse .house-crest-stage,.house-story.reverse .house-copy-block{order:initial}
+  .house-crest-stage{min-height:290px}
+  .house-crest-stage img{width:min(300px,86vw);max-height:315px}
+  .house-copy-block{text-align:center;margin:0 auto;padding:0 10px}
+  .houses-intro{margin-bottom:40px}
+}
+
+
+.existing-student{margin-top:18px;font-family:"Cinzel",serif;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:#a89a79}.existing-student a{text-decoration:none;border-bottom:1px solid rgba(210,188,130,.35);padding-bottom:3px}.existing-student a:hover{color:#ead9aa;border-color:#d2bc7b}
+
+.admin-entry{margin-top:12px}.admin-entry a{font-family:Cinzel,serif;text-transform:uppercase;letter-spacing:.14em;font-size:.48rem;color:rgba(221,205,166,.38);text-decoration:none}.admin-entry a:hover{color:rgba(238,222,182,.72)}

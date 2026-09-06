@@ -1,0 +1,21 @@
+/* BRADAVICE v40 — sjednocené opravy a nové funkce */
+.map-games-nav,.game-hub-fab{display:none!important}
+.hs40-knihovna{left:33.7%;top:73.1%;width:8.9%;height:5.4%}
+/* skutečně různá pozadí chodeb */
+.corridor-arcade{background-image:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.23)),url('img/chodba-zapadni-v40.webp')!important;background-position:center!important;background-size:cover!important}
+.corridor-stairs{background-image:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.20)),url('img/hlavni-schodiste-v40.webp')!important;background-position:center!important;background-size:cover!important}
+.corridor-gallery{background-image:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.20)),url('img/corridor-v24-2.webp')!important;background-position:center!important;background-size:cover!important}
+.corridor-old-gallery{background-image:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.23)),url('img/chodba-vychodni-v40.webp')!important;background-position:center!important;background-size:cover!important}
+.corridor-upper{background-image:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.22)),url('img/chodba-horni-v40.webp')!important;background-position:center!important;background-size:cover!important}
+.v40-character{position:absolute;z-index:15;object-fit:contain;filter:drop-shadow(0 24px 25px rgba(0,0,0,.75));pointer-events:auto}
+.prytova-character{right:2%;bottom:-2%;height:min(74vh,790px)}
+.lupin-character{right:2%;bottom:-3%;height:min(78vh,820px)}
+.v40-character-button{position:absolute;z-index:17;border:0;background:transparent;padding:0;cursor:pointer}.filch-character{right:2%;bottom:-2%;height:min(74vh,760px)}.filch-character .v40-character{position:static;height:100%;max-width:38vw}
+.v40-character-button:hover .v40-character{transform:translateY(-4px);filter:brightness(1.05) drop-shadow(0 28px 28px rgba(0,0,0,.82))}
+.house-chat-door,.school-chat-door,.tournament-secret-link,.v40-inline-link{display:inline-block;color:#e1c57e;text-decoration:none;border:1px solid rgba(220,190,119,.32);background:rgba(8,8,7,.62);padding:10px 14px;font:600 .52rem 'Cinzel',Georgia,serif;letter-spacing:.09em;text-transform:uppercase}.house-chat-door{margin-top:12px}.school-chat-door{position:absolute;z-index:20;right:4%;bottom:5%}.tournament-secret-link{position:relative;z-index:3;margin:18px auto 0;left:50%;transform:translateX(-50%)}
+.library-v40{background:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.48)),url('img/knihovna-v40.webp') center/cover no-repeat!important}.library-v40 .place-copy{background:linear-gradient(90deg,rgba(7,8,8,.70),rgba(7,8,8,.12));border-left:1px solid rgba(218,187,112,.25)}
+@media(max-width:720px){.prytova-character,.lupin-character{height:46vh;opacity:.82}.filch-character{height:45vh}.school-chat-door{right:3%;bottom:3%;font-size:.44rem}}
+/* v40: nová tlačítka musí být vždy klikací nad dekorativními vrstvami scén */
+.chess-launch,.keeper-launch,.quiz-launch,.potion-brew-launch,.chess-mode button,.chess-actions button,.keeper-actions button{position:relative;z-index:80;pointer-events:auto!important}
+.chess-modal,.keeper-modal,.brew-modal{pointer-events:auto!important}.chess-panel,.keeper-panel,.brew-panel{position:relative;z-index:2;pointer-events:auto}
+.astronomy-replay{margin-top:9px;border:1px solid rgba(214,184,111,.5);background:rgba(12,15,18,.76);color:#dfc77f;padding:9px 12px;font:600 .55rem 'Cinzel',Georgia,serif;text-transform:uppercase;letter-spacing:.08em;cursor:pointer}

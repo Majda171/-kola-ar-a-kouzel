@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="prihlaseni.css">
+  <title>Zmijozel — vstup</title>
+<link rel="stylesheet" href="ghosts.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js?v=42"></script>
+<link rel="stylesheet" href="access-guard.css?v=42"><script src="access-guard.js?v=42"></script>
+<link rel="stylesheet" href="magic-cursor.css">
+<link rel="stylesheet" href="v40.css"><link rel="stylesheet" href="music-v42.css?v=42"></head>
+<body>
+<main class="entry-page slyth">
+  <a class="back-link" href="hrad.html">← Mapa hradu</a>
+  <section class="scene slytherin-scene" id="slytherinScene">
+    <img class="wall-torch torch-small slyth-left" src="img/torch-slytherin.webp" alt="" aria-hidden="true">
+    <img class="wall-torch torch-small slyth-right" src="img/torch-slytherin.webp" alt="" aria-hidden="true">
+    <img class="old-armor" src="img/old-armor.webp" alt="Staré brnění ve sklepení">
+    <img class="slytherin-founder" src="img/founder-salazar-v42.webp" alt="Starý portrét Salazara Zmijozela">
+    <img class="slytherin-crest" src="img/zmijozel-erb.webp" alt="Erb Zmijozelu">
+    <img class="slytherin-wall-emblem emblem-left" src="img/zmijozel-erb.webp" alt="" aria-hidden="true">
+    <img class="slytherin-wall-emblem emblem-right" src="img/zmijozel-erb.webp" alt="" aria-hidden="true">
+
+    <button class="secret-wall-hotspot" id="secretWall" aria-label="Prozkoumat kamennou stěnu"></button>
+
+    <div class="slytherin-portal" aria-hidden="true">
+      <img src="img/zmijozel-vstup.webp" alt="">
+    </div>
+
+    <div class="reveal-panel slytherin-password" id="loginPanel" hidden>
+      <form id="loginForm">
+        <label class="sr-only" for="password">Heslo</label>
+        <input id="password" autocomplete="off" placeholder="Heslo…" required>
+        <button type="submit">Vyslovit</button>
+      </form>
+      <p id="errorMessage" class="error-message" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+<script src="achievements.js"></script><script src="entry.js"></script>
+<script>
+  const scene = document.getElementById('slytherinScene');
+  const weekly = window.BradaviceAchievements?.getWeeklyEntry('Z');
+  const wall = document.getElementById('secretWall');
+  const panel = document.getElementById('loginPanel');
+  wall.addEventListener('click',()=>{
+    magicKnock('stone');
+    wall.classList.add('touched');
+    panel.hidden = false;
+    requestAnimationFrame(()=>panel.classList.add('visible'));
+    setTimeout(()=>document.getElementById('password').focus(),220);
+  });
+  setupPasswordForm({
+    formId:'loginForm',inputId:'password',errorId:'errorMessage',
+    answers:weekly?.answers||['Bezoár'],successUrl:'Zmijozel.html',
+    wrongText:'Kámen zůstává nehybný.',delay:1450,
+    onSuccess:()=>{
+      window.BradaviceAchievements?.award('septane-heslo');window.BradaviceAchievements?.award('znalec-hesel',{silent:true});
+      panel.classList.remove('visible');
+      setTimeout(()=>{panel.hidden=true; scene.classList.add('opening');},180);
+    }
+  });
+</script>
+<script src="ghosts.js"></script>
+<script src="music-v42.js?v=42"></script></body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Interaktivní společenská místnost koleje Zmijozel.">
+  <link rel="stylesheet" href="common-room.css">
+  <title>Zmijozel — společenská místnost</title>
+<link rel="stylesheet" href="ghosts.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js?v=42"></script>
+<link rel="stylesheet" href="access-guard.css?v=42"><script src="access-guard.js?v=42"></script>
+<link rel="stylesheet" href="magic-cursor.css">
+<link rel="stylesheet" href="v40.css"><link rel="stylesheet" href="music-v42.css?v=42"><link rel="stylesheet" href="castle-nav-v42.css?v=42"></head>
+<body class="common-room-page" data-house="Z">
+  <div class="room-shell">
+    <header class="room-topbar">
+      <a class="room-brand" href="hrad.html">Bradavice</a>
+      <nav class="room-nav" aria-label="Navigace společenské místnosti">
+        <a href="#nastěnka">Nástěnka</a>
+        <a href="#kronika">Kronika</a>
+        <a href="hrad.html">Hrad</a>
+        <a href="profil.html">Profil</a>
+        <a href="koleje.html">Koleje</a>
+        <a id="exitRoom" href="index.html">Opustit místnost</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="room-hero">
+        <div class="room-crest-wrap"><img class="room-crest" src="img/zmijozel-erb.webp" alt="Erb koleje Zmijozel"></div>
+        <div>
+          <p class="room-kicker">Zmijozelské sklepení</p>
+          <h1 class="room-title" id="roomHouseName">Zmijozel</h1>
+          <p class="room-lead" id="roomMotto"></p>
+          <p class="visitor-badge" id="roomAccessStatus"></p>
+        </div>
+      </section>
+
+      <section class="private-places" aria-label="Soukromé kolejní prostory">
+        <div class="private-places-head">
+          <p class="panel-kicker">Soukromé prostory koleje</p>
+          <h2>Prozkoumej svou kolej</h2>
+          <p>Tyto místnosti nejsou na mapě hradu. Vstup vede pouze odsud.</p>
+        </div>
+        <div class="private-place-links">
+          <a class="private-place-card" data-private-house-link href="zmijozel-spolecenska.html">
+            <span class="private-place-number">I</span>
+            <span><strong>Společenská místnost</strong><small>Vstoupit do skutečného kolejního prostoru</small></span>
+          </a>
+          <a class="private-place-card" data-private-house-link href="zmijozel-loznice.html">
+            <span class="private-place-number">II</span>
+            <span><strong>Ložnice</strong><small>Čtyři postele s nebesy a kolejní klid</small></span>
+          </a>
+        </div>
+      </section>
+
+      <section class="room-grid">
+        <section class="panel board-panel" id="nastěnka">
+          <div class="panel-inner">
+            <div class="board-head">
+              <div><p class="panel-kicker">Kolejní nástěnka</p><h2 class="panel-title">Vzkazy studentů</h2></div>
+              <button class="board-action" id="addNoteButton" type="button">Připnout vzkaz</button>
+            </div>
+            <form class="note-form" id="noteForm" hidden>
+              <label for="noteText">Nový vzkaz</label>
+              <textarea id="noteText" maxlength="220" placeholder="Napište krátký vzkaz pro svou kolej…" required></textarea>
+              <div class="note-form-row"><span class="note-count" id="noteCount">0/220</span><button class="note-submit" type="submit">Připnout na nástěnku</button></div>
+            </form>
+            <div class="note-board" id="noteBoard" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <aside class="side-stack">
+          <section class="panel"><div class="panel-inner">
+            <p class="panel-kicker">Studentský profil</p>
+            <div class="student-card"><div class="student-seal" id="studentSeal">—</div><div><h2 class="student-name" id="studentName">Návštěvník</h2><p class="student-meta" id="studentMeta"></p></div></div>
+            <div class="stat-row"><span class="stat-label">Tvé body</span><strong class="stat-value" id="studentPoints">0</strong></div>
+            <a class="student-profile-link" href="profil.html">Zobrazit celý profil →</a>
+          </div></section>
+
+          <section class="panel"><div class="panel-inner">
+            <p class="panel-kicker">Pohár kolejí</p><h2 class="panel-title">Průběžné body</h2>
+            <div class="cup-list" id="cupList"></div>
+          </div></section>
+
+          <section class="panel"><div class="panel-inner">
+            <p class="panel-kicker">Anketa týdne</p><h2 class="panel-title" id="pollQuestion"></h2>
+            <div class="poll-options" id="pollOptions"></div><p class="poll-status" id="pollStatus"></p>
+          </div></section>
+
+          <section class="panel"><div class="panel-inner">
+            <p class="panel-kicker">Dnešní výzva</p><h2 class="panel-title">+5 bodů</h2>
+            <p class="challenge-text" id="challengeText"></p><button class="challenge-button" id="challengeButton" type="button">Splněno · +5 bodů</button><p class="challenge-message" id="challengeMessage"></p>
+          </div></section>
+        </aside>
+
+        <div class="bottom-grid" id="kronika">
+          <section class="prefect-note"><h2>Oznámení prefekta</h2><p id="prefectText"></p><p class="prefect-sign">— připnuto pro členy koleje</p></section>
+          <section class="chronicle"><p class="panel-kicker">Kolejní kronika</p><h2 class="panel-title">Co se právě děje</h2><div class="chronicle-list" id="chronicleList"></div></section>
+        </div>
+      </section>
+    </main>
+    <p class="room-footer">Společenská místnost je prototyp. Vzkazy, hlasování a body se zatím ukládají lokálně v tomto prohlížeči.</p>
+  </div>
+  <script src="achievements.js"></script><script src="common-room.js"></script>
+<script src="ghosts.js"></script>
+<script src="music-v42.js?v=42"></script><script src="castle-nav-v42.js?v=42"></script></body>
+</html>

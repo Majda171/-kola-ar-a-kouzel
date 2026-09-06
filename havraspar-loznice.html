@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Ložnice koleje Havraspár v interaktivních Bradavicích.">
+  <link rel="stylesheet" href="house-space.css">
+  <link rel="stylesheet" href="magic-cursor.css">
+  <title>Ložnice — Havraspár</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js?v=42"></script>
+<link rel="stylesheet" href="access-guard.css?v=42"><script src="access-guard.js?v=42"></script>
+<link rel="stylesheet" href="v40.css"><link rel="stylesheet" href="music-v42.css?v=42"><link rel="stylesheet" href="castle-nav-v42.css?v=42"></head>
+<body class="house-space loading" data-house="H" data-space="bedroom">
+  <main class="house-scene" style="--scene:url('img/havraspar-bedroom.webp')">
+    <header class="house-top">
+      <a id="houseDashboard" href="koleje.html">← Kolejní centrum</a>
+      <nav>
+        <a id="switchSpace" href="#">Další místnost</a>
+        <a href="profil.html">Můj profil</a>
+      </nav>
+    </header>
+    <section class="house-caption">
+      <span class="kicker">Havraspárská věž</span>
+      <h1>Ložnice</h1>
+      <p>Čtyři postele s nebesy pod modrými závěsy a noční obloha za okny.</p>
+    </section>
+  </main>
+  <div class="magic-toast" id="magicToast" aria-live="polite"></div>
+  <aside class="access-lock" aria-live="polite">
+    <div class="access-lock-card">
+      <h1>Soukromá část koleje</h1>
+      <p>Tahle místnost je přístupná jen studentům koleje <strong id="lockedHouseName"></strong>.</p>
+      <a href="koleje.html">Zpět ke kolejím</a>
+    </div>
+  </aside>
+  <script src="achievements.js"></script>
+  <script src="house-space.js"></script>
+<script src="music-v42.js?v=42"></script><script src="castle-nav-v42.js?v=42"></script></body>
+</html>

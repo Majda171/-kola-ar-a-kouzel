@@ -1,0 +1,6 @@
+(() => {
+ const form=document.getElementById('contactForm'),msg=document.getElementById('contactMessage'),key=document.getElementById('web3formsKey');
+ const student=(()=>{try{return JSON.parse(localStorage.getItem('bradavice_student_v1'))}catch{return null}})();
+ if(student){document.getElementById('contactName').value=`${student.firstName||''} ${student.lastName||''}`.trim();document.getElementById('contactEmail').value=student.email||''}
+ form.addEventListener('submit',async e=>{e.preventDefault();msg.className='contact-message';if(!key.value.trim()){msg.textContent='Formulář je připravený, ale zatím není aktivní. Stačí doplnit Web3Forms access key.';return}const btn=form.querySelector('button');btn.disabled=true;msg.textContent='Odesílám…';try{const fd=new FormData(form),r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd}),out=await r.json();if(!r.ok||!out.success)throw new Error(out.message||'Odeslání se nezdařilo.');msg.className='contact-message success';msg.textContent='Sova odletěla. Zpráva byla odeslána.';form.querySelector('textarea').value=''}catch(err){msg.className='contact-message error';msg.textContent=err?.message||'Zprávu se nepodařilo odeslat.'}finally{btn.disabled=false}})
+})();

@@ -1,0 +1,8 @@
+Bradavice v21
+- opravené základní odznaky: všech 24 používá skutečnou grafiku
+- mapa: přesnější klikací zóny a bez systémových tooltipů
+- všechny chodby používají kamenné pozadí wall.webp
+- učebna přeměňování: kouzelnické pexeso, trénink 1 hráče a lokální souboj 2–4 hráčů
+- profil: připravené UI Přátelé + Chat
+
+Přátelé/chat a online pexeso zatím nejsou sdílené mezi zařízeními. Pro skutečné studentské účty a zprávy je potřeba napojit databázi/Supabase.

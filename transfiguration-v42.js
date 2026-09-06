@@ -1,0 +1,12 @@
+(()=>{
+  const teacher=document.getElementById('mcgonagallTeacher'),feather=document.getElementById('transfigurationFeather'),modal=document.getElementById('transfigurationTaskModal');if(!teacher||!feather||!modal)return;
+  const close=document.getElementById('transfigurationTaskClose'),accept=document.getElementById('transfigurationTaskAccept'),text=document.getElementById('transfigurationTaskText');
+  const KEY='bradavice_mcgonagall_feather_v42';
+  const load=()=>{try{return{accepted:false,done:false,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch{return{accepted:false,done:false}}};
+  const save=s=>localStorage.setItem(KEY,JSON.stringify(s));let state=load(),flying=false;
+  function render(){state=load();if(state.done){text.textContent='„Přesné, klidné a bez zbytečného mávání. Tak má základní kouzlo vypadat.“';accept.textContent='Úkol splněn';accept.disabled=true;accept.classList.add('done')}else if(state.accepted){text.textContent='„Úkol platí. Rozpohybujte pírko na přední lavici a vraťte ho bezpečně na stejné místo.“';accept.textContent='Úkol přijat';accept.disabled=true}else{accept.disabled=false;accept.classList.remove('done');accept.textContent='Přijmout úkol'}}
+  function show(){render();modal.hidden=false;document.body.style.overflow='hidden'}function hide(){modal.hidden=true;document.body.style.overflow=''}
+  teacher.addEventListener('click',show);close.addEventListener('click',hide);modal.addEventListener('click',e=>{if(e.target===modal)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)hide()});
+  accept.addEventListener('click',()=>{state=load();state.accepted=true;save(state);render();hide();setTimeout(()=>feather.focus(),120)});
+  feather.addEventListener('click',async()=>{if(flying)return;flying=true;feather.classList.remove('is-flying');void feather.offsetWidth;feather.classList.add('is-flying');state=load();if(state.accepted&&!state.done){state.done=true;save(state);setTimeout(async()=>{let dbHandled=false;try{const pts=await window.BradaviceDB?.claimV42Activity?.('mcgonagall-feather',1);dbHandled=Number.isFinite(Number(pts))}catch(e){console.warn('McGonagallová v42 DB:',e)}window.BradaviceAchievements?.completeQuest?.('mcgonagall-feather',{points:dbHandled?0:10,badgeId:'prvni-promena',title:'McGonagallová · lehké jako pírko',syncDb:!dbHandled});},3100)}setTimeout(()=>{feather.classList.remove('is-flying');flying=false},4700)});
+})();

@@ -1,0 +1,17 @@
+BRADAVICE v25 — interaktivní lokace
+
+Hlavní změny:
+- chodby zesvětlené a zbavené "nalepených" PNG obrazů, brnění a pochodní
+- Godrik je vložen přímo do pozadí třetího poschodí a má neviditelný interaktivní hotspot
+- nové pozadí: Zapovězený les, Černé jezero, Hagridův dům venku i uvnitř, Vrba mlátička, skleník, Obrana proti černé magii, kuchyně
+- Hagridův dům: dvojí poklepání na dveře otevře interiér
+- kuchyně: vstup přes lechtivou hrušku, kurzor peříčko; po otevření další interaktivní prvky
+- přidána Tajemná cesta a Tajemná komnata; vstup je skrytý ve Východní chodbě
+- každá hlavní lokace má specifickou nebo alespoň jemnou klikací interakci
+- famfrpál: zachované původní pozadí, přidáni dva létající hráči, camrál a zlatonka zůstávají interaktivní
+- pexeso používá původních 32 ilustrací, ale v novém sjednoceném pergamenovém rámečku
+- učebna přeměňování je světlejší a bez plovoucího PNG učitele
+- jednorázový v25 reset odstraní stará data Bradavic z localStorage, takže registrace začíná znovu
+- každý nově získaný základní odznak přidává +5 bodů studentovi i jeho koleji
+
+Tajemná komnata není přidána jako přímý bod do mapy. Je třeba ji objevit.

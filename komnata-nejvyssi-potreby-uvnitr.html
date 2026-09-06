@@ -1,0 +1,24 @@
+<!DOCTYPE html><html lang="cs"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Komnata nejvyšší potřeby — Bradavice</title><link rel="stylesheet" href="places.css"><link rel="stylesheet" href="ghosts.css"><link rel="stylesheet" href="access-guard.css?v=42"><link rel="stylesheet" href="magic-cursor.css"><link rel="stylesheet" href="v40.css"><link rel="stylesheet" href="komnata-v40.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js?v=42"></script><script src="access-guard.js?v=42"></script><link rel="stylesheet" href="music-v42.css?v=42"><link rel="stylesheet" href="castle-nav-v42.css?v=42"></head><body><header class="place-top"><a href="komnata-nejvyssi-potreby.html">← Zpět na chodbu</a><a href="profil.html">Můj profil</a></header><main class="place-scene requirement-inside-v39"><section class="place-copy compact-copy"><span class="kicker">Tajná místnost</span><h1>Komnata nejvyšší potřeby</h1><p>Místnost se zařídila přesně podle toho, co bylo potřeba.</p></section>
+<aside class="requirement-task-panel" id="requirementTasks">
+  <span class="kicker">Hry Komnaty</span><h2 id="roomGameTitle">Zkouška soustředění</h2>
+  <div class="room-game-tabs"><button class="active" type="button" data-room-game="focus">Zkouška</button><button type="button" data-room-game="tictactoe">Piškvorky</button></div>
+  <section id="roomFocusGame">
+    <p class="requirement-intro">Komnata na okamžik ukáže kouzelnické předměty. Zapamatuj si je a zopakuj ve správném pořadí. Čekají tě tři kola.</p>
+    <div class="rune-display" id="runeDisplay">Připraven/a?</div>
+    <div class="rune-grid" id="runeGrid">
+      <button data-rune="candle" type="button"><img src="img/candle-real.webp" alt="Svíčka"><span>Svíčka</span></button>
+      <button data-rune="cauldron" type="button"><img src="img/kotlik-velky.webp" alt="Kotlik"><span>Kotlík</span></button>
+      <button data-rune="armor" type="button"><img src="img/old-armor.webp" alt="Brnění"><span>Brnění</span></button>
+      <button data-rune="chest" type="button"><img src="img/prop-chest-closed.webp" alt="Truhla"><span>Truhla</span></button>
+      <button data-rune="snitch" type="button"><img src="img/zlatonka.webp" alt="Zlatonka"><span>Zlatonka</span></button>
+    </div>
+    <div class="requirement-round"><span>Kolo</span><strong id="requirementRound">1 / 3</strong></div>
+    <button class="requirement-start" id="requirementStart" type="button">Spustit zkoušku</button><p class="requirement-task-status" id="requirementTaskStatus"></p>
+  </section>
+  <section id="roomTicTacToe" hidden>
+    <p class="requirement-intro">Kouzelnické piškvorky 5 × 5. Ty hraješ symbolem ✦, Komnata symbolem ☾. Vyhrává první čtveřice v řadě.</p>
+    <div class="room-ttt-board" id="roomTttBoard" aria-label="Kouzelnické piškvorky"></div>
+    <p class="requirement-task-status" id="roomTttStatus">Jsi na tahu.</p>
+    <button class="requirement-start" id="roomTttRestart" type="button">Nová partie</button>
+  </section>
+</aside></main><script>if(sessionStorage.getItem('bradavice_requirement_gate')!=='open')location.replace('komnata-nejvyssi-potreby.html');</script><script src="achievements.js"></script><script src="ghosts.js"></script><script src="komnata-v40.js"></script><script src="music-v42.js?v=42"></script><script src="castle-nav-v42.js?v=42"></script></body></html>

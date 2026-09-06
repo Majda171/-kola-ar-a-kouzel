@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interaktivní rozřazovací ceremonie do jedné ze čtyř kolejí studentského portálu Bradavic.">
+  <link rel="stylesheet" href="rozrazeni.css">
+  <title>Rozřazovací ceremonie — Bradavice</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js?v=42"></script>
+<link rel="stylesheet" href="access-guard.css?v=42"><script src="access-guard.js?v=42"></script>
+<link rel="stylesheet" href="magic-cursor.css">
+<link rel="stylesheet" href="v40.css"><link rel="stylesheet" href="music-v42.css?v=42"><link rel="stylesheet" href="castle-nav-v42.css?v=42"></head>
+<body class="sorting-page">
+  <main class="sorting-shell">
+    <a class="back-link" href="index.html">← Hlavní síň</a>
+
+    <section id="introStage" class="intro-stage" aria-labelledby="sortingTitle">
+      <div class="hat-stage" aria-hidden="true">
+        <div class="hat-glow"></div>
+        <img src="img/moudry-klobouk-v32.webp" alt="" class="sorting-hat">
+      </div>
+      <div class="intro-copy">
+        <p class="eyebrow">Rozřazovací ceremonie</p>
+        <h1 id="sortingTitle">Moudrý klobouk rozhodne</h1>
+        <p id="studentGreeting" class="student-greeting">Posaďte se. Klobouk už přemýšlí.</p>
+        <button id="startButton" class="primary-button" type="button">Nasadit klobouk</button>
+      </div>
+    </section>
+
+    <section id="quizStage" class="quiz-stage" hidden aria-live="polite">
+      <div class="quiz-topline">
+        <div>
+          <p class="eyebrow">Moudrý klobouk</p>
+          <p id="progressText" class="progress-text">Otázka 1 z 15</p>
+        </div>
+        <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
+      </div>
+
+      <div class="question-layout">
+        <div class="mini-hat" aria-hidden="true">
+          <img src="img/moudry-klobouk-v32.webp" alt="">
+        </div>
+        <div class="question-panel">
+          <h2 id="questionText"></h2>
+          <div id="answerGrid" class="answer-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="thinkingStage" class="thinking-stage" hidden aria-live="assertive">
+      <div class="thinking-hat-wrap" aria-hidden="true">
+        <div class="thinking-rings"></div>
+        <img src="img/moudry-klobouk-v32.webp" alt="" class="thinking-hat">
+      </div>
+      <p class="eyebrow">Rozhodnutí se blíží</p>
+      <h2>Moudrý klobouk přemýšlí…</h2>
+      <p>Odvaha. Důvtip. Věrnost. Ambice.</p>
+    </section>
+
+    <section id="resultStage" class="result-stage" hidden aria-live="assertive">
+      <div class="result-frame">
+        <div class="result-inner">
+          <p class="result-kicker">Rozřazení dokončeno</p>
+          <img id="resultCrest" class="result-crest" src="" alt="">
+          <h2 id="resultHouse"></h2>
+          <h3 id="resultWelcome"></h3>
+          <p id="resultMessage" class="result-message"></p>
+          <p id="resultPersonal" class="result-personal"></p><div id="resultAccess" class="result-access"></div>
+          <div class="result-actions">
+            <a id="enterHouseLink" class="primary-button" href="#">Vstoupit do koleje</a>
+            <button id="restartButton" class="ghost-button" type="button">Zopakovat rozřazení</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="achievements.js"></script><script src="rozrazeni.js"></script>
+<script src="music-v42.js?v=42"></script><script src="castle-nav-v42.js?v=42"></script></body>
+</html>

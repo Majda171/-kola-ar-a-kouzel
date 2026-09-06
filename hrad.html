@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Interaktivní pergamenová mapa Bradavic.">
+<link rel="stylesheet" href="map.css">
+<link rel="stylesheet" href="ghosts.css">
+<link rel="stylesheet" href="game-hub.css">
+<title>Bradavice — mapa hradu</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js?v=42"></script>
+<link rel="stylesheet" href="access-guard.css?v=42"><script src="access-guard.js?v=42"></script>
+<link rel="stylesheet" href="magic-cursor.css">
+<link rel="stylesheet" href="v40.css"><link rel="stylesheet" href="music-v42.css?v=42"><link rel="stylesheet" href="castle-nav-v42.css?v=42"></head>
+<body class="map-page">
+<div class="map-shell">
+<header class="map-top">
+  <a class="map-brand" href="hrad.html">Bradavice</a>
+  <nav class="map-nav">
+    <a href="profil.html">Můj profil</a>
+    
+    <a href="koleje.html">Koleje</a>
+    <a href="chat.html">Chat</a>
+    <a href="velka-sin.html">Velká síň</a>
+    <a href="reditelna.html">Ředitelna</a>
+  </nav>
+</header>
+<main>
+<section class="map-intro"><p class="eyebrow">Starý školní plánek</p><h1>Mapa Bradavic</h1><p>Na mapě jsou jen známá místa. Tajemství si musíš odhalit sám.</p></section>
+<div class="castle-map-wrap v39-map"><div class="map-scroll"><section class="castle-map image-map" aria-label="Interaktivní mapa Bradavic">
+  <img class="castle-map-image" src="img/mapa-bradavic-v39.webp" alt="Starý červenohnědý inkoustový plán Bradavic">
+
+  <!-- v39: klikací zóny leží přímo nad názvy vytištěnými v pergamenu. -->
+  <a class="map-hotspot v39-hot hs39-koleje" href="koleje.html" aria-label="Koleje" title="Koleje"></a>
+  <a class="map-hotspot v39-hot hs39-astronomie" href="astronomicka-vez.html" aria-label="Astronomická věž" title="Astronomická věž"></a>
+  <a class="map-hotspot v39-hot hs39-famfrpal" href="famfrpal.html" aria-label="Famfrpálové hřiště" title="Famfrpálové hřiště"></a>
+  <a class="map-hotspot v39-hot hs39-treti" href="chodby-horni.html" aria-label="Třetí poschodí" title="Třetí poschodí"></a>
+  <a class="map-hotspot v39-hot hs39-sin" href="sin-slavy.html" aria-label="Síň slávy" title="Síň slávy"></a>
+  <a class="map-hotspot v39-hot hs39-premenovani" href="ucebna-premenovani.html" aria-label="Učebna přeměňování" title="Učebna přeměňování"></a>
+  <a class="map-hotspot v39-hot hs39-obrana" href="ucebna-obrany.html" aria-label="Učebna obrany proti černé magii" title="Obrana proti černé magii"></a>
+  <a class="map-hotspot v39-hot hs39-velka" href="velka-sin.html" aria-label="Velká síň" title="Velká síň"></a>
+  <a class="map-hotspot v39-hot hs39-chodby" href="chodby.html" aria-label="Hradní chodby" title="Hradní chodby"></a>
+  <a class="map-hotspot v39-hot hs39-schody" href="chodby-schody.html" aria-label="Hlavní schodiště" title="Hlavní schodiště"></a>
+  <a class="map-hotspot v39-hot hs39-nadvori" href="nadvori.html" aria-label="Nádvoří" title="Nádvoří"></a>
+  <a class="map-hotspot v39-hot hs40-knihovna" href="knihovna.html" aria-label="Knihovna" title="Knihovna"></a>
+  <a class="map-hotspot v39-hot hs39-lektvary" href="ucebna-lektvaru.html" aria-label="Učebna lektvarů" title="Učebna lektvarů"></a>
+  <a class="map-hotspot v39-hot hs39-kuchyne" href="kuchyne.html" aria-label="Kuchyně" title="Kuchyně"></a>
+  <a class="map-hotspot v39-hot hs39-jezero" href="jezero.html" aria-label="U jezera" title="U jezera"></a>
+  <a class="map-hotspot v39-hot hs39-les" href="zapovezeny-les.html" aria-label="Zapovězený les" title="Zapovězený les"></a>
+  <a class="map-hotspot v39-hot hs39-skleniky" href="skleniky.html" aria-label="Skleníky" title="Skleníky"></a>
+  <a class="map-hotspot v39-hot hs39-hagrid" href="hagriduv-dum.html" aria-label="Hagridův dům" title="Hagridův dům"></a>
+  <a class="map-hotspot v39-hot hs39-vrba" href="vrba-mlaticka.html" aria-label="Vrba mlátička" title="Vrba mlátička"></a>
+  <a class="map-hotspot v39-hot hs39-reditelna" href="reditelna.html" aria-label="Ředitelna" title="Ředitelna"></a>
+  <a class="map-hotspot v39-hot hs39-umyvarna" href="divci-umyvarna.html" aria-label="Dívčí umývárna" title="Dívčí umývárna"></a>
+  <a class="map-hotspot v39-hot hs39-pozemky" href="pozemky.html" aria-label="Školní pozemky" title="Školní pozemky"></a>
+  <a class="map-hotspot v39-hot hs39-zapad" href="chodby.html" aria-label="Západní křídlo" title="Západní křídlo"></a>
+  <a class="map-hotspot v39-hot hs39-vychod" href="chodby-stara-galerie.html" aria-label="Východní křídlo" title="Východní křídlo"></a>
+</section></div></div>
+<p class="map-hint">Na plánku jsou jen známá místa školy. Tajné místnosti ani jejich vstupy se na mapě neukazují.</p>
+</main></div>
+<script src="achievements.js"></script><script src="ghosts.js"></script>
+<script src="music-v42.js?v=42"></script><script src="castle-nav-v42.js?v=42"></script></body></html>
