@@ -171,7 +171,7 @@
 @keyframes snitchDart{to{transform:translate(115vw,-35vh) scale(.35) rotate(24deg);opacity:0}}
 
 /* Lechtivá hruška — kurzor jako peříčko */
-.pear-hotspot{cursor:url('img/cursor-feather.png') 5 27,pointer!important}
+.pear-hotspot{cursor:url('img/cursor-feather.webp') 5 27,pointer!important}
 
 @media(max-width:700px){.corridor-stage .corridor-armor.armor-xl{height:34vh}.corridor-stage .corridor-torch.torch-xl,.corridor-stage .torch-gallery{width:74px}.wandering-snitch{width:70px;height:46px}.p-g8,.p-u8{display:none!important}}
 
@@ -409,3 +409,10 @@
 .requirement-v39.ready .require-whisper{color:#ddc88e;opacity:.95}
 .requirement-inside-v39{background:linear-gradient(180deg,rgba(4,5,4,.02),rgba(4,5,4,.35)),url('img/komnata-uvnitr-v39.webp') center/cover no-repeat!important}
 @media(max-width:700px){.require-door-link-v39{height:70%;top:9%}.require-door-link-v39 img{max-width:70vw}.require-whisper{top:14%;font-size:.82rem}}
+
+
+/* v42.1 — další podzemní chodby */
+.corridor-underground-1{background-image:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.30) 72%,rgba(0,0,0,.65)),url('img/podzemni-chodba-1-v421.webp')!important;background-position:center!important;background-size:cover!important;background-repeat:no-repeat!important}
+.corridor-underground-2{background-image:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.32) 72%,rgba(0,0,0,.68)),url('img/podzemni-chodba-2-v421.webp')!important;background-position:center!important;background-size:cover!important;background-repeat:no-repeat!important}
+.corridor-way-down{left:50%;right:auto;top:auto;bottom:0;width:30%;height:22%;transform:translateX(-50%);justify-content:center;align-items:flex-end;text-align:center;background:linear-gradient(0deg,rgba(0,0,0,.35),transparent);padding-bottom:24px}.corridor-way-down::after{content:'  ↓';font-size:1rem;margin-left:8px}
+@media(max-width:650px){.corridor-way-down{width:42%;height:20%;padding-bottom:14px}}

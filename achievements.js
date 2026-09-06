@@ -69,14 +69,14 @@
   const allBadges=[...coreBadges,...bonusBadges];
   const coreIds=new Set(coreBadges.map(b=>b.id));
   const byId=Object.fromEntries(allBadges.map(b=>[b.id,b]));
-  const locationPages=new Set(['hrad.html','koleje.html','nebelvir-spolecenska.html','nebelvir-loznice.html','havraspar-spolecenska.html','havraspar-loznice.html','mrzimor-spolecenska.html','mrzimor-loznice.html','zmijozel-spolecenska.html','zmijozel-loznice.html','ucebna-lektvaru.html','ucebna-premenovani.html','ucebna-obrany.html','velka-sin.html','famfrpal.html','skleniky.html','astronomicka-vez.html','kuchyne.html','zapovezeny-les.html','hagriduv-dum.html','vrba-mlaticka.html','jezero.html','nadvori.html','chodby.html','chodby-schody.html','chodby-portretni-galerie.html','chodby-stara-galerie.html','chodby-horni.html','sin-slavy.html','komnata-nejvyssi-potreby.html','hagriduv-dum-uvnitr.html','tajemna-cesta.html','tajemna-komnata.html','knihovna.html']);
+  const locationPages=new Set(['hrad.html','koleje.html','nebelvir-spolecenska.html','nebelvir-loznice.html','havraspar-spolecenska.html','havraspar-loznice.html','mrzimor-spolecenska.html','mrzimor-loznice.html','zmijozel-spolecenska.html','zmijozel-loznice.html','ucebna-lektvaru.html','ucebna-premenovani.html','ucebna-obrany.html','velka-sin.html','famfrpal.html','skleniky.html','astronomicka-vez.html','kuchyne.html','zapovezeny-les.html','hagriduv-dum.html','vrba-mlaticka.html','jezero.html','nadvori.html','chodby.html','chodby-schody.html','chodby-portretni-galerie.html','chodby-stara-galerie.html','chodby-podzemni-1.html','chodby-podzemni-2.html','chodby-horni.html','sin-slavy.html','komnata-nejvyssi-potreby.html','hagriduv-dum-uvnitr.html','tajemna-cesta.html','tajemna-komnata.html','knihovna.html']);
   const privatePageHouse={
     'nebelvir-spolecenska.html':'N','nebelvir-loznice.html':'N',
     'havraspar-spolecenska.html':'H','havraspar-loznice.html':'H',
     'mrzimor-spolecenska.html':'M','mrzimor-loznice.html':'M',
     'zmijozel-spolecenska.html':'Z','zmijozel-loznice.html':'Z'
   };
-  const explorerPages=['ucebna-lektvaru.html','ucebna-premenovani.html','ucebna-obrany.html','velka-sin.html','famfrpal.html','skleniky.html','astronomicka-vez.html','kuchyne.html','zapovezeny-les.html','hagriduv-dum.html','vrba-mlaticka.html','jezero.html','nadvori.html','chodby.html','chodby-schody.html','chodby-portretni-galerie.html','chodby-stara-galerie.html','chodby-horni.html','sin-slavy.html','komnata-nejvyssi-potreby.html','hagriduv-dum-uvnitr.html','knihovna.html'];
+  const explorerPages=['ucebna-lektvaru.html','ucebna-premenovani.html','ucebna-obrany.html','velka-sin.html','famfrpal.html','skleniky.html','astronomicka-vez.html','kuchyne.html','zapovezeny-les.html','hagriduv-dum.html','vrba-mlaticka.html','jezero.html','nadvori.html','chodby.html','chodby-schody.html','chodby-portretni-galerie.html','chodby-stara-galerie.html','chodby-podzemni-1.html','chodby-podzemni-2.html','chodby-horni.html','sin-slavy.html','komnata-nejvyssi-potreby.html','hagriduv-dum-uvnitr.html','knihovna.html'];
 
   function read(key,fallback){try{const v=JSON.parse(localStorage.getItem(key));return v??fallback}catch{return fallback}}
   function write(key,value){localStorage.setItem(key,JSON.stringify(value))}

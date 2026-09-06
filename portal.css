@@ -166,7 +166,7 @@
 .hall-scene.feast-visible .hall-feast-glow{opacity:0}
 @keyframes hallFeastGlow{0%{opacity:0;transform:scale(.74)}45%{opacity:.95;transform:scale(1.04)}100%{opacity:0;transform:scale(1.12)}}
 
-.hall-table-tap{position:absolute;z-index:18;left:11%;right:11%;bottom:4%;height:35%;border:0;background:transparent;cursor:url('img/cursor-feather.png') 5 27,pointer;border-radius:32% 32% 10% 10%/35% 35% 12% 12%;padding:0}
+.hall-table-tap{position:absolute;z-index:18;left:11%;right:11%;bottom:4%;height:35%;border:0;background:transparent;cursor:url('img/cursor-feather.webp') 5 27,pointer;border-radius:32% 32% 10% 10%/35% 35% 12% 12%;padding:0}
 .hall-table-tap::after{content:"";position:absolute;inset:0;border-radius:inherit;border:1px solid transparent;transition:.2s;pointer-events:none}
 .hall-table-tap:hover::after,.hall-table-tap:focus-visible::after{border-color:rgba(235,207,137,.16);box-shadow:inset 0 0 32px rgba(230,190,87,.08)}
 .hall-table-tap.knock{animation:hallTableKnock .22s ease}

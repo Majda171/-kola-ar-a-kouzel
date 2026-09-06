@@ -1,7 +1,0 @@
-Bradavice v22 — frontend bez databáze
-- databáze / Supabase se zatím nepřipojuje
-- pexeso opraveno: karta se otáčí okamžitě a stabilně, bez čekání na odjetí kurzoru
-- pexeso: obrázky se přednačítají, během porovnávání je zamčené další klikání
-- pexeso: neshodná dvojice zůstane viditelná cca 1 s
-- obnoven lokální souboj 2–4 hráčů na jednom zařízení
-- online souboj, přátelé a synchronizace zůstanou až na fázi databáze

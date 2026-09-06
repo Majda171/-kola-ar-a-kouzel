@@ -1,6 +1,0 @@
-Bradavice v26 – opravy po kontrole
-- odstraněni hráči z famfrpálu
-- Godrikův portrét přesunut do Síně slávy (i hotspot úkolu)
-- opraven vstup do Hagridova domu
-- opraven vstup do kuchyně (obraz po kliknutí zmizí a ukáže se interiér)
-- z profilu odstraněny osobní údaje studenta (e-mail)

@@ -1,5 +1,5 @@
 /* v30 — kouzelnická hůlka místo běžného kurzoru */
 html, body, body *, a, button, input, textarea, select, [role="button"], [tabindex],
 .map-hotspot, .embedded-hotspot, .interactive-prop {
-  cursor: url('img/wand-cursor.png') 13 2, auto !important;
+  cursor: url('img/wand-cursor.webp') 13 2, auto !important;
 }

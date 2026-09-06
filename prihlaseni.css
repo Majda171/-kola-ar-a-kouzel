@@ -48,3 +48,11 @@ button,input{font:inherit}
 .slytherin-wall-emblem{position:absolute;z-index:2;top:48%;width:clamp(54px,5vw,78px);height:auto;opacity:.22;filter:grayscale(.35) brightness(.55) sepia(.18) drop-shadow(0 9px 14px #000);pointer-events:none}.slytherin-wall-emblem.emblem-left{left:29%;transform:translate(-50%,-50%) rotate(-4deg)}.slytherin-wall-emblem.emblem-right{right:29%;transform:translate(50%,-50%) rotate(4deg)}
 @media(max-width:800px){.slytherin-wall-emblem{opacity:.14;width:50px}.slytherin-wall-emblem.emblem-left{left:24%}.slytherin-wall-emblem.emblem-right{right:24%}}
 @media(max-width:600px){.slytherin-wall-emblem{display:none}}
+
+
+/* v42.1 — čisté kolejní vstupy: žádné dodatečné brnění, pochodně ani okolní obrazy */
+.entry-page.gryff{background:linear-gradient(180deg,rgba(18,8,6,.15),rgba(7,5,4,.48)),url('img/vstup-nebelvir-v421.webp') center/cover fixed no-repeat!important;--scene-glow:rgba(132,47,33,.16)}
+.entry-page.slyth{background:linear-gradient(180deg,rgba(3,16,11,.18),rgba(3,8,6,.56)),url('img/vstup-zmijozel-v421.webp') center/cover fixed no-repeat!important;--scene-glow:rgba(22,72,49,.15)}
+.entry-page.gryff .wall-torch,.entry-page.gryff .ambient-painting,.entry-page.slyth .wall-torch,.entry-page.slyth .old-armor,.entry-page.slyth .slytherin-founder,.entry-page.slyth .slytherin-crest,.entry-page.slyth .slytherin-wall-emblem{display:none!important}
+.gryff-scene .portrait-art{width:min(455px,58vw);z-index:7}
+@media(max-width:700px){.entry-page.gryff,.entry-page.slyth{background-attachment:scroll!important}.gryff-scene .portrait-art{width:min(390px,78vw)}}
