@@ -154,7 +154,7 @@
     e.preventDefault(); if(!isMember)return;
     const text=textarea.value.trim(); if(!text)return;
     notes.push({id:`note-${Date.now()}`,text:text.slice(0,220),author:student.firstName || 'Student',owner:student.email || '',createdAt:new Date().toISOString()});
-    saveNotes(); textarea.value=''; count.textContent='0/220'; form.hidden=true; renderNotes(); A?.award('kolejni-hlas'); A?.recordActivity();
+    saveNotes(); textarea.value=''; count.textContent='0/220'; form.hidden=true; renderNotes();  A?.recordActivity();
   });
 
   // House cup / points

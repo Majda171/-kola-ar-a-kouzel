@@ -1,0 +1,9 @@
+BRADAVICE v38
+- nová landscape inkoustová/pergamenová mapa; tajné místnosti na mapě nejsou
+- Hagridův dům je veden na pozemcích u lesa, ne na ostrově
+- nová stránka Hry a výzvy + výraznější označení her v lokacích
+- opravena/upevněna logika šachů (šach, mat, pat, zákaz zajmutí krále, reset AI timeru)
+- pexeso už při načtení stránky nepřednačítá všech 32 obrázků
+- přidána Zkouška brankáře: 10 střel, 3 obruče, klikem se přesouvá brankářka
+- nepřihlášený návštěvník dostane hlášku „Staveniště / Jdi pryč, mudlo“ s volbou přihlášení či registrace
+- text dopisu o vyloučení zatím nebyl přepisován na přesné uživatelské znění; čeká na dodané znění

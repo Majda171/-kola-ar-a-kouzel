@@ -1,0 +1,12 @@
+BRADAVICE v39
+
+- nová mapa na šířku: starý pergamen + červenohnědý inkoust, bez tajných místností
+- klikací zóny jsou zarovnané přímo na nápisy mapy
+- sedmé patro používá prázdnou chodbu; dveře Komnaty nejvyšší potřeby se objeví po chvíli a teprve pak jsou klikací
+- nový vnitřek Komnaty nejvyšší potřeby a nová dívčí umývárna
+- kouzelnické šachy používají dodanou šachovnici a 12 sad obrázkových figurek; trénink proti siru Nicholasovi
+- šachová logika opravena: správná detekce napadených polí, šachu, matu a patu; AI vybírá tahy podle jednoduchého hodnocení
+- výraznější herní a testovací tlačítka
+- Hagrid nahrazen celou dodanou PNG postavou bez ořezu
+- Kolejní pohár zmenšen a řazen podle pořadí; bez zbytečného nadpisu přes pozadí
+- nové velké PNG převedeny do WebP a optimalizovány

@@ -1,0 +1,4 @@
+Bradavice v28
+- Portrét Godrika je napevno zasazený přímo do centrálního výklenku v Síni slávy.
+- Už nejde o samostatný plovoucí PNG prvek; je součástí pozadí síně.
+- Klikací oblast úkolu Godrika je přesně nad portrétem ve výklenku.

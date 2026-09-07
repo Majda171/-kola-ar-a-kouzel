@@ -1,0 +1,15 @@
+BRADAVICE v42.1
+
+Základ: v42 GitHub test.
+
+Změny:
+- McGonagallová přesunuta doprostřed uličky v učebně přeměňování.
+- Pírko přesunuto na lavici/stůl a klikací prvek se pohybuje spolu s ním.
+- Nové čisté pozadí vstupu do Nebelvíru; odstraněny okolní pochodně a dekorativní obrazy, Baculatá dáma zůstává hlavním interaktivním portrétem.
+- Nové čisté pozadí vstupu do Zmijozelu; odstraněno brnění, pochodně, portrét a další překryvné dekorace.
+- Přidány dvě nové navazující podzemní chodby.
+- Portréty zakladatelů zůstávají v samostatných hradních lokacích; Salazar už není duplicitně ve vstupu do Zmijozelu.
+- Pět rostlin pro Prýtovou nahrazeno novými transparentními podklady (jmelí, šalvěj, kopřiva, břečťan, houby).
+- Do mandragorové hry přidán nový květináč.
+- Rastrové obrázky jsou převedeny/optimalizovány jako WebP; cesty jsou aktualizované.
+- Zachované opravy a funkce z v42 včetně Lupina, Prýtové, zakladatelů, Hagrida, her, hudby, boční navigace a Supabase odměn.

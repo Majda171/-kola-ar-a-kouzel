@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="prihlaseni.css">
+  <link rel="stylesheet" href="prihlaseni.css?v=423">
   <title>Nebelvír — vstup</title>
 <link rel="stylesheet" href="ghosts.css">
 
@@ -11,7 +11,7 @@
   <script src="supabase-config.js?v=422"></script>
 <link rel="stylesheet" href="access-guard.css?v=422"><script src="access-guard.js?v=422"></script>
 <link rel="stylesheet" href="magic-cursor.css">
-<link rel="stylesheet" href="v40.css"><link rel="stylesheet" href="music-v42.css?v=422"></head>
+<link rel="stylesheet" href="v40.css"><link rel="stylesheet" href="founders-v41.css?v=423"><link rel="stylesheet" href="music-v42.css?v=423"></head>
 <body>
 <main class="entry-page gryff">
   <a class="back-link" href="hrad.html">← Mapa hradu</a>
@@ -25,6 +25,8 @@
     <img class="ambient-painting painting-c" src="img/portrait-pasacka.webp" alt="" aria-hidden="true">
     <img class="ambient-painting painting-d" src="img/portrait-hrad-new.webp" alt="" aria-hidden="true">
 
+
+    <button class="founder-portrait founder-godric-entry" id="godrikQuest" type="button" data-founder="godric" aria-label="Portrét Godrika Nebelvíra"><span class="founder-godric-crop"><img src="img/founder-godric-v423.webp" alt="Portrét Godrika Nebelvíra"></span></button>
     <button class="scene-image-button portrait-art" id="portraitTrigger" data-audio="ladyAudio" aria-label="Promluvit s Baculatou dámou">
       <img src="img/baculata-dama.webp" alt="Portrét Baculaté dámy ve zlatém rámu">
     </button>
@@ -40,7 +42,7 @@
     </div>
   </section>
 </main>
-<script src="achievements.js"></script><script src="entry.js"></script>
+<script src="achievements.js?v=423"></script><script src="entry.js"></script>
 <script>
   const portrait = document.getElementById('portraitTrigger');
   const weekly = window.BradaviceAchievements?.getWeeklyEntry('N');
@@ -53,6 +55,6 @@
     onSuccess:()=>{window.BradaviceAchievements?.award('dama-otevrela');window.BradaviceAchievements?.award('znalec-hesel',{silent:true})}
   });
 </script>
-<script src="ghosts.js"></script>
-<script src="music-v42.js?v=422"></script></body>
+<script src="founders-v41.js?v=423"></script><script src="ghosts.js"></script>
+<script src="music-v42.js?v=423"></script></body>
 </html>

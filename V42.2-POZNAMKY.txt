@@ -1,0 +1,31 @@
+BRADAVICE v42.2 — OPRAVENÁ VERZE
+
+Základ: v42.1.
+
+Opraveno / zkontrolováno:
+- Famfrpál: klikací zóny odpovídají skutečným obručím, pomocné kruhy nejsou vidět, pohyb brankáře a camrálu míří na správná místa, hra má 10 střel.
+- Východní chodba: zmenšený textový blok, čistší kompozice a mobilní výřez.
+- Online šachy: lobby už nepřekrývá šachovnici, realtime + polling synchronizace, obnovené RPC pro místnosti.
+- Online pexeso: soukromé místnosti pro 2 hráče, realtime + polling, synchronizace tahu/skóre/stavu.
+- Odznaky a body: opravená synchronizace se Supabase, odstraněn starý v25 reset, který mohl smazat lokální postup při aktualizaci.
+- Kolejní pohár: načítání skutečných bodů studentů ze Supabase; odstraněn odkaz na starou turnajovou tabuli z poháru.
+- Přeměňování: McGonagallová uprostřed uličky, pírko na lavici a úkol navázaný na skutečné kliknutí.
+- Kolejní vstupy a podzemní chodby: zachované opravy v42.1, čisté scény a správná navigace.
+- Prýtová / mandragory / Snape / zakladatelé: zachované opravené interakce a odměny.
+- Navigace a ochrana stránek: odstraněn testovací qa-bootstrap, chráněné stránky používají skutečnou Supabase session.
+- Opraven kotvící odkaz na praktickou hodinu lektvarů.
+- Odstraněn prázdný poškozený nepoužívaný asset.
+
+Databáze:
+1. Web nahraj jako běžnou novou verzi.
+2. V Supabase SQL Editoru spusť soubor SUPABASE-V42.2-OPRAVY.sql nad stávající databází.
+3. Skript nemaže studenty, body ani postup a je napsaný opakovatelně.
+
+Kontrola před zabalením:
+- 64 HTML stránek: žádné chybějící lokální odkazy/assety.
+- žádné duplicitní HTML id.
+- žádné neexistující kotvy odkazů.
+- všechny JS soubory i inline skripty prošly syntaktickou kontrolou.
+- CSS bez parser chyb.
+- rastrové obrázky ověřeny jako čitelné.
+- žádné nulové soubory.

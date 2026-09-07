@@ -15,7 +15,7 @@
   document.querySelectorAll('.real-cauldron').forEach(c=>c.addEventListener('click',()=>{c.classList.remove('bubble-pop');void c.offsetWidth;c.classList.add('bubble-pop');if(smoke){smoke.classList.remove('pop');void smoke.offsetWidth;smoke.classList.add('pop')}A?.award('prvni-lektvar')}));
 
   function safeStudent(){try{return JSON.parse(localStorage.getItem(STUDENT_KEY))}catch{return null}}
-  function badgeCard(b,unlocked){const img=b.img||'img/bradavice-erb.webp';return `<article class="badge-card${unlocked?'':' locked'}" title="${b.desc}"><img src="${img}" alt="Odznak ${b.title}"><strong>${b.title}</strong><small>${b.desc}</small></article>`}
+  function badgeCard(b,unlocked){if(!b?.img)return '';return `<article class="badge-card${unlocked?'':' locked'}" title="${b.desc}"><img src="${b.img}" alt="Odznak ${b.title}"><strong>${b.title}</strong><small>${b.desc}</small></article>`}
   function renderAvatarChoices(active,house){
     const keys=DB?.avatarKeysByHouse?.[house]||[];
     return keys.map((k,i)=>`<button class="avatar-choice${k===active?' selected':''}" type="button" data-avatar="${k}" aria-label="Profilový portrét ${i+1}"><img src="${avatarPath(k,house)}" alt="Profilový portrét ${i+1}"><span>Portrét ${i+1}</span></button>`).join('');
@@ -45,7 +45,7 @@
     const roomLinks={N:'Nebelvir.html',H:'Havraspar.html',M:'Mrzimor.html',Z:'Zmijozel.html'};document.getElementById('profileRoomLink').href=s.houseCode?(roomLinks[code]||'koleje.html'):'rozrazeni.html';
     bindProfileEditor(s);
     if(A){
-      A.syncDerivedAchievements?.();const st=A.getState(),unlocked=st.unlocked||{},displayBadges=A.allBadges;
+      A.syncDerivedAchievements?.();const st=A.getState(),unlocked=st.unlocked||{},displayBadges=A.allBadges.filter(b=>b.img);
       document.getElementById('profileBadges').textContent=displayBadges.filter(b=>unlocked[b.id]).length;
       document.getElementById('achievementGrid').innerHTML=displayBadges.map(b=>badgeCard(b,Boolean(unlocked[b.id]))).join('');
       const weekly=s.houseCode?A.getWeeklyEntry(code):null,access=document.getElementById('profileAccess');
@@ -56,15 +56,15 @@
       else access.innerHTML='<strong>Sudy u kuchyní</strong><p>Vchod reaguje na správný rytmus poklepání.</p>';
       const quests=A.read(A.keys.QUEST_KEY,{})||{},done=v=>v===true||v?.done===true;
       const questRows=[
-        ['find-godric','Najdi v Síni slávy obraz Godrika Nebelvíra','Portrét čeká někde v Síni slávy.','Obraz už jsi objevil/a.','+10 bodů'],
+        ['find-godric','Najdi na hradě obraz Godrika Nebelvíra','Hledej mezi starými obrazy u nebelvírského vstupu.','Obraz už jsi objevil/a.','+10 bodů'],
         ['find-three-constellations','Najdi tři souhvězdí v Astronomické věži','Každé nové pozorování začíná od 0/3. Najdi všechny tři obrazce.','Všechna tři souhvězdí byla nalezena.','+50 bodů'],
         ['herbarium-prytova','Herbář Bradavic pro profesorku Prýtovou','Najdi pět ukrytých rostlin při procházení okolí školy. Potom tě čeká minutová práce s mandragorami.','Herbář i časová zkouška s mandragorami jsou hotové.','5–50 bodů'],
         ['mcgonagall-feather','Lehké jako pírko','Promluv s profesorkou McGonagallovou a splň praktický úkol s pírkem.','Pírko jsi bezpečně zvedl/a a vrátil/a na lavici.','+10 bodů'],
         ['lupin-boggart','Praktická zkouška s bubákem','V učebně obrany otevři skříň a zvládni bubáka kouzlem Riddikulus.','Bubák byl poražen.','+20 bodů'],
         ['founders-all','Zakladatelé hradu','Najdi Godrika, Salazara, Rowenu a Helgu v různých částech hradu.','Všichni čtyři zakladatelé byli nalezeni.','odznak']
       ];
-      document.getElementById('questList').innerHTML=questRows.map(([id,title,openText,doneText,reward])=>{const ok=done(quests[id]);return `<article class="quest-card ${ok?'done':''}"><div><strong>${ok?'Splněno · ':''}${title}</strong><p>${ok?doneText:openText}</p></div><span class="quest-reward">${ok?'✓':reward}</span></article>`}).join('');
-      const hist=(st.history||[]).filter(h=>h.type==='points'||h.type==='badge').slice(0,8);document.getElementById('pointsHistory').innerHTML=hist.length?hist.map(h=>h.type==='points'?`<div class="history-row"><span>${h.reason}</span><span>${Number(h.amount)>0?'+':''}${h.amount}</span></div>`:`<div class="history-row"><span>Odznak · ${A.allBadges.find(x=>x.id===h.id)?.title||h.id}</span><span>✦</span></div>`).join(''):'<div class="history-row"><span>Zatím bez záznamu</span><span>—</span></div>';
+      document.getElementById('questList').innerHTML=questRows.map(([id,title,openText,doneText,reward])=>{const ok=id==='find-three-constellations'?localStorage.getItem('bradavice_astronomy_task_v42')==='done':done(quests[id]);return `<article class="quest-card ${ok?'done':''}"><div><strong>${ok?'Splněno · ':''}${title}</strong><p>${ok?doneText:openText}</p></div><span class="quest-reward">${ok?'✓':reward}</span></article>`}).join('');
+      const validBadgeIds=new Set(A.allBadges.filter(b=>b.img).map(b=>b.id));const hist=(st.history||[]).filter(h=>h.type==='points'||(h.type==='badge'&&validBadgeIds.has(h.id))).slice(0,8);document.getElementById('pointsHistory').innerHTML=hist.length?hist.map(h=>h.type==='points'?`<div class="history-row"><span>${h.reason}</span><span>${Number(h.amount)>0?'+':''}${h.amount}</span></div>`:`<div class="history-row"><span>Odznak · ${A.allBadges.find(x=>x.id===h.id)?.title||h.id}</span><span>✦</span></div>`).join(''):'<div class="history-row"><span>Zatím bez záznamu</span><span>—</span></div>';
     }
   }
   if(document.body.classList.contains('profile-page')){(async()=>{if(DB?.client)await DB.hydrateAll();renderProfile()})();window.addEventListener('bradavice:progress-synced',renderProfile);window.addEventListener('bradavice:profile-updated',renderProfile);document.getElementById('logoutLink')?.addEventListener('click',async e=>{e.preventDefault();await DB?.signOut();location.href='index.html'})}

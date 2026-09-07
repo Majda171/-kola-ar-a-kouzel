@@ -1,0 +1,44 @@
+BRADAVICE v32 — vyčištěná a vyladěná verze
+
+CHODBY
+- Z chodeb odstraněny všechny interaktivní obrazy a portrétní hotspoty.
+- Chodby používají čisté gotické prostředí bez obrazů na stěnách.
+- Godrik zůstává pouze v Síni slávy.
+- Interakce v chodbách jsou navázané na fyzické předměty: armilární přístroj, brnění, školní brašna, busta a skrytá rytina ve zdi.
+
+INTERAKCE
+- Mimo hlavní mapu se už nezobrazují svítící obdélníky, kruhy ani univerzální jiskřivé značky, které by prozrazovaly klikací místo.
+- Klikací oblasti zůstávají neviditelné a reakce se projeví až po použití hůlky.
+- Nové předměty jsou umístěné na podlaze, stolech, policích nebo jsou opřené o stěnu podle konkrétní lokality.
+
+NOVÉ PŘEDMĚTY
+- armilární sféra — Astronomická věž
+- astronomický dalekohled — Astronomická věž
+- koště — Famfrpálové hřiště
+- dýně — u Hagridova domu
+- čajová konvice — Hagridův dům uvnitř
+- růžový deštník — opřený v Hagridově domě
+- dračí vejce — na stole v Hagridově domě
+- cvičný meč — učebna Obrany proti černé magii
+- zdobená školní brašna — učebna Přeměňování
+- rudý lektvar — učebna Lektvarů
+- kouzelná rostlina — Skleníky / Mrzimor
+- kouzelný váček — Komnata nejvyšší potřeby
+- malý kouzelný tvor — Zapovězený les
+- kožená školní taška — Severní chodba
+- kouzelnická busta — Třetí poschodí
+- nový modrý lektvar a krystaly — Havraspár
+
+ODZNAKY
+- 24 základních odznaků nahrazeno novou ornamentální heraldickou sadou; každý je samostatný WebP soubor.
+- Opravena logika bonusových odznaků: lze je skutečně odemknout, ale nedávají automaticky +5 bodů jako základní odznaky.
+- Opravena odměna za první lektvar a famfrpálovou interakci.
+
+OPTIMALIZACE A KONTROLA
+- Nové PNG předměty převedeny na WebP s průhledností a zmenšeny pro web.
+- Odstraněny nahrazené staré obrázky lektvarů, krystalů, rostliny, klobouku a stará pozadí chodeb.
+- Ověřeny všechny lokální odkazy, obrázky, CSS a JS soubory: 0 chybějících souborů a 0 chyb způsobených velikostí písmen v cestách.
+- Ověřena syntaxe všech JavaScript souborů pomocí node --check.
+
+POZNÁMKA K TESTŮM
+- Dohodnutý systém testů (10 otázek / ročníkové 25 / známky V, N, P, M, H, T) je návrh pro následující implementaci; v32 zatím nemění předmětové testy.

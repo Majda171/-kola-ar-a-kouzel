@@ -1,0 +1,13 @@
+BRADAVICE v35 — STUDENTSKÉ PORTRÉTY
+
+- 24 nových studentských avatarů: 6 pro každou kolej.
+- Nebelvír: n1–n6, Havraspár: h1–h6, Mrzimor: m1–m6, Zmijozel: z1–z6.
+- Student si v profilu může vybrat pouze portréty své koleje.
+- Serverová Supabase RPC funkce toto pravidlo také kontroluje; nelze obejít změnou JavaScriptu.
+- Staré avatarové předměty byly z projektu odstraněny.
+- Portréty byly optimalizovány na WebP (480×600), celkem přibližně 0,52 MB.
+- Profil i administrace jsou upravené pro portrétní fotografie.
+
+SUPABASE:
+Pro tuto verzi spusť SUPABASE-V35-ADMIN-PROFILY-AVATARY.sql.
+Je samostatný a obsahuje i změny administrace z v34.

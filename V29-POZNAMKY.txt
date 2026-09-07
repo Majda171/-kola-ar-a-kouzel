@@ -1,0 +1,28 @@
+BRADAVICE v29 — první databázová verze (Supabase)
+
+Napojeno na Supabase:
+- registrace přes Supabase Auth
+- přihlášení přes Supabase Auth
+- profil studenta a kolej
+- rozřazení (kolej se uloží do databáze pouze jednou)
+- osobní body z databáze
+- základní odznaky + automaticky 5 bodů za odznak
+- Godrikův úkol
+- astronomický úkol
+- návštěvy lokací / průzkumnické odznaky
+- Kolejní pohár ze společné databáze
+- odhlášení z profilu
+
+Web si stále drží lokální zrcadlo dat, aby současné animace a starší interakce fungovaly bez přepisování celého projektu najednou. Po přihlášení se zrcadlo znovu načte ze Supabase.
+
+Zatím zůstává částečně lokální:
+- počítadlo pěti kolejních aktivit
+- seznam spatřených duchů
+- nástěnky a ankety kolejí
+- některé tréninkové interakce
+
+Denní kolejní výzva:
+Soubor SUPABASE-V29-DENNI-VYZVA.sql lze jednou spustit v Supabase SQL Editoru. Poté bude i jejích +5 bodů ukládáno globálně. Bez této migrace web použije původní lokální záložní režim.
+
+Bezpečnost:
+V projektu je pouze veřejný Project URL + Publishable key. Secret/service-role key ani databázové heslo v ZIPu nejsou.

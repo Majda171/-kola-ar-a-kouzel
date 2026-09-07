@@ -72,13 +72,15 @@
       const n=constellationZones.filter(z=>found[z.dataset.constellation]).length;
       if(counter)counter.textContent=`${n} / 3`;
       if(n===3){
-        A?.completeQuest('find-three-constellations',{points:50,badgeId:'nocni-pozorovatel',title:'Nalezena tři souhvězdí'});
-        document.getElementById('astronomyQuest')?.classList.add('quest-complete');
-        if(replay)replay.hidden=false;
+        // Nález třetího obrazce už úkol automaticky NEODEVZDÁ. Student se musí vrátit k profesorovi.
+        try{localStorage.setItem('bradavice_astronomy_task_v42','ready')}catch{}
+        document.getElementById('astronomyQuest')?.classList.add('astronomy-ready-to-hand-in');
+        A?.toast?.('Všechna tři souhvězdí nalezena. Vrať se k profesorovi a úkol odevzdej.');
+        if(replay)replay.hidden=true;
       }
     };
     const resetConstellations=()=>{found={};constellationZones.forEach(z=>z.classList.remove('found'));document.getElementById('astronomyQuest')?.classList.remove('quest-complete');if(counter)counter.textContent='0 / 3';if(replay)replay.hidden=true};
-    constellationZones.forEach(z=>z.addEventListener('click',e=>{e.stopPropagation();const id=z.dataset.constellation;if(found[id])return;let accepted=false;try{const q=JSON.parse(localStorage.getItem('bradavice_quests_v1')||'{}');accepted=localStorage.getItem('bradavice_astronomy_task_v42')==='accepted'||q?.['find-three-constellations']===true||q?.['find-three-constellations']?.done===true}catch{}if(!accepted){A?.toast?.('Nejdřív si promluv s profesorem astronomie.');return}found[id]=true;z.classList.add('found');renderConstellations()}));
+    constellationZones.forEach(z=>z.addEventListener('click',e=>{e.stopPropagation();const id=z.dataset.constellation;if(found[id])return;let accepted=false;try{const q=JSON.parse(localStorage.getItem('bradavice_quests_v1')||'{}');accepted=['accepted','ready','done'].includes(localStorage.getItem('bradavice_astronomy_task_v42'))||q?.['find-three-constellations']===true||q?.['find-three-constellations']?.done===true}catch{}if(!accepted){A?.toast?.('Nejdřív si promluv s profesorem astronomie.');return}found[id]=true;z.classList.add('found');renderConstellations()}));
     replay?.addEventListener('click',resetConstellations);
     resetConstellations();
     document.getElementById('astronomySky')?.addEventListener('click',e=>{const spark=document.createElement('i');spark.className='sky-spark';spark.style.left=`${e.clientX}px`;spark.style.top=`${e.clientY}px`;document.body.appendChild(spark);setTimeout(()=>spark.remove(),650)});

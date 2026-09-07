@@ -1,0 +1,23 @@
+BRADAVICE v34 — ADMINISTRACE A PROFILY
+
+NOVÉ:
+- samostatné přihlášení správce: admin-login.html
+- administrace: počet registrovaných, právě online, rozřazených a rozdělení podle kolejí
+- vyhledávání studentů a detail studentského profilu
+- online stav používá Supabase Realtime Presence; počítá jedinečné přihlášené studenty s otevřenou v34
+- studentský profil má text „O mně“ a výběr z 8 pevných profilových obrázků
+- iniciály PB byly nahrazeny profilovým obrázkem
+- po přihlášení se na stránkách zobrazuje malý erb a název aktuální koleje s odkazem na profil
+- nová stránka kontakt.html; je připravená pro Web3Forms, ale bez access key nic neodesílá
+- původní portrét kouzelníka u vstupu do Nebelvíru byl odstraněn; nahrazen čtyřmi různými obrazy v různých velikostech
+- profil zobrazuje pouze schválené obrázkové odznaky z dodaného odznaky.zip; ostatní interní achievementy dál fungují, ale nepoužívají starou grafiku
+
+SUPABASE:
+1. Otevři SQL Editor.
+2. Spusť SUPABASE-V34-ADMIN-PROFILY.sql.
+3. Na konci souboru je připravený příkaz pro označení tvého účtu jako administrátora. Doplň svůj e-mail a spusť ho.
+4. Potom se přihlaš přes admin-login.html.
+
+WEB3FORMS:
+- kontakt.html obsahuje hidden input #web3formsKey.
+- až bude access key, vloží se do value tohoto inputu; kontakt.js už pak používá endpoint Web3Forms.

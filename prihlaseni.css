@@ -66,3 +66,12 @@ button,input{font:inherit}
 .gryff-scene .painting-d{right:4%!important;bottom:14%!important;width:clamp(100px,10vw,158px)!important}
 .gryff .torch-left{left:1.8%!important;top:42%!important}.gryff .torch-right{right:1.8%!important;top:42%!important}
 @media(max-width:760px){.entry-page.gryff{background-attachment:scroll!important}.entry-page.gryff .ambient-painting{opacity:.52!important}.gryff-scene .painting-b,.gryff-scene .painting-d{display:none!important}.gryff-scene .painting-a{left:0!important;top:18%!important}.gryff-scene .painting-c{right:0!important;top:18%!important}.entry-page.gryff .wall-torch{opacity:.58}}
+
+/* v42.3 — vstupy podle posledních schválených podkladů */
+.entry-page.gryff{background:linear-gradient(180deg,rgba(10,6,5,.08),rgba(7,5,4,.30)),url('img/vstup-nebelvir-v423.webp') center/cover fixed no-repeat!important}
+.entry-page.gryff .wall-torch,.entry-page.gryff .ambient-painting{display:none!important}
+.gryff-scene .portrait-art{width:min(330px,31vw)!important;margin-top:1%!important;filter:drop-shadow(0 24px 32px rgba(0,0,0,.72))!important}
+.gryff-scene .portrait-art img{max-height:62vh!important;object-fit:contain!important}
+.slytherin-portal{width:min(340px,36vw)!important;transform:translate(-50%,-49%) scale(.84)!important}
+.slytherin-scene.opening .slytherin-portal{transform:translate(-50%,-50%) scale(.96)!important}
+@media(max-width:700px){.entry-page.gryff{background-attachment:scroll!important}.gryff-scene .portrait-art{width:min(285px,64vw)!important}.slytherin-portal{width:min(300px,62vw)!important}}

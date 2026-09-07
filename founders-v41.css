@@ -1,3 +1,18 @@
 /* v41 — portréty zakladatelů */
 .founder-portrait{position:absolute;z-index:16;border:0;background:transparent;padding:0;cursor:pointer;filter:drop-shadow(0 18px 22px #000);transition:.2s}.founder-portrait img{width:100%;height:100%;object-fit:contain}.founder-portrait:hover{transform:translateY(-4px) rotate(1deg);filter:brightness(1.08) drop-shadow(0 20px 24px #000)}.founder-salazar{left:5%;top:12%;width:clamp(120px,16vw,230px);height:clamp(230px,47vh,470px)}.founder-rowena{right:6%;top:11%;width:clamp(125px,17vw,245px);height:clamp(210px,43vh,430px)}.founder-helga{right:4%;top:12%;width:clamp(130px,18vw,260px);height:clamp(250px,52vh,520px)}.founder-portrait.found:after{content:'✓';position:absolute;right:4px;top:4px;width:29px;height:29px;display:grid;place-items:center;border-radius:50%;background:#836b32;color:#f6e7b8;border:1px solid #d3b66d;font-weight:700}.founder-dialog[hidden]{display:none}.founder-dialog{position:fixed;inset:0;z-index:14600;display:grid;place-items:center;background:rgba(0,0,0,.78);padding:18px}.founder-card{position:relative;width:min(650px,94vw);display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:center;padding:20px;background:linear-gradient(145deg,#17130e,#070806);border:1px solid rgba(210,179,107,.4);color:#e9dec5;box-shadow:0 30px 90px #000}.founder-card img{width:180px;height:280px;object-fit:contain;filter:drop-shadow(0 12px 16px #000)}.founder-card h2{font-family:'Cinzel';margin:4px 0 7px}.founder-card p{color:#b8aa90;line-height:1.55}.founder-card small{font:600 .5rem 'Cinzel';color:#b4985d;text-transform:uppercase;letter-spacing:.12em}.founder-close{position:absolute;right:10px;top:8px;border:0;background:transparent;color:#d7c081;font-size:1.7rem;cursor:pointer}.founder-progress{margin-top:10px;color:#d8c17f;font:600 .55rem 'Cinzel';text-transform:uppercase;letter-spacing:.06em}
 @media(max-width:680px){.founder-salazar,.founder-rowena,.founder-helga{width:115px;height:210px;top:18%;opacity:.88}.founder-card{grid-template-columns:105px 1fr}.founder-card img{width:100px;height:175px}}
+
+/* v42.3 — přesunutí portrétů zakladatelů */
+.founder-godric-entry{left:17.2%;top:18%;width:clamp(72px,6.2vw,108px);height:clamp(105px,9.2vw,160px);overflow:hidden;transform:rotate(-1.2deg);opacity:.88}
+.founder-godric-entry:hover{transform:translateY(-3px) rotate(0deg)}
+.founder-godric-crop{display:block;width:100%;height:100%;overflow:hidden}
+.founder-godric-entry img{width:118%!important;height:auto!important;max-width:none!important;transform:translate(-8%,-3%);object-fit:cover!important}
+.house-scene .founder-house{z-index:22}
+.house-scene .founder-salazar{left:auto;right:5%;top:16%;width:clamp(105px,10vw,165px);height:clamp(205px,31vh,330px);opacity:.82}
+.house-scene .founder-helga{left:auto;right:5%;top:15%;width:clamp(110px,11vw,175px);height:clamp(210px,33vh,350px);opacity:.86}
+@media(max-width:760px){.founder-godric-entry{left:6%;top:19%;width:70px;height:105px;opacity:.8}.house-scene .founder-house{right:2%;top:18%;width:88px;height:180px;opacity:.72}}
+
+/* v42.3 — zakladatelé na veřejně přístupných kolejních centrech */
+.founder-dashboard{margin-left:auto;align-self:center;width:clamp(95px,8.5vw,145px);height:clamp(150px,13vw,225px);border:0;background:transparent;padding:0;cursor:pointer;filter:drop-shadow(0 14px 18px rgba(0,0,0,.7));transition:.2s;flex:0 0 auto}
+.founder-dashboard img{width:100%;height:100%;object-fit:contain;pointer-events:none}.founder-dashboard:hover{transform:translateY(-3px);filter:brightness(1.08) drop-shadow(0 16px 20px rgba(0,0,0,.8))}.founder-dashboard.found{opacity:.9}
+@media(max-width:760px){.founder-dashboard{width:82px;height:135px;margin-left:0}}

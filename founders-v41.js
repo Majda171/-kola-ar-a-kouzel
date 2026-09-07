@@ -1,7 +1,7 @@
 (()=>{
   const KEY='bradavice_founders_v42',A=window.BradaviceAchievements;
   const info={
-    godric:{name:'Godrik Nebelvír',img:'img/badge-godrikuv-nalezce.webp',text:'„Odvaha není nepřítomnost strachu. Je to rozhodnutí pokračovat navzdory němu.“'},
+    godric:{name:'Godrik Nebelvír',img:'img/founder-godric-v423.webp',text:'„Odvaha není nepřítomnost strachu. Je to rozhodnutí pokračovat navzdory němu.“'},
     salazar:{name:'Salazar Zmijozel',img:'img/founder-salazar-v42.webp',text:'„Hrad si pamatuje každé tajemství. Ne všechna však chtějí být nalezena.“'},
     rowena:{name:'Rowena z Havraspáru',img:'img/founder-rowena-v42.webp',text:'„Otázka, kterou položíš správně, může mít větší cenu než rychlá odpověď.“'},
     helga:{name:'Helga z Mrzimoru',img:'img/founder-helga-v42.webp',text:'„Trpělivá práce a laskavost bývají silnější, než se na první pohled zdá.“'}
@@ -24,24 +24,4 @@
     if(n===4)A?.completeQuest?.('founders-all',{points:0,badgeId:'ctyri-zakladatele',title:'Zakladatelé hradu — nalezeni všichni čtyři'});
   }
   document.querySelectorAll('[data-founder]').forEach(b=>{if(state[b.dataset.founder])b.classList.add('found');b.addEventListener('click',e=>{e.stopPropagation();found(b.dataset.founder)})});
-
-  // Godrik je součástí samotného pozadí Síně slávy. Proto se hotspot neumisťuje
-  // pevnými procenty viewportu: při background-size: cover se obrázek na širokých
-  // a vysokých displejích ořezává a starý hotspot mohl skončit mimo portrét.
-  const godric=document.getElementById('godrikQuest');
-  function positionGodric(){
-    if(!godric)return;
-    const scene=godric.closest('.hall-of-fame');if(!scene)return;
-    const r=scene.getBoundingClientRect(),iw=1600,ih=900,scale=Math.max(r.width/iw,r.height/ih);
-    const rw=iw*scale,rh=ih*scale,ox=(r.width-rw)/2,oy=(r.height-rh)/2;
-    // Skutečný obdélník centrálního portrétu v hall-v28-gallery.webp.
-    const x=716,y=276,w=184,h=294;
-    godric.style.left=`${ox+x*scale}px`;godric.style.top=`${oy+y*scale}px`;
-    godric.style.width=`${w*scale}px`;godric.style.height=`${h*scale}px`;
-  }
-  if(godric){
-    positionGodric();window.addEventListener('resize',positionGodric,{passive:true});
-    godric.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();found('godric')});
-    godric.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();found('godric')}});
-  }
 })();

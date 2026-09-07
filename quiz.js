@@ -31,12 +31,11 @@
       window.BradaviceDB?.claimV40Activity?.(dbKey).catch(err=>console.warn('Body za první úspěšný test se nepodařilo synchronizovat:',err));
     }
     write(all);
-    A?.award('prvni-test',{silent:true});
-    if(total===10&&score===10)A?.award('bez-jedine-chyby');
-    if(subjectIds.every(s=>all[s]?.attempts>0))A?.award('pilny-student',{silent:true});
-    if(subjectIds.filter(s=>Number(all[s]?.bestScore||0)>=8).length>=5)A?.award('bystra-mysl',{silent:true});
+    if(total===10&&score===10)
+    if(subjectIds.every(s=>all[s]?.attempts>0))
+    if(subjectIds.filter(s=>Number(all[s]?.bestScore||0)>=8).length>=5)
     if(id==='year1'&&passed)A?.award('rocnikova-zkouska');
-    if(id==='year1'&&score>=23)A?.award('s-vyznamenanim');
+    if(id==='year1'&&score>=23)
     window.dispatchEvent(new CustomEvent('bradavice:test-updated',{detail:{id,result:all[id]}}));
     return {grade:g[0],label:g[1],passed,firstPass,result:all[id]};
   }
