@@ -75,3 +75,18 @@ button,input{font:inherit}
 .slytherin-portal{width:min(340px,36vw)!important;transform:translate(-50%,-49%) scale(.84)!important}
 .slytherin-scene.opening .slytherin-portal{transform:translate(-50%,-50%) scale(.96)!important}
 @media(max-width:700px){.entry-page.gryff{background-attachment:scroll!important}.gryff-scene .portrait-art{width:min(285px,64vw)!important}.slytherin-portal{width:min(300px,62vw)!important}}
+
+
+/* v42.3.1 — kolejní vstupy nikdy nesmí zobrazovat odznaky jako dekoraci */
+.entry-page img[src*="badge-"]{display:none!important}
+
+/* v43 — vstup do Nebelvíru: světlejší schválené pozadí, větší Baculatá dáma, bez odznaku/zakladatele */
+.entry-page.gryff{background:linear-gradient(180deg,rgba(255,245,220,.08),rgba(255,245,220,.025)),url('img/vstup-nebelvir-v423.webp') center/cover fixed no-repeat!important;--scene-glow:rgba(166,104,55,.10)}
+.entry-page.gryff::after{background:radial-gradient(circle at 50% 46%,rgba(203,157,91,.06),transparent 42%),linear-gradient(90deg,rgba(0,0,0,.16),transparent 18%,transparent 82%,rgba(0,0,0,.16)),linear-gradient(180deg,transparent,rgba(0,0,0,.10))!important}
+.gryff-scene .portrait-art{width:min(430px,42vw)!important;margin-top:1%!important;filter:drop-shadow(0 24px 32px rgba(0,0,0,.62))!important}
+.gryff-scene .portrait-art img{max-height:74vh!important;object-fit:contain!important}
+.entry-page.gryff img[src*="badge-"],.entry-page.gryff .founder-godric-entry{display:none!important}
+/* Zmijozel: průchod po vyslovení hesla má zůstat jen menším otvorem ve stěně. */
+.slytherin-portal{width:min(285px,30vw)!important}
+.slytherin-scene.opening .slytherin-portal{transform:translate(-50%,-50%) scale(.94)!important}
+@media(max-width:700px){.gryff-scene .portrait-art{width:min(350px,78vw)!important}.slytherin-portal{width:min(245px,56vw)!important}}

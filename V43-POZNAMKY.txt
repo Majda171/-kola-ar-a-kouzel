@@ -1,0 +1,14 @@
+BRADAVICE v43
+
+Hlavní změny:
+- Prýtová: 5 rostlin se hledá výhradně po školních pozemcích; Zapovězený les se nepočítá.
+- Mandragory: nový cyklus mandragora → prázdný květináč → Přikrýt hlínou → +1, celkem 5 kusů.
+- Koleje: odstraněno „Objevit vstup“ u všech kolejí. Přesnou nápovědu vidí pouze člen vlastní koleje.
+- Kolejní vstupy jsou dostupné jako odbočky při procházení hradních chodeb.
+- Zakladatelé jsou přesunuti do hradních chodeb; Godrik už není u vstupu do Nebelvíru.
+- Nebelvír: odstraněn odznak/zakladatel ze stěny, světlejší pozadí, větší Baculatá dáma.
+- Zmijozel: zmenšený odhalený průchod po správném hesle.
+- Přijímací dopis: opravený přístup před rozřazením, robustní video se sovou a tlačítko pro přechod rovnou k dopisu.
+- Admin: možnost trvale smazat studenta s dvojím potvrzením (vyžaduje SUPABASE-V43-AKTUALIZACE.sql).
+- Zachováno: famfrpál 20 střel, opravené odevzdání astronomie, nový Snape a předchozí v42.3 opravy.
+- Online šachy a online pexeso nebyly ověřeny současně dvěma reálnými hráči.

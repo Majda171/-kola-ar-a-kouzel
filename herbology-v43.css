@@ -42,3 +42,18 @@
 .transplant-cover{border:1px solid #c19b50;background:#92703a;color:#120d07;padding:13px 15px;font:700 .58rem 'Cinzel';text-transform:uppercase;cursor:pointer}.transplant-cover:disabled{opacity:.38;cursor:not-allowed}.transplant-cover:not(:disabled):hover{filter:brightness(1.12)}
 .v43-transplant .transplant-status{min-height:54px}.v43-transplant #transplantInstruction{font-size:1.12rem;line-height:1.45;color:#e3d7bd}
 @media(max-width:720px){.v43-transplant{grid-template-columns:1fr}.v43-transplant .mandrake-workbench{min-height:340px}.mandrake-source{left:5%;width:47%}.mandrake-pot-target{right:4%;width:39%}.mandrake-in-pot{right:9%;width:29%;height:170px}.mandrake-soil{right:10%;width:31%;height:44px}.hut-scene .plant-jmeli{left:2%;top:11%}.hut-scene .plant-houby{right:3%;bottom:9%}.willow .plant-brectan{right:0;top:28%}}
+
+/* v43.1 — terénní rostliny musí být skutečně viditelné, ale pořád přirozeně zasazené do scény */
+.herb-specimen{z-index:60!important;opacity:1!important;pointer-events:auto!important}
+.games-page .plant-salvej{left:4vw!important;bottom:4vh!important;width:clamp(130px,10vw,190px)!important;height:clamp(130px,10vw,190px)!important;filter:brightness(1.02) saturate(.95) drop-shadow(0 10px 14px rgba(0,0,0,.82))!important}
+.lake-scene .plant-kopriva{left:5%!important;bottom:6%!important;width:clamp(125px,10vw,185px)!important;height:clamp(150px,12vw,220px)!important;filter:brightness(.98) saturate(.92) drop-shadow(0 10px 14px rgba(0,0,0,.82))!important}
+.hut-scene .plant-jmeli{left:4%!important;top:9%!important;width:clamp(120px,9vw,175px)!important;height:clamp(135px,11vw,200px)!important;filter:brightness(.98) saturate(.92) drop-shadow(0 10px 14px rgba(0,0,0,.82))!important}
+.hut-scene .plant-houby{right:7%!important;bottom:7%!important;width:clamp(125px,9vw,180px)!important;height:clamp(110px,8vw,155px)!important;filter:brightness(1) saturate(.95) drop-shadow(0 10px 14px rgba(0,0,0,.82))!important}
+.willow .plant-brectan{right:3%!important;top:24%!important;width:clamp(125px,10vw,190px)!important;height:clamp(205px,16vw,285px)!important;filter:brightness(.96) saturate(.9) drop-shadow(0 10px 14px rgba(0,0,0,.82))!important}
+@media(max-width:720px){
+  .games-page .plant-salvej{left:2vw!important;bottom:3vh!important;width:115px!important;height:115px!important}
+  .lake-scene .plant-kopriva{left:2%!important;bottom:8%!important;width:115px!important;height:150px!important}
+  .hut-scene .plant-jmeli{left:1%!important;top:12%!important;width:110px!important;height:145px!important}
+  .hut-scene .plant-houby{right:2%!important;bottom:10%!important;width:110px!important;height:95px!important}
+  .willow .plant-brectan{right:-1%!important;top:29%!important;width:120px!important;height:205px!important}
+}

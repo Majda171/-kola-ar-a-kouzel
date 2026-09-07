@@ -197,3 +197,7 @@ footer{padding:28px 0 42px;text-align:center;color:#8f8978;font-size:.92rem}
 .existing-student{margin-top:18px;font-family:"Cinzel",serif;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:#a89a79}.existing-student a{text-decoration:none;border-bottom:1px solid rgba(210,188,130,.35);padding-bottom:3px}.existing-student a:hover{color:#ead9aa;border-color:#d2bc7b}
 
 .admin-entry{margin-top:12px}.admin-entry a{font-family:Cinzel,serif;text-transform:uppercase;letter-spacing:.14em;font-size:.48rem;color:rgba(221,205,166,.38);text-decoration:none}.admin-entry a:hover{color:rgba(238,222,182,.72)}
+
+/* v43 — přehled kolejí: přesnou polohu vstupu vidí jen člen vlastní koleje */
+.house-entry-note{opacity:.78}.house-entry-note.own-house-clue{opacity:1;padding:12px 14px;border-left:2px solid rgba(181,147,80,.72);background:rgba(181,147,80,.07)}
+.house-castle-link{display:inline-flex;margin-top:16px}

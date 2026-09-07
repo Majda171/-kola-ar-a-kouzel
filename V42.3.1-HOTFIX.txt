@@ -1,0 +1,5 @@
+V42.3.1 hotfix
+- kolejní vstupy nesmí zobrazovat badge obrázky jako dekoraci
+- cache-busting pro prihlaseni.css, entry.js, achievements.js a founders-v41.js
+- oprava starého mixu souborů, kdy se mohl načíst Godrikův odznak místo správného portrétu
+- bez změny databáze / SQL

@@ -1,7 +1,7 @@
 (()=>{
   const KEY='bradavice_founders_v42',A=window.BradaviceAchievements;
   const info={
-    godric:{name:'Godrik Nebelvír',img:'img/founder-godric-v423.webp',text:'„Odvaha není nepřítomnost strachu. Je to rozhodnutí pokračovat navzdory němu.“'},
+    godric:{name:'Godrik Nebelvír',img:'img/founder-godric-v432.webp',text:'„Odvaha není nepřítomnost strachu. Je to rozhodnutí pokračovat navzdory němu.“'},
     salazar:{name:'Salazar Zmijozel',img:'img/founder-salazar-v42.webp',text:'„Hrad si pamatuje každé tajemství. Ne všechna však chtějí být nalezena.“'},
     rowena:{name:'Rowena z Havraspáru',img:'img/founder-rowena-v42.webp',text:'„Otázka, kterou položíš správně, může mít větší cenu než rychlá odpověď.“'},
     helga:{name:'Helga z Mrzimoru',img:'img/founder-helga-v42.webp',text:'„Trpělivá práce a laskavost bývají silnější, než se na první pohled zdá.“'}

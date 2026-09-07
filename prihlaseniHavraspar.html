@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="prihlaseni.css?v=423">
+  <link rel="stylesheet" href="prihlaseni.css?v=43">
   <title>Havraspár — vstup</title>
 <link rel="stylesheet" href="ghosts.css">
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase-config.js?v=422"></script>
-<link rel="stylesheet" href="access-guard.css?v=422"><script src="access-guard.js?v=422"></script>
+  <script src="supabase-config.js?v=431"></script>
+<link rel="stylesheet" href="access-guard.css?v=431"><script src="access-guard.js?v=431"></script>
 <link rel="stylesheet" href="magic-cursor.css">
-<link rel="stylesheet" href="v40.css"><link rel="stylesheet" href="music-v42.css?v=423"></head>
+<link rel="stylesheet" href="v40.css"><link rel="stylesheet" href="music-v42.css?v=431"></head>
 <body>
 <main class="entry-page raven">
-  <a class="back-link" href="hrad.html">← Mapa hradu</a>
+  <a class="back-link" href="chodby-horni.html">← Zpět do horních chodeb</a>
   <section class="scene raven-scene">
     <img class="wall-torch torch-small torch-left" src="img/torch-ravenclaw.webp" alt="" aria-hidden="true">
     <img class="wall-torch torch-small torch-right" src="img/torch-ravenclaw.webp" alt="" aria-hidden="true">
@@ -37,7 +37,7 @@
     </div>
   </section>
 </main>
-<script src="achievements.js?v=423"></script><script src="entry.js"></script>
+<script src="achievements.js?v=431"></script><script src="entry.js?v=43"></script>
 <script>
   const door = document.getElementById('eagleTrigger');
   const weekly = window.BradaviceAchievements?.getWeeklyEntry('H');
@@ -51,5 +51,12 @@
   });
 </script>
 <script src="ghosts.js"></script>
-<script src="music-v42.js?v=423"></script></body>
+<script src="music-v42.js?v=431"></script><script>
+(()=>{
+  const clean=()=>document.querySelectorAll('.entry-page img[src*="badge-"]').forEach(el=>el.remove());
+  clean();
+  new MutationObserver(clean).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+</body>
 </html>

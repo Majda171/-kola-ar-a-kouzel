@@ -28,7 +28,7 @@
     {id:'prvni-lektvar',title:'První lektvar',desc:'Probuď kotlík v učebně lektvarů.',img:'img/badge-prvni-lektvar.webp'},
     {id:'prvni-promena',title:'První proměna',desc:'Proveď první proměnu v učebně přeměňování.',img:'img/badge-prvni-promena.webp'},
     {id:'obrance-hradu',title:'Obránce hradu',desc:'Zvládni Lupinovu praktickou zkoušku s bubákem.',img:'img/badge-obrance-hradu.webp'},
-    {id:'sklenikovy-znalec',title:'Skleníkový znalec',desc:'Dokonči herbář a časovou zkoušku s mandragorami.',img:'img/badge-sklenikovy-znalec.webp'},
+    {id:'sklenikovy-znalec',title:'Skleníkový znalec',desc:'Dokonči herbář a správně přesaď mandragory.',img:'img/badge-sklenikovy-znalec.webp'},
     {id:'famfrpalova-hvezda',title:'Famfrpálová hvězda',desc:'Pošli camrál směrem k obručím.',img:'img/badge-famfrpalova-hvezda.webp'},
     {id:'pritel-duchu',title:'Přítel duchů',desc:'Spatři všech pět potulných duchů.',img:'img/badge-pritel-duchu.webp'},
     {id:'srdce-velke-sine',title:'Srdce Velké síně',desc:'Rozhýbej plovoucí svíčku ve Velké síni.',img:'img/badge-srdce-velke-sine.webp'},

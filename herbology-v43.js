@@ -1,10 +1,22 @@
 (()=>{
-  const KEY='bradavice_herbarium_v42',A=window.BradaviceAchievements,DB=window.BradaviceDB;
+  const KEY='bradavice_herbarium_v431',A=window.BradaviceAchievements,DB=window.BradaviceDB;
   const TARGET=5;
   const plantDefs={
     jmeli:{name:'Jmelí',src:'img/plant-jmeli-v423.webp'},salvej:{name:'Šalvěj',src:'img/plant-salvej-v423.webp'},kopriva:{name:'Kopřiva',src:'img/plant-kopriva-v423.webp'},brectan:{name:'Břečťan',src:'img/plant-brectan-v423.webp'},houby:{name:'Houby',src:'img/plant-houby-v423.webp'}
   };
   const blank=()=>({accepted:false,found:{jmeli:false,salvej:false,kopriva:false,brectan:false,houby:false},done:false,reward:0,best:0});
+  function seedV431(){
+    try{
+      if(localStorage.getItem(KEY)) return;
+      const legacy=JSON.parse(localStorage.getItem('bradavice_herbarium_v42')||'{}')||{};
+      // V43.1 zachová jen informaci, že student úkol už přijal.
+      // Staré nálezy/dokončení z testovacích verzí se nepřenášejí, protože schovávaly nové rostliny.
+      const fresh=blank();
+      fresh.accepted=Boolean(legacy.accepted);
+      localStorage.setItem(KEY,JSON.stringify(fresh));
+    }catch{}
+  }
+  seedV431();
   const load=()=>{try{const raw=JSON.parse(localStorage.getItem(KEY)||'{}')||{};return{...blank(),...raw,found:{...blank().found,...(raw.found||{})}}}catch{return blank()}};
   const save=s=>localStorage.setItem(KEY,JSON.stringify(s));let state=load();
   function toast(text){let t=document.querySelector('.herb-toast');if(!t){t=document.createElement('div');t.className='herb-toast';document.body.appendChild(t)}t.textContent=text;t.classList.remove('show');void t.offsetWidth;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2600)}

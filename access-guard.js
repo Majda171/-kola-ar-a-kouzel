@@ -91,6 +91,7 @@
     if (profile.banned_at) return redirect('vylouceni.html');
 
     const sortingPages = new Set([
+      'prijeti.html',
       'rozrazeni.html',
       'Nebelvir.html',
       'Havraspar.html',

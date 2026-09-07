@@ -430,3 +430,6 @@
   .corridor-old-gallery .founder-salazar{left:2%!important;top:12%!important;width:88px!important;height:158px!important;opacity:.82}
   .corridor-old-gallery .filch-character{max-height:42vh!important;right:1%!important;bottom:3%!important}
 }
+
+/* v43 — odbočky ke skrytým kolejním vstupům jsou dostupné při procházení hradu */
+.corridor-discovery-link{display:inline-flex;margin-top:13px;padding:9px 12px;border:1px solid rgba(205,177,108,.34);background:rgba(9,9,8,.58);color:#dbc995;text-decoration:none;font:600 .52rem 'Cinzel';letter-spacing:.08em;text-transform:uppercase;transition:.2s}.corridor-discovery-link:hover,.corridor-discovery-link:focus-visible{background:rgba(112,84,39,.72);color:#fff1c7;outline:none;transform:translateY(-1px)}
