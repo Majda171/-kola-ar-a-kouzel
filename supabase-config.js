@@ -24,7 +24,8 @@
     'havraspar-spolecenska.html':'havraspar-spolecenska','havraspar-loznice.html':'havraspar-loznice',
     'mrzimor-spolecenska.html':'mrzimor-spolecenska','mrzimor-loznice.html':'mrzimor-loznice',
     'zmijozel-spolecenska.html':'zmijozel-spolecenska','zmijozel-loznice.html':'zmijozel-loznice',
-    'tajemna-cesta.html':'tajemna-cesta','tajemna-komnata.html':'tajemna-komnata','reditelna.html':'reditelna','divci-umyvarna.html':'divci-umyvarna','knihovna.html':'knihovna'
+    'tajemna-cesta.html':'tajemna-cesta','tajemna-komnata.html':'tajemna-komnata','reditelna.html':'reditelna','divci-umyvarna.html':'divci-umyvarna','knihovna.html':'knihovna',
+    'chodby-podzemni-1.html':'podzemni-chodba-1','chodby-podzemni-2.html':'podzemni-chodba-2'
   };
   const locationToPage = Object.fromEntries(Object.entries(pageToLocation).map(([p,id])=>[id,p]));
   const STUDENT_KEY='bradavice_student_v1';
@@ -196,6 +197,12 @@
   async function updateChessRoom(code,state,version){if(!client)return null;const {data,error}=await client.rpc('v40_update_chess_room',{p_room_code:String(code||'').toUpperCase(),p_state:state||{},p_expected_version:Number(version||0)});if(error)throw error;return data}
   async function leaveChessRoom(code){if(!client||!code)return false;const {data,error}=await client.rpc('v40_leave_chess_room',{p_room_code:String(code||'').toUpperCase()});if(error)throw error;return Boolean(data)}
 
+  async function createMemoryRoom(pairCount,state){if(!client)throw new Error('Databázové připojení není dostupné.');const {data,error}=await client.rpc('v422_create_memory_room',{p_pair_count:Number(pairCount)||20,p_state:state||{}});if(error)throw error;return data}
+  async function joinMemoryRoom(code){if(!client)throw new Error('Databázové připojení není dostupné.');const {data,error}=await client.rpc('v422_join_memory_room',{p_room_code:String(code||'').toUpperCase()});if(error)throw error;return data}
+  async function getMemoryRoom(code){if(!client)return null;const {data,error}=await client.rpc('v422_get_memory_room',{p_room_code:String(code||'').toUpperCase()});if(error)throw error;return data}
+  async function updateMemoryRoom(code,state,version){if(!client)return null;const {data,error}=await client.rpc('v422_update_memory_room',{p_room_code:String(code||'').toUpperCase(),p_state:state||{},p_expected_version:Number(version||0)});if(error)throw error;return data}
+  async function leaveMemoryRoom(code){if(!client||!code)return false;const {data,error}=await client.rpc('v422_leave_memory_room',{p_room_code:String(code||'').toUpperCase()});if(error)throw error;return Boolean(data)}
+
   function ensureHudStyles(){if(document.querySelector('link[data-student-hud]'))return;const l=document.createElement('link');l.rel='stylesheet';l.href='student-hud.css';l.dataset.studentHud='1';document.head.appendChild(l)}
   function updateStudentHud(student=safeRead(STUDENT_KEY,null)){
     if(!document.body)return;const page=currentPage();if(page.startsWith('admin')||page==='index.html'||page==='registrace.html'||page==='prihlaseni-student.html'||page==='vylouceni.html')return;
@@ -223,5 +230,5 @@
   function boot(){updateStudentHud();startPresence().catch(()=>{});if(client)client.auth.onAuthStateChange((_e,session)=>{if(session?.user){setTimeout(()=>{hydrateStudent().catch(()=>{});startPresence().catch(()=>{})},0)}else updateStudentHud(null)})}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 
-  window.BradaviceDB={url:URL,client,houseNames,crestNames,avatarKeys,avatarKeysByHouse,defaultAvatarForHouse,pageToLocation,getUser,getProfile,hydrateStudent,hydrateProgress,hydrateAll,studentNameAvailable,signUp,signIn,signOut,setHouseOnce,unlockAchievement,completeQuest,visitLocationByPage,getHouseStandings,syncHouseStandingsLocal,claimDailyChallenge,updateOwnProfile,isAdmin,adminStats,adminSearchStudents,adminStudentDetail,getAccessState,adminSetBan,adminAdjustPoints,hagridStatus,hagridAccept,hagridFind,hagridReturn,postChatMessage,getChatMessages,claimV40Activity,snapePenalty,claimV42Activity,submitTournamentScore,getTournamentBoard,createChessRoom,joinChessRoom,getChessRoom,updateChessRoom,leaveChessRoom,startPresence,createAdminPresenceViewer,updateStudentHud};
+  window.BradaviceDB={url:URL,client,houseNames,crestNames,avatarKeys,avatarKeysByHouse,defaultAvatarForHouse,pageToLocation,getUser,getProfile,hydrateStudent,hydrateProgress,hydrateAll,studentNameAvailable,signUp,signIn,signOut,setHouseOnce,unlockAchievement,completeQuest,visitLocationByPage,getHouseStandings,syncHouseStandingsLocal,claimDailyChallenge,updateOwnProfile,isAdmin,adminStats,adminSearchStudents,adminStudentDetail,getAccessState,adminSetBan,adminAdjustPoints,hagridStatus,hagridAccept,hagridFind,hagridReturn,postChatMessage,getChatMessages,claimV40Activity,snapePenalty,claimV42Activity,submitTournamentScore,getTournamentBoard,createChessRoom,joinChessRoom,getChessRoom,updateChessRoom,leaveChessRoom,createMemoryRoom,joinMemoryRoom,getMemoryRoom,updateMemoryRoom,leaveMemoryRoom,startPresence,createAdminPresenceViewer,updateStudentHud};
 })();

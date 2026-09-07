@@ -15,7 +15,7 @@
   document.querySelectorAll('.real-cauldron').forEach(c=>c.addEventListener('click',()=>{c.classList.remove('bubble-pop');void c.offsetWidth;c.classList.add('bubble-pop');if(smoke){smoke.classList.remove('pop');void smoke.offsetWidth;smoke.classList.add('pop')}A?.award('prvni-lektvar')}));
 
   function safeStudent(){try{return JSON.parse(localStorage.getItem(STUDENT_KEY))}catch{return null}}
-  function badgeCard(b,unlocked){return `<article class="badge-card${unlocked?'':' locked'}" title="${b.desc}"><img src="${b.img}" alt="Odznak ${b.title}"><strong>${b.title}</strong><small>${b.desc}</small></article>`}
+  function badgeCard(b,unlocked){const img=b.img||'img/bradavice-erb.webp';return `<article class="badge-card${unlocked?'':' locked'}" title="${b.desc}"><img src="${img}" alt="Odznak ${b.title}"><strong>${b.title}</strong><small>${b.desc}</small></article>`}
   function renderAvatarChoices(active,house){
     const keys=DB?.avatarKeysByHouse?.[house]||[];
     return keys.map((k,i)=>`<button class="avatar-choice${k===active?' selected':''}" type="button" data-avatar="${k}" aria-label="Profilový portrét ${i+1}"><img src="${avatarPath(k,house)}" alt="Profilový portrét ${i+1}"><span>Portrét ${i+1}</span></button>`).join('');
@@ -45,7 +45,7 @@
     const roomLinks={N:'Nebelvir.html',H:'Havraspar.html',M:'Mrzimor.html',Z:'Zmijozel.html'};document.getElementById('profileRoomLink').href=s.houseCode?(roomLinks[code]||'koleje.html'):'rozrazeni.html';
     bindProfileEditor(s);
     if(A){
-      A.syncDerivedAchievements?.();const st=A.getState(),unlocked=st.unlocked||{},displayBadges=A.allBadges.filter(b=>b.img);
+      A.syncDerivedAchievements?.();const st=A.getState(),unlocked=st.unlocked||{},displayBadges=A.allBadges;
       document.getElementById('profileBadges').textContent=displayBadges.filter(b=>unlocked[b.id]).length;
       document.getElementById('achievementGrid').innerHTML=displayBadges.map(b=>badgeCard(b,Boolean(unlocked[b.id]))).join('');
       const weekly=s.houseCode?A.getWeeklyEntry(code):null,access=document.getElementById('profileAccess');

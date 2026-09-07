@@ -1,18 +1,5 @@
 (() => {
-  // v25: jednorázový čistý start. Smaže pouze data tohoto prototypu,
-  // aby bylo možné provést novou registraci bez starého studenta, bodů a odznaků.
-  try{
-    const resetKey='bradavice_v25_fresh_start';
-    if(!localStorage.getItem(resetKey)){
-      const doomed=[];
-      for(let i=0;i<localStorage.length;i++){
-        const k=localStorage.key(i);
-        if(k&&k.startsWith('bradavice_')) doomed.push(k);
-      }
-      doomed.forEach(k=>localStorage.removeItem(k));
-      localStorage.setItem(resetKey,'1');
-    }
-  }catch{}
+  // v42.2: starý v25 reset byl odstraněn — aktualizace nesmí mazat lokální postup studenta.
   const STUDENT_KEY='bradavice_student_v1';
   const STATE_KEY='bradavice_achievements_v2';
   const VISITS_KEY='bradavice_location_visits_v1';
@@ -206,5 +193,5 @@
   markVisit(currentPage());
   syncDerivedAchievements();
 
-  window.BradaviceAchievements={coreBadges,bonusBadges,allBadges,award,isUnlocked,addPoints,completeQuest,markVisit,recordActivity,recordGhost,getState:state,getStudent,getWeeklyEntry,read,write,syncDerivedAchievements,keys:{STATE_KEY,VISITS_KEY,QUEST_KEY,GHOST_KEY,CONSTELLATION_KEY}};
+  window.BradaviceAchievements={coreBadges,bonusBadges,allBadges,award,isUnlocked,addPoints,completeQuest,markVisit,recordActivity,recordGhost,toast,getState:state,getStudent,getWeeklyEntry,read,write,syncDerivedAchievements,keys:{STATE_KEY,VISITS_KEY,QUEST_KEY,GHOST_KEY,CONSTELLATION_KEY}};
 })();

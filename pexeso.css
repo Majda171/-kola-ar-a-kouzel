@@ -19,3 +19,8 @@
 .memory-card.is-matched .memory-front{box-shadow:inset 0 0 32px rgba(218,176,68,.30),0 0 24px rgba(218,176,68,.18)}
 .memory-board{gap:10px}
 @media(max-width:650px){.memory-board{gap:7px}}
+
+/* v42.2 — online duel a přehledný lobby panel */
+.memory-online-setup{border:1px solid rgba(208,182,117,.24);background:rgba(8,10,8,.72);padding:14px;display:grid;gap:10px;max-width:720px}
+.memory-online-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.memory-online-row input{min-width:170px;background:#0a0c0a;border:1px solid rgba(208,182,117,.28);color:#eadfc4;padding:10px 12px;text-transform:uppercase;letter-spacing:.16em;font-family:'Cinzel',Georgia,serif}.memory-room-code{font:700 1rem 'Cinzel',Georgia,serif;letter-spacing:.18em;color:#e4c875}.memory-online-setup p{margin:0;color:#a99d86;font-size:.84rem;line-height:1.45}.memory-player-modes{grid-template-columns:repeat(3,1fr);grid-auto-flow:initial}.memory-card.is-matched{opacity:.82}.memory-card[disabled]{pointer-events:none}
+@media(max-width:650px){.memory-player-modes{grid-template-columns:1fr;}.memory-online-row{align-items:stretch}.memory-online-row input,.memory-online-row .memory-btn{width:100%}}

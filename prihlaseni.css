@@ -56,3 +56,13 @@ button,input{font:inherit}
 .entry-page.gryff .wall-torch,.entry-page.gryff .ambient-painting,.entry-page.slyth .wall-torch,.entry-page.slyth .old-armor,.entry-page.slyth .slytherin-founder,.entry-page.slyth .slytherin-crest,.entry-page.slyth .slytherin-wall-emblem{display:none!important}
 .gryff-scene .portrait-art{width:min(455px,58vw);z-index:7}
 @media(max-width:700px){.entry-page.gryff,.entry-page.slyth{background-attachment:scroll!important}.gryff-scene .portrait-art{width:min(390px,78vw)}}
+
+/* v42.2 — Nebelvír: vrácené původní hradní pozadí a přirozeněji rozmístěné obrazy. */
+.entry-page.gryff{background:linear-gradient(rgba(7,5,4,.22),rgba(5,4,3,.42)),url("img/hall-v24-gallery.webp") center/cover fixed no-repeat!important}
+.entry-page.gryff .wall-torch,.entry-page.gryff .ambient-painting{display:block!important}
+.gryff-scene .painting-a{left:4%!important;top:15%!important;width:clamp(78px,7vw,118px)!important}
+.gryff-scene .painting-b{left:13%!important;bottom:12%!important;width:clamp(92px,8.5vw,142px)!important}
+.gryff-scene .painting-c{right:14%!important;top:14%!important;width:clamp(72px,6.6vw,108px)!important}
+.gryff-scene .painting-d{right:4%!important;bottom:14%!important;width:clamp(100px,10vw,158px)!important}
+.gryff .torch-left{left:1.8%!important;top:42%!important}.gryff .torch-right{right:1.8%!important;top:42%!important}
+@media(max-width:760px){.entry-page.gryff{background-attachment:scroll!important}.entry-page.gryff .ambient-painting{opacity:.52!important}.gryff-scene .painting-b,.gryff-scene .painting-d{display:none!important}.gryff-scene .painting-a{left:0!important;top:18%!important}.gryff-scene .painting-c{right:0!important;top:18%!important}.entry-page.gryff .wall-torch{opacity:.58}}
