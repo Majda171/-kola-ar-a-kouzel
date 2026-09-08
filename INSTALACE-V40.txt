@@ -1,0 +1,10 @@
+BRADAVICE v40 — NASAZENÍ
+========================
+
+1. Nahraj obsah této složky na web stejně jako předchozí verzi.
+2. V Supabase ponech stávající databázi; nic z v37 ručně nemaž.
+3. Spusť JEDEN soubor: SUPABASE-V40-KOMPLET.sql.
+   Obsahuje opravu v37 i databázové části v40: chat, turnaje, nové odměny, ruční +/− body a online šachové místnosti.
+4. Starý V37 SQL znovu nespouštěj.
+5. Otestuj v novém studentském účtu: registrace → Převzít dopis od sovy → fullscreen video se zvukem → osobní dopis → rozřazení.
+6. Potom ověř: Moje kolej + Odhlásit se, chat, šachy, vaření lektvarů, Komnatu nejvyšší potřeby a tři zkoušky na cestě do Tajemné komnaty.

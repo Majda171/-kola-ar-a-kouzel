@@ -1,4 +1,4 @@
 .ghost-layer{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:18;contain:layout paint}
-.ghost-visitor{position:absolute;left:0;top:0;width:clamp(180px,20vw,340px);max-height:72vh;object-fit:contain;opacity:0;pointer-events:none;will-change:transform,opacity;filter:drop-shadow(0 0 12px rgba(190,220,255,.22)) drop-shadow(0 0 32px rgba(145,185,225,.12));mix-blend-mode:screen}
-.ghost-visitor.ghost-protiva{filter:drop-shadow(0 0 13px rgba(188,205,255,.25)) drop-shadow(0 0 34px rgba(167,126,224,.13));}
+.ghost-visitor{position:absolute;left:0;top:0;width:clamp(230px,24vw,430px);max-height:72vh;object-fit:contain;opacity:0;pointer-events:none;will-change:transform,opacity;filter:drop-shadow(0 0 12px rgba(190,220,255,.22)) drop-shadow(0 0 32px rgba(145,185,225,.12));mix-blend-mode:screen}
+.ghost-visitor.ghost-protiva{width:clamp(180px,20vw,340px);mix-blend-mode:normal;filter:drop-shadow(0 0 13px rgba(188,205,255,.25)) drop-shadow(0 0 34px rgba(167,126,224,.13));}
 @media (prefers-reduced-motion:reduce){.ghost-layer{display:none}}

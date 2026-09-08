@@ -1,0 +1,9 @@
+BRADAVICE v42.2.1 — SQL HOTFIX
+
+Oprava chyby PostgreSQL 42P13: cannot change return type of existing function visit_location(text).
+Skript nyní před vytvořením správné funkce provede:
+DROP FUNCTION IF EXISTS public.visit_location(text);
+
+Pokud předchozí spuštění SUPABASE-V42.2-OPRAVY.sql skončilo na této chybě, transakce se kvůli BEGIN/COMMIT neprovedla.
+Stačí tedy spustit celý nový SUPABASE-V42.2-OPRAVY.sql z této verze znovu.
+Skript nemaže studenty, body ani postup.
