@@ -53,11 +53,11 @@
       else{
         if(code==='N')access.innerHTML='<strong>Severní křídlo</strong><p>Hledej starou portrétovou stěnu a Baculatou dámu. Aktuální heslo chodí soví poštou.</p>';
         else if(code==='Z')access.innerHTML='<strong>Hluboké sklepení</strong><p>Hledej nenápadnou kamennou stěnu. Aktuální heslo chodí soví poštou.</p>';
-        else if(code==='H')access.innerHTML='<strong>Věž Havraspáru</strong><p>Ke vstupu vede schodiště z horních chodeb. Orlí klepadlo položí novou otázku.</p>';
+        else if(code==='H')access.innerHTML='<strong>Věž Havraspáru</strong><p>Ke vstupu vede schodiště z horních chodeb. Aktuální heslo chodí soví poštou.</p>';
         else access.innerHTML='<strong>Nedaleko kuchyní</strong><p>Vstup je ukrytý mezi sudy a reaguje na správný rytmus poklepání.</p>';
         if(mail){
           const d=new Date(),day=(d.getDay()+6)%7,monday=new Date(d.getFullYear(),d.getMonth(),d.getDate()-day),weekId=`${monday.getFullYear()}-${String(monday.getMonth()+1).padStart(2,'0')}-${String(monday.getDate()).padStart(2,'0')}`,seenKey=`bradavice_owl_mail_seen_${code}`,seen=localStorage.getItem(seenKey)===weekId;
-          const body=code==='N'?`Nové heslo k portrétu Baculaté dámy: <b>${weekly?.display||'—'}</b>`:code==='Z'?`Nové heslo ke kamenné stěně: <b>${weekly?.display||'—'}</b>`:code==='H'?`Tento týden tě u orlího klepadla čeká otázka: <b>${weekly?.prompt||'Nová hádanka'}</b>`:'Prefekti připomínají: vstup hledej mezi sudy nedaleko kuchyní. Heslo se nepoužívá.';
+          const body=code==='N'?`Nové heslo k portrétu Baculaté dámy: <b>${weekly?.display||'—'}</b>`:code==='Z'?`Nové heslo ke kamenné stěně: <b>${weekly?.display||'—'}</b>`:code==='H'?`Nové heslo k orlímu klepadlu: <b>${weekly?.display||'—'}</b>`:'Prefekti připomínají: vstup hledej mezi sudy nedaleko kuchyní. Heslo se nepoužívá.';
           mail.innerHTML=`<div class="owl-mail-head"><span>${seen?'Přečtený dopis':'✦ Nová soví pošta'}</span><small>Týden od ${monday.toLocaleDateString('cs-CZ')}</small></div><button class="owl-mail-open" type="button">${seen?'Otevřít znovu':'Otevřít dopis'}</button><div class="owl-mail-letter" ${seen?'':'hidden'}><strong>Pro člena koleje ${house}</strong><p>${body}</p><small>Tento dopis je určený jen pro tvoji kolej.</small></div>`;
           const openMail=mail.querySelector('.owl-mail-open'),letter=mail.querySelector('.owl-mail-letter');openMail?.addEventListener('click',()=>{letter.hidden=false;localStorage.setItem(seenKey,weekId);openMail.textContent='Dopis otevřen';mail.querySelector('.owl-mail-head span').textContent='Přečtený dopis'});
         }
@@ -66,7 +66,8 @@
       const questRows=[
         ['find-godric','Najdi na hradě obraz Godrika Nebelvíra','Hledej v Síni slávy mezi slavnými portréty.','Obraz už jsi objevil/a.','+10 bodů'],
         ['find-three-constellations','Najdi tři souhvězdí v Astronomické věži','Každé nové pozorování začíná od 0/3. Najdi všechny tři obrazce.','Všechna tři souhvězdí byla nalezena.','+50 bodů'],
-        ['herbarium-prytova','Herbář Bradavic pro profesorku Prýtovou','Najdi pět ukrytých rostlin při procházení okolí školy. Potom tě čeká minutová práce s mandragorami.','Herbář i časová zkouška s mandragorami jsou hotové.','5–50 bodů'],
+        ['prytova-herbar','Herbář Bradavic pro profesorku Prýtovou','Najdi pět rostlin při procházení školních pozemků a vrať se je odevzdat.','Herbář je kompletní a odevzdaný.','samostatný úkol'],
+        ['prytova-mandragory','Minuta s mandragorami','Přijmi druhý úkol u Prýtové a za 60 sekund přesaď alespoň pět mandragor.','Mandragorová výzva je splněná.','samostatný úkol'],
         ['mcgonagall-feather','Lehké jako pírko','Promluv s profesorkou McGonagallovou a splň praktický úkol s pírkem.','Pírko jsi bezpečně zvedl/a a vrátil/a na lavici.','+10 bodů'],
         ['lupin-boggart','Praktická zkouška s bubákem','V učebně obrany otevři skříň a zvládni bubáka kouzlem Riddikulus.','Bubák byl poražen.','+20 bodů'],
         ['founders-all','Zakladatelé hradu','Najdi Godrika, Salazara, Rowenu a Helgu v různých částech hradu.','Všichni čtyři zakladatelé byli nalezeni.','odznak']

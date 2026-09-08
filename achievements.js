@@ -28,7 +28,6 @@
     {id:'prvni-lektvar',title:'První lektvar',desc:'Probuď kotlík v učebně lektvarů.',img:'img/badge-prvni-lektvar.webp'},
     {id:'prvni-promena',title:'První proměna',desc:'Proveď první proměnu v učebně přeměňování.',img:'img/badge-prvni-promena.webp'},
     {id:'obrance-hradu',title:'Obránce hradu',desc:'Zvládni Lupinovu praktickou zkoušku s bubákem.',img:'img/badge-obrance-hradu.webp'},
-    {id:'sklenikovy-znalec',title:'Skleníkový znalec',desc:'Dokonči herbář a správně přesaď mandragory.',img:'img/badge-sklenikovy-znalec.webp'},
     {id:'famfrpalova-hvezda',title:'Famfrpálová hvězda',desc:'Pošli camrál směrem k obručím.',img:'img/badge-famfrpalova-hvezda.webp'},
     {id:'pritel-duchu',title:'Přítel duchů',desc:'Spatři všech pět potulných duchů.',img:'img/badge-pritel-duchu.webp'},
     {id:'srdce-velke-sine',title:'Srdce Velké síně',desc:'Rozhýbej plovoucí svíčku ve Velké síni.',img:'img/badge-srdce-velke-sine.webp'},
@@ -37,7 +36,23 @@
     {id:'orli-hadanka',title:'Orlí hádanka',desc:'Správně odpověz na otázku orlího klepadla.',img:'img/badge-orli-hadanka.webp'},
     {id:'rytmus-sudu',title:'Rytmus sudů',desc:'Zaklepej správný rytmus na mrzimorské sudy.',img:'img/badge-rytmus-sudu.webp'},
     {id:'dama-otevrela',title:'Dáma otevřela',desc:'Přesvědč Baculatou dámu správným heslem.',img:'img/badge-dama-otevrela.webp'},
-    {id:'septane-heslo',title:'Šeptané heslo',desc:'Odhal skrytý zmijozelský průchod.',img:'img/badge-septane-heslo.webp'}
+    {id:'septane-heslo',title:'Šeptané heslo',desc:'Odhal skrytý zmijozelský průchod.',img:'img/badge-septane-heslo.webp'},
+    {id:'herbarnik',title:'Herbářník',desc:'Dokonči Herbář profesorky Prýtové a odevzdej všech pět vzorků.',img:'img/badge-herbarnik.webp'},
+    {id:'mandragorovy-pestitel',title:'Mandragorový pěstitel',desc:'Úspěšně dokonči minutovou výzvu s přesazováním mandragor.',img:'img/badge-mandragorovy-pestitel.webp'},
+    {id:'sachovy-mistr',title:'Šachový mistr',desc:'Vyhraj pět kouzelnických šachových partií.',img:'img/badge-sachovy-mistr.webp'},
+    {id:'mistr-lektvaru',title:'Mistr lektvarů',desc:'Uvař několik lektvarů bez jediné chyby.',img:'img/badge-mistr-lektvaru.webp'},
+    {id:'mistr-premen',title:'Mistr přeměn',desc:'Zvládni pokročilé úkoly z přeměňování.',img:'img/badge-mistr-premen.webp'},
+    {id:'pritel-hagrida',title:'Přítel Hagrida',desc:'Dokonči Hagridův úkol.',img:'img/badge-pritel-hagrida.webp'},
+    {id:'jezerni-badatel',title:'Jezerní badatel',desc:'Objev tajemství Černého jezera.',img:'img/badge-jezerni-badatel.webp'},
+    {id:'prvni-test',title:'První test',desc:'Dokonči první školní test.',img:'img/badge-prvni-test.webp'},
+    {id:'bystra-mysl',title:'Bystrá mysl',desc:'Prokaž výborné znalosti napříč školními testy.',img:'img/badge-bystra-mysl.webp'},
+    {id:'bez-jedine-chyby',title:'Bez jediné chyby',desc:'Dokonči školní test na 100 %.',img:'img/badge-bez-jedine-chyby.webp'},
+    {id:'pilny-student',title:'Pilný student',desc:'Absolvuj všechny hlavní předmětové testy.',img:'img/badge-pilny-student.webp'},
+    {id:'s-vyznamenanim',title:'S vyznamenáním',desc:'Dosáhni výborného výsledku v ročníkové zkoušce.',img:'img/badge-s-vyznamenanim.webp'},
+    {id:'opora-koleje',title:'Opora koleje',desc:'Nasbírej 50 osobních bodů.',img:'img/badge-opora-koleje.webp'},
+    {id:'sto-bodu',title:'Sto bodů',desc:'Dosáhni 100 osobních bodů.',img:'img/badge-sto-bodu.webp'},
+    {id:'legenda-koleje',title:'Legenda koleje',desc:'Dosáhni vysokého dlouhodobého bodového milníku.',img:'img/badge-legenda-koleje.webp'},
+    {id:'kolejni-hlas',title:'Kolejní hlas',desc:'Zapoj se do kolejního chatu.',img:'img/badge-kolejni-hlas.webp'},
   ];
 
   const allBadges=[...coreBadges,...bonusBadges];
@@ -151,12 +166,12 @@
       {display:'Bezoár',answers:['Bezoár']},{display:'Stříbrný had',answers:['Stříbrný had']},{display:'Noční stín',answers:['Noční stín']},{display:'Smaragd',answers:['Smaragd']},{display:'Černé jezero',answers:['Černé jezero']},{display:'Hadí jazyk',answers:['Hadí jazyk']}
     ],
     H:[
-      {prompt:'Co je vždy před tebou, ale nikdy to nemůžeš vidět?',answers:['Budoucnost']},
-      {prompt:'Čím víc toho ubývá, tím větší to je. Co je to?',answers:['Díra','Dira']},
-      {prompt:'Má města, ale nemá domy; má řeky, ale nemá vodu. Co je to?',answers:['Mapa']},
-      {prompt:'Co můžeš chytit, ale nemůžeš hodit?',answers:['Rýmu','Rymu']},
-      {prompt:'Co patří tobě, ale ostatní to používají častěji než ty?',answers:['Jméno','Jmeno','Moje jméno','Moje jmeno']},
-      {prompt:'Co se zvětšuje, čím více z toho bereš?',answers:['Díra','Dira']}
+      {display:'Modrý safír',answers:['Modrý safír']},
+      {display:'Orlí pero',answers:['Orlí pero']},
+      {display:'Hvězdná věž',answers:['Hvězdná věž']},
+      {display:'Měsíční svit',answers:['Měsíční svit']},
+      {display:'Modrá hvězda',answers:['Modrá hvězda']},
+      {display:'Stříbrný orel',answers:['Stříbrný orel']}
     ]
   };
   function getWeeklyEntry(code){const arr=weekly[code]||[];return arr.length?arr[Math.abs(weekIndex())%arr.length]:null}

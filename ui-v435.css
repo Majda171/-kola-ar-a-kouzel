@@ -1,0 +1,36 @@
+/* v43.5 — kompaktní kolejní ovládání + fullscreen */
+.student-house-hud{position:fixed!important;z-index:980!important;right:14px!important;top:14px!important;width:auto!important;min-width:0!important;border:0!important;background:transparent!important;overflow:visible!important;filter:drop-shadow(0 10px 20px rgba(0,0,0,.58))!important;backdrop-filter:none!important}
+.student-house-card{display:flex!important;align-items:center!important;justify-content:center!important;width:52px!important;height:52px!important;padding:4px!important;border:1px solid rgba(213,186,119,.38)!important;background:rgba(7,9,8,.9)!important;border-radius:50%!important;cursor:pointer!important;text-decoration:none!important;box-sizing:border-box!important;transition:.2s!important}
+.student-house-card img{width:42px!important;height:42px!important;object-fit:contain!important;margin:0!important}
+.student-house-card span{display:none!important}
+.student-house-card:hover,.student-house-card:focus-visible{transform:translateY(-1px) scale(1.03);background:rgba(24,23,17,.96)!important;outline:1px solid rgba(232,205,136,.45)}
+.student-hud-actions{position:absolute!important;right:0!important;top:59px!important;width:178px!important;display:grid!important;grid-template-columns:1fr 1fr!important;background:rgba(7,9,8,.97)!important;border:1px solid rgba(213,186,119,.32)!important;box-shadow:0 18px 36px rgba(0,0,0,.66)!important;opacity:0!important;visibility:hidden!important;transform:translateY(-7px) scale(.98)!important;transform-origin:top right!important;pointer-events:none!important;transition:.2s!important}
+.student-house-hud.is-open .student-hud-actions{opacity:1!important;visibility:visible!important;transform:none!important;pointer-events:auto!important}
+.student-hud-actions a,.student-hud-actions button{min-height:38px!important;padding:10px 7px!important;font-size:.45rem!important;border:0!important;border-bottom:1px solid rgba(213,186,119,.12)!important;border-right:1px solid rgba(213,186,119,.12)!important;background:transparent!important;color:#cdbb92!important}
+.student-hud-actions a:nth-child(even){border-right:0!important}.student-hud-actions .student-logout{grid-column:1/-1!important;border-right:0!important;color:#dfc78f!important}
+.student-hud-actions a:hover,.student-hud-actions button:hover{background:rgba(213,186,119,.08)!important;color:#fff0c1!important}
+.student-hud-house-name{grid-column:1/-1;padding:8px 10px;border-bottom:1px solid rgba(213,186,119,.16);font:600 .52rem 'Cinzel',Georgia,serif;letter-spacing:.11em;text-transform:uppercase;color:#e0c77f;text-align:center}
+
+.v435-fullscreen{position:fixed;z-index:979;right:76px;top:17px;width:45px;height:45px;border:1px solid rgba(213,186,119,.34);border-radius:50%;background:rgba(7,9,8,.88);color:#e1c77e;font:700 1.15rem/1 Georgia,serif;cursor:pointer;box-shadow:0 10px 20px rgba(0,0,0,.5);transition:.2s;display:grid;place-items:center}
+.v435-fullscreen:hover,.v435-fullscreen:focus-visible{background:rgba(28,25,17,.96);color:#fff1c1;transform:translateY(-1px);outline:1px solid rgba(232,205,136,.4)}
+.v435-fullscreen span{transform:translateY(-1px)}
+
+/* kuchyňská stěna — vedlejší obrazy musí být čitelné, ale hrušky zůstávají hlavní interakcí */
+.kitchen-v25 .kitchen-entry{width:min(390px,31vw)!important;top:52%!important}
+.kitchen-wall-gallery{z-index:5!important}
+.kitchen-wall-painting{opacity:.94!important;filter:brightness(.88) saturate(.86) drop-shadow(0 16px 22px rgba(0,0,0,.9))!important}
+.kitchen-paint-a{left:5%!important;top:13%!important;width:clamp(130px,10vw,190px)!important}
+.kitchen-paint-b{left:18%!important;top:40%!important;width:clamp(105px,8vw,155px)!important}
+.kitchen-paint-c{right:18%!important;top:38%!important;width:clamp(112px,8.5vw,165px)!important}
+.kitchen-paint-d{right:5%!important;top:14%!important;width:clamp(125px,9.5vw,180px)!important;transform:rotate(1.4deg)}
+.kitchen-paint-e{left:8%!important;bottom:7%!important;top:auto!important;width:clamp(95px,7.5vw,145px)!important;transform:rotate(.8deg)}
+.kitchen-v25 .founder-helga-v433{width:clamp(125px,10vw,175px)!important;height:clamp(185px,15vw,255px)!important;right:4%!important;top:12%!important}
+
+/* drobná nápověda u trvale viditelných herbářových rostlin */
+.herb-specimen.v435-locked::after{content:'Nejdřív přijmi Herbář u Prýtové';position:absolute;left:50%;bottom:-28px;transform:translateX(-50%);white-space:nowrap;padding:5px 7px;background:rgba(5,7,6,.88);border:1px solid rgba(213,186,119,.28);color:#d8c698;font:600 .44rem 'Cinzel',Georgia,serif;letter-spacing:.04em;opacity:0;pointer-events:none;transition:.2s}
+.herb-specimen.v435-locked:hover::after{opacity:1}
+
+@media(max-width:720px){
+ .student-house-hud{right:8px!important;top:8px!important}.student-house-card{width:46px!important;height:46px!important}.student-house-card img{width:37px!important;height:37px!important}.student-hud-actions{top:52px!important;width:164px!important}.v435-fullscreen{right:62px;top:10px;width:40px;height:40px}
+ .kitchen-v25 .kitchen-entry{width:min(280px,52vw)!important}.kitchen-paint-a{left:1%!important;top:17%!important;width:88px!important}.kitchen-paint-b{left:3%!important;top:48%!important;width:75px!important}.kitchen-paint-c{right:3%!important;top:47%!important;width:78px!important}.kitchen-paint-d{right:1%!important;top:18%!important;width:86px!important}.kitchen-paint-e{display:none!important}.kitchen-v25 .founder-helga-v433{width:88px!important;height:140px!important;right:2%!important;top:16%!important}
+}

@@ -1,6 +1,6 @@
 (()=>{
   const root=document.querySelector('.secret-trials-shell');if(!root)return;
-  const STORE='bradavice_secret_trials_v40',GATE='bradavice_secret_trials_gate_v40';
+  const STORE='bradavice_secret_trials_v435',GATE='bradavice_secret_trials_gate_v435';
   let progress={chess:false,key:false,potion:false};try{progress={...progress,...JSON.parse(localStorage.getItem(STORE)||'{}')}}catch{}
   const save=()=>{localStorage.setItem(STORE,JSON.stringify(progress));if(progress.chess&&progress.key&&progress.potion)localStorage.setItem(GATE,'open')};
   const stages={chess:document.getElementById('trialChess'),key:document.getElementById('trialKeys'),potion:document.getElementById('trialPotions'),done:document.getElementById('trialComplete')};

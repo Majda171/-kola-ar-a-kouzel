@@ -1,0 +1,17 @@
+BRADAVICE v43.5 — optimalizace obrazů
+
+- 16 nových odznaků z dodaných PNG převedeno do WebP a zmenšeno pro web.
+- Celkový počet odznaků v achievements.js: 40.
+- Starý společný odznak Skleníkový znalec vyřazen ze seznamu.
+- 11 nepoužívaných starých obrazových souborů odstraněno.
+- 229 používaných WebP souborů znovu optimalizováno; velké portréty a transparentní herní objekty byly rozumně zmenšeny.
+- Obrazový adresář po úpravě: cca 29,2 MB.
+- Opraveny chybné odkazy na neexistující v434 soubory; stránky používají skutečné v435 soubory pro UI, navigaci a Prýtovou.
+- Testovací plant-test.html odstraněn z produkčního balíku.
+
+Kontrola:
+- 64 HTML souborů
+- 0 chybějících lokálních odkazů
+- 0 duplicitních ID
+- 41 JS souborů, 0 syntax errors
+- 272 WebP souborů, 0 nečitelných obrázků

@@ -1,7 +1,0 @@
-BRADAVICE v41 — instalace
-
-1. Nahraj obsah této složky na web místo předchozí verze.
-2. V Supabase SQL Editoru spusť SUPABASE-V41-KOMPLET.sql.
-3. Hesla se nikdy neukládají do HTML/JS/SQL projektu; spravují se pouze přes Supabase Auth.
-4. Po nasazení se odhlas a zkus otevřít přímo hrad.html — nepřihlášený návštěvník musí být zablokován.
-5. Po přihlášení otestuj Godrika, lektvary a profil/odhlášení.
