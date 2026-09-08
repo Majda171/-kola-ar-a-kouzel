@@ -9,7 +9,7 @@
   const ALL=Array.from({length:32},(_,i)=>`img/pexeso-v25/${i+1}.webp`);
   const BACK='img/pexeso-v25/back.webp';
   const state={players:1,pairs:20,current:1,scores:[0,0],moves:0,matches:0,first:null,second:null,lock:false,start:0,timer:null,elapsed:0,deck:[],matched:[]};
-  let online={code:'',seat:null,version:0,ready:false,status:'',channel:null,poll:null,leaving:false,startedAt:0};
+  let online={code:'',seat:null,version:0,ready:false,status:'',channel:null,channelReady:false,poll:null,leaving:false,startedAt:0,remoteOpen:[]};
   {const im=new Image();im.src=BACK;}
 
   const shuffle=a=>{const x=[...a];for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]]}return x};
@@ -56,8 +56,24 @@
     state.pairs=pairs;state.current=Number(src.current)===2?2:1;state.scores=Array.isArray(src.scores)&&src.scores.length===2?src.scores.map(x=>Math.max(0,Number(x)||0)):[0,0];state.moves=Math.max(0,Number(src.moves)||0);state.matches=Math.max(0,Number(src.matches)||0);state.matched=Array.isArray(src.matched)?src.matched.map(Number):[];state.deck=src.deck.map(x=>({asset:Number(x.asset),pair:Number(x.pair)}));state.first=state.second=null;state.lock=false;if(render)renderBoard();return true
   }
 
-  async function removeOnlineWatch(){if(online.poll){clearInterval(online.poll);online.poll=null}if(online.channel&&DB?.client){try{await DB.client.removeChannel(online.channel)}catch{}online.channel=null}}
-  async function leaveOnline({notify=true}={}){if(online.leaving)return;online.leaving=true;const code=online.code;await removeOnlineWatch();if(notify&&code)try{await DB?.leaveMemoryRoom?.(code)}catch{}online={code:'',seat:null,version:0,ready:false,status:'',channel:null,poll:null,leaving:false,startedAt:0};if(roomCodeEl)roomCodeEl.textContent=''}
+  function validCardIndexes(indexes){return [...new Set((Array.isArray(indexes)?indexes:[]).map(Number).filter(i=>Number.isInteger(i)&&i>=0&&i<state.deck.length))].slice(0,2)}
+  function closeRemoteCards(indexes=online.remoteOpen){validCardIndexes(indexes).forEach(i=>{const c=board.querySelector(`.memory-card[data-index="${i}"]`);if(c&&!c.classList.contains('is-matched'))c.classList.remove('is-open')});online.remoteOpen=online.remoteOpen.filter(i=>!indexes.includes(i))}
+  function applyRemoteFlip(payload){
+    if(state.players!==3||!payload||Number(payload.seat)===online.seat)return;
+    const indexes=validCardIndexes(payload.indexes);
+    if(payload.action==='close'){closeRemoteCards(indexes);return}
+    if(payload.action!=='open'||!indexes.length)return;
+    closeRemoteCards(online.remoteOpen.filter(i=>!indexes.includes(i)));
+    indexes.forEach(i=>{const c=board.querySelector(`.memory-card[data-index="${i}"]`);if(c&&!c.classList.contains('is-matched'))c.classList.add('is-open')});
+    online.remoteOpen=indexes;
+  }
+  function broadcastMemoryFlip(action,indexes){
+    if(state.players!==3||!online.channel||!online.channelReady||!online.code)return;
+    const payload={seat:online.seat,action,indexes:validCardIndexes(indexes),at:Date.now()};
+    try{const sent=online.channel.send({type:'broadcast',event:'memory_flip',payload});if(sent?.catch)sent.catch(()=>{})}catch{}
+  }
+  async function removeOnlineWatch(){if(online.poll){clearInterval(online.poll);online.poll=null}online.channelReady=false;online.remoteOpen=[];if(online.channel&&DB?.client){try{await DB.client.removeChannel(online.channel)}catch{}online.channel=null}}
+  async function leaveOnline({notify=true}={}){if(online.leaving)return;online.leaving=true;const code=online.code;await removeOnlineWatch();if(notify&&code)try{await DB?.leaveMemoryRoom?.(code)}catch{}online={code:'',seat:null,version:0,ready:false,status:'',channel:null,channelReady:false,poll:null,leaving:false,startedAt:0,remoteOpen:[]};if(roomCodeEl)roomCodeEl.textContent=''}
   function roomSummary(r){
     if(!r)return;online.version=Number(r.version||0);online.status=String(r.status||'');online.ready=online.status==='playing'||online.status==='ended';online.code=r.room_code||online.code;if(roomCodeEl)roomCodeEl.textContent=online.code;
     if(r.state)applyOnlineState(r.state);
@@ -71,7 +87,23 @@
     if(online.status==='ended')finish(true);
   }
   async function refreshOnline(force=false){if(state.players!==3||!online.code)return;try{const r=await DB?.getMemoryRoom?.(online.code);if(!r)return;if(force||Number(r.version||0)>online.version||String(r.status||'')!==online.status)roomSummary(r)}catch(e){if(force)onlineSay(e?.message||'Online partii se nepodařilo načíst.')}}
-  async function watchOnline(code){await removeOnlineWatch();if(DB?.client){try{const ch=DB.client.channel(`v422-memory-${code}`);ch.on('postgres_changes',{event:'*',schema:'public',table:'memory_rooms',filter:`room_code=eq.${code}`},()=>refreshOnline(true));ch.subscribe();online.channel=ch}catch(e){console.warn('Pexeso realtime:',e)}}online.poll=setInterval(()=>refreshOnline(false),1400)}
+  async function watchOnline(code){
+    await removeOnlineWatch();
+    if(DB?.client){
+      try{
+        const ch=DB.client.channel(`v4351-memory-${code}`);
+        ch.on('postgres_changes',{event:'*',schema:'public',table:'memory_rooms',filter:`room_code=eq.${code}`},()=>refreshOnline(true));
+        ch.on('broadcast',{event:'memory_flip'},({payload})=>applyRemoteFlip(payload));
+        online.channel=ch;
+        await new Promise(resolve=>{
+          let done=false;const finish=()=>{if(done)return;done=true;resolve()};
+          ch.subscribe(status=>{online.channelReady=status==='SUBSCRIBED';if(status==='SUBSCRIBED'||status==='CHANNEL_ERROR'||status==='TIMED_OUT'||status==='CLOSED')finish()});
+          setTimeout(finish,1600);
+        });
+      }catch(e){console.warn('Pexeso realtime:',e)}
+    }
+    online.poll=setInterval(()=>refreshOnline(false),1400)
+  }
   async function createOnline(){
     if(!DB?.client||!DB?.createMemoryRoom){onlineSay('Online pexeso vyžaduje databázovou aktualizaci v42.2.');return}
     await leaveOnline();state.players=3;resetState();show('setup');onlineSetup?.classList.remove('memory-hidden');$('#memoryStart')?.classList.add('memory-hidden');update();onlineSay('Zakládám soukromou partii…');
@@ -92,13 +124,16 @@
     if(state.lock||c===state.first||c.classList.contains('is-open')||c.classList.contains('is-matched'))return;
     if(state.players===3&&(!online.ready||online.status!=='playing'||state.current!==online.seat)){update();return}
     c.classList.add('is-open');
-    if(!state.first){state.first=c;return}
+    const clickedIndex=Number(c.dataset.index);
+    if(!state.first){state.first=c;if(state.players===3)broadcastMemoryFlip('open',[clickedIndex]);return}
     state.second=c;state.moves++;state.lock=true;const a=state.first,b=state.second;
+    const openIndexes=[Number(a.dataset.index),Number(b.dataset.index)];
+    if(state.players===3)broadcastMemoryFlip('open',openIndexes);
     if(a.dataset.pair===b.dataset.pair){
       a.classList.add('is-matched');b.classList.add('is-matched');a.disabled=b.disabled=true;const pair=Number(a.dataset.pair);if(!state.matched.includes(pair))state.matched.push(pair);state.matches++;if(state.players!==1)state.scores[state.current-1]++;state.first=state.second=null;update();if(state.players===3)await pushOnline();state.lock=false;if(state.matches===state.pairs)finish(state.players===3);return
     }
     message.textContent=state.players===1?'Zkus si zapamatovat, kde byly':'Neshoda – střídání hráčů';
-    setTimeout(async()=>{a.classList.remove('is-open');b.classList.remove('is-open');if(state.players!==1)state.current=state.current===1?2:1;state.first=state.second=null;update();if(state.players===3)await pushOnline();state.lock=false},1000)
+    setTimeout(async()=>{a.classList.remove('is-open');b.classList.remove('is-open');if(state.players===3)broadcastMemoryFlip('close',openIndexes);if(state.players!==1)state.current=state.current===1?2:1;state.first=state.second=null;update();if(state.players===3)await pushOnline();state.lock=false},1000)
   }
   function start(){state.players=state.players===3?1:state.players;resetState();renderBoard();show('game');startTimer();update()}
   function finish(fromServer=false){

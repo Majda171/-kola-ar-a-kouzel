@@ -77,3 +77,67 @@
 .herb-specimen.v435-collected{display:none!important}
 .herb-v435-toast{position:fixed;z-index:16000;left:50%;bottom:24px;transform:translate(-50%,18px);opacity:0;padding:11px 16px;background:rgba(7,10,7,.96);border:1px solid rgba(201,177,108,.44);color:#e7d7ae;box-shadow:0 16px 38px #000;font:600 .62rem 'Cinzel',Georgia,serif;letter-spacing:.04em;transition:.22s;pointer-events:none}.herb-v435-toast.show{opacity:1;transform:translate(-50%,0)}
 .herb-task-card{margin-top:16px;padding:16px;border:1px solid rgba(201,174,104,.24);background:rgba(8,12,8,.72)}.herb-task-card h3{margin:0 0 7px;font:600 .9rem 'Cinzel',Georgia,serif;color:#e4c979;text-transform:uppercase;letter-spacing:.06em}.herb-task-card>p{color:#b8aa8f;line-height:1.5}.mandrake-accept{margin-top:8px}.v43-transplant[hidden]{display:none!important}
+
+
+/* v43.5.2 — přirozené zasazení herbářových rostlin
+   Rostliny jsou menší, níž v obraze a navázané na konkrétní prvky scén,
+   aby nepůsobily jako plovoucí nálepky přes pozadí. */
+.herb-specimen{
+  z-index:18!important;
+  opacity:.94!important;
+  filter:none!important;
+  transform-origin:50% 100%;
+}
+.herb-specimen img{
+  display:block;
+  width:100%;height:100%;object-fit:contain;
+  filter:drop-shadow(0 5px 7px rgba(0,0,0,.58));
+}
+.herb-specimen:hover{filter:none!important}
+.herb-specimen:hover img{filter:brightness(1.08) drop-shadow(0 5px 8px rgba(0,0,0,.68))}
+.herb-specimen.v435-locked{filter:none!important}
+.herb-specimen.v435-locked img{filter:brightness(.78) saturate(.72) contrast(.96) drop-shadow(0 5px 7px rgba(0,0,0,.58))}
+
+/* Šalvěj — u nízké zeleně vedle kašny na nádvoří. */
+.courtyard-photo .plant-salvej{
+  left:57.5%!important; right:auto!important; top:auto!important; bottom:29.5%!important;
+  width:clamp(70px,4.5vw,86px)!important; height:clamp(72px,4.7vw,90px)!important;
+  transform:rotate(-7deg)!important;
+}
+/* Kopřiva — ve vlhké zeleni u levého břehu jezera. */
+.lake-scene .plant-kopriva{
+  left:9.2%!important; right:auto!important; top:auto!important; bottom:11.5%!important;
+  width:clamp(82px,5.8vw,110px)!important; height:clamp(104px,7.2vw,140px)!important;
+  transform:rotate(-6deg)!important;
+}
+/* Jmelí — vysoko na větvi stromu vedle Hagridova domu. */
+.hut-scene .plant-jmeli{
+  left:auto!important; right:4.6%!important; top:13.5%!important; bottom:auto!important;
+  width:clamp(78px,5.3vw,104px)!important; height:clamp(108px,7.4vw,145px)!important;
+  transform:rotate(17deg)!important; transform-origin:80% 5%!important;
+}
+/* Houby — u paty kamenné tribuny na okraji famfrpálového hřiště. */
+.quidditch-scene .plant-houby{
+  left:auto!important; right:3.0%!important; top:auto!important; bottom:1.6%!important;
+  width:clamp(76px,5.4vw,104px)!important; height:clamp(69px,4.9vw,96px)!important;
+  transform:rotate(2deg)!important; z-index:18!important;
+}
+/* Břečťan — přímo přes kmen Vrby, ne vedle něj. */
+.willow .plant-brectan{
+  left:60.5%!important; right:auto!important; top:40%!important; bottom:auto!important;
+  width:clamp(78px,5.5vw,108px)!important; height:clamp(158px,11.2vw,220px)!important;
+  transform:rotate(-10deg)!important; transform-origin:50% 15%!important;
+}
+
+@media(max-width:720px){
+  .courtyard-photo .plant-salvej{left:56%!important;bottom:30%!important;width:60px!important;height:64px!important}
+  .lake-scene .plant-kopriva{left:5%!important;bottom:13%!important;width:70px!important;height:94px!important}
+  .hut-scene .plant-jmeli{right:1.5%!important;top:15%!important;width:68px!important;height:96px!important}
+  .quidditch-scene .plant-houby{right:1%!important;bottom:8%!important;width:70px!important;height:64px!important}
+  .willow .plant-brectan{left:58%!important;top:42%!important;width:66px!important;height:136px!important}
+}
+
+/* Po přijetí Herbáře jen velmi jemná nápověda — rostlina zůstává součástí scény. */
+.herb-specimen:not(.v435-locked):not(.herb-found) img{animation:herbFieldHint 4.6s ease-in-out infinite}
+@keyframes herbFieldHint{0%,76%,100%{filter:drop-shadow(0 5px 7px rgba(0,0,0,.58))}84%{filter:brightness(1.08) drop-shadow(0 0 8px rgba(157,196,116,.38)) drop-shadow(0 5px 7px rgba(0,0,0,.58))}}
+@media(prefers-reduced-motion:reduce){.herb-specimen:not(.v435-locked):not(.herb-found) img{animation:none}}

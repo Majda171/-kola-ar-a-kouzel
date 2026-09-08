@@ -1,0 +1,12 @@
+Bradavice v43.5.2
+
+- Fullscreen: nový trvalý fullscreen shell s iframe. Přechod mezi interními stránkami už nemá ukončit fullscreen režim; ukončení je pouze přes × nebo Escape.
+- Herbář Prýtové: rostliny přesazeny do přirozených částí scén:
+  - šalvěj: nádvoří u zeleně vedle kašny,
+  - kopřiva: břeh Černého jezera,
+  - jmelí: strom u Hagridova domu,
+  - houby: okraj famfrpálového hřiště,
+  - břečťan: přímo na kmeni Vrby mlátičky.
+- Šalvěj odstraněna z textové stránky Školní pozemky; Herbář se tam už zbytečně nenačítá.
+- Rostliny jsou menší, méně přesvětlené a po přijetí úkolu mají jen jemnou periodickou nápovědu.
+- Zachována oprava online pexesa z v43.5.1 (průběžné zobrazení soupeřem otočených karet).

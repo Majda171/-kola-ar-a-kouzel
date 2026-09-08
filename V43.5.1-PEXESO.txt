@@ -1,0 +1,8 @@
+Bradavice v43.5.1 — online pexeso
+
+- online spojení ponecháno přes stávající Supabase místnosti
+- doplněn realtime broadcast otočení karty
+- soupeř nyní vidí první i druhou právě otočenou kartu
+- při neshodě se obě karty po 1 sekundě zavřou na obou stranách
+- trvalý herní stav (skóre, tah, nalezené dvojice) zůstává synchronizovaný přes memory_rooms
+- šachová online logika beze změny; připraveno pouze na pozdější výměnu grafik figurek

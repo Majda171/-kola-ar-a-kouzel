@@ -1,9 +1,0 @@
-BRADAVICE v42.2.2 — SQL HOTFIX
-
-Oprava kompatibility se starší databází:
-- visit_location(text): před novou definicí se odstraní stará varianta
-- get_house_standings(): před novou definicí se odstraní stará varianta s jiným OUT/RETURNS TABLE typem
-- totéž je preventivně provedeno u RPC pro šachy a online pexeso, aby staré návratové typy nezastavily migraci
-
-Spusť celý soubor SUPABASE-V42.2.2-OPRAVY.sql od začátku v Supabase SQL Editoru.
-Předchozí neúspěšný běh byl v transakci BEGIN/COMMIT, takže se jeho změny při chybě neuložily.

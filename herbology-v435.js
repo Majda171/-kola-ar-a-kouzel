@@ -2,7 +2,7 @@
   const DB=window.BradaviceDB,A=window.BradaviceAchievements;
   const QUEST_KEY='bradavice_quests_v1';
   const plantDefs={
-    salvej:{name:'Šalvěj',img:'img/plant-salvej-v423.webp',page:'pozemky.html',cls:'plant-salvej'},
+    salvej:{name:'Šalvěj',img:'img/plant-salvej-v423.webp',page:'nadvori.html',cls:'plant-salvej'},
     kopriva:{name:'Kopřiva',img:'img/plant-kopriva-v423.webp',page:'jezero.html',cls:'plant-kopriva'},
     jmeli:{name:'Jmelí',img:'img/plant-jmeli-v423.webp',page:'hagriduv-dum.html',cls:'plant-jmeli'},
     houby:{name:'Houby',img:'img/plant-houby-v423.webp',page:'famfrpal.html',cls:'plant-houby'},
@@ -69,7 +69,7 @@
       renderProgress();const n=foundCount();
       if(herbDone()){herbDialog.innerHTML='<strong>Herbář je odevzdaný.</strong> Všech pět vzorků má profesorka Prýtová zapsaných.';herbAction.hidden=true}
       else if(!herbAccepted()){herbDialog.textContent='Najdi pět různých rostlin po školních pozemcích. Rostliny jsou na místech vidět už teď, ale sbírat je můžeš až po přijetí úkolu.';herbAction.hidden=false;herbAction.textContent='Přijmout úkol Herbář';herbAction.disabled=false}
-      else if(n<5){herbDialog.textContent=`Herbář: ${n} / 5. Hledej na pozemcích, u jezera, Hagridova domu, famfrpálového hřiště a Vrby mlátičky.`;herbAction.hidden=true}
+      else if(n<5){herbDialog.textContent=`Herbář: ${n} / 5. Hledej na nádvoří, u jezera, Hagridova domu, famfrpálového hřiště a Vrby mlátičky.`;herbAction.hidden=true}
       else{herbDialog.textContent='Máš všech 5 vzorků. Odevzdej Herbář profesorce Prýtové.';herbAction.hidden=false;herbAction.textContent='Odevzdat Herbář';herbAction.disabled=false}
 
       if(mandDone()){mandDialog.innerHTML='<strong>Mandragorový úkol je splněný.</strong> Výsledek je uložený.';mandAccept.hidden=true;trans.hidden=true}
