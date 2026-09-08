@@ -57,3 +57,15 @@
   .hut-scene .plant-houby{right:2%!important;bottom:10%!important;width:110px!important;height:95px!important}
   .willow .plant-brectan{right:-1%!important;top:29%!important;width:120px!important;height:205px!important}
 }
+
+
+/* v43.3 — viditelné terénní rostliny + minutová zkouška */
+.games-page{position:relative!important}
+.games-page .plant-salvej{right:1%!important;left:auto!important;top:112px!important;bottom:auto!important;width:clamp(135px,11vw,195px)!important;height:clamp(135px,11vw,195px)!important}
+.lake-scene .plant-kopriva{left:4%!important;bottom:5%!important;width:clamp(135px,10vw,190px)!important;height:clamp(165px,12vw,225px)!important}
+.hut-scene .plant-jmeli{left:4%!important;top:10%!important;width:clamp(130px,9vw,180px)!important;height:clamp(145px,11vw,205px)!important}
+.quidditch-scene .plant-houby{right:4%!important;bottom:5%!important;width:clamp(125px,9vw,175px)!important;height:clamp(105px,8vw,150px)!important;z-index:65!important}
+.willow .plant-brectan{right:2%!important;top:24%!important;width:clamp(135px,10vw,195px)!important;height:clamp(215px,16vw,290px)!important}
+.mandrake-count{grid-template-columns:auto auto;column-gap:16px;align-items:end}.mandrake-count .mandrake-timer{color:#d9c184;font:700 1.2rem 'Cinzel';white-space:nowrap}
+.transplant-start{width:100%;margin:0 0 10px;border:1px solid #c19b50;background:#151812;color:#e7d39b;padding:12px 15px;font:700 .58rem 'Cinzel';text-transform:uppercase;cursor:pointer}.transplant-start:disabled{opacity:.5;cursor:default}
+@media(max-width:720px){.games-page .plant-salvej{right:0!important;top:120px!important;width:110px!important;height:110px!important}.quidditch-scene .plant-houby{right:1%!important;bottom:13%!important;width:105px!important;height:90px!important}}

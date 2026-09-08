@@ -10,3 +10,7 @@
 /* v42.2 — online ovládání patří do postranního panelu, ne přes šachovnici */
 .chess-sidebar .chess-online{position:relative!important;inset:auto!important;transform:none!important;width:100%!important;box-sizing:border-box;box-shadow:none;background:rgba(8,10,8,.82)}
 .chess-sidebar .chess-online-create,.chess-sidebar .chess-online-join{justify-content:flex-start}.chess-sidebar .chess-online input{min-width:0;width:120px;flex:1}.chess-sidebar .chess-online p{text-align:left;font-size:.72rem;line-height:1.35}.chess-sidebar .chess-online button{font-size:.55rem}.chess-mode button[data-chess-mode="online"]{white-space:nowrap}
+
+
+/* v43.3 — konečný výsledek přímo přes šachovnici */
+.chess-result-overlay{position:absolute;inset:8.9%;z-index:80;display:grid;place-items:center;background:rgba(3,4,3,.70);backdrop-filter:blur(1.5px);pointer-events:none;animation:chessResultIn .28s ease}.chess-result-overlay[hidden]{display:none}.chess-result-text{max-width:86%;padding:22px 30px;border:1px solid rgba(224,190,106,.66);background:linear-gradient(180deg,rgba(18,20,15,.96),rgba(6,8,6,.98));box-shadow:0 20px 55px #000;color:#ead28b;text-align:center;font:700 clamp(1.2rem,3.2vw,2.6rem) 'Cinzel',Georgia,serif;letter-spacing:.07em;text-transform:uppercase;text-shadow:0 3px 14px #000}@keyframes chessResultIn{from{opacity:0}to{opacity:1}}

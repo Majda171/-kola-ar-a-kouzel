@@ -55,3 +55,12 @@
   .gryffindor-entry-portrait{right:3%;top:31%;width:112px}
   .corridor-gallery .founder-godric-corridor{left:8%!important;top:22%!important;width:74px!important;height:118px!important}
 }
+
+
+/* v43.3 — zakladatelé přesunutí na finální místa */
+.founder-location{z-index:21;width:clamp(92px,8vw,140px)!important;height:clamp(145px,14vw,220px)!important;opacity:.92;filter:brightness(.92) drop-shadow(0 16px 22px rgba(0,0,0,.86))}
+.requirement-inside-v39 .founder-rowena-v433{left:4%;top:15%;transform:rotate(-1deg)}
+.secret-chamber-scene .founder-salazar-v433{right:5%;top:16%;transform:rotate(1deg)}
+.hall-of-fame .founder-godric-v433{left:6%;top:18%;transform:rotate(-1deg)}
+.kitchen-v25 .founder-helga-v433{right:5%;top:13%;transform:rotate(1deg)}
+@media(max-width:720px){.founder-location{width:78px!important;height:125px!important;opacity:.86}.requirement-inside-v39 .founder-rowena-v433{left:2%;top:18%}.secret-chamber-scene .founder-salazar-v433{right:2%;top:19%}.hall-of-fame .founder-godric-v433{left:2%;top:22%}.kitchen-v25 .founder-helga-v433{right:2%;top:18%}}

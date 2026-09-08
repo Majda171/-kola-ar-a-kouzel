@@ -433,3 +433,14 @@
 
 /* v43 — odbočky ke skrytým kolejním vstupům jsou dostupné při procházení hradu */
 .corridor-discovery-link{display:inline-flex;margin-top:13px;padding:9px 12px;border:1px solid rgba(205,177,108,.34);background:rgba(9,9,8,.58);color:#dbc995;text-decoration:none;font:600 .52rem 'Cinzel';letter-spacing:.08em;text-transform:uppercase;transition:.2s}.corridor-discovery-link:hover,.corridor-discovery-link:focus-visible{background:rgba(112,84,39,.72);color:#fff1c7;outline:none;transform:translateY(-1px)}
+
+
+/* v43.3 — kuchyňská stěna: menší obraz s hruškami + další běžné portréty */
+.kitchen-v25 .kitchen-entry{width:min(430px,36vw)!important;top:52%!important}
+.kitchen-wall-gallery{position:absolute;inset:0;z-index:5;pointer-events:none;transition:opacity .55s ease}
+.kitchen-wall-painting{position:absolute;height:auto;object-fit:contain;filter:brightness(.78) saturate(.78) drop-shadow(0 15px 20px rgba(0,0,0,.86));opacity:.9}
+.kitchen-paint-a{left:7%;top:15%;width:clamp(85px,7vw,120px);transform:rotate(-1.5deg)}
+.kitchen-paint-b{left:19%;top:42%;width:clamp(72px,6vw,105px);transform:rotate(1deg)}
+.kitchen-paint-c{right:19%;top:40%;width:clamp(78px,6.5vw,112px);transform:rotate(-.8deg)}
+.kitchen-v25.open .kitchen-wall-gallery,.kitchen-v25.open .founder-helga-v433{opacity:0!important;pointer-events:none!important}
+@media(max-width:720px){.kitchen-v25 .kitchen-entry{width:min(310px,58vw)!important}.kitchen-paint-a{left:2%;top:20%;width:70px}.kitchen-paint-b{display:none}.kitchen-paint-c{right:2%;top:25%;width:70px}}

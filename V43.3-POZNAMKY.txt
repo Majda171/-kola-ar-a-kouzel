@@ -1,0 +1,17 @@
+BRADAVICE v43.3
+================
+
+Hlavní změny:
+- Prýtová: opravené hledání 5 rostlin po školních pozemcích. Odstraněn testovací reset, který v předchozí pracovní verzi nuloval nálezy.
+- Umístění rostlin: šalvěj / Pozemky, kopřiva / Jezero, jmelí / Hagridův dům, houby / Famfrpálové hřiště, břečťan / Vrba mlátička.
+- Mandragory: minutová výzva — přesazuj tolik kusů, kolik stihneš za 60 sekund.
+- Zakladatelé: Rowena / Komnata nejvyšší potřeby, Salazar / Tajemná komnata, Godrik / Síň slávy, Helga / u kuchyně.
+- Severní chodba: odstraněny dodatečné portréty; vstupní stěna Nebelvíru je dosažitelná běžným procházením hradu.
+- Kuchyně: menší obraz s hruškami a více okolních obrazů.
+- Profil: týdenní kolejní heslo / hádanka přichází jako interní soví pošta jen členovi dané koleje.
+- Šachy: po konci partie se přes šachovnici zobrazí MAT – VYHRÁVÁŠ / MAT – PROHRÁL JSI / PAT – REMÍZA.
+- Snape: databázově trvalý odečet -5 až -50 bodů za zkažený lektvar.
+- Admin: SQL v43.3 znovu obsahuje i funkci pro bezpečné smazání studenta.
+
+Poznámka:
+Online šachy a online pexeso nejsou v této kontrole ověřené dvěma současně přihlášenými hráči.
