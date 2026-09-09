@@ -19,3 +19,16 @@
 /* v43.5.3 — jasný tah, perspektiva hráče a rošáda */
 .chess-turn-banner{position:absolute;z-index:40;left:50%;top:2.2%;transform:translateX(-50%);min-width:210px;max-width:72%;padding:7px 13px;border:1px solid rgba(225,194,112,.45);background:rgba(7,9,7,.92);color:#dfc786;text-align:center;font:700 clamp(.5rem,1vw,.72rem) 'Cinzel',Georgia,serif;letter-spacing:.11em;text-transform:uppercase;box-shadow:0 7px 22px rgba(0,0,0,.45);pointer-events:none;transition:.2s ease}.chess-turn-banner.is-you{border-color:#e2bf68;color:#fff0b4;background:rgba(61,45,15,.96);box-shadow:0 0 0 2px rgba(226,191,104,.12),0 7px 26px rgba(0,0,0,.55)}.chess-turn-banner.is-opponent{color:#aeb7c0;border-color:rgba(159,176,193,.34);background:rgba(9,13,16,.92)}.chess-turn-banner.is-check{color:#ffd7cc;border-color:rgba(212,91,67,.85);background:rgba(70,15,12,.96);animation:chessCheckPulse 1s ease-in-out infinite alternate}.chess-turn-banner.is-waiting{color:#c0b8a5}.magic-chess-board.your-turn{filter:drop-shadow(0 22px 32px rgba(0,0,0,.72)) drop-shadow(0 0 11px rgba(220,181,83,.22))}.magic-chess-board.opponent-turn{filter:drop-shadow(0 22px 32px rgba(0,0,0,.72)) brightness(.96)}.chess-square.castle::after{width:34%;background:transparent;border:2px solid rgba(113,182,218,.9);box-shadow:0 0 12px rgba(113,182,218,.62)}.chess-square.castle::before{content:'♜';position:absolute;z-index:5;left:50%;top:50%;transform:translate(-50%,-50%);font-size:clamp(.55rem,1.5vw,1rem);color:rgba(175,218,240,.9);text-shadow:0 2px 8px #000;pointer-events:none}@keyframes chessCheckPulse{from{box-shadow:0 0 0 1px rgba(212,91,67,.1),0 7px 22px #000}to{box-shadow:0 0 0 4px rgba(212,91,67,.18),0 7px 30px #000}}
 @media(max-width:560px){.chess-turn-banner{top:1.8%;min-width:165px;padding:5px 8px;letter-spacing:.07em}}
+
+/* v43.5.8 — figurky se vejdou do polí, pěšci jsou zřetelně menší. */
+.chess-piece{
+  left:0!important;right:0!important;top:auto!important;bottom:3%!important;
+  width:100%!important;height:84%!important;
+  object-fit:contain!important;object-position:center bottom!important;
+}
+.chess-piece.piece-pawn{height:66%!important;bottom:6%!important}
+.chess-piece.piece-rook{height:76%!important;bottom:4%!important}
+.chess-piece.piece-knight{height:80%!important;bottom:3.5%!important}
+.chess-piece.piece-bishop{height:82%!important;bottom:3%!important}
+.chess-piece.piece-queen{height:86%!important;bottom:2.5%!important}
+.chess-piece.piece-king{height:86%!important;bottom:2.5%!important}

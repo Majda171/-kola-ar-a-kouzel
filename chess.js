@@ -541,7 +541,7 @@
       const p=board[r][c];
       if(p){
         const im=document.createElement('img');
-        im.className='chess-piece '+(p.c==='b'?'black':'white');
+        im.className=`chess-piece ${p.c==='b'?'black':'white'} piece-${pieceNames[p.t]}`;
         im.src=file(p.c,p.t);
         im.alt=`${p.c==='w'?'Světlý':'Tmavý'} ${names[p.t]}`;
         im.draggable=false;

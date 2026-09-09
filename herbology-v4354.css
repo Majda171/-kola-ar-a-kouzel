@@ -171,3 +171,59 @@
   .hut-scene .plant-jmeli{right:.5%!important;top:21%!important;width:58px!important;height:82px!important}
   .forbidden-forest .plant-houby{left:7%!important;bottom:10%!important;width:64px!important;height:58px!important}
 }
+
+/* v43.5.8 — oprava viditelnosti Herbáře.
+   Sebrané rostliny zůstávají ve scéně a všechny vzorky jsou čitelné i na tmavém pozadí. */
+.herb-specimen{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  z-index:74!important;
+  pointer-events:auto!important;
+}
+.herb-specimen[hidden]{display:block!important}
+.herb-specimen.v435-collected{display:block!important;opacity:.82!important}
+.herb-specimen.v435-collected img{filter:brightness(.9) saturate(.82) drop-shadow(0 5px 8px rgba(0,0,0,.7))!important;animation:none!important}
+.herb-specimen.v435-locked img{filter:brightness(.94) saturate(.9) contrast(1.02) drop-shadow(0 5px 8px rgba(0,0,0,.72))!important}
+
+/* Šalvěj — nízká zeleň na nádvoří, zřetelná ale ne přerostlá. */
+.courtyard-photo .plant-salvej{
+  left:56.5%!important;right:auto!important;top:auto!important;bottom:27%!important;
+  width:clamp(92px,6.4vw,126px)!important;height:clamp(94px,6.6vw,130px)!important;
+  transform:rotate(-6deg)!important;
+}
+/* Kopřiva — u kořenů stromu na levém břehu jezera. */
+.lake-scene .plant-kopriva{
+  left:4.2%!important;right:auto!important;top:auto!important;bottom:18%!important;
+  width:clamp(96px,6.8vw,132px)!important;height:clamp(126px,8.8vw,172px)!important;
+  transform:rotate(-7deg)!important;
+}
+.lake-scene .plant-kopriva img{filter:brightness(.94) saturate(.92) contrast(1.02) drop-shadow(0 5px 8px rgba(0,0,0,.72))!important}
+/* Jmelí — pravý strom u Hagridova domu. */
+.hut-scene .plant-jmeli{
+  left:auto!important;right:2.2%!important;top:17.5%!important;bottom:auto!important;
+  width:clamp(94px,6.5vw,128px)!important;height:clamp(130px,9vw,178px)!important;
+  transform:rotate(-16deg)!important;transform-origin:78% 8%!important;
+}
+.hut-scene .plant-jmeli img{filter:brightness(.93) saturate(.9) contrast(1.02) drop-shadow(0 5px 8px rgba(0,0,0,.72))!important}
+/* Houby — Zapovězený les, u kořenů vlevo od hlavní cesty. */
+.forbidden-forest .plant-houby{
+  left:9%!important;right:auto!important;top:auto!important;bottom:10%!important;
+  width:clamp(105px,7.2vw,144px)!important;height:clamp(96px,6.6vw,132px)!important;
+  transform:rotate(-2deg)!important;z-index:75!important;
+}
+.forbidden-forest .plant-houby img{filter:brightness(1.02) saturate(.96) contrast(1.04) drop-shadow(0 5px 9px rgba(0,0,0,.78))!important}
+/* Břečťan — na kmeni Vrby. */
+.willow .plant-brectan{
+  left:59.5%!important;right:auto!important;top:37%!important;bottom:auto!important;
+  width:clamp(94px,6.6vw,132px)!important;height:clamp(188px,13.2vw,258px)!important;
+  transform:rotate(-9deg)!important;transform-origin:50% 15%!important;
+}
+.willow .plant-brectan img{filter:brightness(.94) saturate(.9) drop-shadow(0 5px 8px rgba(0,0,0,.72))!important}
+@media(max-width:720px){
+  .courtyard-photo .plant-salvej{left:54%!important;bottom:28%!important;width:82px!important;height:84px!important}
+  .lake-scene .plant-kopriva{left:2.5%!important;bottom:17%!important;width:86px!important;height:116px!important}
+  .hut-scene .plant-jmeli{right:.5%!important;top:18%!important;width:82px!important;height:116px!important}
+  .forbidden-forest .plant-houby{left:5.5%!important;bottom:11%!important;width:92px!important;height:84px!important}
+  .willow .plant-brectan{left:57%!important;top:39%!important;width:82px!important;height:166px!important}
+}

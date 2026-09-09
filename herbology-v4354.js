@@ -53,8 +53,10 @@
     const accepted=herbAccepted(),isFound=found(id);
     b.classList.toggle('v435-locked',!accepted);
     b.classList.toggle('v435-collected',isFound);
-    b.hidden=isFound;
+    // Rostlina zůstává součástí scény i po sebrání. Jen už ji nelze sebrat podruhé.
+    b.hidden=false;
     b.disabled=false;
+    b.setAttribute('aria-pressed',isFound?'true':'false');
   }
   function mountPlants(){
     const entries=ids.filter(id=>plantDefs[id].page===page);if(!entries.length)return;
