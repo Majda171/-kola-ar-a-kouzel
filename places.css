@@ -444,3 +444,10 @@
 .kitchen-paint-c{right:19%;top:40%;width:clamp(78px,6.5vw,112px);transform:rotate(-.8deg)}
 .kitchen-v25.open .kitchen-wall-gallery,.kitchen-v25.open .founder-helga-v433{opacity:0!important;pointer-events:none!important}
 @media(max-width:720px){.kitchen-v25 .kitchen-entry{width:min(310px,58vw)!important}.kitchen-paint-a{left:2%;top:20%;width:70px}.kitchen-paint-b{display:none}.kitchen-paint-c{right:2%;top:25%;width:70px}}
+
+/* v43.6.6 — Tchoříčky na nádvoří */
+.courtyard-tchoricky-v4366{position:absolute;z-index:11;right:5%;bottom:8%;width:min(14vw,180px);aspect-ratio:1;text-decoration:none;display:block;filter:drop-shadow(0 14px 18px #000b);transition:.25s}
+.courtyard-tchoricky-v4366 img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%;border:1px solid rgba(205,174,99,.5)}
+.courtyard-tchoricky-v4366 span{position:absolute;left:50%;bottom:-2px;transform:translate(-50%,55%);white-space:nowrap;padding:6px 10px;border:1px solid rgba(205,174,99,.4);background:rgba(5,8,6,.88);color:#e2c981;font:600 .58rem Cinzel,Georgia,serif;letter-spacing:.06em;text-transform:uppercase}
+.courtyard-tchoricky-v4366:hover{transform:translateY(-4px) scale(1.025);filter:brightness(1.08) drop-shadow(0 16px 22px #000)}
+@media(max-width:700px){.courtyard-tchoricky-v4366{right:2%;bottom:14%;width:25vw}}

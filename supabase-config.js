@@ -83,11 +83,29 @@
       client.from('student_location_visits').select('location_id,first_visited_at').eq('student_id',user.id)
     ]);
     if(badgesRes.error) throw badgesRes.error;if(pointsRes.error) throw pointsRes.error;if(adjustRes.error&&adjustRes.error.code!=='42P01') console.warn(adjustRes.error);if(questsRes.error) throw questsRes.error;if(visitsRes.error) throw visitsRes.error;
-    const unlocked={};(badgesRes.data||[]).forEach(x=>unlocked[x.achievement_id]=x.unlocked_at||true);
-    const history=[...(badgesRes.data||[]).map(x=>({type:'badge',id:x.achievement_id,at:x.unlocked_at})),...(pointsRes.data||[]).map(x=>({type:'points',amount:Number(x.amount||0),reason:x.reason||'Body',at:x.created_at})),...((adjustRes&&!adjustRes.error?adjustRes.data:[])||[]).map(x=>({type:'points',amount:Number(x.amount||0),reason:x.reason||'Úprava bodů',at:x.created_at}))].sort((a,b)=>new Date(b.at||0)-new Date(a.at||0));
-    safeWrite(STATE_KEY,{unlocked,history});safeWrite(scopedProgressKey(STATE_KEY,user.id),{unlocked,history});
-    const quests={};(questsRes.data||[]).forEach(x=>quests[x.quest_id]={done:true,at:x.completed_at});safeWrite(QUEST_KEY,quests);safeWrite(scopedProgressKey(QUEST_KEY,user.id),quests);
-    const visits={};(visitsRes.data||[]).forEach(x=>{const page=locationToPage[x.location_id];if(page)visits[page]=x.first_visited_at||true});safeWrite(VISITS_KEY,visits);safeWrite(scopedProgressKey(VISITS_KEY,user.id),visits);return true;
+    // Odznaky mohou vzniknout těsně před dokončením síťové synchronizace. Serverový hydrate
+    // proto nesmí smazat lokální odemčení aktuálního studenta; sloučíme obě strany a následně
+    // achievements.js případné lokální odznaky dopíše do Supabase přes idempotentní RPC.
+    const storedStudent=safeRead(STUDENT_KEY,null);
+    const aliases=[user.id,storedStudent?.supabaseUserId,storedStudent?.email].filter(Boolean);
+    const uniqueAliases=[...new Set(aliases.map(x=>String(x)))];
+    const localStates=uniqueAliases.map(id=>safeRead(scopedProgressKey(STATE_KEY,id),null)).filter(Boolean);
+    const unlocked={};const localHistory=[];
+    for(const st of localStates){Object.assign(unlocked,st?.unlocked||{});localHistory.push(...(st?.history||[]))}
+    (badgesRes.data||[]).forEach(x=>unlocked[x.achievement_id]=x.unlocked_at||unlocked[x.achievement_id]||true);
+    const serverHistory=[...(badgesRes.data||[]).map(x=>({type:'badge',id:x.achievement_id,at:x.unlocked_at})),...(pointsRes.data||[]).map(x=>({type:'points',amount:Number(x.amount||0),reason:x.reason||'Body',at:x.created_at})),...((adjustRes&&!adjustRes.error?adjustRes.data:[])||[]).map(x=>({type:'points',amount:Number(x.amount||0),reason:x.reason||'Úprava bodů',at:x.created_at}))];
+    const mergedHistory=[...localHistory,...serverHistory];
+    const seen=new Set();const history=mergedHistory.filter(h=>{const k=h.type==='badge'?`b:${h.id}`:`p:${h.at||''}:${h.amount||0}:${h.reason||''}`;if(seen.has(k))return false;seen.add(k);return true}).sort((a,b)=>new Date(b.at||0)-new Date(a.at||0));
+    const mergedState={unlocked,history};safeWrite(STATE_KEY,mergedState);for(const id of uniqueAliases)safeWrite(scopedProgressKey(STATE_KEY,id),mergedState);
+
+    // Úkoly ani návštěvy nesmí při pomalejší síti skočit zpět. Serverové záznamy
+    // proto doplňují lokální stav aktuálního studenta, nikoli jej bezpodmínečně mažou.
+    const quests={};for(const id of uniqueAliases)Object.assign(quests,safeRead(scopedProgressKey(QUEST_KEY,id),{})||{});
+    (questsRes.data||[]).forEach(x=>quests[x.quest_id]={done:true,at:x.completed_at||quests[x.quest_id]?.at||new Date().toISOString()});
+    safeWrite(QUEST_KEY,quests);for(const id of uniqueAliases)safeWrite(scopedProgressKey(QUEST_KEY,id),quests);
+    const visits={};for(const id of uniqueAliases)Object.assign(visits,safeRead(scopedProgressKey(VISITS_KEY,id),{})||{});
+    (visitsRes.data||[]).forEach(x=>{const page=locationToPage[x.location_id];if(page)visits[page]=x.first_visited_at||visits[page]||true});
+    safeWrite(VISITS_KEY,visits);for(const id of uniqueAliases)safeWrite(scopedProgressKey(VISITS_KEY,id),visits);return true;
   }
 
   async function syncHouseStandingsLocal(){
@@ -107,7 +125,7 @@
     // selhal, scope:local a následný úklid odstraní token z tohoto prohlížeče.
     try{if(client)await client.auth.signOut({scope:'local'})}catch(e){console.warn('Odhlášení Supabase selhalo, čistím lokální session.',e)}
     try{
-      [STUDENT_KEY,STATE_KEY,QUEST_KEY,VISITS_KEY,'bradavice_herbology_v4354','bradavice_achievement_counters_v4363'].forEach(k=>localStorage.removeItem(k));
+      [STUDENT_KEY,STATE_KEY,QUEST_KEY,VISITS_KEY,'bradavice_herbology_v4354','bradavice_achievement_counters_v4363','bradavice_achievement_pending_v4365','bradavice_achievement_pending_v4366','bradavice_progress_owner_v4366'].forEach(k=>localStorage.removeItem(k));
       const projectRef='iyklgteuwknvrbxfecbv';
       for(let i=localStorage.length-1;i>=0;i--){const k=localStorage.key(i)||'';if(k.startsWith(`sb-${projectRef}-auth-token`))localStorage.removeItem(k)}
     }catch{}
@@ -211,6 +229,12 @@
   async function updatePotionDuelRoom(code,state,version){if(!client)return null;const {data,error}=await client.rpc('v435_update_potion_duel_room',{p_room_code:String(code||'').toUpperCase(),p_state:state||{},p_expected_version:Number(version||0)});if(error)throw error;return data}
   async function leavePotionDuelRoom(code){if(!client||!code)return false;const {data,error}=await client.rpc('v435_leave_potion_duel_room',{p_room_code:String(code||'').toUpperCase()});if(error)throw error;return Boolean(data)}
 
+  async function createTchorickyRoom(state){if(!client)throw new Error('Databázové připojení není dostupné.');const {data,error}=await client.rpc('v4366_create_tchoricky_room',{p_state:state||{}});if(error)throw error;return data}
+  async function joinTchorickyRoom(code){if(!client)throw new Error('Databázové připojení není dostupné.');const {data,error}=await client.rpc('v4366_join_tchoricky_room',{p_room_code:String(code||'').toUpperCase()});if(error)throw error;return data}
+  async function getTchorickyRoom(code){if(!client)return null;const {data,error}=await client.rpc('v4366_get_tchoricky_room',{p_room_code:String(code||'').toUpperCase()});if(error)throw error;return data}
+  async function updateTchorickyRoom(code,state,version){if(!client)return null;const {data,error}=await client.rpc('v4366_update_tchoricky_room',{p_room_code:String(code||'').toUpperCase(),p_state:state||{},p_expected_version:Number(version||0)});if(error)throw error;return data}
+  async function leaveTchorickyRoom(code){if(!client||!code)return false;const {data,error}=await client.rpc('v4366_leave_tchoricky_room',{p_room_code:String(code||'').toUpperCase()});if(error)throw error;return Boolean(data)}
+
   function ensureHudStyles(){if(document.querySelector('link[data-student-hud]'))return;const l=document.createElement('link');l.rel='stylesheet';l.href='student-hud.css';l.dataset.studentHud='1';document.head.appendChild(l)}
   function updateStudentHud(student=safeRead(STUDENT_KEY,null)){
     if(!document.body)return;const page=currentPage();if(page.startsWith('admin')||page==='index.html'||page==='registrace.html'||page==='prihlaseni-student.html'||page==='vylouceni.html')return;
@@ -238,5 +262,5 @@
   function boot(){updateStudentHud();startPresence().catch(()=>{});if(client)client.auth.onAuthStateChange((_e,session)=>{if(session?.user){setTimeout(()=>{hydrateStudent().catch(()=>{});startPresence().catch(()=>{})},0)}else updateStudentHud(null)})}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 
-  window.BradaviceDB={url:URL,client,houseNames,crestNames,avatarKeys,avatarKeysByHouse,defaultAvatarForHouse,pageToLocation,getUser,getProfile,hydrateStudent,hydrateProgress,hydrateAll,studentNameAvailable,signUp,signIn,signOut,setHouseOnce,unlockAchievement,completeQuest,visitLocationByPage,getHouseStandings,syncHouseStandingsLocal,claimDailyChallenge,updateOwnProfile,isAdmin,adminStats,adminSearchStudents,adminStudentDetail,getAccessState,adminSetBan,adminAdjustPoints,adminDeleteStudent,hagridStatus,hagridAccept,hagridFind,hagridReturn,postChatMessage,getChatMessages,claimV40Activity,snapePenalty,claimV42Activity,submitTournamentScore,getTournamentBoard,createChessRoom,joinChessRoom,getChessRoom,updateChessRoom,leaveChessRoom,createMemoryRoom,joinMemoryRoom,getMemoryRoom,updateMemoryRoom,leaveMemoryRoom,createPotionDuelRoom,joinPotionDuelRoom,getPotionDuelRoom,updatePotionDuelRoom,leavePotionDuelRoom,startPresence,createAdminPresenceViewer,updateStudentHud};
+  window.BradaviceDB={url:URL,client,houseNames,crestNames,avatarKeys,avatarKeysByHouse,defaultAvatarForHouse,pageToLocation,getUser,getProfile,hydrateStudent,hydrateProgress,hydrateAll,studentNameAvailable,signUp,signIn,signOut,setHouseOnce,unlockAchievement,completeQuest,visitLocationByPage,getHouseStandings,syncHouseStandingsLocal,claimDailyChallenge,updateOwnProfile,isAdmin,adminStats,adminSearchStudents,adminStudentDetail,getAccessState,adminSetBan,adminAdjustPoints,adminDeleteStudent,hagridStatus,hagridAccept,hagridFind,hagridReturn,postChatMessage,getChatMessages,claimV40Activity,snapePenalty,claimV42Activity,submitTournamentScore,getTournamentBoard,createChessRoom,joinChessRoom,getChessRoom,updateChessRoom,leaveChessRoom,createMemoryRoom,joinMemoryRoom,getMemoryRoom,updateMemoryRoom,leaveMemoryRoom,createPotionDuelRoom,joinPotionDuelRoom,getPotionDuelRoom,updatePotionDuelRoom,leavePotionDuelRoom,createTchorickyRoom,joinTchorickyRoom,getTchorickyRoom,updateTchorickyRoom,leaveTchorickyRoom,startPresence,createAdminPresenceViewer,updateStudentHud};
 })();

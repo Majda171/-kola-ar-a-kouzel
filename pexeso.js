@@ -105,13 +105,13 @@
     online.poll=setInterval(()=>refreshOnline(false),1400)
   }
   async function createOnline(){
-    if(!DB?.client||!DB?.createMemoryRoom){onlineSay('Online pexeso vyžaduje databázovou aktualizaci v42.2.');return}
+    if(!DB?.client||!DB?.createMemoryRoom){onlineSay('Online hra teď není dostupná. Zkus to prosím později.');return}
     await leaveOnline();state.players=3;resetState();show('setup');onlineSetup?.classList.remove('memory-hidden');$('#memoryStart')?.classList.add('memory-hidden');update();onlineSay('Zakládám soukromou partii…');
     try{const r=await DB.createMemoryRoom(state.pairs,serializeOnline());online.code=r.room_code;online.seat=1;online.version=Number(r.version||0);roomSummary(r);await watchOnline(online.code)}catch(e){show('setup');onlineSay(e?.message||'Partii se nepodařilo vytvořit.')}
   }
   async function joinOnline(){
     const code=safeCode(joinInput?.value);if(code.length!==6){onlineSay('Zadej šestimístný kód partie.');return}
-    if(!DB?.client||!DB?.joinMemoryRoom){onlineSay('Online pexeso vyžaduje databázovou aktualizaci v42.2.');return}
+    if(!DB?.client||!DB?.joinMemoryRoom){onlineSay('Online hra teď není dostupná. Zkus to prosím později.');return}
     await leaveOnline();state.players=3;onlineSay('Připojuji se…');
     try{const r=await DB.joinMemoryRoom(code);online.code=r.room_code;online.seat=2;online.version=Number(r.version||0);applyOnlineState(r.state);renderBoard();show('game');roomSummary(r);await watchOnline(online.code)}catch(e){onlineSay(e?.message||'K partii se nepodařilo připojit.')}
   }

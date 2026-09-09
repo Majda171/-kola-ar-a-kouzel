@@ -1,0 +1,9 @@
+BRADAVICE v43.6.5 — oprava odznaků
+
+- Lokálně získaný odznak už Supabase synchronizace nesmaže.
+- Odznak, který byl ve starší verzi získaný lokálně, se při dalším načtení zkusí znovu dopsat do databáze.
+- Synchronizace je idempotentní: unikátní klíč student_id + achievement_id zabrání duplicitám.
+- Při otevření profilu se lokální a databázové odznaky sloučí a chybějící se doplní do Supabase.
+- Odstraněno staré neplatné ID odznaku sklenikovy-znalec; Herbářník se získává pouze přes skutečný úkol Prýtové.
+- Cache bust: achievements.js, supabase-config.js, portal.js a places.js mají verzi 4365.
+- SQL pro v43.6.3 se nemění; pokud už byl spuštěn, není nutné spouštět další SQL.

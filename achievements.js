@@ -8,6 +8,9 @@
   const ACTIVITY_KEY='bradavice_activity_count_v1';
   const CONSTELLATION_KEY='bradavice_constellations_v1';
   const COUNTER_KEY='bradavice_achievement_counters_v4363';
+  const PENDING_KEY='bradavice_achievement_pending_v4366';
+  const OWNER_KEY='bradavice_progress_owner_v4366';
+  let runtimeUserId='';
   const DB=window.BradaviceDB;
 
   const coreBadges=[
@@ -18,42 +21,42 @@
     {id:'pruzkumnik-bradavic',title:'Průzkumník Bradavic',desc:'Navštiv všechny hlavní lokace hradu a pozemků.',img:'img/badge-pruzkumnik-bradavic.webp'},
     {id:'tajemstvi-hradu',title:'Tajemství hradu',desc:'Objev první skrytou interakci.',img:'img/badge-tajemstvi-hradu.webp'},
     {id:'godrikuv-nalezce',title:'Godrikův nálezce',desc:'Najdi na hradě obraz Godrika Nebelvíra.',img:'img/badge-godrikuv-nalezce.webp'},
-    {id:'mistnost-se-ukazala',title:'Místnost se ukázala',desc:'Objev Komnatu nejvyšší potřeby.',img:'img/badge-mistnost-se-ukazala.webp'},
+    {id:'mistnost-se-ukazala',title:'Komnata se ukázala',desc:'Nech si odhalit dveře do Komnaty nejvyšší potřeby.',img:'img/badge-mistnost-se-ukazala.webp'},
     {id:'lechtiva-hruska',title:'Lechtivá hruška',desc:'Objev vstup do kuchyně.',img:'img/badge-lechtiva-hruska.webp'},
     {id:'nocni-pozorovatel',title:'Noční pozorovatel',desc:'Najdi všechna tři skrytá souhvězdí v Astronomické věži.',img:'img/badge-nocni-pozorovatel.webp'},
     {id:'rocnikova-zkouska',title:'Ročníková zkouška',desc:'Úspěšně dokonči první ročníkovou zkoušku.',img:'img/badge-rocnikova-zkouska.webp'},
   ];
 
   const bonusBadges=[
-    {id:'ctyri-zakladatele',title:'Zakladatelé hradu',desc:'Najdi portréty všech čtyř zakladatelů Bradavic.',img:'img/badge-zakladatele-v42.webp'},
-    {id:'prvni-lektvar',title:'První lektvar',desc:'Probuď kotlík v učebně lektvarů.',img:'img/badge-prvni-lektvar.webp'},
-    {id:'prvni-promena',title:'První proměna',desc:'Proveď první proměnu v učebně přeměňování.',img:'img/badge-prvni-promena.webp'},
+    {id:'ctyri-zakladatele',title:'Čtyři zakladatelé',desc:'Najdi portréty všech čtyř zakladatelů Bradavic.',img:'img/badge-zakladatele-v42.webp'},
+    {id:'prvni-lektvar',title:'První lektvar',desc:'Poprvé úspěšně pracuj s kotlíkem v učebně lektvarů.',img:'img/badge-prvni-lektvar.webp'},
+    {id:'prvni-promena',title:'První proměna',desc:'Proveď svou první úspěšnou proměnu.',img:'img/badge-prvni-promena.webp'},
     {id:'obrance-hradu',title:'Obránce hradu',desc:'Zvládni Lupinovu praktickou zkoušku s bubákem.',img:'img/badge-obrance-hradu.webp'},
-    {id:'famfrpalova-hvezda',title:'Famfrpálová hvězda',desc:'Pošli camrál směrem k obručím.',img:'img/badge-famfrpalova-hvezda.webp'},
+    {id:'famfrpalova-hvezda',title:'Famfrpálová hvězda',desc:'Prokaž přesnou mušku na famfrpálovém hřišti.',img:'img/badge-famfrpalova-hvezda.webp'},
     {id:'pritel-duchu',title:'Přítel duchů',desc:'Spatři všech pět potulných duchů.',img:'img/badge-pritel-duchu.webp'},
     {id:'srdce-velke-sine',title:'Srdce Velké síně',desc:'Rozhýbej plovoucí svíčku ve Velké síni.',img:'img/badge-srdce-velke-sine.webp'},
-    {id:'strazce-koleje',title:'Strážce koleje',desc:'Vrať se do své společenské místnosti vícekrát.',img:'img/badge-strazce-koleje.webp'},
+    {id:'strazce-koleje',title:'Strážce koleje',desc:'Navštiv svou společenskou místnost alespoň třikrát.',img:'img/badge-strazce-koleje.webp'},
     {id:'znalec-hesel',title:'Znalec hesel',desc:'Úspěšně projdi vstupem na heslo.',img:'img/badge-znalec-hesel.webp'},
     {id:'orli-hadanka',title:'Orlí hádanka',desc:'Správně odpověz na otázku orlího klepadla.',img:'img/badge-orli-hadanka.webp'},
     {id:'rytmus-sudu',title:'Rytmus sudů',desc:'Zaklepej správný rytmus na mrzimorské sudy.',img:'img/badge-rytmus-sudu.webp'},
-    {id:'dama-otevrela',title:'Dáma otevřela',desc:'Přesvědč Baculatou dámu správným heslem.',img:'img/badge-dama-otevrela.webp'},
-    {id:'septane-heslo',title:'Šeptané heslo',desc:'Odhal skrytý zmijozelský průchod.',img:'img/badge-septane-heslo.webp'},
+    {id:'dama-otevrela',title:'Baculatá dáma',desc:'Otevři nebelvírský vstup správným heslem.',img:'img/badge-dama-otevrela.webp'},
+    {id:'septane-heslo',title:'Šeptané heslo',desc:'Otevři skrytý zmijozelský průchod správným heslem.',img:'img/badge-septane-heslo.webp'},
     {id:'herbarnik',title:'Herbářník',desc:'Dokonči Herbář profesorky Prýtové a odevzdej všech pět vzorků.',img:'img/badge-herbarnik.webp'},
     {id:'mandragorovy-pestitel',title:'Mandragorový pěstitel',desc:'Úspěšně dokonči minutovou výzvu s přesazováním mandragor.',img:'img/badge-mandragorovy-pestitel.webp'},
-    {id:'sachovy-mistr',title:'Šachový mistr',desc:'Vyhraj pět kouzelnických šachových partií.',img:'img/badge-sachovy-mistr.webp'},
-    {id:'mistr-lektvaru',title:'Mistr lektvarů',desc:'Uvař několik lektvarů bez jediné chyby.',img:'img/badge-mistr-lektvaru.webp'},
-    {id:'mistr-premen',title:'Mistr přeměn',desc:'Zvládni pokročilé úkoly z přeměňování.',img:'img/badge-mistr-premen.webp'},
+    {id:'sachovy-mistr',title:'Šachový mistr',desc:'Vyhraj pět partií kouzelnických šachů.',img:'img/badge-sachovy-mistr.webp'},
+    {id:'mistr-lektvaru',title:'Mistr lektvarů',desc:'Uvař tři lektvary bez jediné chyby.',img:'img/badge-mistr-lektvaru.webp'},
+    {id:'mistr-premen',title:'Mistr přeměn',desc:'Zvládni šest praktických přeměn.',img:'img/badge-mistr-premen.webp'},
     {id:'pritel-hagrida',title:'Přítel Hagrida',desc:'Dokonči Hagridův úkol.',img:'img/badge-pritel-hagrida.webp'},
     {id:'jezerni-badatel',title:'Jezerní badatel',desc:'Objev tajemství Černého jezera.',img:'img/badge-jezerni-badatel.webp'},
-    {id:'prvni-test',title:'První test',desc:'Dokonči první školní test.',img:'img/badge-prvni-test.webp'},
+    {id:'prvni-test',title:'První test',desc:'Dokonči svůj první školní test.',img:'img/badge-prvni-test.webp'},
     {id:'bystra-mysl',title:'Bystrá mysl',desc:'Prokaž výborné znalosti napříč školními testy.',img:'img/badge-bystra-mysl.webp'},
     {id:'bez-jedine-chyby',title:'Bez jediné chyby',desc:'Dokonči školní test na 100 %.',img:'img/badge-bez-jedine-chyby.webp'},
-    {id:'pilny-student',title:'Pilný student',desc:'Absolvuj všechny hlavní předmětové testy.',img:'img/badge-pilny-student.webp'},
+    {id:'pilny-student',title:'Pilný student',desc:'Absolvuj test ze všech hlavních předmětů.',img:'img/badge-pilny-student.webp'},
     {id:'s-vyznamenanim',title:'S vyznamenáním',desc:'Dosáhni výborného výsledku v ročníkové zkoušce.',img:'img/badge-s-vyznamenanim.webp'},
     {id:'opora-koleje',title:'Opora koleje',desc:'Nasbírej 50 osobních bodů.',img:'img/badge-opora-koleje.webp'},
     {id:'sto-bodu',title:'Sto bodů',desc:'Dosáhni 100 osobních bodů.',img:'img/badge-sto-bodu.webp'},
-    {id:'legenda-koleje',title:'Legenda koleje',desc:'Dosáhni vysokého dlouhodobého bodového milníku.',img:'img/badge-legenda-koleje.webp'},
-    {id:'kolejni-hlas',title:'Kolejní hlas',desc:'Zapoj se do kolejního chatu.',img:'img/badge-kolejni-hlas.webp'},
+    {id:'legenda-koleje',title:'Legenda koleje',desc:'Získej 250 osobních bodů.',img:'img/badge-legenda-koleje.webp'},
+    {id:'kolejni-hlas',title:'Kolejní hlas',desc:'Napiš zprávu do chatu své koleje.',img:'img/badge-kolejni-hlas.webp'},
   ];
 
   const allBadges=[...coreBadges,...bonusBadges];
@@ -69,28 +72,87 @@
   const explorerPages=['ucebna-lektvaru.html','ucebna-premenovani.html','ucebna-obrany.html','velka-sin.html','famfrpal.html','skleniky.html','astronomicka-vez.html','kuchyne.html','zapovezeny-les.html','hagriduv-dum.html','vrba-mlaticka.html','jezero.html','nadvori.html','chodby.html','chodby-schody.html','chodby-portretni-galerie.html','chodby-stara-galerie.html','chodby-podzemni-1.html','chodby-podzemni-2.html','chodby-horni.html','sin-slavy.html','komnata-nejvyssi-potreby.html','hagriduv-dum-uvnitr.html','knihovna.html'];
 
   function read(key,fallback){try{const v=JSON.parse(localStorage.getItem(key));return v??fallback}catch{return fallback}}
-  function write(key,value){localStorage.setItem(key,JSON.stringify(value))}
+  function write(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch{}}
   function getStudent(){return read(STUDENT_KEY,null)}
   function saveStudent(s){write(STUDENT_KEY,s)}
-  function studentScopeId(){const s=getStudent();return String(s?.supabaseUserId||s?.email||'guest').replace(/[^a-zA-Z0-9@._-]/g,'_')}
-  function scopedKey(base){const id=studentScopeId();return id==='guest'?base:`${base}_${id}`}
-  function state(){const s=read(scopedKey(STATE_KEY),{unlocked:{},history:[]});s.unlocked||={};s.history||=[];return s}
-  function saveState(v){write(scopedKey(STATE_KEY),v);write(STATE_KEY,v)}
-  function counters(){return read(scopedKey(COUNTER_KEY),{})||{}}
-  function recordCounter(id,delta=1){const c=counters();c[id]=Math.max(0,Number(c[id]||0)+Number(delta||0));write(scopedKey(COUNTER_KEY),c);return c[id]}
+  const cleanScope=v=>String(v||'').trim().replace(/[^a-zA-Z0-9@._-]/g,'_');
+  function scopeIds(){
+    const s=getStudent(),ids=[runtimeUserId,s?.supabaseUserId,s?.email].map(cleanScope).filter(Boolean);
+    return [...new Set(ids)];
+  }
+  function studentScopeId(){return scopeIds()[0]||'guest'}
+  function scopedKey(base,id=studentScopeId()){return id==='guest'?base:`${base}_${id}`}
+  function mergeAchievementStates(){
+    const merged={unlocked:{},history:[]},ids=scopeIds();
+    for(const id of ids){
+      const x=read(scopedKey(STATE_KEY,id),null);if(!x)continue;
+      Object.assign(merged.unlocked,x.unlocked||{});merged.history.push(...(x.history||[]));
+    }
+    const owner=localStorage.getItem(OWNER_KEY)||'';
+    if(!ids.length || (owner&&ids.includes(owner))){
+      const x=read(STATE_KEY,null);if(x){Object.assign(merged.unlocked,x.unlocked||{});merged.history.push(...(x.history||[]))}
+    }
+    const seen=new Set();
+    merged.history=merged.history.filter(h=>{const k=h.type==='badge'?`b:${h.id}`:`${h.type||'x'}:${h.at||''}:${h.amount||''}:${h.reason||''}`;if(seen.has(k))return false;seen.add(k);return true}).sort((a,b)=>new Date(b.at||0)-new Date(a.at||0));
+    return merged;
+  }
+  function state(){return mergeAchievementStates()}
+  function saveState(v){
+    const ids=scopeIds(),primary=ids[0]||'guest';
+    if(ids.length)for(const id of ids)write(scopedKey(STATE_KEY,id),v);else write(STATE_KEY,v);
+    write(STATE_KEY,v);localStorage.setItem(OWNER_KEY,primary);
+  }
+  function mergedObject(base){
+    const out={},ids=scopeIds();for(const id of ids)Object.assign(out,read(scopedKey(base,id),{})||{});
+    return out;
+  }
+  function counters(){return mergedObject(COUNTER_KEY)}
+  function recordCounter(id,delta=1){const c=counters();c[id]=Math.max(0,Number(c[id]||0)+Number(delta||0));for(const sid of (scopeIds().length?scopeIds():['guest']))write(scopedKey(COUNTER_KEY,sid),c);return c[id]}
   function toast(title,extra=''){
     let box=document.querySelector('.achievement-toast');
     if(!box){box=document.createElement('div');box.className='achievement-toast';document.body.append(box)}
     box.innerHTML=`<span>✦</span><div><strong>${title}</strong>${extra?`<small>${extra}</small>`:''}</div>`;
     box.classList.remove('show');void box.offsetWidth;box.classList.add('show');setTimeout(()=>box.classList.remove('show'),3600)
   }
+  function pending(){return mergedObject(PENDING_KEY)}
+  function queueBadgeSync(id){if(!byId[id])return;const q=pending();q[id]=true;for(const sid of (scopeIds().length?scopeIds():['guest']))write(scopedKey(PENDING_KEY,sid),q)}
+  let syncTimer=null,syncing=false;
+  function scheduleBadgeSync(){
+    if(!DB?.client)return;
+    clearTimeout(syncTimer);syncTimer=setTimeout(()=>syncToDatabase().catch(err=>console.warn('Synchronizace odznaků selhala:',err)),120);
+  }
+  async function syncToDatabase(extraIds=[]){
+    if(!DB?.client||syncing)return false;
+    syncing=true;
+    try{
+      const user=await DB.getUser?.();if(!user)return false;
+      runtimeUserId=cleanScope(user.id);const migrated=state();saveState(migrated);
+      const st=state(),q=pending();
+      const ids=[...new Set([...Object.keys(st.unlocked||{}),...Object.keys(q||{}),...(extraIds||[])])].filter(id=>byId[id]);
+      if(!ids.length)return true;
+      const failed={};
+      for(const id of ids){
+        try{const {error}=await DB.client.rpc('unlock_achievement',{p_achievement_id:id});if(error)throw error}
+        catch(err){failed[id]=true;console.warn('Odznak se nepodařilo uložit do Supabase:',id,err)}
+      }
+      for(const sid of (scopeIds().length?scopeIds():['guest']))write(scopedKey(PENDING_KEY,sid),failed);
+      try{await Promise.all([DB.hydrateProgress?.(),DB.hydrateStudent?.(),DB.syncHouseStandingsLocal?.()])}catch(e){console.warn('Obnova postupu po synchronizaci odznaků selhala:',e)}
+      window.dispatchEvent(new CustomEvent('bradavice:progress-synced'));
+      return Object.keys(failed).length===0;
+    } finally {syncing=false}
+  }
   function award(id,{silent=false,skipMaster=false}={}){
     if(!byId[id]) return false;
-    const st=state();if(st.unlocked[id])return false;
+    const st=state();
+    if(st.unlocked[id]){
+      // Starší verze mohly odznak odemknout jen lokálně. Každý další pokus ho proto
+      // znovu zařadí do synchronizace; databáze má unikátní klíč, takže body se nedvojí.
+      queueBadgeSync(id);scheduleBadgeSync();return false;
+    }
     const now=new Date().toISOString();
-    st.unlocked[id]=now;st.history.unshift({type:'badge',id,at:now});saveState(st);
+    st.unlocked[id]=now;st.history.unshift({type:'badge',id,at:now});saveState(st);queueBadgeSync(id);
 
-    // Každý nově získaný základní odznak přidá 5 skutečných bodů studentovi i jeho koleji.
+    // Bez Supabase zachováme offline chování. Při připojení body přidává výhradně databázová RPC funkce.
     const student=getStudent();
     if(coreIds.has(id) && student?.houseCode && !DB?.client){
       student.points=Number(student.points||0)+5;saveStudent(student);
@@ -100,7 +162,7 @@
       const st2=state();st2.history.unshift({type:'points',amount:5,reason:`Odznak: ${byId[id].title}`,at:now});saveState(st2);
       if(student.points>=10)award('prvni-body',{silent:true});
     }
-    if(DB?.client){DB.unlockAchievement(id).catch(err=>console.warn('Odznak se nepodařilo synchronizovat s databází:',id,err));}
+    scheduleBadgeSync();
     if(!silent) toast(`Nový odznak: ${byId[id].title}`,coreIds.has(id)?'+5 bodů pro kolej':'Bonusový odznak');
     if(!skipMaster)checkMaster();return true
   }
@@ -195,6 +257,8 @@
   injectStyles();
   markVisit(currentPage());
   syncDerivedAchievements();
+  scheduleBadgeSync();
+  window.addEventListener('bradavice:supabase-synced',async()=>{try{const u=await DB?.getUser?.();if(u)runtimeUserId=cleanScope(u.id)}catch{}const migrated=state();saveState(migrated);syncDerivedAchievements();scheduleBadgeSync()});
 
-  window.BradaviceAchievements={coreBadges,bonusBadges,allBadges,award,isUnlocked,addPoints,completeQuest,markVisit,recordActivity,recordGhost,toast,getState:state,getStudent,getWeeklyEntry,read,write,syncDerivedAchievements,recordCounter,studentScopeId,scopedKey,keys:{STATE_KEY,VISITS_KEY,QUEST_KEY,GHOST_KEY,CONSTELLATION_KEY,COUNTER_KEY}};
+  window.BradaviceAchievements={coreBadges,bonusBadges,allBadges,award,isUnlocked,addPoints,completeQuest,markVisit,recordActivity,recordGhost,toast,getState:state,getStudent,getWeeklyEntry,read,write,syncDerivedAchievements,recordCounter,syncToDatabase,studentScopeId,scopedKey,keys:{STATE_KEY,VISITS_KEY,QUEST_KEY,GHOST_KEY,CONSTELLATION_KEY,COUNTER_KEY,PENDING_KEY}};
 })();

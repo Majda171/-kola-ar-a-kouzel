@@ -39,14 +39,14 @@
     document.getElementById('profileAvatar').src=avatarPath(s.avatarKey,code);
     document.getElementById('profileName').textContent=`${s.firstName||''} ${s.lastName||''}`.trim();
     document.getElementById('profileHouse').textContent=s.houseCode?`${house} · ${s.year||1}. ročník`:house;
-    document.getElementById('profilePoints').textContent=s.points||0;document.getElementById('profileYear').textContent=s.year||1;
+    const pointCount=Number(s.points||0);document.getElementById('profilePoints').textContent=pointCount;const pointLabel=document.getElementById('profilePointsLabel');if(pointLabel){const n=Math.abs(pointCount)%100,m=Math.abs(pointCount)%10;pointLabel.textContent=m===1&&n!==11?'bod':(m>=2&&m<=4&&(n<12||n>14)?'body':'bodů')}document.getElementById('profileYear').textContent=`${s.year||1}.`;
     document.getElementById('profileBioText').textContent=s.bio?.trim()||'Zatím jsi o sobě nic nenapsal/a.';
     const houseInline=document.getElementById('profileHouseInline');if(houseInline)houseInline.textContent=house;
     const roomLinks={N:'Nebelvir.html',H:'Havraspar.html',M:'Mrzimor.html',Z:'Zmijozel.html'};document.getElementById('profileRoomLink').href=s.houseCode?(roomLinks[code]||'koleje.html'):'rozrazeni.html';const scopeId=String(s?.supabaseUserId||s?.email||'guest').replace(/[^a-zA-Z0-9@._-]/g,'_');const rare=document.getElementById('rareFindsPanel');if(rare)rare.hidden=localStorage.getItem(`bradavice_philosophers_stone_v4363_${scopeId}`)!=='owned';
     bindProfileEditor(s);
     if(A){
       A.syncDerivedAchievements?.();const st=A.getState(),unlocked=st.unlocked||{},displayBadges=A.allBadges.filter(b=>b.img);
-      document.getElementById('profileBadges').textContent=displayBadges.filter(b=>unlocked[b.id]).length;
+      const badgeCount=displayBadges.filter(b=>unlocked[b.id]).length;document.getElementById('profileBadges').textContent=badgeCount;const badgeLabel=document.getElementById('profileBadgesLabel');if(badgeLabel)badgeLabel.textContent=badgeCount===1?'odznak':(badgeCount>=2&&badgeCount<=4?'odznaky':'odznaků');
       document.getElementById('achievementGrid').innerHTML=displayBadges.map(b=>badgeCard(b,Boolean(unlocked[b.id]))).join('');
       const weekly=s.houseCode?A.getWeeklyEntry(code):null,access=document.getElementById('profileAccess'),mail=document.getElementById('profileOwlMail');
       if(!s.houseCode){access.innerHTML='<strong>Rozřazení čeká</strong><p>Nejdřív dokonči rozřazovací ceremonii.</p>';if(mail)mail.innerHTML='<p>Soví pošta dorazí po rozřazení.</p>'}
@@ -66,8 +66,8 @@
       const questRows=[
         ['find-godric','Najdi na hradě obraz Godrika Nebelvíra','Hledej v Síni slávy mezi slavnými portréty.','Obraz už jsi objevil/a.','+10 bodů'],
         ['find-three-constellations','Najdi tři souhvězdí v Astronomické věži','Každé nové pozorování začíná od 0/3. Najdi všechny tři obrazce.','Všechna tři souhvězdí byla nalezena.','+50 bodů'],
-        ['prytova-herbar','Herbář Bradavic pro profesorku Prýtovou','Najdi pět rostlin při procházení školních pozemků a vrať se je odevzdat.','Herbář je kompletní a odevzdaný.','samostatný úkol'],
-        ['prytova-mandragory','Minuta s mandragorami','Přijmi druhý úkol u Prýtové a za 60 sekund přesaď alespoň pět mandragor.','Mandragorová výzva je splněná.','samostatný úkol'],
+        ['prytova-herbar','Herbář Bradavic pro profesorku Prýtovou','Najdi pět rostlin při procházení školních pozemků a vrať se je odevzdat.','Herbář je kompletní a odevzdaný.','Bylinkářství'],
+        ['prytova-mandragory','Minuta s mandragorami','Přijmi druhý úkol u Prýtové a za 60 sekund přesaď alespoň pět mandragor.','Mandragorová výzva je splněná.','Bylinkářství'],
         ['mcgonagall-feather','Lehké jako pírko','Promluv s profesorkou McGonagallovou a splň praktický úkol s pírkem.','Pírko jsi bezpečně zvedl/a a vrátil/a na lavici.','+10 bodů'],
         ['lupin-boggart','Praktická zkouška s bubákem','V učebně obrany otevři skříň a zvládni bubáka kouzlem Riddikulus.','Bubák byl poražen.','+20 bodů'],
         ['founders-all','Zakladatelé hradu','Najdi Godrika, Salazara, Rowenu a Helgu v různých částech hradu.','Všichni čtyři zakladatelé byli nalezeni.','odznak']
@@ -76,7 +76,7 @@
       const validBadgeIds=new Set(A.allBadges.filter(b=>b.img).map(b=>b.id));const hist=(st.history||[]).filter(h=>h.type==='points'||(h.type==='badge'&&validBadgeIds.has(h.id))).slice(0,8);document.getElementById('pointsHistory').innerHTML=hist.length?hist.map(h=>h.type==='points'?`<div class="history-row"><span>${h.reason}</span><span>${Number(h.amount)>0?'+':''}${h.amount}</span></div>`:`<div class="history-row"><span>Odznak · ${A.allBadges.find(x=>x.id===h.id)?.title||h.id}</span><span>✦</span></div>`).join(''):'<div class="history-row"><span>Zatím bez záznamu</span><span>—</span></div>';
     }
   }
-  if(document.body.classList.contains('profile-page')){(async()=>{if(DB?.client)await DB.hydrateAll();renderProfile()})();window.addEventListener('bradavice:progress-synced',renderProfile);window.addEventListener('bradavice:profile-updated',renderProfile);document.getElementById('logoutLink')?.addEventListener('click',async e=>{e.preventDefault();await DB?.signOut();location.href='index.html'})}
+  if(document.body.classList.contains('profile-page')){(async()=>{if(DB?.client)await DB.hydrateAll();await A?.syncToDatabase?.();renderProfile()})();window.addEventListener('bradavice:progress-synced',renderProfile);window.addEventListener('bradavice:profile-updated',renderProfile);document.getElementById('logoutLink')?.addEventListener('click',async e=>{e.preventDefault();await DB?.signOut();location.href='index.html'})}
   document.querySelectorAll('.defense-hotspot').forEach(el=>el.addEventListener('click',()=>{el.classList.remove('activated');void el.offsetWidth;el.classList.add('activated');setTimeout(()=>el.classList.remove('activated'),780);if(el.dataset.defense==='sigil')A?.award('tajemstvi-hradu',{silent:true})}));
   document.querySelectorAll('.quidditch-player').forEach(p=>p.addEventListener('click',()=>{p.classList.remove('swoop');void p.offsetWidth;p.classList.add('swoop');setTimeout(()=>p.classList.remove('swoop'),800)}));
   const sceneToast=message=>{if(!message)return;let box=document.querySelector('.scene-toast');if(!box){box=document.createElement('div');box.className='scene-toast';document.body.appendChild(box)}box.textContent=message;box.classList.remove('show');void box.offsetWidth;box.classList.add('show');clearTimeout(sceneToast.timer);sceneToast.timer=setTimeout(()=>box.classList.remove('show'),2600)};

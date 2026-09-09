@@ -4,7 +4,7 @@
   const plantSeen=new Set();
   plants.forEach((p,i)=>p.addEventListener('click',()=>{
     p.classList.remove('startled');void p.offsetWidth;p.classList.add('startled');
-    plantSeen.add(i);if(plantSeen.size===plants.length&&plants.length)A?.award('sklenikovy-znalec');
+    plantSeen.add(i);
   }));
 
   const willow=document.querySelector('.willow-tree');
@@ -123,7 +123,7 @@
     e.stopPropagation();
     const action=el.dataset.propAction||'nudge',cls=`react-${action}`;el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls);setTimeout(()=>el.classList.remove(cls),900);
     sceneToast(el.dataset.message||'Předmět na okamžik zareagoval na dotyk.');
-    if(el.classList.contains('prop-greenhouse-plant'))A?.award('sklenikovy-znalec',{silent:true});if(el.classList.contains('prop-hagrid-egg'))A?.award('tajemstvi-hradu',{silent:true});
+    if(el.classList.contains('prop-hagrid-egg'))A?.award('tajemstvi-hradu',{silent:true});
   }));
 
   document.querySelectorAll('[data-forest]').forEach(el=>el.addEventListener('click',()=>{
@@ -155,7 +155,6 @@
   const greenhouseTouched=new Set();
   document.querySelectorAll('.plant-hotspot').forEach((el,i)=>el.addEventListener('click',()=>{
     greenhouseTouched.add(`hot-${i}`);el.animate([{transform:'rotate(0deg)'},{transform:'rotate(-2deg)'},{transform:'rotate(2deg)'},{transform:'rotate(0deg)'}],{duration:520});
-    if(greenhouseTouched.size>=3)A?.award('sklenikovy-znalec',{silent:true});
   }));
 
   const secretChamberTrigger=document.getElementById('secretChamberTrigger');
@@ -186,7 +185,7 @@
     if(revealed)return; revealed=true;
     scene.classList.add('ready'); door.setAttribute('aria-hidden','false');
     sessionStorage.setItem('bradavice_requirement_gate','open');
-    if(whisper)whisper.textContent='Ve zdi se tiše objevily dveře…';
+    if(whisper)whisper.textContent='Gobelíny se tiše pohnou a ve stěně se pomalu vyrýsují dveře.';
     window.BradaviceAchievements?.award?.('mistnost-se-ukazala',{silent:true});
     window.BradaviceAchievements?.award?.('tajemstvi-hradu',{silent:true});
   };

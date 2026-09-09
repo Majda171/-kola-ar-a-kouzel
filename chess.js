@@ -208,7 +208,7 @@
   }
 
   async function createOnlineRoom(){
-    if(!DB?.client){onlineSay('Databáze není dostupná.');return}
+    if(!DB?.client){onlineSay('Online partie teď není dostupná.');return}
     await leaveOnline();
     mode='online';
     online.seat='w';
