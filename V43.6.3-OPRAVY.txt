@@ -1,0 +1,19 @@
+Bradavice v43.6.3 — opravy 9. 9. 2026
+
+- Východní chodba: odstraněná kreslená maketa zakázaných dveří; kliká se přímo na skutečné dveře v pozadí.
+- Tajemná komnata: z podzemní chodby se pokračuje kliknutím přímo na otvor/pečeť v pozadí.
+- Cesta za Kamenem mudrců: správné pořadí ŠACHY → KLÍČE → LEKTVARY.
+- Kouzelnické šachy: jedna společná implementace (chess-component.js + chess.js) pro Velkou síň i cestu za Kamenem.
+- Šachové figurky: pěšci beze změny; věže, jezdci, střelci, dámy a králové cca o 15 % větší.
+- Harfa: už neleží u Chloupka. Student ji musí najít ve Velké síni a uloží se mu do výbavy.
+- Chloupek: spí jen po dobu nové harfové melodie. Jakmile hudba dohraje a student neprojde padacími dveřmi, pes se probudí a hráč uteče k Hagridovi.
+- Hagrid po neúspěchu poradí, že Chloupek při hudbě usíná a po tichu se probudí, ale neprozradí umístění harfy.
+- Nová harfová melodie audio/chloupek-harfa-v4363.wav.
+- Odznaky: dokončené odemykání 16 nových odznaků (Herbářník, Mandragorový pěstitel, Šachový mistr, Mistr lektvarů, Mistr přeměn, Přítel Hagrida, Jezerní badatel, První test, Bystrá mysl, Bez jediné chyby, Pilný student, S vyznamenáním, Opora koleje, Sto bodů, Legenda koleje, Kolejní hlas).
+- Stav odznaků, počítadel a testů je oddělený podle studenta; Supabase zůstává autoritativní pro synchronizované odznaky.
+
+DODATEČNÁ KONTROLA ODNZNAKŮ A POSTUPU:
+- questy, odznaky, návštěvy, testy a Kámen mudrců jsou oddělené podle studenta
+- profil čte odznaky, úkoly a studijní výsledky aktuálního studenta
+- opravena brána do síně se Zrcadlem po dokončení šachy → klíče → lektvary
+- všech 40 grafik odznaků je přítomných a nové odznaky mají navázané podmínky odemčení

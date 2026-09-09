@@ -401,8 +401,16 @@
           setNick('„Výborně. Tohle už byla skutečná partie.“');
           DB?.claimV40Activity?.('chess-first-win').catch(()=>{});
           DB?.submitTournamentScore?.('chess-cup',100).catch(()=>{});
+          const wins=window.BradaviceAchievements?.recordCounter?.('chess-wins',1)||0;
+          if(wins>=5)window.BradaviceAchievements?.award?.('sachovy-mistr',{silent:true});
+          window.dispatchEvent(new CustomEvent('bradavice:chess-win',{detail:{mode:'ai',context:document.body.dataset.chessContext||'hall'}}));
         }else if(mode==='ai')setNick('„Mat. Příště se dívej o tah dál.“');
-        if(mode==='online'&&online.seat===enemy(turn))DB?.submitTournamentScore?.('chess-cup',100).catch(()=>{});
+        if(mode==='online'&&online.seat===enemy(turn)){
+          DB?.submitTournamentScore?.('chess-cup',100).catch(()=>{});
+          const wins=window.BradaviceAchievements?.recordCounter?.('chess-wins',1)||0;
+          if(wins>=5)window.BradaviceAchievements?.award?.('sachovy-mistr',{silent:true});
+          window.dispatchEvent(new CustomEvent('bradavice:chess-win',{detail:{mode:'online',context:document.body.dataset.chessContext||'hall'}}));
+        }
       }else{
         showResult('stalemate');
         say('Pat. Partie končí remízou.');

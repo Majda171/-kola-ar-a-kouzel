@@ -6,7 +6,8 @@
     rowena:{name:'Rowena z Havraspáru',img:'img/founder-rowena-v42.webp',text:'„Otázka, kterou položíš správně, může mít větší cenu než rychlá odpověď.“'},
     helga:{name:'Helga z Mrzimoru',img:'img/founder-helga-v42.webp',text:'„Trpělivá práce a laskavost bývají silnější, než se na první pohled zdá.“'}
   };
-  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch{return{}}},save=s=>localStorage.setItem(KEY,JSON.stringify(s));
+  const sk=()=>A?.scopedKey?.(KEY)||KEY;
+  const load=()=>{try{return JSON.parse(localStorage.getItem(sk())||'{}')||{}}catch{return{}}},save=s=>{localStorage.setItem(sk(),JSON.stringify(s));localStorage.setItem(KEY,JSON.stringify(s))};
   let state=load();
   function ensureDialog(){let d=document.getElementById('founderDialog');if(d)return d;d=document.createElement('div');d.id='founderDialog';d.className='founder-dialog';d.hidden=true;d.innerHTML='<article class="founder-card"><button class="founder-close" type="button">×</button><img id="founderDialogImg" alt=""><div><small>Zakladatel Bradavic</small><h2 id="founderDialogName"></h2><p id="founderDialogText"></p><div class="founder-progress" id="founderProgress"></div></div></article>';document.body.appendChild(d);d.querySelector('.founder-close').addEventListener('click',()=>d.hidden=true);d.addEventListener('click',e=>{if(e.target===d)d.hidden=true});return d}
   function count(){return ['godric','salazar','rowena','helga'].filter(k=>state[k]).length}

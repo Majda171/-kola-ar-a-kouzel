@@ -2,8 +2,9 @@
   const teacher=document.getElementById('mcgonagallTeacher'),feather=document.getElementById('transfigurationFeather'),modal=document.getElementById('transfigurationTaskModal');if(!teacher||!feather||!modal)return;
   const close=document.getElementById('transfigurationTaskClose'),accept=document.getElementById('transfigurationTaskAccept'),text=document.getElementById('transfigurationTaskText');
   const KEY='bradavice_mcgonagall_feather_v42';
-  const load=()=>{try{return{accepted:false,done:false,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch{return{accepted:false,done:false}}};
-  const save=s=>localStorage.setItem(KEY,JSON.stringify(s));let state=load(),flying=false;
+  const sk=()=>window.BradaviceAchievements?.scopedKey?.(KEY)||KEY;
+  const load=()=>{try{return{accepted:false,done:false,...JSON.parse(localStorage.getItem(sk())||'{}')}}catch{return{accepted:false,done:false}}};
+  const save=s=>{localStorage.setItem(sk(),JSON.stringify(s));localStorage.setItem(KEY,JSON.stringify(s))};let state=load(),flying=false;
   function render(){state=load();if(state.done){text.textContent='„Přesné, klidné a bez zbytečného mávání. Tak má základní kouzlo vypadat.“';accept.textContent='Úkol splněn';accept.disabled=true;accept.classList.add('done')}else if(state.accepted){text.textContent='„Úkol platí. Rozpohybujte pírko na přední lavici a vraťte ho bezpečně na stejné místo.“';accept.textContent='Úkol přijat';accept.disabled=true}else{accept.disabled=false;accept.classList.remove('done');accept.textContent='Přijmout úkol'}}
   function show(){render();modal.hidden=false;document.body.style.overflow='hidden'}function hide(){modal.hidden=true;document.body.style.overflow=''}
   teacher.addEventListener('click',show);close.addEventListener('click',hide);modal.addEventListener('click',e=>{if(e.target===modal)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)hide()});
@@ -36,7 +37,7 @@
       transfigureObject.classList.remove('is-tapped');transfigureObject.classList.add('is-transforming');
       note('Přeměna…');
       setTimeout(()=>setForm(next),470);
-      setTimeout(()=>{transfigureObject.classList.remove('is-transforming');objectBusy=false;note(next==='goblet'?'Krysa se změnila v pohár':'Pohár se změnil v krysu')},960);
+      setTimeout(()=>{transfigureObject.classList.remove('is-transforming');objectBusy=false;note(next==='goblet'?'Krysa se změnila v pohár':'Pohár se změnil v krysu');const n=window.BradaviceAchievements?.recordCounter?.('transfigurations',1)||0;if(n>=6)window.BradaviceAchievements?.award?.('mistr-premen')},960);
     });
   }
 })();

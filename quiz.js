@@ -2,9 +2,11 @@
   const A=window.BradaviceAchievements;
   const banks=window.BradaviceQuizBanks||{};
   const KEY='bradavice_tests_v1';
+  const sid=()=>{try{const st=JSON.parse(localStorage.getItem('bradavice_student_v1')||'null');return String(st?.supabaseUserId||st?.email||'guest').replace(/[^a-zA-Z0-9@._-]/g,'_')}catch{return'guest'}};
+  const key=()=>`${KEY}_${sid()}`;
   const subjectIds=['potions','transfiguration','defense','herbology','astronomy'];
-  const read=()=>{try{return JSON.parse(localStorage.getItem(KEY))||{}}catch{return {}}};
-  const write=v=>{try{localStorage.setItem(KEY,JSON.stringify(v))}catch{}};
+  const read=()=>{try{return JSON.parse(localStorage.getItem(key()))||{}}catch{return {}}};
+  const write=v=>{try{localStorage.setItem(key(),JSON.stringify(v));localStorage.setItem(KEY,JSON.stringify(v))}catch{}};
   const shuffle=a=>{const x=[...a];for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]]}return x};
   const grading=(score,total)=>{
     if(total===10){if(score===10)return['V','Vynikající',true];if(score>=8)return['N','Nad očekávání',true];if(score>=6)return['P','Přijatelné',true];if(score>=4)return['M','Mizerné',false];if(score>=2)return['H','Hrozné',false];return['T','Troll',false]}
@@ -31,11 +33,12 @@
       window.BradaviceDB?.claimV40Activity?.(dbKey).catch(err=>console.warn('Body za první úspěšný test se nepodařilo synchronizovat:',err));
     }
     write(all);
-    if(total===10&&score===10)
-    if(subjectIds.every(s=>all[s]?.attempts>0))
-    if(subjectIds.filter(s=>Number(all[s]?.bestScore||0)>=8).length>=5)
+    if(total===10)A?.award('prvni-test',{silent:true});
+    if(total===10&&score===10)A?.award('bez-jedine-chyby');
+    if(subjectIds.every(s=>all[s]?.attempts>0))A?.award('pilny-student',{silent:true});
+    if(subjectIds.filter(s=>Number(all[s]?.bestScore||0)>=8).length>=5)A?.award('bystra-mysl');
     if(id==='year1'&&passed)A?.award('rocnikova-zkouska');
-    if(id==='year1'&&score>=23)
+    if(id==='year1'&&score>=23)A?.award('s-vyznamenanim');
     window.dispatchEvent(new CustomEvent('bradavice:test-updated',{detail:{id,result:all[id]}}));
     return {grade:g[0],label:g[1],passed,firstPass,result:all[id]};
   }

@@ -1,7 +1,9 @@
 (()=>{
  const mirror=document.getElementById('mirrorObject'),btn=document.getElementById('mirrorButton'),box=document.getElementById('mirrorQuestion'),qtext=document.getElementById('mirrorQuestionText'),answers=document.getElementById('mirrorAnswers'),msg=document.getElementById('mirrorMessage'),reward=document.getElementById('stoneReward'),stone=document.getElementById('stoneButton'),label=document.getElementById('stoneLabel');
  if(!mirror||!btn)return;
- const OWN='bradavice_philosophers_stone_v436';
+ const student=(()=>{try{return JSON.parse(localStorage.getItem('bradavice_student_v1')||'null')}catch{return null}})();
+ const sid=String(student?.supabaseUserId||student?.email||'guest').replace(/[^a-zA-Z0-9@._-]/g,'_');
+ const OWN=`bradavice_philosophers_stone_v4363_${sid}`;
  const questions=[
   {q:'Co uspalo tříhlavého strážce nad padacími dveřmi?',a:['Kouzelná harfa','Lektvar spánku','Zaklínadlo Lumos'],ok:0},
   {q:'Který z létajících klíčů otevřel další cestu?',a:['Nejzářivější klíč','Starý klíč s poškozeným křídlem','Největší stříbrný klíč'],ok:1},

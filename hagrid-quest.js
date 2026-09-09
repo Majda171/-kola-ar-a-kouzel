@@ -1,9 +1,9 @@
 (() => {
-  const DB=window.BradaviceDB;
+  const DB=window.BradaviceDB,A=window.BradaviceAchievements;
   if(!DB?.client)return;
   let status={accepted:false,found:0,completed:false,rewarded:false,ids:[]};
   const toast=(t)=>{let x=document.querySelector('.quest-toast');if(!x){x=document.createElement('div');x.className='quest-toast';document.body.appendChild(x)}x.textContent=t;x.classList.remove('show');void x.offsetWidth;x.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>x.classList.remove('show'),2200)};
-  const get=async()=>{try{status=await DB.hagridStatus();return status}catch(e){console.warn(e);return status}};
+  const get=async()=>{try{status=await DB.hagridStatus();if(status?.rewarded)A?.award?.('pritel-hagrida',{silent:true});return status}catch(e){console.warn(e);return status}};
   const syncNifflers=()=>document.querySelectorAll('[data-niffler-id]').forEach(b=>{const id=b.dataset.nifflerId;b.classList.toggle('is-hidden',!status.accepted||status.rewarded||status.ids?.includes(id))});
   const openDialog=async()=>{
     await get();
@@ -15,7 +15,7 @@
     d.hidden=false;
     d.querySelector('[data-q="close"]')?.addEventListener('click',()=>d.hidden=true);
     d.querySelector('[data-q="accept"]')?.addEventListener('click',async()=>{try{await DB.hagridAccept();status=await DB.hagridStatus();syncNifflers();d.hidden=true;toast('Úkol přijat · najdi 5 hrabáků')}catch(e){toast('Nejdřív spusť SUPABASE-V40-KOMPLET.sql')}});
-    d.querySelector('[data-q="return"]')?.addEventListener('click',async()=>{try{const rewarded=await DB.hagridReturn();status=await DB.hagridStatus();syncNifflers();d.hidden=true;toast(rewarded?'+50 bodů pro tvoji kolej':'Odměna už byla vyzvednuta')}catch(e){toast(e?.message||'Hrabáky se nepodařilo odevzdat')}});
+    d.querySelector('[data-q="return"]')?.addEventListener('click',async()=>{try{const rewarded=await DB.hagridReturn();status=await DB.hagridStatus();if(status?.rewarded)A?.award?.('pritel-hagrida');syncNifflers();d.hidden=true;toast(rewarded?'+50 bodů pro tvoji kolej':'Odměna už byla vyzvednuta')}catch(e){toast(e?.message||'Hrabáky se nepodařilo odevzdat')}});
     d.addEventListener('click',e=>{if(e.target===d)d.hidden=true},{once:true});
   };
   document.querySelector('.hagrid-questgiver')?.addEventListener('click',openDialog);

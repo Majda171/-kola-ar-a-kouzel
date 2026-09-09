@@ -69,7 +69,7 @@
       const key='bradavice_student_v1',student=JSON.parse(localStorage.getItem(key)||'null');if(!student?.houseCode)return -amount;
       student.points=Math.max(0,Number(student.points||0)-amount);localStorage.setItem(key,JSON.stringify(student));
       const hk=`bradavice_house_points_v2_${student.houseCode}`,hp=Number(localStorage.getItem(hk)||0);localStorage.setItem(hk,String(Math.max(0,hp-amount)));
-      const stateKey='bradavice_achievements_v2',st=JSON.parse(localStorage.getItem(stateKey)||'{"unlocked":{},"history":[]}');st.history=st.history||[];st.history.unshift({type:'points',amount:-amount,reason:'Profesor lektvarů – zkažený lektvar',at:new Date().toISOString()});localStorage.setItem(stateKey,JSON.stringify(st));DB?.updateStudentHud?.(student);return -amount;
+      const stateKey=A?.scopedKey?.(A?.keys?.STATE_KEY||'bradavice_achievements_v2')||'bradavice_achievements_v2',st=JSON.parse(localStorage.getItem(stateKey)||'{"unlocked":{},"history":[]}');st.history=st.history||[];st.history.unshift({type:'points',amount:-amount,reason:'Profesor lektvarů – zkažený lektvar',at:new Date().toISOString()});localStorage.setItem(stateKey,JSON.stringify(st));DB?.updateStudentHud?.(student);return -amount;
     }catch{return -amount}
   }
   async function applyPenalty(){
@@ -84,7 +84,7 @@
   }
   async function success(){
     failed=false;setControlsDisabled(true);game.hidden=true;outcome.hidden=false;result.innerHTML=`<img src="img/potions-v40/results/${recipe.result}" alt="${recipe.name}">`;status.textContent=`Správně. ${recipe.name} je hotový bez jediné chyby.`;snape.textContent=successComments[Math.floor(Math.random()*successComments.length)];
-    try{await DB?.claimV40Activity?.('brew-first-potion');await DB?.submitTournamentScore?.('potions-cup',100)}catch(e){console.warn(e)}A?.award?.('prvni-lektvar',{silent:true});
+    try{await DB?.claimV40Activity?.('brew-first-potion');await DB?.submitTournamentScore?.('potions-cup',100)}catch(e){console.warn(e)}A?.award?.('prvni-lektvar',{silent:true});const perfectBrews=A?.recordCounter?.('perfect-brews',1)||0;if(perfectBrews>=3)A?.award?.('mistr-lektvaru');
   }
   document.querySelectorAll('[data-brew-action]').forEach(b=>b.addEventListener('click',()=>{const m={'stir-right':'r','stir-left':'l',heat:'h',finish:'f'};act(m[b.dataset.brewAction])}));
   hideBtn.addEventListener('click',beginBrew);reset.addEventListener('click',start);

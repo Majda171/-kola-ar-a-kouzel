@@ -32,7 +32,7 @@
   tabs.forEach(b=>b.onclick=()=>setScope(b.dataset.scope));
   form.onsubmit=async e=>{
     e.preventDefault();const msg=input.value.trim();if(!msg)return;status.textContent='Odesílám…';
-    try{await DB.postChatMessage(scope,msg);input.value='';await load()}
+    try{await DB.postChatMessage(scope,msg);if(scope==='house')window.BradaviceAchievements?.award?.('kolejni-hlas',{silent:true});input.value='';await load()}
     catch(err){console.error(err);status.textContent=err?.message||'Zprávu se nepodařilo odeslat.'}
   };
   setScope(scope);

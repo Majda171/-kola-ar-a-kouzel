@@ -1,0 +1,8 @@
+BRADAVICE v43.6.1 — oprava vstupu do Havraspáru
+
+- Havraspár už nepoužívá heslo týdne.
+- Bronzové orlí klepadlo po kliknutí přehraje zvuk a zobrazí hádanku.
+- Hádanky se střídají po týdnu; každá má vlastní správnou odpověď.
+- Odpověď se nikde v UI nezobrazuje a soví pošta ji neposílá.
+- Profil už Havraspáru netvrdí, že má heslo týdne.
+- Vstup zůstává v horních chodbách a po správné odpovědi vede do Havraspáru.

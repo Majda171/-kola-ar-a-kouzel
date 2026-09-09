@@ -7,6 +7,7 @@
   const GHOST_KEY='bradavice_ghosts_seen_v1';
   const ACTIVITY_KEY='bradavice_activity_count_v1';
   const CONSTELLATION_KEY='bradavice_constellations_v1';
+  const COUNTER_KEY='bradavice_achievement_counters_v4363';
   const DB=window.BradaviceDB;
 
   const coreBadges=[
@@ -71,7 +72,12 @@
   function write(key,value){localStorage.setItem(key,JSON.stringify(value))}
   function getStudent(){return read(STUDENT_KEY,null)}
   function saveStudent(s){write(STUDENT_KEY,s)}
-  function state(){const s=read(STATE_KEY,{unlocked:{},history:[]});s.unlocked||={};s.history||=[];return s}
+  function studentScopeId(){const s=getStudent();return String(s?.supabaseUserId||s?.email||'guest').replace(/[^a-zA-Z0-9@._-]/g,'_')}
+  function scopedKey(base){const id=studentScopeId();return id==='guest'?base:`${base}_${id}`}
+  function state(){const s=read(scopedKey(STATE_KEY),{unlocked:{},history:[]});s.unlocked||={};s.history||=[];return s}
+  function saveState(v){write(scopedKey(STATE_KEY),v);write(STATE_KEY,v)}
+  function counters(){return read(scopedKey(COUNTER_KEY),{})||{}}
+  function recordCounter(id,delta=1){const c=counters();c[id]=Math.max(0,Number(c[id]||0)+Number(delta||0));write(scopedKey(COUNTER_KEY),c);return c[id]}
   function toast(title,extra=''){
     let box=document.querySelector('.achievement-toast');
     if(!box){box=document.createElement('div');box.className='achievement-toast';document.body.append(box)}
@@ -82,16 +88,16 @@
     if(!byId[id]) return false;
     const st=state();if(st.unlocked[id])return false;
     const now=new Date().toISOString();
-    st.unlocked[id]=now;st.history.unshift({type:'badge',id,at:now});write(STATE_KEY,st);
+    st.unlocked[id]=now;st.history.unshift({type:'badge',id,at:now});saveState(st);
 
     // Každý nově získaný základní odznak přidá 5 skutečných bodů studentovi i jeho koleji.
     const student=getStudent();
-    if(coreIds.has(id) && student?.houseCode){
+    if(coreIds.has(id) && student?.houseCode && !DB?.client){
       student.points=Number(student.points||0)+5;saveStudent(student);
       const hk=`bradavice_house_points_v2_${student.houseCode}`;
       const oldHouse=parseInt(localStorage.getItem(hk),10);
       localStorage.setItem(hk,String((Number.isFinite(oldHouse)?oldHouse:0)+5));
-      const st2=state();st2.history.unshift({type:'points',amount:5,reason:`Odznak: ${byId[id].title}`,at:now});write(STATE_KEY,st2);
+      const st2=state();st2.history.unshift({type:'points',amount:5,reason:`Odznak: ${byId[id].title}`,at:now});saveState(st2);
       if(student.points>=10)award('prvni-body',{silent:true});
     }
     if(DB?.client){DB.unlockAchievement(id).catch(err=>console.warn('Odznak se nepodařilo synchronizovat s databází:',id,err));}
@@ -103,19 +109,19 @@
     const s=getStudent();if(!s||!s.houseCode)return false;
     s.points=Number(s.points||0)+Number(amount||0);saveStudent(s);
     const hk=`bradavice_house_points_v2_${s.houseCode}`;const old=parseInt(localStorage.getItem(hk),10);localStorage.setItem(hk,String((Number.isFinite(old)?old:0)+Number(amount||0)));
-    const st=state();st.history.unshift({type:'points',amount:Number(amount||0),reason,at:new Date().toISOString()});write(STATE_KEY,st);
+    const st=state();st.history.unshift({type:'points',amount:Number(amount||0),reason,at:new Date().toISOString()});saveState(st);
     if(s.points>=10)award('prvni-body',{silent:true});
     toast(`+${amount} bodů pro ${s.house||'kolej'}`,reason);return true
   }
   function questDone(value){return value===true || value?.done===true}
   function completeQuest(id,{points=0,badgeId=null,title='Úkol splněn',syncDb=true}={}){
-    const q=read(QUEST_KEY,{})||{};
+    const q=read(scopedKey(QUEST_KEY),{})||{};
     if(questDone(q[id])){
       // Starší verze mohly uložit splnění bez odznaku. Doplň ho, ale body podruhé nepřičítej.
       if(badgeId) award(badgeId,{silent:true});
       return false;
     }
-    q[id]={done:true,at:new Date().toISOString()};write(QUEST_KEY,q);
+    q[id]={done:true,at:new Date().toISOString()};write(scopedKey(QUEST_KEY),q);write(QUEST_KEY,q);
     if(syncDb&&DB?.client){DB.completeQuest(id).catch(err=>console.warn('Úkol se nepodařilo synchronizovat s databází:',id,err));}
     if(points)addPoints(points,title);
     if(badgeId)award(badgeId);
@@ -125,14 +131,14 @@
     if(!locationPages.has(page))return;
     const requiredHouse=privatePageHouse[page];
     if(requiredHouse && getStudent()?.houseCode!==requiredHouse) return;
-    const v=read(VISITS_KEY,{});v[page]=v[page]||new Date().toISOString();write(VISITS_KEY,v);
+    const v=read(scopedKey(VISITS_KEY),{});v[page]=v[page]||new Date().toISOString();write(scopedKey(VISITS_KEY),v);write(VISITS_KEY,v);
     if(DB?.client){DB.visitLocationByPage(page).catch(err=>console.warn('Návštěva lokace se nepodařila synchronizovat:',page,err));}
     const count=Object.keys(v).filter(p=>locationPages.has(p)).length;
     if(count>=5)award('zvidavy-student',{silent:true});
     if(explorerPages.every(p=>v[p]))award('pruzkumnik-bradavic',{silent:true});
   }
-  function recordActivity(){const n=(parseInt(localStorage.getItem(ACTIVITY_KEY),10)||0)+1;localStorage.setItem(ACTIVITY_KEY,String(n));return n}
-  function recordGhost(key){const g=read(GHOST_KEY,{});g[key]=true;write(GHOST_KEY,g);if(Object.keys(g).length>=5)award('pritel-duchu',{silent:true})}
+  function recordActivity(){const k=scopedKey(ACTIVITY_KEY),n=(parseInt(localStorage.getItem(k),10)||0)+1;localStorage.setItem(k,String(n));return n}
+  function recordGhost(key){const k=scopedKey(GHOST_KEY),g=read(k,{});g[key]=true;write(k,g);write(GHOST_KEY,g);if(Object.keys(g).length>=5)award('pritel-duchu',{silent:true})}
   function checkMaster(){return false}
 
   // Oprava starších uložených stavů: odznaky se dopočítají z bodů a již splněných úkolů.
@@ -143,17 +149,23 @@
     const pts=Number(s?.points||0);
     if(pts>=10) award('prvni-body',{silent:true});
 
-    const quests=read(QUEST_KEY,{})||{};
+    const quests=read(scopedKey(QUEST_KEY),{})||{};
     if(questDone(quests['find-godric'])) award('godrikuv-nalezce',{silent:true});
     if(questDone(quests['find-three-constellations'])) award('nocni-pozorovatel',{silent:true});
 
-    const visits=read(VISITS_KEY,{})||{};
+    const visits=read(scopedKey(VISITS_KEY),{})||{};
     const visitCount=Object.keys(visits).filter(p=>locationPages.has(p)).length;
     if(visitCount>=5) award('zvidavy-student',{silent:true});
     if(explorerPages.every(p=>visits[p])) award('pruzkumnik-bradavic',{silent:true});
 
-    const ghosts=read(GHOST_KEY,{})||{};
+    const ghosts=read(scopedKey(GHOST_KEY),{})||{};
     if(Object.keys(ghosts).length>=5) award('pritel-duchu',{silent:true});
+    if(questDone(quests['prytova-herbar'])) award('herbarnik',{silent:true});
+    if(questDone(quests['prytova-mandragory'])) award('mandragorovy-pestitel',{silent:true});
+    if(pts>=50) award('opora-koleje',{silent:true});
+    if(pts>=100) award('sto-bodu',{silent:true});
+    if(pts>=250) award('legenda-koleje',{silent:true});
+    const c=counters();if(Number(c['chess-wins']||0)>=5)award('sachovy-mistr',{silent:true});if(Number(c['perfect-brews']||0)>=3)award('mistr-lektvaru',{silent:true});if(Number(c['transfigurations']||0)>=6)award('mistr-premen',{silent:true});
     checkMaster();
   }
 
@@ -166,12 +178,12 @@
       {display:'Bezoár',answers:['Bezoár']},{display:'Stříbrný had',answers:['Stříbrný had']},{display:'Noční stín',answers:['Noční stín']},{display:'Smaragd',answers:['Smaragd']},{display:'Černé jezero',answers:['Černé jezero']},{display:'Hadí jazyk',answers:['Hadí jazyk']}
     ],
     H:[
-      {display:'Modrý safír',answers:['Modrý safír']},
-      {display:'Orlí pero',answers:['Orlí pero']},
-      {display:'Hvězdná věž',answers:['Hvězdná věž']},
-      {display:'Měsíční svit',answers:['Měsíční svit']},
-      {display:'Modrá hvězda',answers:['Modrá hvězda']},
-      {display:'Stříbrný orel',answers:['Stříbrný orel']}
+      {prompt:'Co je vždy před tebou, ale nikdy to nemůžeš vidět?',answers:['Budoucnost','Tvoje budoucnost']},
+      {prompt:'Co je lehčí než pírko, ale ani nejsilnější člověk to dlouho neudrží?',answers:['Dech','Svůj dech']},
+      {prompt:'Čím víc z ní bereš, tím je větší. Co je to?',answers:['Díra','Dira']},
+      {prompt:'Co patří tobě, ale ostatní to používají častěji než ty?',answers:['Jméno','Tvoje jméno','Mé jméno']},
+      {prompt:'Co může naplnit celou místnost, ale nezabere žádné místo?',answers:['Světlo']},
+      {prompt:'Když mě vyslovíš, zničíš mě. Co jsem?',answers:['Ticho']}
     ]
   };
   function getWeeklyEntry(code){const arr=weekly[code]||[];return arr.length?arr[Math.abs(weekIndex())%arr.length]:null}
@@ -181,9 +193,8 @@
 
   function currentPage(){return location.pathname.split('/').pop()||'index.html'}
   injectStyles();
-  syncDerivedAchievements();
   markVisit(currentPage());
   syncDerivedAchievements();
 
-  window.BradaviceAchievements={coreBadges,bonusBadges,allBadges,award,isUnlocked,addPoints,completeQuest,markVisit,recordActivity,recordGhost,toast,getState:state,getStudent,getWeeklyEntry,read,write,syncDerivedAchievements,keys:{STATE_KEY,VISITS_KEY,QUEST_KEY,GHOST_KEY,CONSTELLATION_KEY}};
+  window.BradaviceAchievements={coreBadges,bonusBadges,allBadges,award,isUnlocked,addPoints,completeQuest,markVisit,recordActivity,recordGhost,toast,getState:state,getStudent,getWeeklyEntry,read,write,syncDerivedAchievements,recordCounter,studentScopeId,scopedKey,keys:{STATE_KEY,VISITS_KEY,QUEST_KEY,GHOST_KEY,CONSTELLATION_KEY,COUNTER_KEY}};
 })();

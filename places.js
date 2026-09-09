@@ -28,7 +28,7 @@
 
   const godrik=document.getElementById('godrikQuest');
   if(godrik){
-    const q=A?.read(A?.keys?.QUEST_KEY||'bradavice_quests_v1',{})||{};
+    const q=A?.read(A?.scopedKey?.(A?.keys?.QUEST_KEY||'bradavice_quests_v1')||A?.keys?.QUEST_KEY||'bradavice_quests_v1',{})||{};
     if(q['find-godric']===true||q['find-godric']?.done===true)godrik.classList.add('quest-complete');
     // Kliknutí na Godrika řeší founders-v41.js, aby se jedním klikem správně
     // zapsal jak úkol, tak nalezení zakladatele a otevřel se jeho dialog.
@@ -73,14 +73,14 @@
       if(counter)counter.textContent=`${n} / 3`;
       if(n===3){
         // Nález třetího obrazce už úkol automaticky NEODEVZDÁ. Student se musí vrátit k profesorovi.
-        try{localStorage.setItem('bradavice_astronomy_task_v42','ready')}catch{}
+        try{const k=A?.scopedKey?.('bradavice_astronomy_task_v42')||'bradavice_astronomy_task_v42';localStorage.setItem(k,'ready');localStorage.setItem('bradavice_astronomy_task_v42','ready')}catch{}
         document.getElementById('astronomyQuest')?.classList.add('astronomy-ready-to-hand-in');
         A?.toast?.('Všechna tři souhvězdí nalezena. Vrať se k profesorovi a úkol odevzdej.');
         if(replay)replay.hidden=true;
       }
     };
     const resetConstellations=()=>{found={};constellationZones.forEach(z=>z.classList.remove('found'));document.getElementById('astronomyQuest')?.classList.remove('quest-complete');if(counter)counter.textContent='0 / 3';if(replay)replay.hidden=true};
-    constellationZones.forEach(z=>z.addEventListener('click',e=>{e.stopPropagation();const id=z.dataset.constellation;if(found[id])return;let accepted=false;try{const q=JSON.parse(localStorage.getItem('bradavice_quests_v1')||'{}');accepted=['accepted','ready','done'].includes(localStorage.getItem('bradavice_astronomy_task_v42'))||q?.['find-three-constellations']===true||q?.['find-three-constellations']?.done===true}catch{}if(!accepted){A?.toast?.('Nejdřív si promluv s profesorem astronomie.');return}found[id]=true;z.classList.add('found');renderConstellations()}));
+    constellationZones.forEach(z=>z.addEventListener('click',e=>{e.stopPropagation();const id=z.dataset.constellation;if(found[id])return;let accepted=false;try{const qk=A?.scopedKey?.(A?.keys?.QUEST_KEY||'bradavice_quests_v1')||'bradavice_quests_v1',ak=A?.scopedKey?.('bradavice_astronomy_task_v42')||'bradavice_astronomy_task_v42',q=JSON.parse(localStorage.getItem(qk)||'{}');accepted=['accepted','ready','done'].includes(localStorage.getItem(ak))||q?.['find-three-constellations']===true||q?.['find-three-constellations']?.done===true}catch{}if(!accepted){A?.toast?.('Nejdřív si promluv s profesorem astronomie.');return}found[id]=true;z.classList.add('found');renderConstellations()}));
     replay?.addEventListener('click',resetConstellations);
     resetConstellations();
     document.getElementById('astronomySky')?.addEventListener('click',e=>{const spark=document.createElement('i');spark.className='sky-spark';spark.style.left=`${e.clientX}px`;spark.style.top=`${e.clientY}px`;document.body.appendChild(spark);setTimeout(()=>spark.remove(),650)});
@@ -133,7 +133,7 @@
   }));
 
   const shell=document.querySelector('.lake-shell-hotspot');
-  if(shell)shell.addEventListener('click',()=>{pulse(shell,'awake',1100);A?.award('tajemstvi-hradu',{silent:true})});
+  if(shell)shell.addEventListener('click',()=>{pulse(shell,'awake',1100);A?.award('tajemstvi-hradu',{silent:true});A?.award('jezerni-badatel')});
 
   const hagridDoor=document.getElementById('hagridDoor');
   if(hagridDoor){

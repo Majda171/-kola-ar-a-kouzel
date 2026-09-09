@@ -32,6 +32,7 @@
   const STATE_KEY='bradavice_achievements_v2';
   const QUEST_KEY='bradavice_quests_v1';
   const VISITS_KEY='bradavice_location_visits_v1';
+  const scopedProgressKey=(base,uid)=>`${base}_${String(uid||'guest').replace(/[^a-zA-Z0-9@._-]/g,'_')}`;
   let client = null;
   let presenceChannel = null;
   try {
@@ -84,9 +85,9 @@
     if(badgesRes.error) throw badgesRes.error;if(pointsRes.error) throw pointsRes.error;if(adjustRes.error&&adjustRes.error.code!=='42P01') console.warn(adjustRes.error);if(questsRes.error) throw questsRes.error;if(visitsRes.error) throw visitsRes.error;
     const unlocked={};(badgesRes.data||[]).forEach(x=>unlocked[x.achievement_id]=x.unlocked_at||true);
     const history=[...(badgesRes.data||[]).map(x=>({type:'badge',id:x.achievement_id,at:x.unlocked_at})),...(pointsRes.data||[]).map(x=>({type:'points',amount:Number(x.amount||0),reason:x.reason||'Body',at:x.created_at})),...((adjustRes&&!adjustRes.error?adjustRes.data:[])||[]).map(x=>({type:'points',amount:Number(x.amount||0),reason:x.reason||'Úprava bodů',at:x.created_at}))].sort((a,b)=>new Date(b.at||0)-new Date(a.at||0));
-    safeWrite(STATE_KEY,{unlocked,history});
-    const quests={};(questsRes.data||[]).forEach(x=>quests[x.quest_id]={done:true,at:x.completed_at});safeWrite(QUEST_KEY,quests);
-    const visits={};(visitsRes.data||[]).forEach(x=>{const page=locationToPage[x.location_id];if(page)visits[page]=x.first_visited_at||true});safeWrite(VISITS_KEY,visits);return true;
+    safeWrite(STATE_KEY,{unlocked,history});safeWrite(scopedProgressKey(STATE_KEY,user.id),{unlocked,history});
+    const quests={};(questsRes.data||[]).forEach(x=>quests[x.quest_id]={done:true,at:x.completed_at});safeWrite(QUEST_KEY,quests);safeWrite(scopedProgressKey(QUEST_KEY,user.id),quests);
+    const visits={};(visitsRes.data||[]).forEach(x=>{const page=locationToPage[x.location_id];if(page)visits[page]=x.first_visited_at||true});safeWrite(VISITS_KEY,visits);safeWrite(scopedProgressKey(VISITS_KEY,user.id),visits);return true;
   }
 
   async function syncHouseStandingsLocal(){
@@ -106,7 +107,7 @@
     // selhal, scope:local a následný úklid odstraní token z tohoto prohlížeče.
     try{if(client)await client.auth.signOut({scope:'local'})}catch(e){console.warn('Odhlášení Supabase selhalo, čistím lokální session.',e)}
     try{
-      localStorage.removeItem(STUDENT_KEY);
+      [STUDENT_KEY,STATE_KEY,QUEST_KEY,VISITS_KEY,'bradavice_herbology_v4354','bradavice_achievement_counters_v4363'].forEach(k=>localStorage.removeItem(k));
       const projectRef='iyklgteuwknvrbxfecbv';
       for(let i=localStorage.length-1;i>=0;i--){const k=localStorage.key(i)||'';if(k.startsWith(`sb-${projectRef}-auth-token`))localStorage.removeItem(k)}
     }catch{}

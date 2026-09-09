@@ -27,8 +27,11 @@
   object-fit:contain!important;object-position:center bottom!important;
 }
 .chess-piece.piece-pawn{height:66%!important;bottom:6%!important}
-.chess-piece.piece-rook{height:76%!important;bottom:4%!important}
-.chess-piece.piece-knight{height:80%!important;bottom:3.5%!important}
-.chess-piece.piece-bishop{height:82%!important;bottom:3%!important}
-.chess-piece.piece-queen{height:86%!important;bottom:2.5%!important}
-.chess-piece.piece-king{height:86%!important;bottom:2.5%!important}
+.chess-piece.piece-rook{height:88%!important;bottom:2%!important}
+.chess-piece.piece-knight{height:92%!important;bottom:1.5%!important}
+.chess-piece.piece-bishop{height:94%!important;bottom:1%!important}
+.chess-piece.piece-queen{height:99%!important;bottom:0!important}
+.chess-piece.piece-king{height:99%!important;bottom:0!important}
+
+/* v43.6.3 — stejná šachová hra i pro cestu za Kamenem. V příběhové zkoušce je zamčený režim Sir Nicholas. */
+.chess-trial-context .chess-mode button:not([data-chess-mode="ai"]){display:none!important}.chess-trial-context .chess-head>div:first-child{text-align:center}
