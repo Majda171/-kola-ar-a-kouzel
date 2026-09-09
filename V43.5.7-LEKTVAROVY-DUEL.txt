@@ -1,0 +1,10 @@
+v43.5.7 — ONLINE LEKTVAROVÝ DUEL
+- soukromá místnost přes 6místný kód
+- 2 studenti online
+- best of 3; při 2:0 duel končí už po druhém kole
+- v každém kole oba vidí stejný recept a stejné pořadí přísad
+- recept je viditelný 20 sekund, potom oba vaří zpaměti
+- soupeř vidí jen průběh (počet kroků/chyb), ne konkrétní kliknutí
+- rozhoduje: dokončení -> méně chyb -> rychlejší čas
+- chyby v online duelu neodečítají kolejní body; Snapeho trest zůstává jen u běžné praktické hodiny
+- SQL: SUPABASE-V43.5.7-LEKTVAROVY-DUEL.sql

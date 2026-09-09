@@ -524,11 +524,11 @@
     grid.innerHTML='';
     const legalNow=selected?legalMoves(...selected):[];
     const blackView=viewColor()==='b';
-    const rows=blackView?[7,6,5,4,3,2,1,0]:[0,1,2,3,4,5,6,7];
-    const cols=blackView?[7,6,5,4,3,2,1,0]:[0,1,2,3,4,5,6,7];
     if(boardShell)boardShell.classList.toggle('view-black',blackView);
 
-    for(const r of rows)for(const c of cols){
+    for(let vr=0;vr<8;vr++)for(let vc=0;vc<8;vc++){
+      const r=blackView?7-vr:vr;
+      const c=blackView?7-vc:vc;
       const b=document.createElement('button');
       b.type='button';
       b.className='chess-square';
