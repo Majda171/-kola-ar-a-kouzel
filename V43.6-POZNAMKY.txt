@@ -1,0 +1,58 @@
+BRADAVICE v43.6 — Tajemná komnata + Kámen mudrců + nové avatary
+================================================================
+
+ZÁKLAD
+- v43.6 vychází z kompletní v43.5.9, takže zachovává všechny opravy z v43.5.8 a v43.5.9.
+- Zachováno: opravený Herbář, houby v Zapovězeném lese, online lektvarový duel, zmenšené šachové figurky/pěšci a Web3Forms kontakt.
+
+TAJEMNÁ KOMNATA
+- stará místnost s horními hadími malbami byla nahrazena novou scénou
+- uprostřed je velký bazilišek
+- po stranách jsou dva sloupy
+- na jednom sloupu leží starý deník
+- na druhém je baziliščí zub
+- před baziliškem leží meč Godrika Nebelvíra s velkým rubínem
+- v pozadí stojí mladý bledý tmavovlasý zmijozelský student
+- zachován je menší portrét Salazara Zmijozela, aby zůstal funkční úkol se čtyřmi zakladateli
+- objekty v komoře mají klikací reakce; kliknutí na deník přepne i variantu probodnutého deníku
+
+CESTA ZA KAMENEM MUDRCŮ
+- staré úkoly byly odstraněny z původní Tajemné cesty; ta nyní vede z umývárny přímo do Tajemné komnaty
+- nová samostatná skrytá cesta začíná ve Východní chodbě na místě, kde dříve stál Filch
+- Filch byl z tohoto místa odstraněn a nahrazen Zakázanými dveřmi
+- 1. místnost: Chloupek + harfa + padací dveře
+- kliknutí na harfu spustí uspávací melodii, Chloupek usne a otevře se cesta dolů
+- po Chloupkovi následují tři povinné zkoušky v pořadí:
+  1) létající klíče — správný je starý klíč s poškozeným křídlem
+  2) kouzelnické šachy — je nutné partii skutečně vyhrát
+  3) logická hádanka se sedmi lektvary
+- průběh zkoušek se ukládá do localStorage a po obnovení stránky pokračuje od poslední splněné části
+- finále: podzemní síň s velkým zrcadlem
+- zrcadlo položí 3 otázky vztahující se k právě dokončené cestě
+- po správných odpovědích se objeví Kámen mudrců
+- po jeho převzetí se uloží jako splněný úkol a zobrazí se v profilu v sekci Vzácné nálezy
+
+AVATARY
+- přidáno 16 nových studentských portrétů
+- 4 nové portréty pro každou kolej
+- celkem je nyní 10 portrétů na kolej / 40 portrétů celkem
+- supabase-config.js byl rozšířen o n7–n10, h7–h10, m7–m10, z7–z10
+- pro již existující Supabase databázi spusť SUPABASE-V43.6-AVATARY.sql, aby bylo možné nové portréty ukládat do profilu
+- základní SUPABASE-V35-ADMIN-PROFILY-AVATARY.sql byl také aktualizován pro čistou instalaci
+
+NOVÉ SOUBORY
+- kamen-mudrcu-chloupek.html
+- kamen-mudrcu-zkousky.html
+- kamen-mudrcu-zrcadlo.html
+- philosopher-v436.css
+- philosopher-fluffy-v436.js
+- philosopher-trials-v436.js
+- philosopher-mirror-v436.js
+- chamber-v436.css / chamber-v436.js
+- SUPABASE-V43.6-AVATARY.sql
+- nové WebP obrázky scén, rekvizit a 16 avatarů
+
+KONTROLA
+- všechny lokální HTML/CSS odkazy: 0 chybějících souborů
+- duplicitní HTML id: 0
+- všechny JS soubory: node --check bez syntax error

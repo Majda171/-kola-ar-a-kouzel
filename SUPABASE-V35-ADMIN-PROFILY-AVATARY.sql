@@ -20,10 +20,10 @@ set avatar_key = case house_code
 end,
 updated_at = now()
 where avatar_key not in (
-  'n1','n2','n3','n4','n5','n6',
-  'h1','h2','h3','h4','h5','h6',
-  'm1','m2','m3','m4','m5','m6',
-  'z1','z2','z3','z4','z5','z6'
+  'n1','n2','n3','n4','n5','n6','n7','n8','n9','n10',
+  'h1','h2','h3','h4','h5','h6','h7','h8','h9','h10',
+  'm1','m2','m3','m4','m5','m6','m7','m8','m9','m10',
+  'z1','z2','z3','z4','z5','z6','z7','z8','z9','z10'
 );
 
 -- Profil i admin flag se mění pouze přes bezpečné RPC funkce.
@@ -44,10 +44,10 @@ begin
   if h is null then raise exception 'Profilový obrázek lze vybrat až po rozřazení.'; end if;
 
   if not (
-    (h='N' and p_avatar_key in ('n1','n2','n3','n4','n5','n6')) or
-    (h='H' and p_avatar_key in ('h1','h2','h3','h4','h5','h6')) or
-    (h='M' and p_avatar_key in ('m1','m2','m3','m4','m5','m6')) or
-    (h='Z' and p_avatar_key in ('z1','z2','z3','z4','z5','z6'))
+    (h='N' and p_avatar_key in ('n1','n2','n3','n4','n5','n6','n7','n8','n9','n10')) or
+    (h='H' and p_avatar_key in ('h1','h2','h3','h4','h5','h6','h7','h8','h9','h10')) or
+    (h='M' and p_avatar_key in ('m1','m2','m3','m4','m5','m6','m7','m8','m9','m10')) or
+    (h='Z' and p_avatar_key in ('z1','z2','z3','z4','z5','z6','z7','z8','z9','z10'))
   ) then
     raise exception 'Vybraný portrét nepatří do studentovy koleje.';
   end if;

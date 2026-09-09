@@ -42,7 +42,7 @@
     document.getElementById('profilePoints').textContent=s.points||0;document.getElementById('profileYear').textContent=s.year||1;
     document.getElementById('profileBioText').textContent=s.bio?.trim()||'Zatím jsi o sobě nic nenapsal/a.';
     const houseInline=document.getElementById('profileHouseInline');if(houseInline)houseInline.textContent=house;
-    const roomLinks={N:'Nebelvir.html',H:'Havraspar.html',M:'Mrzimor.html',Z:'Zmijozel.html'};document.getElementById('profileRoomLink').href=s.houseCode?(roomLinks[code]||'koleje.html'):'rozrazeni.html';
+    const roomLinks={N:'Nebelvir.html',H:'Havraspar.html',M:'Mrzimor.html',Z:'Zmijozel.html'};document.getElementById('profileRoomLink').href=s.houseCode?(roomLinks[code]||'koleje.html'):'rozrazeni.html';const rare=document.getElementById('rareFindsPanel');if(rare)rare.hidden=localStorage.getItem('bradavice_philosophers_stone_v436')!=='owned';
     bindProfileEditor(s);
     if(A){
       A.syncDerivedAchievements?.();const st=A.getState(),unlocked=st.unlocked||{},displayBadges=A.allBadges.filter(b=>b.img);

@@ -4,10 +4,10 @@
   const houseNames = {N:'Nebelvír',H:'Havraspár',M:'Mrzimor',Z:'Zmijozel'};
   const crestNames = {N:'nebelvir-erb.webp',H:'havraspar-erb.webp',M:'mrzimor-erb.webp',Z:'zmijozel-erb.webp'};
   const avatarKeysByHouse = {
-    N:['n1','n2','n3','n4','n5','n6'],
-    H:['h1','h2','h3','h4','h5','h6'],
-    M:['m1','m2','m3','m4','m5','m6'],
-    Z:['z1','z2','z3','z4','z5','z6']
+    N:['n1','n2','n3','n4','n5','n6','n7','n8','n9','n10'],
+    H:['h1','h2','h3','h4','h5','h6','h7','h8','h9','h10'],
+    M:['m1','m2','m3','m4','m5','m6','m7','m8','m9','m10'],
+    Z:['z1','z2','z3','z4','z5','z6','z7','z8','z9','z10']
   };
   const avatarKeys = Object.values(avatarKeysByHouse).flat();
   const defaultAvatarForHouse = code => (avatarKeysByHouse[code]||avatarKeysByHouse.N)[0];
@@ -24,7 +24,7 @@
     'havraspar-spolecenska.html':'havraspar-spolecenska','havraspar-loznice.html':'havraspar-loznice',
     'mrzimor-spolecenska.html':'mrzimor-spolecenska','mrzimor-loznice.html':'mrzimor-loznice',
     'zmijozel-spolecenska.html':'zmijozel-spolecenska','zmijozel-loznice.html':'zmijozel-loznice',
-    'tajemna-cesta.html':'tajemna-cesta','tajemna-komnata.html':'tajemna-komnata','reditelna.html':'reditelna','divci-umyvarna.html':'divci-umyvarna','knihovna.html':'knihovna',
+    'tajemna-cesta.html':'tajemna-cesta','tajemna-komnata.html':'tajemna-komnata','kamen-mudrcu-chloupek.html':'kamen-mudrcu-chloupek','kamen-mudrcu-zkousky.html':'kamen-mudrcu-zkousky','kamen-mudrcu-zrcadlo.html':'kamen-mudrcu-zrcadlo','reditelna.html':'reditelna','divci-umyvarna.html':'divci-umyvarna','knihovna.html':'knihovna',
     'chodby-podzemni-1.html':'podzemni-chodba-1','chodby-podzemni-2.html':'podzemni-chodba-2'
   };
   const locationToPage = Object.fromEntries(Object.entries(pageToLocation).map(([p,id])=>[id,p]));
