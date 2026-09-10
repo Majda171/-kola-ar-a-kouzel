@@ -62,3 +62,16 @@ body[data-house="Z"]{--gold:#afb7aa}
  .house-caption{bottom:3vh;padding:14px 16px}.house-caption p{font-size:.88rem}.house-hint{display:none}
  .prop-chest{width:135px}.prop-crystal,.prop-plant,.prop-statue,.prop-mandrake,.prop-flower{width:100px}.prop-potion{width:72px}
 }
+
+
+/* v43.6.12 — Bertíkovy fazolky v nebelvírské společenské místnosti */
+.gryffindor-beans{
+ position:absolute;z-index:11;left:50.4%;top:70.8%;width:clamp(115px,9vw,170px);
+ transform:translate(-50%,-50%) rotate(-1deg);pointer-events:none;
+ filter:brightness(.76) saturate(.82) contrast(.96) drop-shadow(0 8px 8px rgba(0,0,0,.62));
+ opacity:.96
+}
+.gryffindor-beans img{display:block;width:100%;height:auto}
+@media(max-width:760px){
+ .gryffindor-beans{left:52%;top:67%;width:clamp(92px,25vw,130px);filter:brightness(.72) saturate(.78) drop-shadow(0 7px 7px rgba(0,0,0,.65))}
+}
