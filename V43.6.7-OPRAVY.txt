@@ -1,0 +1,10 @@
+BRADAVICE v43.6.7
+
+- Profesorka Prýtová: nový stav oddělený pro každého studenta; všech 5 rostlin i skleníky načítají jediný herbology-v4367.js.
+- Odznaky: zachována sloučená lokální + Supabase synchronizace a 40 platných odznaků.
+- Kotlíky online: špatný krok vynuluje celý recept; opraven přechod mezi zapamatováním, vařením, výsledkem kola a dalším kolem.
+- Šachy: zobrazení je z pohledu hráče; při hře tmavými jsou tmavé figurky vždy dole, včetně online duelu.
+- Kámen mudrců: Chloupek má 8 s odpočet při každém vstupu; zrcadlo stojí na kruhovém podstavci a používá variantu s hradním odrazem; otázky hodnotí úmysl studenta.
+- Tajemná komnata: interakce Raddle -> bazilišek -> meč -> zub -> deník; Salazarův portrét je začleněn do scény.
+- Tchoříčky: nová čistá hra na nádvoří, 15 proti 15, střídání tahů, trénink i online partie.
+- Odstraněny technické/popiskové texty typu „samostatný prototyp“, „samostatný úkol“ a „Prázdná chodba“.

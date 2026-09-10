@@ -57,7 +57,12 @@
   const hideResult=()=>{if(resultOverlay)resultOverlay.hidden=true;if(resultText)resultText.textContent=''};
 
   function viewColor(){
-    return mode==='online'&&online.seat==='b'?'b':'w';
+    // Každý hráč má své figurky vždy u spodního okraje šachovnice.
+    // Online je perspektiva pevně podle přidělené barvy; u hry dvou hráčů
+    // na jednom zařízení se šachovnice po tahu otočí k hráči, který je právě na tahu.
+    if(mode==='online'&&(online.seat==='w'||online.seat==='b')) return online.seat;
+    if(mode==='local') return turn;
+    return 'w';
   }
 
   function updateTurnBanner(check=false){
@@ -208,7 +213,7 @@
   }
 
   async function createOnlineRoom(){
-    if(!DB?.client){onlineSay('Online partie teď není dostupná.');return}
+    if(!DB?.client){onlineSay('Databáze není dostupná.');return}
     await leaveOnline();
     mode='online';
     online.seat='w';
@@ -531,8 +536,13 @@
   function render(){
     grid.innerHTML='';
     const legalNow=selected?legalMoves(...selected):[];
-    const blackView=viewColor()==='b';
-    if(boardShell)boardShell.classList.toggle('view-black',blackView);
+    const perspective=viewColor();
+    const blackView=perspective==='b';
+    if(boardShell){
+      boardShell.classList.toggle('view-black',blackView);
+      boardShell.dataset.perspective=perspective;
+      boardShell.setAttribute('aria-label',blackView?'Šachovnice z pohledu tmavých figur':'Šachovnice z pohledu světlých figur');
+    }
 
     for(let vr=0;vr<8;vr++)for(let vc=0;vc<8;vc++){
       const r=blackView?7-vr:vr;

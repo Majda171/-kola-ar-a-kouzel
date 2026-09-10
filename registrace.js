@@ -39,7 +39,7 @@ function showSuccess(student){
   form.hidden=true; successPanel.hidden=false;
   const titlePrefix=student.salutation==='slečna'?'slečno':'pane';
   successTitle.textContent=`Vítejte, ${student.firstName}`;
-  successText.textContent=`Registrace byla přijata, ${titlePrefix} ${student.lastName}. Studentský účet je připraven.`;
+  successText.textContent=`Registrace byla přijata, ${titlePrefix} ${student.lastName}. Studentský účet je uložený v Bradavické databázi.`;
   try{sessionStorage.setItem('bradavice_acceptance_student',JSON.stringify(student));}catch{}
   successPanel.scrollIntoView({behavior:'smooth',block:'center'});
 }

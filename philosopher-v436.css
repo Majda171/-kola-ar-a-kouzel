@@ -20,7 +20,7 @@
 
 
 /* v43.6.3 — Východní chodba: žádná kreslená maketa dveří, jen klikací oblast nad skutečnými dveřmi na pozadí. */
-.corridor-real-door-hotspot,.corridor-stone-door.corridor-real-door-hotspot{right:.5%!important;left:auto!important;top:5%!important;bottom:auto!important;width:23%!important;height:76%!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:transparent!important;padding:0!important;font-size:0!important;display:block!important;opacity:1!important;cursor:pointer!important}
+.corridor-real-door-hotspot,.corridor-stone-door.corridor-real-door-hotspot{right:0!important;left:auto!important;top:2%!important;bottom:auto!important;width:31%!important;height:84%!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:transparent!important;padding:0!important;font-size:0!important;display:block!important;opacity:1!important;cursor:pointer!important}
 .corridor-real-door-hotspot::before,.corridor-real-door-hotspot::after{display:none!important;content:none!important}.corridor-real-door-hotspot:hover,.corridor-real-door-hotspot:focus-visible{background:transparent!important;box-shadow:none!important;outline:none!important}
 
 /* V tunelu do Tajemné komnaty se kliká přímo na kamenný otvor/pečeť v pozadí. */
@@ -28,17 +28,19 @@
 
 /* Harfa už fyzicky neleží u Chloupka. Použití probíhá z inventáře. */
 .fluffy-inventory-action{margin-top:10px;border:1px solid #d1ad60;background:#8b6730;color:#160f08;padding:11px 15px;font:700 .56rem Cinzel,Georgia,serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}.fluffy-inventory-action[hidden]{display:none}.fluffy-inventory-action.playing{filter:brightness(1.15)}
-@media(max-width:800px){.corridor-real-door-hotspot,.corridor-stone-door.corridor-real-door-hotspot{right:0!important;top:6%!important;width:31%!important;height:72%!important}.secret-passage-hotspot-v4363{left:54%;top:18%;width:27%;height:40%}}
+@media(max-width:800px){.corridor-real-door-hotspot,.corridor-stone-door.corridor-real-door-hotspot{right:0!important;top:2%!important;width:39%!important;height:82%!important}.secret-passage-hotspot-v4363{left:54%;top:18%;width:27%;height:40%}}
 
-/* v43.6.6 — Chloupek reaguje hned po vstupu. */
-.fluffy-danger-timer{position:absolute;z-index:24;left:50%;top:9vh;transform:translateX(-50%);min-width:76px;padding:9px 14px;text-align:center;border:1px solid rgba(215,181,107,.55);background:rgba(5,7,6,.88);color:#ead7a4;font:700 1.2rem Cinzel,Georgia,serif;letter-spacing:.08em;box-shadow:0 10px 30px #000a}.fluffy-danger-timer.danger{color:#f2a58f;border-color:#a74e3d;animation:fluffyDanger .55s ease infinite alternate}@keyframes fluffyDanger{to{transform:translateX(-50%) scale(1.08);filter:brightness(1.25)}}
-
-/* v43.6.6 — zrcadlo stojí přímo na kruhovém podstavci. */
+/* v43.6.7 — zrcadlo stojí velké přímo na kruhovém podstavci v pozadí. */
 .final-hall .mirror-stage{display:block;width:100%;max-width:none;min-height:calc(100vh - 74px);position:relative}
-.final-hall .mirror-object{position:absolute;z-index:11;left:50%;top:48%;transform:translate(-50%,-50%);width:min(560px,46vw);text-align:center}
-.final-hall .mirror-object img{width:100%;max-height:82vh;object-fit:contain;margin:0 auto;filter:drop-shadow(0 25px 40px #000)}
-.final-hall .mirror-panel{position:absolute;z-index:15;right:2.2vw;top:23%;width:min(430px,32vw);max-height:70vh;overflow:auto}
+.final-hall .mirror-object{position:absolute;z-index:11;left:50%;bottom:35.5%;transform:translateX(-50%);width:min(500px,32vw);text-align:center;transform-origin:50% 100%}
+.final-hall .mirror-object img{width:100%;max-height:61vh;object-fit:contain;margin:0 auto;filter:drop-shadow(0 25px 40px #000)}
+.final-hall .mirror-panel{position:absolute;z-index:15;right:2.2vw;top:20%;width:min(440px,33vw);max-height:73vh;overflow:auto}
+.mirror-answers button.chosen{border-color:#d7b56b;background:#292315;color:#fff1c5;box-shadow:inset 0 0 0 1px rgba(215,181,107,.25)}
 @media(max-width:900px){
- .final-hall .mirror-object{top:39%;width:min(500px,75vw)}
- .final-hall .mirror-panel{left:4vw;right:4vw;top:auto;bottom:2vh;width:auto;max-height:42vh}
+  .final-hall .mirror-object{position:absolute;z-index:11;left:50%;bottom:34%;transform:translateX(-50%);width:min(430px,60vw);text-align:center;transform-origin:50% 100%}
+  .final-hall .mirror-object img{max-height:58vh}
+  .final-hall .mirror-panel{left:4vw;right:4vw;top:auto;bottom:2vh;width:auto;max-height:43vh}
 }
+
+/* v43.6.7 — Chloupek reaguje při každém vstupu. */
+.fluffy-danger-timer{position:absolute;z-index:24;left:50%;top:9vh;transform:translateX(-50%);min-width:76px;padding:9px 14px;text-align:center;border:1px solid rgba(215,181,107,.55);background:rgba(5,7,6,.88);color:#ead7a4;font:700 1.2rem Cinzel,Georgia,serif;letter-spacing:.08em;box-shadow:0 10px 30px #000a}.fluffy-danger-timer.danger{color:#f2a58f;border-color:#a74e3d;animation:fluffyDanger .55s ease infinite alternate}@keyframes fluffyDanger{to{transform:translateX(-50%) scale(1.08);filter:brightness(1.25)}}

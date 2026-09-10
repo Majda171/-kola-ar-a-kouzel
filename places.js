@@ -185,7 +185,7 @@
     if(revealed)return; revealed=true;
     scene.classList.add('ready'); door.setAttribute('aria-hidden','false');
     sessionStorage.setItem('bradavice_requirement_gate','open');
-    if(whisper)whisper.textContent='Gobelíny se tiše pohnou a ve stěně se pomalu vyrýsují dveře.';
+    if(whisper)whisper.textContent='Dveře se objevily. Komnata tě vyslyšela.';
     window.BradaviceAchievements?.award?.('mistnost-se-ukazala',{silent:true});
     window.BradaviceAchievements?.award?.('tajemstvi-hradu',{silent:true});
   };

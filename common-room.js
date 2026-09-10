@@ -188,7 +188,7 @@
       btn.addEventListener('click',()=>{if(pollVote)return;pollCounts[i]+=1;pollVote=String(i);localStorage.setItem(pollKey,JSON.stringify(pollCounts));localStorage.setItem(pollVoteKey,pollVote);A?.recordActivity();renderPoll();});
       $('#pollOptions').append(btn);
     });
-    $('#pollStatus').textContent=pollVote?'Hlas je zapsaný.':'Vyber jednu možnost.';
+    $('#pollStatus').textContent=pollVote?'Hlas je zapsaný. Výsledky se ukládají v tomto prohlížeči.':'Vyber jednu možnost.';
   }
   renderPoll();
 

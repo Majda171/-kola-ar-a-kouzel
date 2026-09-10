@@ -39,14 +39,14 @@
     document.getElementById('profileAvatar').src=avatarPath(s.avatarKey,code);
     document.getElementById('profileName').textContent=`${s.firstName||''} ${s.lastName||''}`.trim();
     document.getElementById('profileHouse').textContent=s.houseCode?`${house} · ${s.year||1}. ročník`:house;
-    const pointCount=Number(s.points||0);document.getElementById('profilePoints').textContent=pointCount;const pointLabel=document.getElementById('profilePointsLabel');if(pointLabel){const n=Math.abs(pointCount)%100,m=Math.abs(pointCount)%10;pointLabel.textContent=m===1&&n!==11?'bod':(m>=2&&m<=4&&(n<12||n>14)?'body':'bodů')}document.getElementById('profileYear').textContent=`${s.year||1}.`;
+    document.getElementById('profilePoints').textContent=s.points||0;document.getElementById('profileYear').textContent=s.year||1;
     document.getElementById('profileBioText').textContent=s.bio?.trim()||'Zatím jsi o sobě nic nenapsal/a.';
     const houseInline=document.getElementById('profileHouseInline');if(houseInline)houseInline.textContent=house;
     const roomLinks={N:'Nebelvir.html',H:'Havraspar.html',M:'Mrzimor.html',Z:'Zmijozel.html'};document.getElementById('profileRoomLink').href=s.houseCode?(roomLinks[code]||'koleje.html'):'rozrazeni.html';const scopeId=String(s?.supabaseUserId||s?.email||'guest').replace(/[^a-zA-Z0-9@._-]/g,'_');const rare=document.getElementById('rareFindsPanel');if(rare)rare.hidden=localStorage.getItem(`bradavice_philosophers_stone_v4363_${scopeId}`)!=='owned';
     bindProfileEditor(s);
     if(A){
       A.syncDerivedAchievements?.();const st=A.getState(),unlocked=st.unlocked||{},displayBadges=A.allBadges.filter(b=>b.img);
-      const badgeCount=displayBadges.filter(b=>unlocked[b.id]).length;document.getElementById('profileBadges').textContent=badgeCount;const badgeLabel=document.getElementById('profileBadgesLabel');if(badgeLabel)badgeLabel.textContent=badgeCount===1?'odznak':(badgeCount>=2&&badgeCount<=4?'odznaky':'odznaků');
+      document.getElementById('profileBadges').textContent=displayBadges.filter(b=>unlocked[b.id]).length;
       document.getElementById('achievementGrid').innerHTML=displayBadges.map(b=>badgeCard(b,Boolean(unlocked[b.id]))).join('');
       const weekly=s.houseCode?A.getWeeklyEntry(code):null,access=document.getElementById('profileAccess'),mail=document.getElementById('profileOwlMail');
       if(!s.houseCode){access.innerHTML='<strong>Rozřazení čeká</strong><p>Nejdřív dokonči rozřazovací ceremonii.</p>';if(mail)mail.innerHTML='<p>Soví pošta dorazí po rozřazení.</p>'}
@@ -66,8 +66,8 @@
       const questRows=[
         ['find-godric','Najdi na hradě obraz Godrika Nebelvíra','Hledej v Síni slávy mezi slavnými portréty.','Obraz už jsi objevil/a.','+10 bodů'],
         ['find-three-constellations','Najdi tři souhvězdí v Astronomické věži','Každé nové pozorování začíná od 0/3. Najdi všechny tři obrazce.','Všechna tři souhvězdí byla nalezena.','+50 bodů'],
-        ['prytova-herbar','Herbář Bradavic pro profesorku Prýtovou','Najdi pět rostlin při procházení školních pozemků a vrať se je odevzdat.','Herbář je kompletní a odevzdaný.','Bylinkářství'],
-        ['prytova-mandragory','Minuta s mandragorami','Přijmi druhý úkol u Prýtové a za 60 sekund přesaď alespoň pět mandragor.','Mandragorová výzva je splněná.','Bylinkářství'],
+        ['prytova-herbar','Herbář Bradavic pro profesorku Prýtovou','Najdi pět rostlin při procházení školních pozemků a vrať se je odevzdat.','Herbář je kompletní a odevzdaný.','úkol z bylinkářství'],
+        ['prytova-mandragory','Minuta s mandragorami','Přijmi druhý úkol u Prýtové a za 60 sekund přesaď alespoň pět mandragor.','Mandragorová výzva je splněná.','úkol z bylinkářství'],
         ['mcgonagall-feather','Lehké jako pírko','Promluv s profesorkou McGonagallovou a splň praktický úkol s pírkem.','Pírko jsi bezpečně zvedl/a a vrátil/a na lavici.','+10 bodů'],
         ['lupin-boggart','Praktická zkouška s bubákem','V učebně obrany otevři skříň a zvládni bubáka kouzlem Riddikulus.','Bubák byl poražen.','+20 bodů'],
         ['founders-all','Zakladatelé hradu','Najdi Godrika, Salazara, Rowenu a Helgu v různých částech hradu.','Všichni čtyři zakladatelé byli nalezeni.','odznak']
