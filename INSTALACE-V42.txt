@@ -1,9 +1,0 @@
-BRADAVICE v42 — NASAZENÍ
-
-1) Nahraj obsah této složky do GitHub repozitáře / GitHub Pages.
-2) V Supabase SQL Editoru spusť SUPABASE-V42-AKTUALIZACE.sql NAD již používanou databází v41.
-3) Pro online testování ve dvou se oba studenti přihlásí vlastními účty.
-4) Chat a online šachy používají Supabase Realtime.
-5) Pokud testuješ přístup bez přihlášení, otevři přímo např. hrad.html — stránka se nesmí odemknout a má přesměrovat na přihlášení.
-
-Pozn.: Pozadí učebny lektvarů zůstává původní z v41 (lektvary-v19.webp).

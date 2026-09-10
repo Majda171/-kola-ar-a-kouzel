@@ -109,7 +109,7 @@
       const s=state();renderProgress();const n=ids.filter(id=>s.found[id]).length;
       if(s.done){A?.award?.('herbarnik',{silent:true});herbDialog.innerHTML='<strong>Herbář je odevzdaný.</strong> Všech pět vzorků má profesorka Prýtová zapsaných.';herbAction.hidden=true}
       else if(!s.accepted){herbDialog.textContent='Najdi pět různých rostlin na školních pozemcích. Sbírat je můžeš po přijetí Herbáře.';herbAction.hidden=false;herbAction.textContent='Přijmout úkol Herbář';herbAction.disabled=false}
-      else if(n<5){herbDialog.textContent=`Herbář: ${n} / 5. Hledej na nádvoří, u jezera, Hagridova domu, ve Zapovězeném lese a u Vrby mlátičky.`;herbAction.hidden=true}
+      else if(n<5){herbDialog.textContent=`Herbář: ${n} / 5. Hledej zbývající rostliny na školních pozemcích.`;herbAction.hidden=true}
       else{herbDialog.textContent='Máš všech 5 vzorků. Odevzdej Herbář profesorce Prýtové.';herbAction.hidden=false;herbAction.textContent='Odevzdat Herbář';herbAction.disabled=false}
       if(s.mandDone){A?.award?.('mandragorovy-pestitel',{silent:true});mandDialog.innerHTML='<strong>Mandragorový úkol je splněný.</strong> Profesorka Prýtová má výsledek zapsaný.';mandAccept.hidden=true;trans.hidden=true}
       else if(!s.mandAccepted){mandDialog.textContent='Přijmi výzvu a potom máš 60 sekund na co nejvíc správně přesazených mandragor.';mandAccept.hidden=false;mandAccept.disabled=false;trans.hidden=true}

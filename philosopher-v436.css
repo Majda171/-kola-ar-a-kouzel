@@ -44,3 +44,10 @@
 
 /* v43.6.7 — Chloupek reaguje při každém vstupu. */
 .fluffy-danger-timer{position:absolute;z-index:24;left:50%;top:9vh;transform:translateX(-50%);min-width:76px;padding:9px 14px;text-align:center;border:1px solid rgba(215,181,107,.55);background:rgba(5,7,6,.88);color:#ead7a4;font:700 1.2rem Cinzel,Georgia,serif;letter-spacing:.08em;box-shadow:0 10px 30px #000a}.fluffy-danger-timer.danger{color:#f2a58f;border-color:#a74e3d;animation:fluffyDanger .55s ease infinite alternate}@keyframes fluffyDanger{to{transform:translateX(-50%) scale(1.08);filter:brightness(1.25)}}
+
+/* v43.6.9 — přesné zrcadlo dodané uživatelkou, bez plovoucího efektu. Základna stojí na kruhovém podstavci. */
+.final-hall .mirror-object{left:50%!important;bottom:32.8%!important;width:min(470px,30.5vw)!important;transform:translateX(-50%)!important;filter:none!important}
+.final-hall .mirror-object img{width:100%!important;max-height:63vh!important;object-fit:contain!important;margin:0 auto!important;filter:drop-shadow(0 12px 12px rgba(0,0,0,.58))!important}
+.final-hall .mirror-glow{display:none!important}
+.final-hall .mirror-object::after{content:"";position:absolute;left:19%;right:19%;bottom:-.6%;height:3.5%;border-radius:50%;background:rgba(0,0,0,.46);filter:blur(8px);z-index:-1;pointer-events:none}
+@media(max-width:900px){.final-hall .mirror-object{bottom:31.5%!important;width:min(430px,58vw)!important}.final-hall .mirror-object img{max-height:58vh!important}}

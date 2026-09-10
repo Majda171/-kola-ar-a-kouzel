@@ -1,5 +1,0 @@
-v43.5.5
-- oprava zobrazení šachovnice z pohledu hráče v online režimu (černý hráč má figurky dole)
-- nasazena nová šachovnice a nová sada figurek
-- upravené zarovnání hrací mřížky na novou šachovnici
-- navýšen version query string u chess.css a chess.js kvůli cache prohlížeče

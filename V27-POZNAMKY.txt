@@ -1,7 +1,0 @@
-Bradavice v27 — Velká síň / hostina
-- 3 rychlá poklepání na stůl přivolají hostinu
-- první klepnutí: jemné ťuknutí
-- druhé klepnutí: zvuk cinknutí a krátké probliknutí svíček
-- třetí klepnutí: zlatavá záře a plynulé objevení hostiny
-- hostina se po odchodu z lokace resetuje
-- po objevení hostiny lze interagovat s pečení, dortem a pohárem

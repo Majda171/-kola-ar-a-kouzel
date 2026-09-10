@@ -1,3 +1,0 @@
-v43.5.9
-- aktivován kontaktní formulář Web3Forms v kontakt.html
-- upraven informační text u formuláře

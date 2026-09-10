@@ -1,6 +1,0 @@
-BRADAVICE v43.1
-
-- Opraven stav úkolu profesorky Prýtové: v43.1 používá nový localStorage klíč, aby starý stav v42 nemohl schovat nové rostliny.
-- Nové samostatné soubory herbology-v43.js / herbology-v43.css kvůli cache.
-- Rostliny se zobrazují až po přijetí úkolu a jsou rozmístěny po školních pozemcích.
-- Salazarův portrét odstraněn z Filchovy chodby.

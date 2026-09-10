@@ -1,5 +1,0 @@
-v43.5.6
-- přidána krysa na lavici v učebně přeměňování
-- 3 kliknutí: krysa se zatočí a změní v pohár
-- další 3 kliknutí: pohár se zatočí a změní zpět v krysu
-- nové obrázky převedeny do WebP

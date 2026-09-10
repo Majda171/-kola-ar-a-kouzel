@@ -1,6 +1,0 @@
-Bradavice v43.5.8
-
-- Herbář: rostliny zůstávají viditelné i po sebrání; zvětšeny a zesvětleny, umístění: šalvěj nádvoří, kopřiva jezero, jmelí Hagridův dům, houby Zapovězený les, břečťan Vrba mlátička.
-- Online lektvarový duel: opraveno klikání na spouštěcí tlačítko uvnitř .scene-copy (pointer-events).
-- Šachy: všechny figurky zmenšeny tak, aby seděly v polích; pěšci jsou výrazně menší než ostatní figury.
-- SQL pro lektvarový duel se proti v43.5.7 nemění.

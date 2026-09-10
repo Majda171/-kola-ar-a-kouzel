@@ -1,7 +1,0 @@
-BRADAVICE v43.2
-
-- Severní chodba: Baculatá dáma je viditelný klikací portrét vedoucí ke vstupu do Nebelvíru.
-- Godrik Nebelvír: odstraněn chybný obrázek odznaku „Godrikův nálezce“ a nahrazen skutečným portrétem zakladatele.
-- Odznak „Godrikův nálezce“ zůstává pouze v systému úspěchů/profilu, ne jako obraz ve scéně.
-- Portréty zakladatelů jsou zmenšené, aby působily jako součást hradních chodeb, ne jako velké plovoucí překryvy.
-- SQL se proti v43.1 nemění.

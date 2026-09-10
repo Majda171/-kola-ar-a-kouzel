@@ -227,3 +227,20 @@
   .forbidden-forest .plant-houby{left:5.5%!important;bottom:11%!important;width:92px!important;height:84px!important}
   .willow .plant-brectan{left:57%!important;top:39%!important;width:82px!important;height:166px!important}
 }
+
+
+/* v43.6.8 — houby v Zapovězeném lese: mimo textový panel, stále přirozeně u kořenů */
+.forbidden-forest .plant-houby{
+  left:34%!important;
+  right:auto!important;
+  bottom:10%!important;
+  width:clamp(96px,6.6vw,132px)!important;
+  height:clamp(84px,6vw,118px)!important;
+  z-index:72!important;
+}
+.forbidden-forest .plant-houby img{
+  filter:brightness(.96) saturate(.92) contrast(1.04) drop-shadow(0 5px 9px rgba(0,0,0,.78))!important;
+}
+@media(max-width:720px){
+  .forbidden-forest .plant-houby{left:38%!important;bottom:12%!important;width:82px!important;height:74px!important}
+}
